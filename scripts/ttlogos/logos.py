@@ -36,6 +36,11 @@ REJET = re.compile(
     r"paypal|cookie|rgpd|avatar|spacer|pixel|tracking|loader|spinner|"
     r"drapeau|flag-|/flags/|emoji|smiley|captcha|placeholder|photo-|galerie|"
     r"affiche|flyer|tournoi|resultat|classement|calendrier|arbitre|joueur|"
+    # habillage d'interface et pictogrammes de contact
+    r"contact[_-]?logo|logo[_-]?contact|/(mail|email|enveloppe|telephone|phone|"
+    r"imprimer|print|partager|share|panier|newsletter|rss|fleche|arrow|puce|"
+    r"burger|menu|recherche|search)[-_.]|icon[-_]|[-_]icon\.|mobile-?app|"
+    r"app-?store|google-?play|/images?/common/|/assets/common/|/static/common/|"
     # marques de tiers et logos institutionnels que les clubs affichent sur leur site
     # (le nom des plateformes d'hébergement n'y figure pas : les vrais logos de clubs
     # sont souvent servis depuis ces mêmes domaines)
@@ -112,11 +117,26 @@ def _est_logo_institutionnel(url: str) -> bool:
     return fichier in territoires
 
 
-def candidats(html: str, url_page: str, nom_club: str = "") -> list[Candidat]:
+def _nom_de_fichier(url: str) -> str:
+    """Nom du fichier d'une image, sans extension ni préfixe « logo- »."""
+    fichier = catalogue.slug(url.rsplit("/", 1)[-1].rsplit("?", 1)[0].rsplit(".", 1)[0])
+    return re.sub(r"^(logo|logotype|blason|img|image)-?", "", fichier).strip("-")
+
+
+def candidats(
+    html: str, url_page: str, nom_club: str = "", ville: str = ""
+) -> list[Candidat]:
     """Classe les images de la page de la plus au moins susceptible d'être le logo."""
     soupe = BeautifulSoup(html or "", "html.parser")
     trouves: dict[str, Candidat] = {}
     sur_plateforme = bool(PLATEFORMES.search(catalogue.domaine_de(url_page)))
+    # « logo-vierzon.png » sur le site du Vierzon Ping : c'est le logo de la commune,
+    # que le club affiche parmi ses partenaires. Un logo de club porte son nom entier.
+    collectivites = {catalogue.slug(ville)} if ville else set()
+    collectivites |= {
+        mot for mot in catalogue.slug(nom_club).split("-") if len(mot) > 4
+    } if nom_club else set()
+    collectivites.discard("")
 
     def proposer(url: str, score: int, origine: str) -> None:
         url = _absolu(url_page, url)
@@ -134,6 +154,9 @@ def candidats(html: str, url_page: str, nom_club: str = "") -> list[Candidat]:
         if _est_logo_institutionnel(url):
             # « logo_cher.png » : le logo du département, pas celui du club.
             score -= 80
+        elif _nom_de_fichier(url) in collectivites:
+            # Nom de fichier réduit à la seule commune : logo de la mairie, en général.
+            score -= 40
         if sur_plateforme and origine in {"favicon", "apple-icon", "favicon.ico"}:
             # Icône de la plateforme d'hébergement, commune à tous ses clubs.
             return
@@ -385,7 +408,7 @@ def recuperer_logo(
         return club
     club.site_web = url_finale or club.site_web
 
-    liste = candidats(html, club.site_web, club.nom)
+    liste = candidats(html, club.site_web, club.nom, club.ville)
     for candidat in liste[:essais_max]:
         octets, type_mime = _telecharger(client, candidat.url)
         visuel = normaliser(octets, type_mime)

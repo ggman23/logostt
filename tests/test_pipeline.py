@@ -151,6 +151,27 @@ class TestExtractionLogo(unittest.TestCase):
                 classement = logos.candidats(html, page, "Club")
                 self.assertEqual(classement[0].url, attendu)
 
+    def test_habillage_et_logo_de_commune_ecartes(self):
+        """Autres faux positifs relevés sur le terrain : l'icône « app mobile » d'une
+        plateforme, un pictogramme de contact, et le logo de la commune."""
+        cas = [
+            ("https://aubignytt.sportsregions.fr/", "TT AUBIGNY", "",
+             '<img src="/images/common/mobile-app.png">'
+             '<img class="logo" src="/media/uploaded/blason.png">',
+             "blason.png"),
+            ("https://ententepongiste.gracay.info/", "E.P. GRACAY", "",
+             '<img src="/contact_logo.png"><img class="logo" src="/entente.png">',
+             "entente.png"),
+            ("https://vierzonping.wordpress.com/", "VIERZON PING", "Vierzon",
+             '<img src="/uploads/logo-vierzon.png">'
+             '<img class="logo" src="/uploads/logo-vierzon-ping.png">',
+             "logo-vierzon-ping.png"),
+        ]
+        for page, nom, ville, html, attendu in cas:
+            with self.subTest(page=page):
+                classement = logos.candidats(html, page, nom, ville)
+                self.assertTrue(classement[0].url.endswith(attendu), classement[0].url)
+
     def test_le_vrai_logo_reste_trouvable_sur_une_plateforme_mutualisee(self):
         """Écarter l'icône d'une plateforme ne doit pas écarter les images qu'elle sert."""
         classement = logos.candidats(
