@@ -1,0 +1,71 @@
+name: Collecte des clubs et des logos
+
+# La collecte a besoin d'un accès internet vers les sites des clubs : elle tourne donc
+# ici, sur les serveurs GitHub, et pas sur votre machine.
+on:
+  workflow_dispatch:
+    inputs:
+      perimetre:
+        description: "Périmètre : « tous », une ligue (IDF, BRE…) ou un département (75)"
+        default: "tous"
+      etapes:
+        description: "Étapes à lancer"
+        type: choice
+        options: ["clubs+logos", "clubs", "logos"]
+        default: "clubs+logos"
+      forcer_logos:
+        description: "Retélécharger les logos déjà connus"
+        type: boolean
+        default: false
+  schedule:
+    - cron: "0 4 1 * *"   # tous les 1ers du mois à 4 h UTC
+
+permissions:
+  contents: write
+
+jobs:
+  collecte:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Installer les dépendances
+        run: pip install -r requirements.txt
+
+      - name: Vérifier le pipeline
+        run: python3 tests/test_pipeline.py
+
+      - name: Collecter la liste des clubs
+        if: ${{ github.event.inputs.etapes != 'logos' }}
+        env:
+          FFTT_API_ID: ${{ secrets.FFTT_API_ID }}
+          FFTT_API_KEY: ${{ secrets.FFTT_API_KEY }}
+        run: python3 scripts/collecte_clubs.py --dep "${{ github.event.inputs.perimetre || 'tous' }}"
+
+      - name: Récupérer les logos
+        if: ${{ github.event.inputs.etapes != 'clubs' }}
+        run: |
+          python3 scripts/collecte_logos.py \
+            --dep "${{ github.event.inputs.perimetre || 'tous' }}" \
+            ${{ github.event.inputs.forcer_logos == 'true' && '--forcer' || '' }}
+
+      - name: Générer les données du site
+        run: python3 scripts/construire_site.py
+
+      - name: Publier les résultats
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data site/data site/logos
+          if git diff --cached --quiet; then
+            echo "Aucun changement."
+          else
+            git commit -m "Collecte du $(date +%d/%m/%Y) (${{ github.event.inputs.perimetre || 'tous' }})"
+            git push
+          fi

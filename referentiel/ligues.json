@@ -1,0 +1,234 @@
+{
+  "_commentaire": "Referentiel des ligues regionales FFTT et de leurs departements. Le code ligue reprend le code de la region administrative (INSEE) ; 'dep' reprend le code departement utilise par l'API FFTT (2 caracteres en metropole, 3 en outre-mer).",
+  "ligues": [
+    {
+      "code": "ARA",
+      "nom": "Auvergne-Rhône-Alpes",
+      "zone": "metropole",
+      "departements": [
+        {"dep": "01", "nom": "Ain"},
+        {"dep": "03", "nom": "Allier"},
+        {"dep": "07", "nom": "Ardèche"},
+        {"dep": "15", "nom": "Cantal"},
+        {"dep": "26", "nom": "Drôme"},
+        {"dep": "38", "nom": "Isère"},
+        {"dep": "42", "nom": "Loire"},
+        {"dep": "43", "nom": "Haute-Loire"},
+        {"dep": "63", "nom": "Puy-de-Dôme"},
+        {"dep": "69", "nom": "Rhône"},
+        {"dep": "73", "nom": "Savoie"},
+        {"dep": "74", "nom": "Haute-Savoie"}
+      ]
+    },
+    {
+      "code": "BFC",
+      "nom": "Bourgogne-Franche-Comté",
+      "zone": "metropole",
+      "departements": [
+        {"dep": "21", "nom": "Côte-d'Or"},
+        {"dep": "25", "nom": "Doubs"},
+        {"dep": "39", "nom": "Jura"},
+        {"dep": "58", "nom": "Nièvre"},
+        {"dep": "70", "nom": "Haute-Saône"},
+        {"dep": "71", "nom": "Saône-et-Loire"},
+        {"dep": "89", "nom": "Yonne"},
+        {"dep": "90", "nom": "Territoire de Belfort"}
+      ]
+    },
+    {
+      "code": "BRE",
+      "nom": "Bretagne",
+      "zone": "metropole",
+      "departements": [
+        {"dep": "22", "nom": "Côtes-d'Armor"},
+        {"dep": "29", "nom": "Finistère"},
+        {"dep": "35", "nom": "Ille-et-Vilaine"},
+        {"dep": "56", "nom": "Morbihan"}
+      ]
+    },
+    {
+      "code": "CVL",
+      "nom": "Centre-Val de Loire",
+      "zone": "metropole",
+      "departements": [
+        {"dep": "18", "nom": "Cher"},
+        {"dep": "28", "nom": "Eure-et-Loir"},
+        {"dep": "36", "nom": "Indre"},
+        {"dep": "37", "nom": "Indre-et-Loire"},
+        {"dep": "41", "nom": "Loir-et-Cher"},
+        {"dep": "45", "nom": "Loiret"}
+      ]
+    },
+    {
+      "code": "COR",
+      "nom": "Corse",
+      "zone": "metropole",
+      "departements": [
+        {"dep": "2A", "nom": "Corse-du-Sud"},
+        {"dep": "2B", "nom": "Haute-Corse"}
+      ]
+    },
+    {
+      "code": "GES",
+      "nom": "Grand Est",
+      "zone": "metropole",
+      "departements": [
+        {"dep": "08", "nom": "Ardennes"},
+        {"dep": "10", "nom": "Aube"},
+        {"dep": "51", "nom": "Marne"},
+        {"dep": "52", "nom": "Haute-Marne"},
+        {"dep": "54", "nom": "Meurthe-et-Moselle"},
+        {"dep": "55", "nom": "Meuse"},
+        {"dep": "57", "nom": "Moselle"},
+        {"dep": "67", "nom": "Bas-Rhin"},
+        {"dep": "68", "nom": "Haut-Rhin"},
+        {"dep": "88", "nom": "Vosges"}
+      ]
+    },
+    {
+      "code": "HDF",
+      "nom": "Hauts-de-France",
+      "zone": "metropole",
+      "departements": [
+        {"dep": "02", "nom": "Aisne"},
+        {"dep": "59", "nom": "Nord"},
+        {"dep": "60", "nom": "Oise"},
+        {"dep": "62", "nom": "Pas-de-Calais"},
+        {"dep": "80", "nom": "Somme"}
+      ]
+    },
+    {
+      "code": "IDF",
+      "nom": "Île-de-France",
+      "zone": "metropole",
+      "departements": [
+        {"dep": "75", "nom": "Paris"},
+        {"dep": "77", "nom": "Seine-et-Marne"},
+        {"dep": "78", "nom": "Yvelines"},
+        {"dep": "91", "nom": "Essonne"},
+        {"dep": "92", "nom": "Hauts-de-Seine"},
+        {"dep": "93", "nom": "Seine-Saint-Denis"},
+        {"dep": "94", "nom": "Val-de-Marne"},
+        {"dep": "95", "nom": "Val-d'Oise"}
+      ]
+    },
+    {
+      "code": "NOR",
+      "nom": "Normandie",
+      "zone": "metropole",
+      "departements": [
+        {"dep": "14", "nom": "Calvados"},
+        {"dep": "27", "nom": "Eure"},
+        {"dep": "50", "nom": "Manche"},
+        {"dep": "61", "nom": "Orne"},
+        {"dep": "76", "nom": "Seine-Maritime"}
+      ]
+    },
+    {
+      "code": "NAQ",
+      "nom": "Nouvelle-Aquitaine",
+      "zone": "metropole",
+      "departements": [
+        {"dep": "16", "nom": "Charente"},
+        {"dep": "17", "nom": "Charente-Maritime"},
+        {"dep": "19", "nom": "Corrèze"},
+        {"dep": "23", "nom": "Creuse"},
+        {"dep": "24", "nom": "Dordogne"},
+        {"dep": "33", "nom": "Gironde"},
+        {"dep": "40", "nom": "Landes"},
+        {"dep": "47", "nom": "Lot-et-Garonne"},
+        {"dep": "64", "nom": "Pyrénées-Atlantiques"},
+        {"dep": "79", "nom": "Deux-Sèvres"},
+        {"dep": "86", "nom": "Vienne"},
+        {"dep": "87", "nom": "Haute-Vienne"}
+      ]
+    },
+    {
+      "code": "OCC",
+      "nom": "Occitanie",
+      "zone": "metropole",
+      "departements": [
+        {"dep": "09", "nom": "Ariège"},
+        {"dep": "11", "nom": "Aude"},
+        {"dep": "12", "nom": "Aveyron"},
+        {"dep": "30", "nom": "Gard"},
+        {"dep": "31", "nom": "Haute-Garonne"},
+        {"dep": "32", "nom": "Gers"},
+        {"dep": "34", "nom": "Hérault"},
+        {"dep": "46", "nom": "Lot"},
+        {"dep": "48", "nom": "Lozère"},
+        {"dep": "65", "nom": "Hautes-Pyrénées"},
+        {"dep": "66", "nom": "Pyrénées-Orientales"},
+        {"dep": "81", "nom": "Tarn"},
+        {"dep": "82", "nom": "Tarn-et-Garonne"}
+      ]
+    },
+    {
+      "code": "PDL",
+      "nom": "Pays de la Loire",
+      "zone": "metropole",
+      "departements": [
+        {"dep": "44", "nom": "Loire-Atlantique"},
+        {"dep": "49", "nom": "Maine-et-Loire"},
+        {"dep": "53", "nom": "Mayenne"},
+        {"dep": "72", "nom": "Sarthe"},
+        {"dep": "85", "nom": "Vendée"}
+      ]
+    },
+    {
+      "code": "PAC",
+      "nom": "Provence-Alpes-Côte d'Azur",
+      "zone": "metropole",
+      "departements": [
+        {"dep": "04", "nom": "Alpes-de-Haute-Provence"},
+        {"dep": "05", "nom": "Hautes-Alpes"},
+        {"dep": "06", "nom": "Alpes-Maritimes"},
+        {"dep": "13", "nom": "Bouches-du-Rhône"},
+        {"dep": "83", "nom": "Var"},
+        {"dep": "84", "nom": "Vaucluse"}
+      ]
+    },
+    {
+      "code": "GUA",
+      "nom": "Guadeloupe",
+      "zone": "outre-mer",
+      "departements": [{"dep": "971", "nom": "Guadeloupe"}]
+    },
+    {
+      "code": "MTQ",
+      "nom": "Martinique",
+      "zone": "outre-mer",
+      "departements": [{"dep": "972", "nom": "Martinique"}]
+    },
+    {
+      "code": "GUF",
+      "nom": "Guyane",
+      "zone": "outre-mer",
+      "departements": [{"dep": "973", "nom": "Guyane"}]
+    },
+    {
+      "code": "REU",
+      "nom": "La Réunion",
+      "zone": "outre-mer",
+      "departements": [{"dep": "974", "nom": "La Réunion"}]
+    },
+    {
+      "code": "MYT",
+      "nom": "Mayotte",
+      "zone": "outre-mer",
+      "departements": [{"dep": "976", "nom": "Mayotte"}]
+    },
+    {
+      "code": "NCL",
+      "nom": "Nouvelle-Calédonie",
+      "zone": "outre-mer",
+      "departements": [{"dep": "988", "nom": "Nouvelle-Calédonie"}]
+    },
+    {
+      "code": "PYF",
+      "nom": "Polynésie française",
+      "zone": "outre-mer",
+      "departements": [{"dep": "987", "nom": "Polynésie française"}]
+    }
+  ]
+}

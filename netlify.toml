@@ -1,0 +1,9 @@
+# Publication sur Netlify : le site est statique, il n'y a rien à construire.
+[build]
+  publish = "site"
+  command = ""
+
+[[headers]]
+  for = "/logos/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
