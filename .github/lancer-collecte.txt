@@ -3,4 +3,4 @@ logos
 
 # 1re ligne : périmètre (« tous », une ligue comme IDF, ou un département comme 75)
 # 2e ligne : étapes (clubs+logos, clubs, logos) — vide = clubs+logos
-# Reprise des logos 02/09/2026 18:56
+# Reprise des logos 02/09/2026 18:57

@@ -119,9 +119,7 @@ class TestExtractionLogo(unittest.TestCase):
         urls = [c.url for c in classement]
         self.assertNotIn("https://astt.fr/img/sponsors/banque.png", urls)
         self.assertNotIn("https://astt.fr/img/banniere.jpg", urls)
-        self.assertLess(urls.index("https://astt.fr/img/logo-fftt.png"),
-                        len(urls))  # présent mais relégué
-        self.assertGreater(urls.index("https://astt.fr/img/logo-fftt.png"), 0)
+        self.assertNotIn("https://astt.fr/img/logo-fftt.png", urls)  # logo fédéral, rejeté
 
     def test_donnee_structuree_prioritaire(self):
         page = '<script type="application/ld+json">{"logo":"/logo.svg"}</script><img src="/autre.png">'

@@ -4,6 +4,11 @@ on:
   push:
     branches: [main]
     paths: ["site/**", ".github/workflows/pages.yml"]
+  # Les commits poussés par le robot de collecte ne déclenchent pas les workflows :
+  # on republie donc le site à la fin de chaque collecte.
+  workflow_run:
+    workflows: ["Collecte des clubs et des logos"]
+    types: [completed]
   workflow_dispatch:
 
 permissions:
