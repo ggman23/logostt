@@ -1,100 +1,100 @@
 {
  "maj": "2026-09-02",
- "clubs": 22,
- "logos": 6,
- "sites": 8,
+ "clubs": 3064,
+ "logos": 910,
+ "sites": 1220,
  "ligues": [
   {
    "code": "ARA",
    "nom": "Auvergne-Rhône-Alpes",
    "zone": "metropole",
-   "clubs": 0,
-   "logos": 0,
-   "sites": 0,
+   "clubs": 301,
+   "logos": 133,
+   "sites": 159,
    "departements": [
     {
      "dep": "01",
      "nom": "Ain",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 23,
+     "logos": 13,
+     "sites": 15
     },
     {
      "dep": "03",
      "nom": "Allier",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 18,
+     "logos": 4,
+     "sites": 6
     },
     {
      "dep": "07",
      "nom": "Ardèche",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 8,
+     "logos": 5,
+     "sites": 5
     },
     {
      "dep": "15",
      "nom": "Cantal",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 10,
+     "logos": 3,
+     "sites": 3
     },
     {
      "dep": "26",
      "nom": "Drôme",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 14,
+     "logos": 9,
+     "sites": 9
     },
     {
      "dep": "38",
      "nom": "Isère",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 45,
+     "logos": 18,
+     "sites": 22
     },
     {
      "dep": "42",
      "nom": "Loire",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 37,
+     "logos": 21,
+     "sites": 22
     },
     {
      "dep": "43",
      "nom": "Haute-Loire",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 12,
+     "logos": 5,
+     "sites": 6
     },
     {
      "dep": "63",
      "nom": "Puy-de-Dôme",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 39,
+     "logos": 11,
+     "sites": 16
     },
     {
      "dep": "69",
      "nom": "Rhône",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 59,
+     "logos": 28,
+     "sites": 35
     },
     {
      "dep": "73",
      "nom": "Savoie",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 12,
+     "logos": 6,
+     "sites": 7
     },
     {
      "dep": "74",
      "nom": "Haute-Savoie",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 24,
+     "logos": 10,
+     "sites": 13
     }
    ]
   },
@@ -102,65 +102,65 @@
    "code": "BFC",
    "nom": "Bourgogne-Franche-Comté",
    "zone": "metropole",
-   "clubs": 0,
-   "logos": 0,
-   "sites": 0,
+   "clubs": 150,
+   "logos": 35,
+   "sites": 53,
    "departements": [
     {
      "dep": "21",
      "nom": "Côte-d'Or",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 19,
+     "logos": 5,
+     "sites": 7
     },
     {
      "dep": "25",
      "nom": "Doubs",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 43,
+     "logos": 9,
+     "sites": 15
     },
     {
      "dep": "39",
      "nom": "Jura",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 17,
+     "logos": 2,
+     "sites": 6
     },
     {
      "dep": "58",
      "nom": "Nièvre",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 14,
+     "logos": 3,
+     "sites": 3
     },
     {
      "dep": "70",
      "nom": "Haute-Saône",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 16,
+     "logos": 3,
+     "sites": 4
     },
     {
      "dep": "71",
      "nom": "Saône-et-Loire",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 20,
+     "logos": 10,
+     "sites": 12
     },
     {
      "dep": "89",
      "nom": "Yonne",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 10,
+     "logos": 2,
+     "sites": 3
     },
     {
      "dep": "90",
      "nom": "Territoire de Belfort",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 11,
+     "logos": 1,
+     "sites": 3
     }
    ]
   },
@@ -168,37 +168,37 @@
    "code": "BRE",
    "nom": "Bretagne",
    "zone": "metropole",
-   "clubs": 0,
-   "logos": 0,
-   "sites": 0,
+   "clubs": 222,
+   "logos": 75,
+   "sites": 106,
    "departements": [
     {
      "dep": "22",
      "nom": "Côtes-d'Armor",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 31,
+     "logos": 8,
+     "sites": 14
     },
     {
      "dep": "29",
      "nom": "Finistère",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 72,
+     "logos": 19,
+     "sites": 32
     },
     {
      "dep": "35",
      "nom": "Ille-et-Vilaine",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 69,
+     "logos": 33,
+     "sites": 41
     },
     {
      "dep": "56",
      "nom": "Morbihan",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 50,
+     "logos": 15,
+     "sites": 19
     }
    ]
   },
@@ -206,9 +206,9 @@
    "code": "CVL",
    "nom": "Centre-Val de Loire",
    "zone": "metropole",
-   "clubs": 22,
-   "logos": 6,
-   "sites": 8,
+   "clubs": 201,
+   "logos": 57,
+   "sites": 74,
    "departements": [
     {
      "dep": "18",
@@ -220,37 +220,37 @@
     {
      "dep": "28",
      "nom": "Eure-et-Loir",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 28,
+     "logos": 7,
+     "sites": 11
     },
     {
      "dep": "36",
      "nom": "Indre",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 26,
+     "logos": 3,
+     "sites": 3
     },
     {
      "dep": "37",
      "nom": "Indre-et-Loire",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 51,
+     "logos": 16,
+     "sites": 20
     },
     {
      "dep": "41",
      "nom": "Loir-et-Cher",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 26,
+     "logos": 7,
+     "sites": 9
     },
     {
      "dep": "45",
      "nom": "Loiret",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 48,
+     "logos": 18,
+     "sites": 23
     }
    ]
   },
@@ -258,21 +258,21 @@
    "code": "COR",
    "nom": "Corse",
    "zone": "metropole",
-   "clubs": 0,
+   "clubs": 9,
    "logos": 0,
    "sites": 0,
    "departements": [
     {
      "dep": "2A",
      "nom": "Corse-du-Sud",
-     "clubs": 0,
+     "clubs": 7,
      "logos": 0,
      "sites": 0
     },
     {
      "dep": "2B",
      "nom": "Haute-Corse",
-     "clubs": 0,
+     "clubs": 2,
      "logos": 0,
      "sites": 0
     }
@@ -282,79 +282,79 @@
    "code": "GES",
    "nom": "Grand Est",
    "zone": "metropole",
-   "clubs": 0,
-   "logos": 0,
-   "sites": 0,
+   "clubs": 290,
+   "logos": 67,
+   "sites": 82,
    "departements": [
     {
      "dep": "08",
      "nom": "Ardennes",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 28,
+     "logos": 5,
+     "sites": 6
     },
     {
      "dep": "10",
      "nom": "Aube",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 14,
+     "logos": 3,
+     "sites": 4
     },
     {
      "dep": "51",
      "nom": "Marne",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 28,
+     "logos": 6,
+     "sites": 6
     },
     {
      "dep": "52",
      "nom": "Haute-Marne",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 10,
+     "logos": 2,
+     "sites": 3
     },
     {
      "dep": "54",
      "nom": "Meurthe-et-Moselle",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 46,
+     "logos": 15,
+     "sites": 17
     },
     {
      "dep": "55",
      "nom": "Meuse",
-     "clubs": 0,
+     "clubs": 10,
      "logos": 0,
-     "sites": 0
+     "sites": 1
     },
     {
      "dep": "57",
      "nom": "Moselle",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 47,
+     "logos": 14,
+     "sites": 17
     },
     {
      "dep": "67",
      "nom": "Bas-Rhin",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 54,
+     "logos": 13,
+     "sites": 18
     },
     {
      "dep": "68",
      "nom": "Haut-Rhin",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 26,
+     "logos": 3,
+     "sites": 4
     },
     {
      "dep": "88",
      "nom": "Vosges",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 27,
+     "logos": 6,
+     "sites": 6
     }
    ]
   },
@@ -362,44 +362,44 @@
    "code": "HDF",
    "nom": "Hauts-de-France",
    "zone": "metropole",
-   "clubs": 0,
-   "logos": 0,
-   "sites": 0,
+   "clubs": 355,
+   "logos": 62,
+   "sites": 101,
    "departements": [
     {
      "dep": "02",
      "nom": "Aisne",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 28,
+     "logos": 5,
+     "sites": 9
     },
     {
      "dep": "59",
      "nom": "Nord",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 148,
+     "logos": 25,
+     "sites": 37
     },
     {
      "dep": "60",
      "nom": "Oise",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 47,
+     "logos": 12,
+     "sites": 16
     },
     {
      "dep": "62",
      "nom": "Pas-de-Calais",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 91,
+     "logos": 15,
+     "sites": 24
     },
     {
      "dep": "80",
      "nom": "Somme",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 41,
+     "logos": 5,
+     "sites": 15
     }
    ]
   },
@@ -407,65 +407,65 @@
    "code": "IDF",
    "nom": "Île-de-France",
    "zone": "metropole",
-   "clubs": 0,
-   "logos": 0,
-   "sites": 0,
+   "clubs": 337,
+   "logos": 167,
+   "sites": 202,
    "departements": [
     {
      "dep": "75",
      "nom": "Paris",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 31,
+     "logos": 15,
+     "sites": 16
     },
     {
      "dep": "77",
      "nom": "Seine-et-Marne",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 56,
+     "logos": 27,
+     "sites": 35
     },
     {
      "dep": "78",
      "nom": "Yvelines",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 59,
+     "logos": 35,
+     "sites": 40
     },
     {
      "dep": "91",
      "nom": "Essonne",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 56,
+     "logos": 19,
+     "sites": 25
     },
     {
      "dep": "92",
      "nom": "Hauts-de-Seine",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 34,
+     "logos": 22,
+     "sites": 26
     },
     {
      "dep": "93",
      "nom": "Seine-Saint-Denis",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 24,
+     "logos": 10,
+     "sites": 16
     },
     {
      "dep": "94",
      "nom": "Val-de-Marne",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 39,
+     "logos": 17,
+     "sites": 22
     },
     {
      "dep": "95",
      "nom": "Val-d'Oise",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 38,
+     "logos": 22,
+     "sites": 22
     }
    ]
   },
@@ -473,44 +473,44 @@
    "code": "NOR",
    "nom": "Normandie",
    "zone": "metropole",
-   "clubs": 0,
-   "logos": 0,
-   "sites": 0,
+   "clubs": 261,
+   "logos": 50,
+   "sites": 72,
    "departements": [
     {
      "dep": "14",
      "nom": "Calvados",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 47,
+     "logos": 8,
+     "sites": 14
     },
     {
      "dep": "27",
      "nom": "Eure",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 47,
+     "logos": 6,
+     "sites": 9
     },
     {
      "dep": "50",
      "nom": "Manche",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 45,
+     "logos": 11,
+     "sites": 15
     },
     {
      "dep": "61",
      "nom": "Orne",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 37,
+     "logos": 9,
+     "sites": 10
     },
     {
      "dep": "76",
      "nom": "Seine-Maritime",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 85,
+     "logos": 16,
+     "sites": 24
     }
    ]
   },
@@ -518,93 +518,93 @@
    "code": "NAQ",
    "nom": "Nouvelle-Aquitaine",
    "zone": "metropole",
-   "clubs": 0,
-   "logos": 0,
-   "sites": 0,
+   "clubs": 251,
+   "logos": 54,
+   "sites": 88,
    "departements": [
     {
      "dep": "16",
      "nom": "Charente",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 27,
+     "logos": 6,
+     "sites": 12
     },
     {
      "dep": "17",
      "nom": "Charente-Maritime",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 30,
+     "logos": 6,
+     "sites": 10
     },
     {
      "dep": "19",
      "nom": "Corrèze",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 17,
+     "logos": 1,
+     "sites": 5
     },
     {
      "dep": "23",
      "nom": "Creuse",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 3,
+     "logos": 2,
+     "sites": 3
     },
     {
      "dep": "24",
      "nom": "Dordogne",
-     "clubs": 0,
+     "clubs": 13,
      "logos": 0,
      "sites": 0
     },
     {
      "dep": "33",
      "nom": "Gironde",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 50,
+     "logos": 13,
+     "sites": 16
     },
     {
      "dep": "40",
      "nom": "Landes",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 20,
+     "logos": 1,
+     "sites": 5
     },
     {
      "dep": "47",
      "nom": "Lot-et-Garonne",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 11,
+     "logos": 1,
+     "sites": 3
     },
     {
      "dep": "64",
      "nom": "Pyrénées-Atlantiques",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 14,
+     "logos": 2,
+     "sites": 4
     },
     {
      "dep": "79",
      "nom": "Deux-Sèvres",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 30,
+     "logos": 8,
+     "sites": 11
     },
     {
      "dep": "86",
      "nom": "Vienne",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 20,
+     "logos": 8,
+     "sites": 12
     },
     {
      "dep": "87",
      "nom": "Haute-Vienne",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 16,
+     "logos": 6,
+     "sites": 7
     }
    ]
   },
@@ -612,100 +612,100 @@
    "code": "OCC",
    "nom": "Occitanie",
    "zone": "metropole",
-   "clubs": 0,
-   "logos": 0,
-   "sites": 0,
+   "clubs": 181,
+   "logos": 66,
+   "sites": 81,
    "departements": [
     {
      "dep": "09",
      "nom": "Ariège",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 6,
+     "logos": 3,
+     "sites": 4
     },
     {
      "dep": "11",
      "nom": "Aude",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 13,
+     "logos": 1,
+     "sites": 2
     },
     {
      "dep": "12",
      "nom": "Aveyron",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 11,
+     "logos": 1,
+     "sites": 2
     },
     {
      "dep": "30",
      "nom": "Gard",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 26,
+     "logos": 10,
+     "sites": 11
     },
     {
      "dep": "31",
      "nom": "Haute-Garonne",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 28,
+     "logos": 18,
+     "sites": 22
     },
     {
      "dep": "32",
      "nom": "Gers",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 8,
+     "logos": 2,
+     "sites": 2
     },
     {
      "dep": "34",
      "nom": "Hérault",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 33,
+     "logos": 12,
+     "sites": 13
     },
     {
      "dep": "46",
      "nom": "Lot",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 12,
+     "logos": 4,
+     "sites": 5
     },
     {
      "dep": "48",
      "nom": "Lozère",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 4,
+     "logos": 2,
+     "sites": 2
     },
     {
      "dep": "65",
      "nom": "Hautes-Pyrénées",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 7,
+     "logos": 2,
+     "sites": 3
     },
     {
      "dep": "66",
      "nom": "Pyrénées-Orientales",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 15,
+     "logos": 4,
+     "sites": 5
     },
     {
      "dep": "81",
      "nom": "Tarn",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 9,
+     "logos": 6,
+     "sites": 7
     },
     {
      "dep": "82",
      "nom": "Tarn-et-Garonne",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 9,
+     "logos": 1,
+     "sites": 3
     }
    ]
   },
@@ -713,44 +713,44 @@
    "code": "PDL",
    "nom": "Pays de la Loire",
    "zone": "metropole",
-   "clubs": 0,
-   "logos": 0,
-   "sites": 0,
+   "clubs": 346,
+   "logos": 102,
+   "sites": 144,
    "departements": [
     {
      "dep": "44",
      "nom": "Loire-Atlantique",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 100,
+     "logos": 48,
+     "sites": 58
     },
     {
      "dep": "49",
      "nom": "Maine-et-Loire",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 63,
+     "logos": 26,
+     "sites": 32
     },
     {
      "dep": "53",
      "nom": "Mayenne",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 69,
+     "logos": 8,
+     "sites": 15
     },
     {
      "dep": "72",
      "nom": "Sarthe",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 49,
+     "logos": 11,
+     "sites": 18
     },
     {
      "dep": "85",
      "nom": "Vendée",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 65,
+     "logos": 9,
+     "sites": 21
     }
    ]
   },
@@ -758,51 +758,51 @@
    "code": "PAC",
    "nom": "Provence-Alpes-Côte d'Azur",
    "zone": "metropole",
-   "clubs": 0,
-   "logos": 0,
-   "sites": 0,
+   "clubs": 119,
+   "logos": 38,
+   "sites": 53,
    "departements": [
     {
      "dep": "04",
      "nom": "Alpes-de-Haute-Provence",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 9,
+     "logos": 1,
+     "sites": 3
     },
     {
      "dep": "05",
      "nom": "Hautes-Alpes",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 4,
+     "logos": 1,
+     "sites": 1
     },
     {
      "dep": "06",
      "nom": "Alpes-Maritimes",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 24,
+     "logos": 8,
+     "sites": 11
     },
     {
      "dep": "13",
      "nom": "Bouches-du-Rhône",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 37,
+     "logos": 10,
+     "sites": 16
     },
     {
      "dep": "83",
      "nom": "Var",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 30,
+     "logos": 12,
+     "sites": 15
     },
     {
      "dep": "84",
      "nom": "Vaucluse",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 15,
+     "logos": 6,
+     "sites": 7
     }
    ]
   },
@@ -810,16 +810,16 @@
    "code": "GUA",
    "nom": "Guadeloupe",
    "zone": "outre-mer",
-   "clubs": 0,
+   "clubs": 5,
    "logos": 0,
-   "sites": 0,
+   "sites": 1,
    "departements": [
     {
      "dep": "971",
      "nom": "Guadeloupe",
-     "clubs": 0,
+     "clubs": 5,
      "logos": 0,
-     "sites": 0
+     "sites": 1
     }
    ]
   },
@@ -827,14 +827,14 @@
    "code": "MTQ",
    "nom": "Martinique",
    "zone": "outre-mer",
-   "clubs": 0,
+   "clubs": 4,
    "logos": 0,
    "sites": 0,
    "departements": [
     {
      "dep": "972",
      "nom": "Martinique",
-     "clubs": 0,
+     "clubs": 4,
      "logos": 0,
      "sites": 0
     }
@@ -844,14 +844,14 @@
    "code": "GUF",
    "nom": "Guyane",
    "zone": "outre-mer",
-   "clubs": 0,
+   "clubs": 2,
    "logos": 0,
    "sites": 0,
    "departements": [
     {
      "dep": "973",
      "nom": "Guyane",
-     "clubs": 0,
+     "clubs": 2,
      "logos": 0,
      "sites": 0
     }
@@ -861,16 +861,16 @@
    "code": "REU",
    "nom": "La Réunion",
    "zone": "outre-mer",
-   "clubs": 0,
-   "logos": 0,
-   "sites": 0,
+   "clubs": 12,
+   "logos": 4,
+   "sites": 4,
    "departements": [
     {
      "dep": "974",
      "nom": "La Réunion",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 12,
+     "logos": 4,
+     "sites": 4
     }
    ]
   },
@@ -878,14 +878,14 @@
    "code": "MYT",
    "nom": "Mayotte",
    "zone": "outre-mer",
-   "clubs": 0,
+   "clubs": 3,
    "logos": 0,
    "sites": 0,
    "departements": [
     {
      "dep": "976",
      "nom": "Mayotte",
-     "clubs": 0,
+     "clubs": 3,
      "logos": 0,
      "sites": 0
     }
@@ -895,14 +895,14 @@
    "code": "NCL",
    "nom": "Nouvelle-Calédonie",
    "zone": "outre-mer",
-   "clubs": 0,
+   "clubs": 7,
    "logos": 0,
    "sites": 0,
    "departements": [
     {
      "dep": "988",
      "nom": "Nouvelle-Calédonie",
-     "clubs": 0,
+     "clubs": 7,
      "logos": 0,
      "sites": 0
     }
