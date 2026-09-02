@@ -36,9 +36,10 @@ permissions:
   contents: write
 
 concurrency:
-  # Une nouvelle demande de collecte remplace celle en cours : deux collectes en
-  # parallèle se marcheraient dessus au moment de commiter les résultats.
-  group: collecte
+  # Un groupe par commit : une demande de collecte ne reste jamais coincée derrière
+  # une collecte précédente. La publication des résultats se resynchronise de toute
+  # façon sur main (git pull --rebase) avant de pousser.
+  group: collecte-${{ github.sha }}
   cancel-in-progress: true
 
 jobs:
