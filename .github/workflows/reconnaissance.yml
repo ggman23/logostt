@@ -4,6 +4,11 @@ name: Reconnaissance des sources ouvertes
 # Ne modifie rien dans le dépôt : sert uniquement à choisir la meilleure source
 # utilisable sans identifiants FFTT.
 on:
+  # Se relance à chaque modification de la liste des sondes, ce qui permet d'itérer vite.
+  push:
+    paths:
+      - "scripts/reconnaissance.py"
+      - ".github/workflows/reconnaissance.yml"
   workflow_dispatch:
     inputs:
       urls:
