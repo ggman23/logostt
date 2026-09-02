@@ -1,5 +1,5 @@
-18
+tous
 
 # Écrivez ici le périmètre à collecter puis poussez le fichier :
 # « tous », une ligue (IDF, BRE, PAC…) ou un département (75).
-# Contrôle 17:43:09
+# Collecte nationale lancée le 02/09/2026 17:45

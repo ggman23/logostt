@@ -12,7 +12,9 @@ from __future__ import annotations
 import argparse
 import logging
 import sys
-from concurrent.futures import ThreadPoolExecutor, as_completed
+import os
+import time
+from concurrent.futures import ThreadPoolExecutor, TimeoutError as DelaiDepasse, as_completed
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -43,8 +45,10 @@ def main() -> int:
     analyseur.add_argument("--limite", type=int, default=0, help="s'arrêter après N clubs (essais)")
     analyseur.add_argument("--parallele", type=int, default=8, help="nombre de sites visités en parallèle")
     analyseur.add_argument("--delai", type=float, default=1.5, help="délai minimal entre deux requêtes vers un même domaine (s)")
-    analyseur.add_argument("--timeout", type=float, default=12.0,
+    analyseur.add_argument("--timeout", type=float, default=10.0,
                            help="délai d'attente maximal par requête (s)")
+    analyseur.add_argument("--budget", type=float, default=120.0,
+                           help="durée maximale de la collecte des logos, en minutes")
     analyseur.add_argument("--verbeux", action="store_true")
     arguments = analyseur.parse_args()
 
@@ -65,14 +69,17 @@ def main() -> int:
         selection = selection[: arguments.limite]
     journal.info("%s club(s) à visiter sur %s au catalogue", len(selection), len(clubs))
 
-    client = Client(delai=arguments.delai, timeout=arguments.timeout, duree_max=20.0)
+    client = Client(delai=arguments.delai, timeout=arguments.timeout, duree_max=15.0)
     faits = 0
-    with ThreadPoolExecutor(max_workers=arguments.parallele) as pool:
-        taches = {
-            pool.submit(logos.recuperer_logo, club, client, DOSSIER_SITE / "logos"): club
-            for club in selection
-        }
-        for tache in as_completed(taches):
+    debut = time.monotonic()
+    epuise = False
+    pool = ThreadPoolExecutor(max_workers=arguments.parallele)
+    taches = {
+        pool.submit(logos.recuperer_logo, club, client, DOSSIER_SITE / "logos"): club
+        for club in selection
+    }
+    try:
+        for tache in as_completed(taches, timeout=arguments.budget * 60):
             club = taches[tache]
             try:
                 tache.result()
@@ -81,13 +88,25 @@ def main() -> int:
                 club.logo_statut = catalogue.LOGO_ABSENT
             faits += 1
             if faits % 25 == 0:
-                journal.info("%s / %s traités", faits, len(selection))
+                journal.info("%s / %s traités en %.0f min", faits, len(selection),
+                             (time.monotonic() - debut) / 60)
                 catalogue.enregistrer(clubs)   # sauvegarde intermédiaire
+    except DelaiDepasse:
+        epuise = True
+        journal.warning(
+            "budget de %s min épuisé après %s / %s clubs : les sites restants seront "
+            "repris à la prochaine collecte", arguments.budget, faits, len(selection))
 
     catalogue.enregistrer(clubs)
     recuperes = sum(1 for c in clubs if c.logo_statut == catalogue.LOGO_RECUPERE)
     favicons = sum(1 for c in clubs if c.logo_statut == catalogue.LOGO_FAVICON)
     journal.info("logos : %s récupérés, %s favicones, %s clubs au total", recuperes, favicons, len(clubs))
+    if epuise:
+        # Des fils d'exécution restent bloqués sur des serveurs qui ne répondent jamais :
+        # le catalogue est enregistré, on rend la main sans les attendre.
+        sys.stdout.flush()
+        os._exit(0)
+    pool.shutdown(wait=False)
     return 0
 
 
