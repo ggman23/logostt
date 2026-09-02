@@ -1,7 +1,7 @@
 {
  "maj": "2026-09-02",
  "clubs": 3064,
- "logos": 885,
+ "logos": 850,
  "sites": 1220,
  "ligues": [
   {
@@ -9,7 +9,7 @@
    "nom": "Auvergne-Rhône-Alpes",
    "zone": "metropole",
    "clubs": 301,
-   "logos": 124,
+   "logos": 125,
    "sites": 159,
    "departements": [
     {
@@ -44,7 +44,7 @@
      "dep": "26",
      "nom": "Drôme",
      "clubs": 14,
-     "logos": 9,
+     "logos": 8,
      "sites": 9
     },
     {
@@ -58,7 +58,7 @@
      "dep": "42",
      "nom": "Loire",
      "clubs": 37,
-     "logos": 20,
+     "logos": 21,
      "sites": 22
     },
     {
@@ -72,7 +72,7 @@
      "dep": "63",
      "nom": "Puy-de-Dôme",
      "clubs": 39,
-     "logos": 8,
+     "logos": 9,
      "sites": 16
     },
     {
@@ -103,14 +103,14 @@
    "nom": "Bourgogne-Franche-Comté",
    "zone": "metropole",
    "clubs": 150,
-   "logos": 33,
+   "logos": 30,
    "sites": 53,
    "departements": [
     {
      "dep": "21",
      "nom": "Côte-d'Or",
      "clubs": 19,
-     "logos": 5,
+     "logos": 4,
      "sites": 7
     },
     {
@@ -138,7 +138,7 @@
      "dep": "70",
      "nom": "Haute-Saône",
      "clubs": 16,
-     "logos": 3,
+     "logos": 2,
      "sites": 4
     },
     {
@@ -159,7 +159,7 @@
      "dep": "90",
      "nom": "Territoire de Belfort",
      "clubs": 11,
-     "logos": 1,
+     "logos": 0,
      "sites": 3
     }
    ]
@@ -169,7 +169,7 @@
    "nom": "Bretagne",
    "zone": "metropole",
    "clubs": 222,
-   "logos": 73,
+   "logos": 68,
    "sites": 106,
    "departements": [
     {
@@ -190,7 +190,7 @@
      "dep": "35",
      "nom": "Ille-et-Vilaine",
      "clubs": 69,
-     "logos": 31,
+     "logos": 26,
      "sites": 41
     },
     {
@@ -207,7 +207,7 @@
    "nom": "Centre-Val de Loire",
    "zone": "metropole",
    "clubs": 201,
-   "logos": 57,
+   "logos": 56,
    "sites": 74,
    "departements": [
     {
@@ -242,7 +242,7 @@
      "dep": "41",
      "nom": "Loir-et-Cher",
      "clubs": 26,
-     "logos": 7,
+     "logos": 6,
      "sites": 9
     },
     {
@@ -283,7 +283,7 @@
    "nom": "Grand Est",
    "zone": "metropole",
    "clubs": 290,
-   "logos": 64,
+   "logos": 62,
    "sites": 82,
    "departements": [
     {
@@ -318,7 +318,7 @@
      "dep": "54",
      "nom": "Meurthe-et-Moselle",
      "clubs": 46,
-     "logos": 15,
+     "logos": 14,
      "sites": 17
     },
     {
@@ -339,7 +339,7 @@
      "dep": "67",
      "nom": "Bas-Rhin",
      "clubs": 54,
-     "logos": 11,
+     "logos": 10,
      "sites": 18
     },
     {
@@ -363,7 +363,7 @@
    "nom": "Hauts-de-France",
    "zone": "metropole",
    "clubs": 355,
-   "logos": 60,
+   "logos": 56,
    "sites": 101,
    "departements": [
     {
@@ -377,21 +377,21 @@
      "dep": "59",
      "nom": "Nord",
      "clubs": 148,
-     "logos": 25,
+     "logos": 24,
      "sites": 37
     },
     {
      "dep": "60",
      "nom": "Oise",
      "clubs": 47,
-     "logos": 12,
+     "logos": 10,
      "sites": 16
     },
     {
      "dep": "62",
      "nom": "Pas-de-Calais",
      "clubs": 91,
-     "logos": 15,
+     "logos": 14,
      "sites": 24
     },
     {
@@ -408,7 +408,7 @@
    "nom": "Île-de-France",
    "zone": "metropole",
    "clubs": 337,
-   "logos": 166,
+   "logos": 158,
    "sites": 202,
    "departements": [
     {
@@ -422,21 +422,21 @@
      "dep": "77",
      "nom": "Seine-et-Marne",
      "clubs": 56,
-     "logos": 27,
+     "logos": 24,
      "sites": 35
     },
     {
      "dep": "78",
      "nom": "Yvelines",
      "clubs": 59,
-     "logos": 35,
+     "logos": 33,
      "sites": 40
     },
     {
      "dep": "91",
      "nom": "Essonne",
      "clubs": 56,
-     "logos": 18,
+     "logos": 15,
      "sites": 25
     },
     {
@@ -474,14 +474,14 @@
    "nom": "Normandie",
    "zone": "metropole",
    "clubs": 261,
-   "logos": 50,
+   "logos": 48,
    "sites": 72,
    "departements": [
     {
      "dep": "14",
      "nom": "Calvados",
      "clubs": 47,
-     "logos": 8,
+     "logos": 7,
      "sites": 14
     },
     {
@@ -495,7 +495,7 @@
      "dep": "50",
      "nom": "Manche",
      "clubs": 45,
-     "logos": 11,
+     "logos": 10,
      "sites": 15
     },
     {
@@ -613,14 +613,14 @@
    "nom": "Occitanie",
    "zone": "metropole",
    "clubs": 181,
-   "logos": 66,
+   "logos": 65,
    "sites": 81,
    "departements": [
     {
      "dep": "09",
      "nom": "Ariège",
      "clubs": 6,
-     "logos": 3,
+     "logos": 4,
      "sites": 4
     },
     {
@@ -669,7 +669,7 @@
      "dep": "46",
      "nom": "Lot",
      "clubs": 12,
-     "logos": 5,
+     "logos": 4,
      "sites": 5
     },
     {
@@ -690,7 +690,7 @@
      "dep": "66",
      "nom": "Pyrénées-Orientales",
      "clubs": 15,
-     "logos": 4,
+     "logos": 3,
      "sites": 5
     },
     {
@@ -714,21 +714,21 @@
    "nom": "Pays de la Loire",
    "zone": "metropole",
    "clubs": 346,
-   "logos": 99,
+   "logos": 91,
    "sites": 144,
    "departements": [
     {
      "dep": "44",
      "nom": "Loire-Atlantique",
      "clubs": 100,
-     "logos": 48,
+     "logos": 45,
      "sites": 58
     },
     {
      "dep": "49",
      "nom": "Maine-et-Loire",
      "clubs": 63,
-     "logos": 26,
+     "logos": 22,
      "sites": 32
     },
     {
@@ -749,7 +749,7 @@
      "dep": "85",
      "nom": "Vendée",
      "clubs": 65,
-     "logos": 8,
+     "logos": 7,
      "sites": 21
     }
    ]
@@ -759,7 +759,7 @@
    "nom": "Provence-Alpes-Côte d'Azur",
    "zone": "metropole",
    "clubs": 119,
-   "logos": 36,
+   "logos": 35,
    "sites": 53,
    "departements": [
     {
@@ -787,7 +787,7 @@
      "dep": "13",
      "nom": "Bouches-du-Rhône",
      "clubs": 37,
-     "logos": 9,
+     "logos": 8,
      "sites": 16
     },
     {
@@ -862,14 +862,14 @@
    "nom": "La Réunion",
    "zone": "outre-mer",
    "clubs": 12,
-   "logos": 4,
+   "logos": 3,
    "sites": 4,
    "departements": [
     {
      "dep": "974",
      "nom": "La Réunion",
      "clubs": 12,
-     "logos": 4,
+     "logos": 3,
      "sites": 4
     }
    ]
