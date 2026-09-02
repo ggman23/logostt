@@ -1,7 +1,7 @@
 {
  "maj": "2026-09-02",
  "clubs": 3064,
- "logos": 910,
+ "logos": 885,
  "sites": 1220,
  "ligues": [
   {
@@ -9,14 +9,14 @@
    "nom": "Auvergne-Rhône-Alpes",
    "zone": "metropole",
    "clubs": 301,
-   "logos": 133,
+   "logos": 124,
    "sites": 159,
    "departements": [
     {
      "dep": "01",
      "nom": "Ain",
      "clubs": 23,
-     "logos": 13,
+     "logos": 12,
      "sites": 15
     },
     {
@@ -30,7 +30,7 @@
      "dep": "07",
      "nom": "Ardèche",
      "clubs": 8,
-     "logos": 5,
+     "logos": 4,
      "sites": 5
     },
     {
@@ -58,28 +58,28 @@
      "dep": "42",
      "nom": "Loire",
      "clubs": 37,
-     "logos": 21,
+     "logos": 20,
      "sites": 22
     },
     {
      "dep": "43",
      "nom": "Haute-Loire",
      "clubs": 12,
-     "logos": 5,
+     "logos": 4,
      "sites": 6
     },
     {
      "dep": "63",
      "nom": "Puy-de-Dôme",
      "clubs": 39,
-     "logos": 11,
+     "logos": 8,
      "sites": 16
     },
     {
      "dep": "69",
      "nom": "Rhône",
      "clubs": 59,
-     "logos": 28,
+     "logos": 26,
      "sites": 35
     },
     {
@@ -103,7 +103,7 @@
    "nom": "Bourgogne-Franche-Comté",
    "zone": "metropole",
    "clubs": 150,
-   "logos": 35,
+   "logos": 33,
    "sites": 53,
    "departements": [
     {
@@ -124,14 +124,14 @@
      "dep": "39",
      "nom": "Jura",
      "clubs": 17,
-     "logos": 2,
+     "logos": 1,
      "sites": 6
     },
     {
      "dep": "58",
      "nom": "Nièvre",
      "clubs": 14,
-     "logos": 3,
+     "logos": 2,
      "sites": 3
     },
     {
@@ -169,7 +169,7 @@
    "nom": "Bretagne",
    "zone": "metropole",
    "clubs": 222,
-   "logos": 75,
+   "logos": 73,
    "sites": 106,
    "departements": [
     {
@@ -190,7 +190,7 @@
      "dep": "35",
      "nom": "Ille-et-Vilaine",
      "clubs": 69,
-     "logos": 33,
+     "logos": 31,
      "sites": 41
     },
     {
@@ -283,7 +283,7 @@
    "nom": "Grand Est",
    "zone": "metropole",
    "clubs": 290,
-   "logos": 67,
+   "logos": 64,
    "sites": 82,
    "departements": [
     {
@@ -339,14 +339,14 @@
      "dep": "67",
      "nom": "Bas-Rhin",
      "clubs": 54,
-     "logos": 13,
+     "logos": 11,
      "sites": 18
     },
     {
      "dep": "68",
      "nom": "Haut-Rhin",
      "clubs": 26,
-     "logos": 3,
+     "logos": 2,
      "sites": 4
     },
     {
@@ -363,7 +363,7 @@
    "nom": "Hauts-de-France",
    "zone": "metropole",
    "clubs": 355,
-   "logos": 62,
+   "logos": 60,
    "sites": 101,
    "departements": [
     {
@@ -398,7 +398,7 @@
      "dep": "80",
      "nom": "Somme",
      "clubs": 41,
-     "logos": 5,
+     "logos": 3,
      "sites": 15
     }
    ]
@@ -408,7 +408,7 @@
    "nom": "Île-de-France",
    "zone": "metropole",
    "clubs": 337,
-   "logos": 167,
+   "logos": 166,
    "sites": 202,
    "departements": [
     {
@@ -436,7 +436,7 @@
      "dep": "91",
      "nom": "Essonne",
      "clubs": 56,
-     "logos": 19,
+     "logos": 18,
      "sites": 25
     },
     {
@@ -519,7 +519,7 @@
    "nom": "Nouvelle-Aquitaine",
    "zone": "metropole",
    "clubs": 251,
-   "logos": 54,
+   "logos": 53,
    "sites": 88,
    "departements": [
     {
@@ -533,7 +533,7 @@
      "dep": "17",
      "nom": "Charente-Maritime",
      "clubs": 30,
-     "logos": 6,
+     "logos": 5,
      "sites": 10
     },
     {
@@ -648,7 +648,7 @@
      "dep": "31",
      "nom": "Haute-Garonne",
      "clubs": 28,
-     "logos": 18,
+     "logos": 17,
      "sites": 22
     },
     {
@@ -669,7 +669,7 @@
      "dep": "46",
      "nom": "Lot",
      "clubs": 12,
-     "logos": 4,
+     "logos": 5,
      "sites": 5
     },
     {
@@ -714,7 +714,7 @@
    "nom": "Pays de la Loire",
    "zone": "metropole",
    "clubs": 346,
-   "logos": 102,
+   "logos": 99,
    "sites": 144,
    "departements": [
     {
@@ -742,14 +742,14 @@
      "dep": "72",
      "nom": "Sarthe",
      "clubs": 49,
-     "logos": 11,
+     "logos": 9,
      "sites": 18
     },
     {
      "dep": "85",
      "nom": "Vendée",
      "clubs": 65,
-     "logos": 9,
+     "logos": 8,
      "sites": 21
     }
    ]
@@ -759,7 +759,7 @@
    "nom": "Provence-Alpes-Côte d'Azur",
    "zone": "metropole",
    "clubs": 119,
-   "logos": 38,
+   "logos": 36,
    "sites": 53,
    "departements": [
     {
@@ -787,14 +787,14 @@
      "dep": "13",
      "nom": "Bouches-du-Rhône",
      "clubs": 37,
-     "logos": 10,
+     "logos": 9,
      "sites": 16
     },
     {
      "dep": "83",
      "nom": "Var",
      "clubs": 30,
-     "logos": 12,
+     "logos": 11,
      "sites": 15
     },
     {
