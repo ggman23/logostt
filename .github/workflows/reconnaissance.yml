@@ -1,0 +1,24 @@
+name: Reconnaissance des sources ouvertes
+
+# Interroge les sources de données publiques et affiche leurs réponses dans les logs.
+# Ne modifie rien dans le dépôt : sert uniquement à choisir la meilleure source
+# utilisable sans identifiants FFTT.
+on:
+  workflow_dispatch:
+    inputs:
+      urls:
+        description: "Adresses supplémentaires à sonder (séparées par des espaces)"
+        default: ""
+
+jobs:
+  sonder:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -r requirements.txt
+      - name: Sonder les sources
+        run: python3 scripts/reconnaissance.py ${{ github.event.inputs.urls }}
