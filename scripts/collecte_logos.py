@@ -97,6 +97,11 @@ def main() -> int:
             "budget de %s min épuisé après %s / %s clubs : les sites restants seront "
             "repris à la prochaine collecte", arguments.budget, faits, len(selection))
 
+    doublons = logos.dedoublonner(clubs, DOSSIER_SITE)
+    orphelins = logos.supprimer_les_orphelins(clubs, DOSSIER_SITE)
+    if doublons or orphelins:
+        journal.info("%s logo(s) écarté(s) car partagé(s), %s fichier(s) orphelin(s) supprimé(s)",
+                     doublons, orphelins)
     catalogue.enregistrer(clubs)
     recuperes = sum(1 for c in clubs if c.logo_statut == catalogue.LOGO_RECUPERE)
     favicons = sum(1 for c in clubs if c.logo_statut == catalogue.LOGO_FAVICON)

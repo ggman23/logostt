@@ -152,8 +152,10 @@ def candidats(
             score += 25
         if url.lower().endswith(".svg"):
             score += 15
+        if re.search(r"logo[_-]?fftt|fftt[_-]?logo|/fftt\.(png|jpe?g|svg|gif)", url, re.I):
+            return  # le logo de la fédération, jamais celui du club
         if FEDERAL.search(url):
-            # Logo de la fédération, de la ligue ou du comité : ce n'est pas celui du club.
+            # Logo de la ligue ou du comité : ce n'est pas non plus celui du club.
             score -= 45
         if _est_logo_institutionnel(url):
             # « logo_cher.png » : le logo du département, pas celui du club.
@@ -435,3 +437,48 @@ def recuperer_logo(
     club.logo_statut = catalogue.LOGO_ABSENT
     club.maj = catalogue.aujourdhui()
     return club
+
+
+def dedoublonner(clubs: list[Club], dossier_site: Path) -> int:
+    """Écarte les images identiques trouvées chez plusieurs clubs.
+
+    Une favicone d'hébergeur, le logo d'un thème ou celui d'un partenaire se retrouve
+    à l'identique sur plusieurs sites : si deux clubs aboutissent au même fichier, ce
+    n'est le logo d'aucun des deux. Renvoie le nombre de logos retirés.
+    """
+    import hashlib
+    from collections import defaultdict
+
+    par_empreinte: dict[str, list[Club]] = defaultdict(list)
+    for club in clubs:
+        if not club.logo_fichier:
+            continue
+        fichier = dossier_site / club.logo_fichier
+        if fichier.exists():
+            par_empreinte[hashlib.md5(fichier.read_bytes()).hexdigest()].append(club)
+
+    retires = 0
+    for empreinte, partages in par_empreinte.items():
+        if len(partages) < 2:
+            continue
+        journal.info(
+            "image commune à %s clubs, écartée : %s", len(partages), partages[0].logo_source
+        )
+        for club in partages:
+            fichier = dossier_site / club.logo_fichier
+            fichier.unlink(missing_ok=True)
+            club.logo_fichier = club.logo_source = club.couleurs = club.fond = ""
+            club.logo_statut = catalogue.LOGO_ABSENT
+            retires += 1
+    return retires
+
+
+def supprimer_les_orphelins(clubs: list[Club], dossier_site: Path) -> int:
+    """Efface les fichiers de logos qui ne sont plus rattachés à aucun club."""
+    attendus = {club.logo_fichier for club in clubs if club.logo_fichier}
+    retires = 0
+    for fichier in (dossier_site / "logos").rglob("*.*"):
+        if fichier.relative_to(dossier_site).as_posix() not in attendus:
+            fichier.unlink()
+            retires += 1
+    return retires

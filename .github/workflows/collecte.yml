@@ -68,9 +68,10 @@ jobs:
             etapes="${{ github.event.inputs.etapes }}"
             forcer="${{ github.event.inputs.forcer_logos }}"
           else
-            perimetre="$(head -n 1 .github/lancer-collecte.txt | tr -d ' \r\n')"
+            # 1re ligne : le périmètre ; 2e ligne (facultative) : les étapes
+            perimetre="$(sed -n 1p .github/lancer-collecte.txt | tr -d ' \r\n')"
+            etapes="$(sed -n 2p .github/lancer-collecte.txt | tr -d ' \r\n')"
             source="carte"
-            etapes="clubs+logos"
             # une relance manuelle revoit aussi les logos déjà connus
             forcer="true"
           fi

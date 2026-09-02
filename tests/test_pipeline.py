@@ -195,6 +195,40 @@ class TestExtractionLogo(unittest.TestCase):
         self.assertNotIn(b"script", visuel.octets)
         self.assertEqual(visuel.couleurs, ["#1a4fbe"])
 
+
+    def test_le_logo_de_la_federation_est_rejete(self):
+        classement = logos.candidats(
+            '<img class="logo" src="/wp-content/uploads/logo-fftt.png">', "https://club.fr/", "Club")
+        self.assertNotIn("logo-fftt.png", " ".join(c.url for c in classement))
+
+    def test_une_image_partagee_par_deux_clubs_est_ecartee(self):
+        """Favicone d'hébergeur, logo de thème ou de partenaire : si deux clubs
+        aboutissent au même fichier, ce n'est le logo d'aucun des deux."""
+        with tempfile.TemporaryDirectory() as dossier:
+            site_ = Path(dossier)
+            (site_ / "logos" / "35").mkdir(parents=True)
+            (site_ / "logos" / "67").mkdir(parents=True)
+            commun = image_png()
+            (site_ / "logos" / "35" / "a.webp").write_bytes(commun)
+            (site_ / "logos" / "67" / "b.webp").write_bytes(commun)
+            (site_ / "logos" / "35" / "propre.webp").write_bytes(image_png(couleur=(200, 30, 30)))
+            (site_ / "logos" / "35" / "oublie.webp").write_bytes(b"orphelin")
+            clubs = [
+                catalogue.Club(numero="1", dep="35", logo_fichier="logos/35/a.webp",
+                               logo_statut=catalogue.LOGO_RECUPERE, couleurs="#111111"),
+                catalogue.Club(numero="2", dep="67", logo_fichier="logos/67/b.webp",
+                               logo_statut=catalogue.LOGO_RECUPERE),
+                catalogue.Club(numero="3", dep="35", logo_fichier="logos/35/propre.webp",
+                               logo_statut=catalogue.LOGO_RECUPERE),
+            ]
+            self.assertEqual(logos.dedoublonner(clubs, site_), 2)
+            self.assertEqual([c.logo_statut for c in clubs],
+                             [catalogue.LOGO_ABSENT, catalogue.LOGO_ABSENT, catalogue.LOGO_RECUPERE])
+            self.assertEqual(clubs[0].couleurs, "")
+            self.assertFalse((site_ / "logos" / "35" / "a.webp").exists())
+            self.assertEqual(logos.supprimer_les_orphelins(clubs, site_), 1)
+            self.assertTrue((site_ / "logos" / "35" / "propre.webp").exists())
+
     def test_variantes_d_url(self):
         self.assertEqual(
             logos._variantes("http://club.fr/ping"),
