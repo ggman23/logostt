@@ -23,9 +23,18 @@ journal = logging.getLogger("logostt")
 class Client:
     """Petit client HTTP : réessais, délai entre requêtes, taille de réponse plafonnée."""
 
-    def __init__(self, delai: float = DELAI_PAR_DOMAINE, timeout: float = 20.0) -> None:
+    def __init__(
+        self,
+        delai: float = DELAI_PAR_DOMAINE,
+        timeout: float = 15.0,
+        reessais: int = 1,
+        duree_max: float = 25.0,
+    ) -> None:
         self.delai = delai
-        self.timeout = timeout
+        # (délai de connexion, délai de lecture) : un serveur muet ne doit pas nous bloquer.
+        self.timeout = (min(timeout, 8.0), timeout)
+        # Garde-fou global : certains sites répondent au compte-gouttes sans jamais finir.
+        self.duree_max = duree_max
         self._dernier_appel: dict[str, float] = defaultdict(float)
         self._verrou = threading.Lock()
         self.session = requests.Session()
@@ -34,8 +43,8 @@ class Client:
             "Accept-Language": "fr-FR,fr;q=0.9,en;q=0.6",
         })
         reessais = Retry(
-            total=2,
-            backoff_factor=1.5,
+            total=reessais,
+            backoff_factor=0.8,
             status_forcelist=(429, 500, 502, 503, 504),
             allowed_methods=frozenset(["GET", "HEAD"]),
         )
@@ -66,10 +75,14 @@ class Client:
                 journal.debug("HTTP %s sur %s", reponse.status_code, url)
                 return None
             contenu = b""
+            debut = time.monotonic()
             for bloc in reponse.iter_content(64 * 1024):
                 contenu += bloc
                 if len(contenu) > taille_max:
                     journal.debug("réponse tronquée (>%s octets) : %s", taille_max, url)
+                    break
+                if time.monotonic() - debut > self.duree_max:
+                    journal.debug("lecture trop longue (>%ss), abandon : %s", self.duree_max, url)
                     break
             reponse._content = contenu  # noqa: SLF001 - on force le contenu déjà lu
             return reponse

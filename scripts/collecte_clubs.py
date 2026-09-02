@@ -108,7 +108,7 @@ def main() -> int:
 
     deps = referentiel.codes_departements(arguments.dep)
     journal.info("collecte de %s département(s) via %s", len(deps), arguments.source)
-    client = Client(delai=arguments.delai)
+    client = Client(delai=arguments.delai, timeout=30.0, duree_max=90.0)
 
     if arguments.source == "carte":
         nouveaux = collecter_carte(client, deps, tous=len(deps) == len(referentiel.departements()))

@@ -43,6 +43,8 @@ def main() -> int:
     analyseur.add_argument("--limite", type=int, default=0, help="s'arrêter après N clubs (essais)")
     analyseur.add_argument("--parallele", type=int, default=8, help="nombre de sites visités en parallèle")
     analyseur.add_argument("--delai", type=float, default=1.5, help="délai minimal entre deux requêtes vers un même domaine (s)")
+    analyseur.add_argument("--timeout", type=float, default=12.0,
+                           help="délai d'attente maximal par requête (s)")
     analyseur.add_argument("--verbeux", action="store_true")
     arguments = analyseur.parse_args()
 
@@ -63,7 +65,7 @@ def main() -> int:
         selection = selection[: arguments.limite]
     journal.info("%s club(s) à visiter sur %s au catalogue", len(selection), len(clubs))
 
-    client = Client(delai=arguments.delai)
+    client = Client(delai=arguments.delai, timeout=arguments.timeout, duree_max=20.0)
     faits = 0
     with ThreadPoolExecutor(max_workers=arguments.parallele) as pool:
         taches = {

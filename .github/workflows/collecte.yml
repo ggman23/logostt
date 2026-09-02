@@ -36,8 +36,10 @@ permissions:
   contents: write
 
 concurrency:
+  # Une nouvelle demande de collecte remplace celle en cours : deux collectes en
+  # parallèle se marcheraient dessus au moment de commiter les résultats.
   group: collecte
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   collecte:
