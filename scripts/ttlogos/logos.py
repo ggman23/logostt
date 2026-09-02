@@ -45,7 +45,12 @@ REJET = re.compile(
     # marques de tiers et logos institutionnels que les clubs affichent sur leur site
     # (le nom des plateformes d'hébergement n'y figure pas : les vrais logos de clubs
     # sont souvent servis depuis ces mêmes domaines)
-    r"google[_-]?(logo|plus)|logo[_-]google|/google\.(png|gif|svg)|gplus|"
+    r"google[_-]?(logo|plus)|googlelogo|logo[_-]google|/google\.(png|gif|svg)|gplus|"
+    # marques des outils et des médias que les clubs affichent (« propulsé par… »)
+    r"assoconnect|sport-?site|wifeo|sitew|weebly|wix-?logo|joomla|drupal|"
+    r"tennis-?2-?table|tennisdetable\.com|pongiste\.fr|ping-?pong-?spirit|"
+    # boutons et visuels de gestion interne
+    r"planning|entrainement|horaire|reglement|convocation|proces-?verbal|"
     r"conseil-?(general|departemental)|prefecture|mairie|ville-?de-|agglo|"
     # partenaires institutionnels et financeurs, très présents en pied de page
     r"ans[_-]logo|logo[_-]ans|agence-?nationale-?du-?sport|cnds|pass-?sport|"

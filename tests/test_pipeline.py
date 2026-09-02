@@ -241,6 +241,20 @@ class TestExtractionLogo(unittest.TestCase):
         ImageDraw.Draw(logo).ellipse((40, 20, 260, 180), fill=(20, 70, 190))
         self.assertFalse(logos._est_photographie(logo))
 
+
+    def test_marques_de_plateformes_et_boutons_ecartes(self):
+        """Logo Google, badge « propulsé par », bouton de planning : pas des logos de club."""
+        classement = logos.candidats(
+            '<img src="/img/googlelogo_color_272x92dp.png">'
+            '<img src="/img/assoconnect.svg">'
+            '<img src="/img/bouton-planning-entrainements.png">'
+            '<img class="logo" src="/img/logo-du-club.png">',
+            "https://club.fr/", "Club")
+        self.assertEqual(classement[0].url, "https://club.fr/img/logo-du-club.png")
+        retenus = " ".join(c.url for c in classement)
+        for indesirable in ("googlelogo", "assoconnect", "planning"):
+            self.assertNotIn(indesirable, retenus)
+
     def test_variantes_d_url(self):
         self.assertEqual(
             logos._variantes("http://club.fr/ping"),
