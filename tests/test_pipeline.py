@@ -227,6 +227,20 @@ class TestExtractionLogo(unittest.TestCase):
             self.assertEqual(logos.supprimer_les_orphelins(clubs, site_), 1)
             self.assertTrue((site_ / "logos" / "35" / "propre.webp").exists())
 
+
+    def test_une_photographie_est_distinguee_d_un_logo(self):
+        """Une photo de salle ne doit pas finir en logo de club."""
+        import random
+        random.seed(4)
+        photo = Image.new("RGB", (64, 64))
+        photo.putdata([(random.randrange(256), random.randrange(256), random.randrange(256))
+                       for _ in range(64 * 64)])
+        self.assertTrue(logos._est_photographie(photo))
+
+        logo = Image.new("RGB", (300, 200), "white")
+        ImageDraw.Draw(logo).ellipse((40, 20, 260, 180), fill=(20, 70, 190))
+        self.assertFalse(logos._est_photographie(logo))
+
     def test_variantes_d_url(self):
         self.assertEqual(
             logos._variantes("http://club.fr/ping"),

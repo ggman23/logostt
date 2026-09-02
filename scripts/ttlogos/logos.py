@@ -36,6 +36,7 @@ REJET = re.compile(
     r"paypal|cookie|rgpd|avatar|spacer|pixel|tracking|loader|spinner|"
     r"drapeau|flag-|/flags/|emoji|smiley|captcha|placeholder|photo-|galerie|"
     r"affiche|flyer|tournoi|resultat|classement|calendrier|arbitre|joueur|"
+    r"inscription|adhesion|boutique|stage-|vacances|reprise-|horaires|"
     # habillage d'interface et pictogrammes de contact
     r"contact[_-]?logo|logo[_-]?contact|/(mail|email|enveloppe|telephone|phone|"
     r"imprimer|print|partager|share|panier|newsletter|rss|fleche|arrow|puce|"
@@ -207,6 +208,8 @@ def candidats(
             origine = "img[logo]"
         if REJET.search(signature):
             score -= 70
+        if re.search(r"\bligue\b|\bcomit[ée]\b|\bf\.?f\.?t\.?t\.?\b", signature, re.I):
+            score -= 60
         parents = " ".join(
             str(parent.get("class", "")) + str(parent.get("id", ""))
             for parent in image.find_parents(limit=3)
@@ -294,6 +297,21 @@ def _fond_conseille(image: Image.Image) -> str:
     return "sombre" if total and lumineux / total > 0.85 else "clair"
 
 
+def _est_photographie(image: Image.Image) -> bool:
+    """Distingue une photographie d'un logo.
+
+    Un logo tient en peu de teintes et garde de larges aplats ; une photo de salle ou
+    de match multiplie les nuances sans jamais qu'une couleur domine. Les seuils ont été
+    calés sur les 885 logos de la première collecte nationale : la médiane des vrais
+    logos tourne autour de 160 teintes, les photos au-delà de 450.
+    """
+    reduite = image.convert("RGB").resize((64, 64))
+    pixels = [(r // 16, v // 16, b // 16) for r, v, b in reduite.getdata()]
+    teintes = set(pixels)
+    dominante = max(pixels.count(couleur) for couleur in teintes) / len(pixels)
+    return len(teintes) > 430 and dominante < 0.18
+
+
 @dataclass
 class Visuel:
     octets: bytes
@@ -302,6 +320,7 @@ class Visuel:
     fond: str
     largeur: int = 0
     hauteur: int = 0
+    photographie: bool = False
 
 
 def normaliser(octets: bytes, type_mime: str = "") -> Visuel | None:
@@ -357,7 +376,8 @@ def normaliser(octets: bytes, type_mime: str = "") -> Visuel | None:
     sortie = io.BytesIO()
     image.save(sortie, format="WEBP", quality=88, method=6)
     return Visuel(
-        sortie.getvalue(), ".webp", couleurs, _fond_conseille(image), image.width, image.height
+        sortie.getvalue(), ".webp", couleurs, _fond_conseille(image),
+        image.width, image.height, _est_photographie(image),
     )
 
 
@@ -419,6 +439,10 @@ def recuperer_logo(
         octets, type_mime = _telecharger(client, candidat.url)
         visuel = normaliser(octets, type_mime)
         if visuel is None:
+            continue
+        if visuel.photographie and candidat.score < 90:
+            # Photo de salle ou de match : ce n'est un logo que si l'indice est très fort.
+            journal.debug("photographie écartée pour %s : %s", club.nom, candidat.url)
             continue
         chemin_relatif = Path("logos") / club.dep / f"{club.cle_fichier()}{visuel.extension}"
         destination = dossier_logos.parent / chemin_relatif
