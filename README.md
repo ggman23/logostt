@@ -27,33 +27,35 @@ Le dépôt contient deux choses :
 > ⚠️ La collecte visite des milliers de sites : elle est faite pour tourner sur GitHub
 > Actions ou sur votre machine, pas dans un navigateur.
 
+### D'où viennent les données
+
+**Aucun identifiant n'est nécessaire.** La FFTT publie deux pages qui suffisent :
+
+| Page | Ce qu'on y prend |
+| --- | --- |
+| `carte.fftt.com/organismes` | la liste de tous les clubs affiliés (numéro + nom), en une seule requête |
+| `inscriptionenligne.fftt.com/club/<numéro>` | la fiche publique du club : ligue, comité, salle, ville et **le lien vers son site internet** |
+
+Ces fiches affichent aussi les coordonnées d'un correspondant : ces données personnelles
+ne sont ni extraites ni enregistrées (un test du dépôt le vérifie).
+
+Deux sources de secours restent disponibles : `--source fftt` (API SmartPing officielle,
+qui demande un identifiant et une clé délivrés par la fédération, à renseigner dans
+`FFTT_API_ID` / `FFTT_API_KEY`) et `--source opendata` (data.sports.gouv.fr, sans sites web).
+
 ### 1. Depuis GitHub (le plus simple)
 
 Onglet **Actions → « Collecte des clubs et des logos » → Run workflow**. Choisissez le
 périmètre (`tous`, une ligue comme `IDF`, ou un département comme `75`). Le résultat est
 commité automatiquement dans `data/clubs.csv`, `site/data/` et `site/logos/`.
 
-Pensez à renseigner au préalable les deux secrets du dépôt (Settings → Secrets and
-variables → Actions) :
-
-| Secret | Rôle |
-| --- | --- |
-| `FFTT_API_ID` | identifiant de l'API SmartPing |
-| `FFTT_API_KEY` | clé associée |
-
-Ces identifiants sont délivrés gratuitement par la FFTT sur simple demande
-(<https://www.fftt.com/api/>) : ce sont eux qui donnent la liste officielle des clubs
-affiliés **avec leur site internet**, département par département. Sans identifiants, le
-script tente les anciens points d'entrée ouverts, qui peuvent avoir été fermés ; à défaut,
-`--source opendata` récupère une liste de clubs (sans site web) depuis
-data.sports.gouv.fr.
+Variante sans passer par l'interface : écrivez le périmètre voulu dans
+`.github/lancer-collecte.txt` et poussez le fichier — la collecte démarre.
 
 ### 2. En local
 
 ```bash
 pip install -r requirements.txt
-
-export FFTT_API_ID=...  FFTT_API_KEY=...
 
 python3 scripts/collecte_clubs.py --dep tous      # liste des clubs + sites internet
 python3 scripts/collecte_logos.py --dep tous      # visite des sites, extraction des logos
@@ -128,12 +130,14 @@ colonne `logo_fichier` de `data/clubs.csv`.
 referentiel/ligues.json   les 20 ligues et leurs 103 départements
 data/clubs.csv            le catalogue (une ligne par club)
 data/corrections.csv      vos corrections manuelles
-scripts/collecte_clubs.py liste des clubs (API FFTT SmartPing ou open data)
+scripts/collecte_clubs.py liste des clubs (annuaire public FFTT, ou API, ou open data)
+scripts/reconnaissance.py sonde les sources publiques (diagnostic, ne collecte rien)
 scripts/collecte_logos.py visite des sites et extraction des logos
 scripts/construire_site.py génère site/data/clubs.json et stats.json
-scripts/ttlogos/          les modules (référentiel, catalogue, réseau, logos, site)
+scripts/ttlogos/          les modules (référentiel, catalogue, réseau, carte, logos, site)
 site/                     la galerie (HTML/CSS/JS, aucune dépendance externe)
 tests/test_pipeline.py    tests hors ligne (python3 tests/test_pipeline.py)
+tests/echantillons/       pages réelles de la FFTT servant de référence aux tests
 ```
 
 ## À propos des logos

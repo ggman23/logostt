@@ -16,10 +16,36 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from ttlogos import catalogue, datasports, fftt, referentiel  # noqa: E402
+from ttlogos import carte, catalogue, datasports, fftt, referentiel  # noqa: E402
 from ttlogos.reseau import Client  # noqa: E402
 
 journal = logging.getLogger("logostt")
+
+
+def collecter_carte(client: Client, deps: list[str], tous: bool) -> list[catalogue.Club]:
+    """Source par défaut : l'annuaire public de la FFTT, sans identifiants."""
+    annuaire = carte.liste_des_clubs(client)
+    if not annuaire:
+        return []
+    a_visiter = [
+        entree for entree in annuaire
+        # Le numéro d'affiliation porte le département : il sert de pré-filtre. Un numéro
+        # inhabituel (Corse, outre-mer) est conservé, le département sera lu sur la fiche.
+        if tous or carte.dep_probable(entree["numero"]) in deps
+        or carte.dep_probable(entree["numero"]) not in referentiel.departements()
+    ]
+    journal.info("%s fiches club à lire sur %s", len(a_visiter), len(annuaire))
+    attendus = set(deps)
+    clubs: list[catalogue.Club] = []
+    for rang, entree in enumerate(a_visiter, start=1):
+        club = carte.fiche_club(client, entree["numero"], entree["nom"])
+        if club and (tous or club.dep in attendus):
+            clubs.append(club)
+        if rang % 100 == 0:
+            avec_site = sum(1 for c in clubs if c.site_web)
+            journal.info("%s / %s fiches lues — %s clubs retenus, %s avec site web",
+                         rang, len(a_visiter), len(clubs), avec_site)
+    return clubs
 
 
 def collecter_fftt(client: Client, deps: list[str], detail: bool) -> list[catalogue.Club]:
@@ -61,14 +87,16 @@ def main() -> int:
         help="département (75), ligue (IDF), « metropole », « outre-mer » ou « tous »",
     )
     analyseur.add_argument(
-        "--source", default="fftt", choices=("fftt", "opendata"),
-        help="fftt : API SmartPing (recommandé) ; opendata : data.sports.gouv.fr (secours)",
+        "--source", default="carte", choices=("carte", "fftt", "opendata"),
+        help="carte : annuaire public FFTT, sans identifiants (recommandé) ; "
+             "fftt : API SmartPing (demande une clé) ; opendata : data.sports.gouv.fr",
     )
     analyseur.add_argument(
         "--sans-detail", action="store_true",
         help="ne pas récupérer la fiche détaillée (plus rapide, mais sans site web)",
     )
-    analyseur.add_argument("--delai", type=float, default=0.8, help="délai entre requêtes (s)")
+    analyseur.add_argument("--delai", type=float, default=0.5,
+                           help="délai minimal entre deux requêtes vers le même serveur (s)")
     analyseur.add_argument("--verbeux", action="store_true")
     arguments = analyseur.parse_args()
 
@@ -82,15 +110,15 @@ def main() -> int:
     journal.info("collecte de %s département(s) via %s", len(deps), arguments.source)
     client = Client(delai=arguments.delai)
 
-    if arguments.source == "fftt":
+    if arguments.source == "carte":
+        nouveaux = collecter_carte(client, deps, tous=len(deps) == len(referentiel.departements()))
+    elif arguments.source == "fftt":
         nouveaux = collecter_fftt(client, deps, detail=not arguments.sans_detail)
     else:
         nouveaux = collecter_open_data(client, deps)
 
     if not nouveaux:
-        journal.error(
-            "aucun club récupéré : vérifiez les identifiants FFTT ou essayez --source opendata"
-        )
+        journal.error("aucun club récupéré : source %s indisponible", arguments.source)
         return 1
 
     existants = catalogue.charger()

@@ -13,7 +13,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 
 from PIL import Image, ImageDraw  # noqa: E402
 
-from ttlogos import catalogue, logos, referentiel, site  # noqa: E402
+from ttlogos import carte, catalogue, logos, referentiel, site  # noqa: E402
 
 
 def image_png(taille=(400, 200), couleur=(20, 70, 190)) -> bytes:
@@ -262,6 +262,57 @@ class TestBoutABout(unittest.TestCase):
         self.assertEqual(club.ville, "Rennes")
         self.assertEqual(club.ligue_code, "BRE")
         self.assertEqual(club.logo_statut, catalogue.LOGO_ABSENT)
+
+class TestAnnuairePublic(unittest.TestCase):
+    """Extraction depuis l'annuaire public de la FFTT (balisage réel, capturé en ligne)."""
+
+    ECHANTILLONS = Path(__file__).resolve().parent / "echantillons"
+
+    def test_liste_des_clubs(self):
+        html = (self.ECHANTILLONS / "annuaire_organismes.html").read_text(encoding="utf-8")
+
+        class ClientFictif:
+            def texte(self, *args, **kwargs):
+                return html
+
+        clubs = carte.liste_des_clubs(ClientFictif())
+        self.assertEqual(len(clubs), 3)
+        self.assertIn({"numero": "04180613", "nom": "CJM BOURGES TT"}, clubs)
+
+    def test_fiche_club(self):
+        html = (self.ECHANTILLONS / "fiche_club.html").read_text(encoding="utf-8")
+        club = carte.club_depuis_fiche("04180613", html)
+        self.assertEqual(club.nom, "CJM BOURGES TT")
+        self.assertEqual(club.site_web, "http://cjmbourgestt.e-monsite.com/")
+        self.assertEqual((club.code_postal, club.ville), ("18000", "Bourges"))
+        self.assertEqual((club.dep, club.ligue_code), ("18", "CVL"))
+        self.assertIn("YVES DU MANOIR", club.salle)
+        self.assertEqual(club.logo_statut, catalogue.LOGO_ABSENT)
+
+    def test_les_donnees_personnelles_ne_sont_pas_reprises(self):
+        """La fiche affiche un correspondant : rien de tout cela ne doit être enregistré."""
+        html = (self.ECHANTILLONS / "fiche_club.html").read_text(encoding="utf-8")
+        club = carte.club_depuis_fiche("04180613", html)
+        enregistre = " ".join(str(valeur) for valeur in vars(club).values())
+        for donnee in ("BRUNET", "Jean-Paul", "06 07 19 12 38", "remyliam1@yahoo.fr"):
+            self.assertNotIn(donnee, enregistre)
+
+    def test_les_liens_federaux_ne_sont_pas_pris_pour_le_site_du_club(self):
+        html = (self.ECHANTILLONS / "fiche_club.html").read_text(encoding="utf-8")
+        sans_site = html.replace('<a href="http://cjmbourgestt.e-monsite.com/" target="_blank">'
+                                 'http://cjmbourgestt.e-monsite.com/</a>', "")
+        club = carte.club_depuis_fiche("04180613", sans_site)
+        self.assertEqual(club.site_web, "")
+        self.assertEqual(club.logo_statut, catalogue.SITE_ABSENT)
+
+    def test_fiche_vide_si_le_club_n_existe_pas(self):
+        self.assertIsNone(carte.club_depuis_fiche("07750123", "<html><body></body></html>"))
+
+    def test_departement_deduit_du_numero(self):
+        self.assertEqual(carte.dep_probable("04180613"), "18")
+        self.assertEqual(carte.dep_probable("07750045"), "75")
+        self.assertEqual(carte.dep_probable(""), "")
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

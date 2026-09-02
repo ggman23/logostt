@@ -1,7 +1,12 @@
 name: Collecte des clubs et des logos
 
-# La collecte a besoin d'un accès internet vers les sites des clubs : elle tourne donc
-# ici, sur les serveurs GitHub, et pas sur votre machine.
+# La collecte a besoin d'un accès internet vers l'annuaire de la FFTT et vers les sites
+# des clubs : elle tourne ici, sur les serveurs GitHub.
+#
+# Deux façons de la lancer :
+#   · onglet Actions -> « Run workflow » (formulaire complet) ;
+#   · en écrivant le périmètre voulu dans .github/lancer-collecte.txt puis en poussant
+#     (« tous », « IDF », « 75 »…), ce qui déclenche une collecte complète.
 on:
   workflow_dispatch:
     inputs:
@@ -11,8 +16,8 @@ on:
       source:
         description: "Source de la liste des clubs"
         type: choice
-        options: ["fftt", "opendata"]
-        default: "fftt"
+        options: ["carte", "fftt", "opendata"]
+        default: "carte"
       etapes:
         description: "Étapes à lancer"
         type: choice
@@ -22,11 +27,17 @@ on:
         description: "Retélécharger les logos déjà connus"
         type: boolean
         default: false
+  push:
+    paths: [".github/lancer-collecte.txt"]
   schedule:
     - cron: "0 4 1 * *"   # tous les 1ers du mois à 4 h UTC
 
 permissions:
   contents: write
+
+concurrency:
+  group: collecte
+  cancel-in-progress: false
 
 jobs:
   collecte:
@@ -46,22 +57,42 @@ jobs:
       - name: Vérifier le pipeline
         run: python3 tests/test_pipeline.py
 
+      - name: Déterminer le périmètre
+        id: parametres
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            perimetre="${{ github.event.inputs.perimetre }}"
+            source="${{ github.event.inputs.source }}"
+            etapes="${{ github.event.inputs.etapes }}"
+            forcer="${{ github.event.inputs.forcer_logos }}"
+          else
+            perimetre="$(head -n 1 .github/lancer-collecte.txt | tr -d ' \r\n')"
+            source="carte"
+            etapes="clubs+logos"
+            forcer="false"
+          fi
+          echo "perimetre=${perimetre:-tous}" >> "$GITHUB_OUTPUT"
+          echo "source=${source:-carte}" >> "$GITHUB_OUTPUT"
+          echo "etapes=${etapes:-clubs+logos}" >> "$GITHUB_OUTPUT"
+          echo "forcer=${forcer:-false}" >> "$GITHUB_OUTPUT"
+          echo "Collecte « ${perimetre:-tous} » (source ${source:-carte}, étapes ${etapes:-clubs+logos})"
+
       - name: Collecter la liste des clubs
-        if: ${{ github.event.inputs.etapes != 'logos' }}
+        if: ${{ steps.parametres.outputs.etapes != 'logos' }}
         env:
           FFTT_API_ID: ${{ secrets.FFTT_API_ID }}
           FFTT_API_KEY: ${{ secrets.FFTT_API_KEY }}
         run: |
           python3 scripts/collecte_clubs.py \
-            --dep "${{ github.event.inputs.perimetre || 'tous' }}" \
-            --source "${{ github.event.inputs.source || 'fftt' }}"
+            --dep "${{ steps.parametres.outputs.perimetre }}" \
+            --source "${{ steps.parametres.outputs.source }}"
 
       - name: Récupérer les logos
-        if: ${{ github.event.inputs.etapes != 'clubs' }}
+        if: ${{ steps.parametres.outputs.etapes != 'clubs' }}
         run: |
           python3 scripts/collecte_logos.py \
-            --dep "${{ github.event.inputs.perimetre || 'tous' }}" \
-            ${{ github.event.inputs.forcer_logos == 'true' && '--forcer' || '' }}
+            --dep "${{ steps.parametres.outputs.perimetre }}" \
+            ${{ steps.parametres.outputs.forcer == 'true' && '--forcer' || '' }}
 
       - name: Générer les données du site
         run: python3 scripts/construire_site.py
@@ -74,6 +105,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "Aucun changement."
           else
-            git commit -m "Collecte du $(date +%d/%m/%Y) (${{ github.event.inputs.perimetre || 'tous' }})"
+            git commit -m "Collecte du $(date +%d/%m/%Y) (${{ steps.parametres.outputs.perimetre }})"
+            git pull --rebase origin main
             git push
           fi
