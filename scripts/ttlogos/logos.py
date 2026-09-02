@@ -46,6 +46,10 @@ REJET = re.compile(
     # sont souvent servis depuis ces mêmes domaines)
     r"google[_-]?(logo|plus)|logo[_-]google|/google\.(png|gif|svg)|gplus|"
     r"conseil-?(general|departemental)|prefecture|mairie|ville-?de-|agglo|"
+    # partenaires institutionnels et financeurs, très présents en pied de page
+    r"ans[_-]logo|logo[_-]ans|agence-?nationale-?du-?sport|cnds|pass-?sport|"
+    r"terre-?de-?jeux|paris-?2024|sport-?sante|anct|region-?[a-z]*-?logo|"
+    r"credit-?mutuel|caisse-?d?-?epargne|groupama|harmonie-?mutuelle|casal-?sport|"
     r"jeunesse-?et-?sports|ministere|ancv|creps|ufolep|credit-?agricole|"
     r"intermarche|leclerc|decathlon|cornilleau|butterfly|tibhar|donic",
     re.I,
