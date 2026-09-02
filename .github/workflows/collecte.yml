@@ -8,6 +8,11 @@ on:
       perimetre:
         description: "Périmètre : « tous », une ligue (IDF, BRE…) ou un département (75)"
         default: "tous"
+      source:
+        description: "Source de la liste des clubs"
+        type: choice
+        options: ["fftt", "opendata"]
+        default: "fftt"
       etapes:
         description: "Étapes à lancer"
         type: choice
@@ -46,7 +51,10 @@ jobs:
         env:
           FFTT_API_ID: ${{ secrets.FFTT_API_ID }}
           FFTT_API_KEY: ${{ secrets.FFTT_API_KEY }}
-        run: python3 scripts/collecte_clubs.py --dep "${{ github.event.inputs.perimetre || 'tous' }}"
+        run: |
+          python3 scripts/collecte_clubs.py \
+            --dep "${{ github.event.inputs.perimetre || 'tous' }}" \
+            --source "${{ github.event.inputs.source || 'fftt' }}"
 
       - name: Récupérer les logos
         if: ${{ github.event.inputs.etapes != 'clubs' }}
