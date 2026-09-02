@@ -24,26 +24,25 @@ from bs4 import BeautifulSoup  # noqa: E402
 from ttlogos.reseau import Client  # noqa: E402
 
 SONDES: list[tuple[str, str]] = [
-    # --- API SmartPing sans authentification (points d'entrée historiques) ---
-    ("SmartPing pxml ouvert", "https://www.fftt.com/mobile/pxml/xml_club_dep2.php?dep=75"),
-    ("SmartPing xml ouvert", "https://www.fftt.com/mobile/xml/xml_club_dep2.php?dep=75"),
-    ("SmartPing apiv2 sans clé", "https://apiv2.fftt.com/mobile/pxml/xml_club_dep2.php?dep=75"),
-    ("SmartPing fiche club", "https://www.fftt.com/mobile/pxml/xml_club_detail.php?club=07750123"),
-    # --- Site fédéral public ---
-    ("Accueil FFTT", "https://www.fftt.com/"),
-    ("FFTT trouver un club", "https://www.fftt.com/trouver-un-club/"),
-    ("FFTT clubs (ancien site)", "https://www.fftt.com/site/decouvrir/clubs"),
-    ("FFTT WordPress REST", "https://www.fftt.com/wp-json/"),
-    ("FFTT WordPress types", "https://www.fftt.com/wp-json/wp/v2/types"),
-    ("MonClub FFTT", "https://monclub.fftt.com/"),
-    # --- Annuaires tiers ---
-    ("Pongiste clubs", "https://www.pongiste.fr/clubs"),
-    ("Pongiste département 75", "https://www.pongiste.fr/clubs/75"),
-    # --- Open data ---
-    ("data.sports.gouv catalogue", "https://data.sports.gouv.fr/api/explore/v2.1/catalog/datasets?limit=20&where=search(%22club%22)"),
-    ("Overpass (clubs TT France)", "https://overpass-api.de/api/interpreter?data=[out:json][timeout:60];area[\"ISO3166-1\"=\"FR\"][admin_level=2]->.a;nwr[\"sport\"=\"table_tennis\"][\"website\"](area.a);out tags 40;"),
-    # --- Moteurs de recherche utilisables en secours ---
-    ("DuckDuckGo HTML", "https://html.duckduckgo.com/html/?q=club+tennis+de+table+Rennes+site+officiel"),
+    # --- Applications publiques de la FFTT (repérées au premier passage) ---
+    ("Carte des clubs", "https://carte.fftt.com/"),
+    ("Annuaire des organismes", "https://carte.fftt.com/organismes"),
+    ("Carte : API supposée", "https://carte.fftt.com/api"),
+    ("Carte : clubs", "https://carte.fftt.com/api/clubs?page=1&itemsPerPage=5"),
+    ("MonClub : documentation API", "https://monclub.fftt.com/api/docs.jsonld"),
+    ("MonClub : racine API", "https://monclub.fftt.com/api"),
+    ("MonClub : clubs", "https://monclub.fftt.com/api/clubs?page=1&itemsPerPage=5"),
+    ("MonClub : recherche de tournois (XHR connu)",
+     "https://monclub.fftt.com/api/tournaments?page=1&itemsPerPage=2"),
+    # --- Open data géographique ---
+    ("Overpass : clubs TT avec site", "https://overpass-api.de/api/interpreter?data=[out:json][timeout:90];area[\"ISO3166-1\"=\"FR\"][admin_level=2]->.a;(nwr[\"club\"=\"table_tennis\"](area.a);nwr[\"sport\"=\"table_tennis\"][\"club\"](area.a););out count;"),
+    ("Overpass : détail clubs", "https://overpass-api.de/api/interpreter?data=[out:json][timeout:90];area[\"ISO3166-1\"=\"FR\"][admin_level=2]->.a;nwr[\"club\"=\"table_tennis\"](area.a);out tags 15;"),
+]
+
+# Applications à page unique dont il faut fouiller les scripts pour trouver l'API.
+SPA = [
+    ("Carte des clubs", "https://carte.fftt.com/"),
+    ("MonClub", "https://monclub.fftt.com/"),
 ]
 
 INTERESSANT = re.compile(r"club|annuaire|trouver|recherche|departement|département|ligue", re.I)
@@ -105,6 +104,42 @@ def resumer(nom: str, url: str, client: Client) -> None:
             print(f"    Motif {motif[:20]}… :", trouves)
 
 
+MOTIFS_API = (
+    r"[\"'`](/(?:api|v[0-9])/[A-Za-z0-9_\-/{}.]{2,60})[\"'`]",
+    r"https://[A-Za-z0-9.\-]*fftt\.[a-z]{2,4}/[A-Za-z0-9_\-/.]{0,60}",
+    r"[\"'`](https?://[A-Za-z0-9.\-]+/api[A-Za-z0-9_\-/.]{0,50})[\"'`]",
+)
+
+
+def fouiller_scripts(nom: str, url: str, client: Client) -> None:
+    """Télécharge les scripts d'une application à page unique et y cherche l'adresse de l'API."""
+    print("=" * 100)
+    print(f"### FOUILLE DES SCRIPTS — {nom}\n    {url}")
+    reponse = client.get(url)
+    if reponse is None:
+        print("    -> page inaccessible")
+        return
+    soupe = BeautifulSoup(reponse.text, "html.parser")
+    sources = [s.get("src") for s in soupe.find_all("script", src=True)]
+    sources = [s if s.startswith("http") else url.rstrip("/") + "/" + s.lstrip("/") for s in sources]
+    print(f"    {len(sources)} script(s) : {sources[:8]}")
+    trouvailles: set[str] = set()
+    for source in sources[:6]:
+        code = client.texte(source, taille_max=6_000_000)
+        if not code:
+            continue
+        print(f"    · {source.split('/')[-1]} ({len(code)} caractères)")
+        for motif in MOTIFS_API:
+            trouvailles.update(re.findall(motif, code))
+    interessantes = sorted(
+        adresse for adresse in trouvailles
+        if not re.search(r"\.(png|jpe?g|svg|css|woff2?|ico|map)$", adresse)
+    )
+    print(f"    Adresses d'API repérées ({len(interessantes)}) :")
+    for adresse in interessantes[:60]:
+        print("      ·", adresse[:160])
+
+
 def main() -> int:
     client = Client(delai=1.0, timeout=30)
     sondes = SONDES + [(f"URL fournie {i + 1}", url) for i, url in enumerate(sys.argv[1:])]
@@ -112,6 +147,11 @@ def main() -> int:
         try:
             resumer(nom, url, client)
         except Exception as erreur:  # noqa: BLE001 - une sonde ne doit jamais arrêter les autres
+            print(f"    -> exception : {type(erreur).__name__}: {erreur}")
+    for nom, url in SPA:
+        try:
+            fouiller_scripts(nom, url, client)
+        except Exception as erreur:  # noqa: BLE001
             print(f"    -> exception : {type(erreur).__name__}: {erreur}")
     print("=" * 100)
     return 0
