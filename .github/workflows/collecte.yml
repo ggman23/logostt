@@ -72,7 +72,8 @@ jobs:
             perimetre="$(head -n 1 .github/lancer-collecte.txt | tr -d ' \r\n')"
             source="carte"
             etapes="clubs+logos"
-            forcer="false"
+            # une relance manuelle revoit aussi les logos déjà connus
+            forcer="true"
           fi
           echo "perimetre=${perimetre:-tous}" >> "$GITHUB_OUTPUT"
           echo "source=${source:-carte}" >> "$GITHUB_OUTPUT"

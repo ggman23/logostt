@@ -35,7 +35,23 @@ REJET = re.compile(
     r"facebook|instagram|twitter|youtube|tiktok|linkedin|whatsapp|helloasso|"
     r"paypal|cookie|rgpd|avatar|spacer|pixel|tracking|loader|spinner|"
     r"drapeau|flag-|/flags/|emoji|smiley|captcha|placeholder|photo-|galerie|"
-    r"affiche|flyer|tournoi|resultat|classement|calendrier|arbitre|joueur",
+    r"affiche|flyer|tournoi|resultat|classement|calendrier|arbitre|joueur|"
+    # marques de tiers et logos institutionnels que les clubs affichent sur leur site
+    # (le nom des plateformes d'hébergement n'y figure pas : les vrais logos de clubs
+    # sont souvent servis depuis ces mêmes domaines)
+    r"google[_-]?(logo|plus)|logo[_-]google|/google\.(png|gif|svg)|gplus|"
+    r"conseil-?(general|departemental)|prefecture|mairie|ville-?de-|agglo|"
+    r"jeunesse-?et-?sports|ministere|ancv|creps|ufolep|credit-?agricole|"
+    r"intermarche|leclerc|decathlon|cornilleau|butterfly|tibhar|donic",
+    re.I,
+)
+
+# Sites de clubs hébergés sur une plateforme mutualisée : la favicone et l'icône
+# « apple-touch-icon » y sont celles de la plateforme, pas celles du club.
+PLATEFORMES = re.compile(
+    r"(^|\.)(sportsregions\.fr|clubeo\.com|quomodo\.com|e-monsite\.com|"
+    r"wixsite\.com|jimdofree\.com|jimdo\.com|wordpress\.com|blogspot\.com|"
+    r"footeo\.com|kalisport\.com|monsite\.com|over-blog\.com|weebly\.com)$",
     re.I,
 )
 # Mots qui, eux, désignent très probablement le logo.
@@ -83,10 +99,24 @@ def _entier(valeur) -> int:
         return 0
 
 
+def _est_logo_institutionnel(url: str) -> bool:
+    """Vrai pour « logo_cher.png », « logo-bretagne.svg »… : un logo de collectivité."""
+    from . import referentiel
+
+    fichier = catalogue.slug(url.rsplit("/", 1)[-1].rsplit(".", 1)[0])
+    fichier = re.sub(r"^(logo|logotype|blason)-?", "", fichier).strip("-")
+    if len(fichier) < 3:
+        return False
+    territoires = {catalogue.slug(d.nom) for d in referentiel.departements().values()}
+    territoires |= {catalogue.slug(ligue["nom"]) for ligue in referentiel.ligues()}
+    return fichier in territoires
+
+
 def candidats(html: str, url_page: str, nom_club: str = "") -> list[Candidat]:
     """Classe les images de la page de la plus au moins susceptible d'être le logo."""
     soupe = BeautifulSoup(html or "", "html.parser")
     trouves: dict[str, Candidat] = {}
+    sur_plateforme = bool(PLATEFORMES.search(catalogue.domaine_de(url_page)))
 
     def proposer(url: str, score: int, origine: str) -> None:
         url = _absolu(url_page, url)
@@ -101,6 +131,12 @@ def candidats(html: str, url_page: str, nom_club: str = "") -> list[Candidat]:
         if FEDERAL.search(url):
             # Logo de la fédération, de la ligue ou du comité : ce n'est pas celui du club.
             score -= 45
+        if _est_logo_institutionnel(url):
+            # « logo_cher.png » : le logo du département, pas celui du club.
+            score -= 80
+        if sur_plateforme and origine in {"favicon", "apple-icon", "favicon.ico"}:
+            # Icône de la plateforme d'hébergement, commune à tous ses clubs.
+            return
         if score <= 0:
             return
         connu = trouves.get(url)

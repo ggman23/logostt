@@ -128,6 +128,37 @@ class TestExtractionLogo(unittest.TestCase):
         classement = logos.candidats(page, "https://c.fr/")
         self.assertEqual(classement[0].url, "https://c.fr/logo.svg")
 
+
+    def test_faux_positifs_rencontres_en_production(self):
+        """Cas réels relevés lors de la collecte du Cher : l'icône de la plateforme
+        d'hébergement, le bouton Google+ et le logo du conseil départemental ne
+        doivent jamais être pris pour le logo du club."""
+        cas = [
+            ("https://aubignytt.sportsregions.fr/",
+             '<link rel="apple-touch-icon" href="/apple-touch-icon.png">'
+             '<img class="logo" src="/media/uploaded/sites/1/association/logo-aubigny.png">',
+             "https://aubignytt.sportsregions.fr/media/uploaded/sites/1/association/logo-aubigny.png"),
+            ("https://ententepongiste.gracay.info/",
+             '<img src="/google_logo.png"><img class="logo" src="/img/logo-club.png">',
+             "https://ententepongiste.gracay.info/img/logo-club.png"),
+            ("https://vierzonping.wordpress.com/",
+             '<img src="/wp-content/uploads/logo_cher.png">'
+             '<img class="logo" src="/wp-content/uploads/entete-vierzon.png">',
+             "https://vierzonping.wordpress.com/wp-content/uploads/entete-vierzon.png"),
+        ]
+        for page, html, attendu in cas:
+            with self.subTest(page=page):
+                classement = logos.candidats(html, page, "Club")
+                self.assertEqual(classement[0].url, attendu)
+
+    def test_le_vrai_logo_reste_trouvable_sur_une_plateforme_mutualisee(self):
+        """Écarter l'icône d'une plateforme ne doit pas écarter les images qu'elle sert."""
+        classement = logos.candidats(
+            '<img class="logo" src="/media/uploaded/logo-du-club.png">',
+            "https://monclub.clubeo.com/", "Mon Club")
+        self.assertTrue(classement)
+        self.assertIn("logo-du-club.png", classement[0].url)
+
     def test_normalisation_des_images(self):
         visuel = logos.normaliser(image_png(), "image/png")
         self.assertEqual(visuel.extension, ".webp")
