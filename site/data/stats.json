@@ -1,8 +1,8 @@
 {
  "maj": "2026-09-02",
- "clubs": 0,
- "logos": 0,
- "sites": 0,
+ "clubs": 22,
+ "logos": 7,
+ "sites": 8,
  "ligues": [
   {
    "code": "ARA",
@@ -206,16 +206,16 @@
    "code": "CVL",
    "nom": "Centre-Val de Loire",
    "zone": "metropole",
-   "clubs": 0,
-   "logos": 0,
-   "sites": 0,
+   "clubs": 22,
+   "logos": 7,
+   "sites": 8,
    "departements": [
     {
      "dep": "18",
      "nom": "Cher",
-     "clubs": 0,
-     "logos": 0,
-     "sites": 0
+     "clubs": 22,
+     "logos": 7,
+     "sites": 8
     },
     {
      "dep": "28",
