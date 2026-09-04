@@ -1,4 +1,535 @@
 pays,numero,nom,dep,dep_nom,ligue_code,ligue_nom,ville,code_postal,salle,site_web,logo_fichier,logo_source,logo_statut,couleurs,fond,latitude,longitude,source_donnees,maj
+BE,BEA000,Individueel Antwerpen,,,BE-ANTWERPEN,Anvers,,,,,,,sans-site,,,,,"API TabT (FRBTT), club A000",2026-09-04
+BE,BEN,Namur,,,BE-NAMUR,Namur,,,,http://www.cttfrancorchamps.be,,,aucun,,,,,"API TabT (FRBTT), club N",2026-09-04
+BE,BEN000,Namur,,,BE-NAMUR,Namur,,,,,,,sans-site,,,,,"API TabT (FRBTT), club N000",2026-09-04
+BE,BEBBW,Province De Bruxelles Et Du Brabant Wallon,,,BE-BRUXELLES-BRABANT,Bruxelles et Brabant wallon,,,,http://www.cttroyalalpa.be,,,aucun,,,,,"API TabT (FRBTT), club BBW",2026-09-04
+BE,BEBBW000,Province De Bruxelles Et Du Brabant Wallon,,,BE-BRUXELLES-BRABANT,Bruxelles et Brabant wallon,,,,,,,sans-site,,,,,"API TabT (FRBTT), club BBW000",2026-09-04
+BE,BEL,Province De Liege,,,BE-LIEGE,Liège,,,,,,,sans-site,,,,,"API TabT (FRBTT), club L",2026-09-04
+BE,BEL000,Province De Liege,,,BE-LIEGE,Liège,,,,,,,sans-site,,,,,"API TabT (FRBTT), club L000",2026-09-04
+BE,BELX,Province De Luxembourg,,,BE-LUXEMBOURG,Luxembourg,,,,http://www.ttcentreardenne.be,,,aucun,,,,,"API TabT (FRBTT), club LX",2026-09-04
+BE,BELx000,Province De Luxembourg,,,BE-LUXEMBOURG,Luxembourg,,,,,,,sans-site,,,,,"API TabT (FRBTT), club Lx000",2026-09-04
+BE,BELx012,CTT Messancy,,,BE-LUXEMBOURG,Luxembourg,0,,Lx014,,,,sans-site,,,,,"API TabT (FRBTT), club Lx012",2026-09-04
+BE,BEN037,Royal Andenne TT,,,BE-NAMUR,Namur,2 5300,,secretariat.ratt.n037@gmail.com,http://www.ratt.be,,,aucun,,,,,"API TabT (FRBTT), club N037",2026-09-04
+BE,BEVl-B000,Individueel Vlaams-Brabant,BE10,CP 10,BE-VLAAMS-BRABANT,Brabant flamand,Brussel,1070,Hoofdlokaal,,,,sans-site,,,,,"API TabT (FRBTT), club Vl-B000",2026-09-04
+BE,BEBBW134,Arc En Ciel CTT,BE10,CP 10,BE-BRUXELLES-BRABANT,Bruxelles et Brabant wallon,BRUXELLES,1080,A.E.C. CTT,http://www.aec-ctt.be,,,aucun,,,,,"API TabT (FRBTT), club BBW134",2026-09-04
+BE,BEBBW264,Charles Quint TT,BE10,CP 10,BE-BRUXELLES-BRABANT,Bruxelles et Brabant wallon,Bruxelles,1083,Charles Quint (Tennis club),,,,sans-site,,,,,"API TabT (FRBTT), club BBW264",2026-09-04
+BE,BEBBW202,CTT Paluc,BE10,CP 10,BE-BRUXELLES-BRABANT,Bruxelles et Brabant wallon,BRUXELLES,1070,ECOLE COMMUNALE,,,,sans-site,,,,,"API TabT (FRBTT), club BBW202",2026-09-04
+BE,BEBBW205,TT Zenith Brussels,BE10,CP 10,BE-BRUXELLES-BRABANT,Bruxelles et Brabant wallon,BRUXELLES,1060,CENTRE SPORTIF DE SAINT-GILLES,https://www.ttzenithbrussels.be,,,aucun,,,,,"API TabT (FRBTT), club BBW205",2026-09-04
+BE,BEVl-B341,Tafeltennisclub Alpha,BE10,CP 10,BE-VLAAMS-BRABANT,Brabant flamand,Elsene,1050,Hoofdlokaal,,,,sans-site,,,,,"API TabT (FRBTT), club Vl-B341",2026-09-04
+BE,BEBBW034,Set-Jet Fleur Bleue,BE10,CP 10,BE-BRUXELLES-BRABANT,Bruxelles et Brabant wallon,Jette,1090,Complexe sportif de Jette,http://www.rsjfb.net,,,aucun,,,,,"API TabT (FRBTT), club BBW034",2026-09-04
+BE,BEBBW190,CTT Safran,BE10,CP 10,BE-BRUXELLES-BRABANT,Bruxelles et Brabant wallon,Laeken,1020,CTT SAFRAN,,,,sans-site,,,,,"API TabT (FRBTT), club BBW190",2026-09-04
+BE,BEBBW015,CTT Royal Alpa Schaerbeek,BE10,CP 10,BE-BRUXELLES-BRABANT,Bruxelles et Brabant wallon,Schaerbeek,1030,Crossing Tribune Nord,http://www.cttroyalalpa.be,,,aucun,,,,,"API TabT (FRBTT), club BBW015",2026-09-04
+BE,BEBBW147,CTT Royal 1865,BE11,CP 11,BE-BRUXELLES-BRABANT,Bruxelles et Brabant wallon,BRUXELLES,1120,SALLE CAPPELLEMANS,https://www.royal1865.com/,,,aucun,,,,,"API TabT (FRBTT), club BBW147",2026-09-04
+BE,BEBBW321,Eveil TT Auderghem,BE11,CP 11,BE-BRUXELLES-BRABANT,Bruxelles et Brabant wallon,BRUXELLES,1160,CENTRE SPORTIF D'AUDERGHEM,http://www.eveiltt.be/,,,aucun,,,,,"API TabT (FRBTT), club BBW321",2026-09-04
+BE,BEBBW326,Gremlins' 90 Forest,BE11,CP 11,BE-BRUXELLES-BRABANT,Bruxelles et Brabant wallon,BRUXELLES,1190,ECOLE DE PUZZEL,http://www.gremlins90forest.be,,,aucun,,,,,"API TabT (FRBTT), club BBW326",2026-09-04
+BE,BEBBW165,Logis Auderghem TT,BE11,CP 11,BE-BRUXELLES-BRABANT,Bruxelles et Brabant wallon,BRUXELLES,1160,CENTRE SPORTIF D'AUDERGHEM,http://www.logis-auderghem.be,,,aucun,,,,,"API TabT (FRBTT), club BBW165",2026-09-04
+BE,BEBBW145,Muppet's TT Auderghem,BE11,CP 11,BE-BRUXELLES-BRABANT,Bruxelles et Brabant wallon,BRUXELLES,1160,CENTRE SPORTIF D'AUDERGHEM,http://www.muppetsauderghem.be,,,aucun,,,,,"API TabT (FRBTT), club BBW145",2026-09-04
+BE,BEBBW323,Smash Evere,BE11,CP 11,BE-BRUXELLES-BRABANT,Bruxelles et Brabant wallon,BRUXELLES,1140,COMPLEXE SPORTIF D'EVERE (1er et.),,,,sans-site,,,,,"API TabT (FRBTT), club BBW323",2026-09-04
+BE,BEBBW347,CTT Uccle Ping,BE11,CP 11,BE-BRUXELLES-BRABANT,Bruxelles et Brabant wallon,Uccle,1180,Institut Saint-Vincent-de-Paul,https://incandescent-truffle-9994b1.netlify.app/,,,aucun,,,,,"API TabT (FRBTT), club BBW347",2026-09-04
+BE,BEBBW299,CTT Hamme-Mille 6V,BE13,CP 13,BE-BRUXELLES-BRABANT,Bruxelles et Brabant wallon,GREZ DOICEAU,1390,HALL OMNISPORTS,http://www.ctthamme-mille.be,,,aucun,,,,,"API TabT (FRBTT), club BBW299",2026-09-04
+BE,BEL397,Heleping,BE13,CP 13,BE-LIEGE,Liège,Hélécine,1357,HALL OMNISPORTS,,,,sans-site,,,,,"API TabT (FRBTT), club L397",2026-09-04
+BE,BEL124,Jandrain,BE13,CP 13,BE-LIEGE,Liège,JANDRAIN,1350,SALLE,,,,sans-site,,,,,"API TabT (FRBTT), club L124",2026-09-04
+BE,BEBBW194,CTT La Hulpe-Rixensart,BE13,CP 13,BE-BRUXELLES-BRABANT,Bruxelles et Brabant wallon,LA HULPE,1310,COMPLEXE SPORTIF DE LA HULPE,http://www.ctt-lahulpe-rixensart.be,,,aucun,,,,,"API TabT (FRBTT), club BBW194",2026-09-04
+BE,BEBBW345,AS Beauchamp,BE13,CP 13,BE-BRUXELLES-BRABANT,Bruxelles et Brabant wallon,LIMAL,1300,AS BEAUCHAMP,http://www.as-beauchamp.be/,,,aucun,,,,,"API TabT (FRBTT), club BBW345",2026-09-04
+BE,BEBBW123,CTT Limal Wavre,BE13,CP 13,BE-BRUXELLES-BRABANT,Bruxelles et Brabant wallon,LIMAL,1300,HALL DES SPORTS DE LIMAL,http://www.cttliwa.be,,,aucun,,,,,"API TabT (FRBTT), club BBW123",2026-09-04
+BE,BEL293,TT La Chaine Orp,BE13,CP 13,BE-LIEGE,Liège,Orp-le-grand,1350,Salle du Chaufour,https://ttc-orp.be/,,,aucun,,,,,"API TabT (FRBTT), club L293",2026-09-04
+BE,BEBBW214,CTT Ottignies - Blocry,BE13,CP 13,BE-BRUXELLES-BRABANT,Bruxelles et Brabant wallon,OTTIGNIES LLN,1340,COMPLEXE SPORTIF JEAN DEMEESTER,,,,sans-site,,,,,"API TabT (FRBTT), club BBW214",2026-09-04
+BE,BEBBW289,TT Perwez,BE13,CP 13,BE-BRUXELLES-BRABANT,Bruxelles et Brabant wallon,THOREMBAIS-LES-BEGUINES,1360,CENTRE SPORTIF DE THOREMBAIS-LES-BEGUINES,http://www.cttperwez.com,,,aucun,,,,,"API TabT (FRBTT), club BBW289",2026-09-04
+BE,BEBBW315,CTT Le Moulin,BE13,CP 13,BE-BRUXELLES-BRABANT,Bruxelles et Brabant wallon,ZETRUD-LUMAY (JODOIGNE),1370,MJC LE MOULIN,http://www.cttlemoulin.be,,,aucun,,,,,"API TabT (FRBTT), club BBW315",2026-09-04
+BE,BEBBW338,CTT Fonteny - Genappe,BE14,CP 14,BE-BRUXELLES-BRABANT,Bruxelles et Brabant wallon,Bousval,1470,Salle Gossiaux,http://www.cttfontenygenappe.be,,,aucun,,,,,"API TabT (FRBTT), club BBW338",2026-09-04
+BE,BEBBW179,CTT Braine l'Alleud,BE14,CP 14,BE-BRUXELLES-BRABANT,Bruxelles et Brabant wallon,BRAINE L'ALLEUD,1420,CTT BRAINE L'ALLEUD,http://www.ctt-braine-lalleud.be,,,aucun,,,,,"API TabT (FRBTT), club BBW179",2026-09-04
+BE,BEBBW348,CTT Palette Bleue,BE14,CP 14,BE-BRUXELLES-BRABANT,Bruxelles et Brabant wallon,BRAINE LE CHATEAU,1440,CTT PALETTE BLEUE,,,,sans-site,,,,,"API TabT (FRBTT), club BBW348",2026-09-04
+BE,BEBBW291,Pp Witterzee,BE14,CP 14,BE-BRUXELLES-BRABANT,Bruxelles et Brabant wallon,LILLOIS,1428,SALLE OMNISPORT,http://www.bbw291.be,,,aucun,,,,,"API TabT (FRBTT), club BBW291",2026-09-04
+BE,BEBBW223,Royal CTT Mont-Saint-Guibert,BE14,CP 14,BE-BRUXELLES-BRABANT,Bruxelles et Brabant wallon,MONT-SAINT-GUIBERT,1435,Salle des Hayeffes,,,,sans-site,,,,,"API TabT (FRBTT), club BBW223",2026-09-04
+BE,BEBBW118,REP Nivelloise,BE14,CP 14,BE-BRUXELLES-BRABANT,Bruxelles et Brabant wallon,NIVELLES,1400,REP NIVELLOISE,https://www.repnivelles.be,,,aucun,,,,,"API TabT (FRBTT), club BBW118",2026-09-04
+BE,BEH133,Royal CTT Tilly,BE14,CP 14,BE-HAINAUT,Hainaut,TILLY,1495,CENTRE RECREATIF CULTUREL ET SPORTIF,,,,sans-site,,,,,"API TabT (FRBTT), club H133",2026-09-04
+BE,BEBBW349,CTT Tubize,BE14,CP 14,BE-BRUXELLES-BRABANT,Bruxelles et Brabant wallon,TUBIZE,1480,Stade Leburton (NIVEAU 2),https://www.ctt-tubize.be/,,,aucun,,,,,"API TabT (FRBTT), club BBW349",2026-09-04
+BE,BEBBW155,Royal Pac Clabecq,BE14,CP 14,BE-BRUXELLES-BRABANT,Bruxelles et Brabant wallon,TUBIZE,1480,SALLE ANDRE MENU,https://www.rpac.be/,,,aucun,,,,,"API TabT (FRBTT), club BBW155",2026-09-04
+BE,BEBBW307,Palette Ry Ternel,BE14,CP 14,BE-BRUXELLES-BRABANT,Bruxelles et Brabant wallon,Virginal-Samme,1460,Sport'ITTRE,http://ry-ternel.be/,,,aucun,,,,,"API TabT (FRBTT), club BBW307",2026-09-04
+BE,BEBBW350,CTT Tourinnes,BE14,CP 14,BE-BRUXELLES-BRABANT,Bruxelles et Brabant wallon,Walhain,1457,Salle Omnisports de Walhain,,,,sans-site,,,,,"API TabT (FRBTT), club BBW350",2026-09-04
+BE,BEBBW319,Piranha TT Waterloo,BE14,CP 14,BE-BRUXELLES-BRABANT,Bruxelles et Brabant wallon,WATERLOO,1410,HALL OMNISPORT DE WATERLOO,http://www.tt-piranha.be,,,aucun,,,,,"API TabT (FRBTT), club BBW319",2026-09-04
+BE,BEVl-B247,KTTC Galmaarden,BE15,CP 15,BE-VLAAMS-BRABANT,Brabant flamand,Galmaarden,1570,T.R.B.Zaal,,,,sans-site,,,,,"API TabT (FRBTT), club Vl-B247",2026-09-04
+BE,BEVl-B248,KTTC Halle,BE15,CP 15,BE-VLAAMS-BRABANT,Brabant flamand,Lembeek,1502,Kasteelpark,,,,sans-site,,,,,"API TabT (FRBTT), club Vl-B248",2026-09-04
+BE,BEVl-B161,T.T.C. Den Hoek,BE16,CP 16,BE-VLAAMS-BRABANT,Brabant flamand,Sint-Genesius-Rode,1640,Sporthal Wauterbos,,,,sans-site,,,,,"API TabT (FRBTT), club Vl-B161",2026-09-04
+BE,BEVl-B182,KTTC Dilbeek,BE17,CP 17,BE-VLAAMS-BRABANT,Brabant flamand,Groot-Bijgaarden,1702,Sporthal Ten Gaerde,,,,sans-site,,,,,"API TabT (FRBTT), club Vl-B182",2026-09-04
+BE,BEVl-B225,Hurricane T.T.W.,BE17,CP 17,BE-VLAAMS-BRABANT,Brabant flamand,Wemmel,1780,Sporthal Dijck,,,,sans-site,,,,,"API TabT (FRBTT), club Vl-B225",2026-09-04
+BE,BEVl-B213,T.T.C. Humbeek,BE18,CP 18,BE-VLAAMS-BRABANT,Brabant flamand,Humbeek,1851,Sportcomplex,,,,sans-site,,,,,"API TabT (FRBTT), club Vl-B213",2026-09-04
+BE,BEVl-B218,KTTK Vilvo,BE18,CP 18,BE-VLAAMS-BRABANT,Brabant flamand,Vilvoorde,1800,TTK. Vilvo VZW,,,,sans-site,,,,,"API TabT (FRBTT), club Vl-B218",2026-09-04
+BE,BEA211,KTTK Zwijndrecht,BE20,CP 20,BE-ANTWERPEN,Anvers,Burcht (Zwijndrecht),2070,St Martinusschool,,,,sans-site,,,,,"API TabT (FRBTT), club A211",2026-09-04
+BE,BEA062,KTTC A.F.P. Antwerpen,BE21,CP 21,BE-ANTWERPEN,Anvers,Borgerhout,2140,Hoofdlokaal,,,,sans-site,,,,,"API TabT (FRBTT), club A062",2026-09-04
+BE,BEA182,TTC Nodo,BE21,CP 21,BE-ANTWERPEN,Anvers,Ekeren,2180,T.T.C. NODO,,,,sans-site,,,,,"API TabT (FRBTT), club A182",2026-09-04
+BE,BEA155,TTC Wommelgem,BE21,CP 21,BE-ANTWERPEN,Anvers,Wommelgem,2160,"Recreatiedomein Fort II (1e verdiep, lokaal 116)",,,,sans-site,,,,,"API TabT (FRBTT), club A155",2026-09-04
+BE,BEA147,TTK Gierle,BE22,CP 22,BE-ANTWERPEN,Anvers,Gierle,2275,Pegierke,,,,sans-site,,,,,"API TabT (FRBTT), club A147",2026-09-04
+BE,BEA139,KTTC Hallaar,BE22,CP 22,BE-ANTWERPEN,Anvers,Hallaar,2220,Tafeltenniscentrum Hallaar,,,,sans-site,,,,,"API TabT (FRBTT), club A139",2026-09-04
+BE,BEA201,TTC Hulshout,BE22,CP 22,BE-ANTWERPEN,Anvers,Hulshout,2235,Transport Michiels,,,,sans-site,,,,,"API TabT (FRBTT), club A201",2026-09-04
+BE,BEA167,"TTC Lille ""Boemerangske""",BE22,CP 22,BE-ANTWERPEN,Anvers,Lille,2275,Oude Melkerij,,,,sans-site,,,,,"API TabT (FRBTT), club A167",2026-09-04
+BE,BEA123,TTC Virtus,BE22,CP 22,BE-ANTWERPEN,Anvers,Wechelderzande,2275,TTC Virtus,,,,sans-site,,,,,"API TabT (FRBTT), club A123",2026-09-04
+BE,BEA141,TTK Merksplas,BE23,CP 23,BE-ANTWERPEN,Anvers,Merksplas,2330,Sportpark EBEM,,,,sans-site,,,,,"API TabT (FRBTT), club A141",2026-09-04
+BE,BEA135,TTK Minderhout,BE23,CP 23,BE-ANTWERPEN,Anvers,Minderhout,2322,TTC Minderhout (Noodkerk),,,,sans-site,,,,,"API TabT (FRBTT), club A135",2026-09-04
+BE,BEA218,TTV Poppel,BE23,CP 23,BE-ANTWERPEN,Anvers,Poppel,2382,Hoofdlokaal,,,,sans-site,,,,,"API TabT (FRBTT), club A218",2026-09-04
+BE,BEA118,TTK Rijkevorsel,BE23,CP 23,BE-ANTWERPEN,Anvers,Rijkevorsel,2310,TTK Rijkevorsel vzw,,,,sans-site,,,,,"API TabT (FRBTT), club A118",2026-09-04
+BE,BEA095,TTK Turnhout,BE23,CP 23,BE-ANTWERPEN,Anvers,Turnhout,2300,TTK Turnhout,,,,sans-site,,,,,"API TabT (FRBTT), club A095",2026-09-04
+BE,BEA105,TTK Dessel,BE24,CP 24,BE-ANTWERPEN,Anvers,Dessel,2480,"Polyvalente zaal, in de tennishal Spin2000",,,,sans-site,,,,,"API TabT (FRBTT), club A105",2026-09-04
+BE,BEA117,Geelse TTC,BE24,CP 24,BE-ANTWERPEN,Anvers,Geel,2440,Tafeltennistempel Geelse TTC,,,,sans-site,,,,,"API TabT (FRBTT), club A117",2026-09-04
+BE,BELK056,TTC Morata Mol,BE24,CP 24,BE-LIMBURG,Limbourg,Mol,2400,T.T.C Morata,,,,sans-site,,,,,"API TabT (FRBTT), club LK056",2026-09-04
+BE,BELK060,TTC Westel,BE24,CP 24,BE-LIMBURG,Limbourg,Oosterlo,2440,TTC Westel,,,,sans-site,,,,,"API TabT (FRBTT), club LK060",2026-09-04
+BE,BEA127,TTC Retie,BE24,CP 24,BE-ANTWERPEN,Anvers,Retie,2470,Sporthal Boesdijkhof,,,,sans-site,,,,,"API TabT (FRBTT), club A127",2026-09-04
+BE,BEA115,TTK Buhlmann Berlaar,BE25,CP 25,BE-ANTWERPEN,Anvers,Berlaar,2590,Chalet Karel Sappenberghs TTK Berlaar,,,,sans-site,,,,,"API TabT (FRBTT), club A115",2026-09-04
+BE,BEA074,KTTC Sporting Hove,BE25,CP 25,BE-ANTWERPEN,Anvers,Hove,2540,Tennishal,,,,sans-site,,,,,"API TabT (FRBTT), club A074",2026-09-04
+BE,BEA097,KTTC Nijlen-Bevel,BE25,CP 25,BE-ANTWERPEN,Anvers,Nijlen,2560,Sporthal,,,,sans-site,,,,,"API TabT (FRBTT), club A097",2026-09-04
+BE,BEA176,TTC Sokah Hoboken,BE26,CP 26,BE-ANTWERPEN,Anvers,Hoboken,2660,TTC Sokah,,,,sans-site,,,,,"API TabT (FRBTT), club A176",2026-09-04
+BE,BEA142,TTC Tecemo,BE26,CP 26,BE-ANTWERPEN,Anvers,Mortsel,2640,Zaal Killypong,,,,sans-site,,,,,"API TabT (FRBTT), club A142",2026-09-04
+BE,BEA003,KTTC Salamander Mechelen,BE28,CP 28,BE-ANTWERPEN,Anvers,Mechelen,2800,De Sportschuur,,,,sans-site,,,,,"API TabT (FRBTT), club A003",2026-09-04
+BE,BEA159,Tafeltennisclub TTK-Real,BE28,CP 28,BE-ANTWERPEN,Anvers,Mechelen,2800,'t Kranske,,,,sans-site,,,,,"API TabT (FRBTT), club A159",2026-09-04
+BE,BEA160,T.T.C. Walem,BE28,CP 28,BE-ANTWERPEN,Anvers,Mechelen (Walem),2800,Arena,,,,sans-site,,,,,"API TabT (FRBTT), club A160",2026-09-04
+BE,BEA075,TTC Rupel,BE28,CP 28,BE-ANTWERPEN,Anvers,Niel,2845,Sint-Hubertusschool,,,,sans-site,,,,,"API TabT (FRBTT), club A075",2026-09-04
+BE,BEA186,TTC Willebroek,BE28,CP 28,BE-ANTWERPEN,Anvers,Willebroek,2830,Site De Schalk,,,,sans-site,,,,,"API TabT (FRBTT), club A186",2026-09-04
+BE,BEA008,TTC Brasgata,BE29,CP 29,BE-ANTWERPEN,Anvers,Brasschaat,2930,Sporthal KTA Brasschaat,,,,sans-site,,,,,"API TabT (FRBTT), club A008",2026-09-04
+BE,BEA130,TTK Schoten,BE29,CP 29,BE-ANTWERPEN,Anvers,Schoten,2900,Tafeltenniscentrum De Zeurt,,,,sans-site,,,,,"API TabT (FRBTT), club A130",2026-09-04
+BE,BEA212,TTC Sint Antonius,BE29,CP 29,BE-ANTWERPEN,Anvers,Zoersel,2980,Hoofdlokaal,,,,sans-site,,,,,"API TabT (FRBTT), club A212",2026-09-04
+BE,BEA136,TTC Zoersel,BE29,CP 29,BE-ANTWERPEN,Anvers,Zoersel,2980,De Lindekens,,,,sans-site,,,,,"API TabT (FRBTT), club A136",2026-09-04
+BE,BEVl-B334,T.T.C. Tacko Kortenberg,BE30,CP 30,BE-VLAAMS-BRABANT,Brabant flamand,Kortenberg,3070,Sporthal Colomba,,,,sans-site,,,,,"API TabT (FRBTT), club Vl-B334",2026-09-04
+BE,BEVl-B005,K.T.T.K Pingouin Leuven,BE30,CP 30,BE-VLAAMS-BRABANT,Brabant flamand,Leuven,3000,Campus Redingenhof,,,,sans-site,,,,,"API TabT (FRBTT), club Vl-B005",2026-09-04
+BE,BEVl-B234,T.T.C. Meerdaal Leuven,BE30,CP 30,BE-VLAAMS-BRABANT,Brabant flamand,Leuven,3000,Nieuwe Sporthal Vrij Tech. Inst.,,,,sans-site,,,,,"API TabT (FRBTT), club Vl-B234",2026-09-04
+BE,BEVl-B331,TT Blauwput Omnisport,BE30,CP 30,BE-VLAAMS-BRABANT,Brabant flamand,Leuven (Kessel-Lo),3010,Turn- en omnisport Boudewijnstadion,,,,sans-site,,,,,"API TabT (FRBTT), club Vl-B331",2026-09-04
+BE,BEVl-B256,Smash Overijse,BE30,CP 30,BE-VLAAMS-BRABANT,Brabant flamand,Overijse,3090,Sint Martinuscollege,,,,sans-site,,,,,"API TabT (FRBTT), club Vl-B256",2026-09-04
+BE,BEVl-B295,T.T.C. Werchter,BE31,CP 31,BE-VLAAMS-BRABANT,Brabant flamand,Werchter,3118,T.T.C. Werchter,,,,sans-site,,,,,"API TabT (FRBTT), club Vl-B295",2026-09-04
+BE,BELK024,T.T.C. Aarschot,BE32,CP 32,BE-LIMBURG,Limbourg,Aarschot,3200,Sportzaal Sancta Maria Aarschot,,,,sans-site,,,,,"API TabT (FRBTT), club LK024",2026-09-04
+BE,BEVl-B283,TTC Smash Aarschot,BE32,CP 32,BE-VLAAMS-BRABANT,Brabant flamand,Aarschot,3200,Sporthal Bekaf Noord,,,,sans-site,,,,,"API TabT (FRBTT), club Vl-B283",2026-09-04
+BE,BEVl-B293,P.W. Diest,BE32,CP 32,BE-VLAAMS-BRABANT,Brabant flamand,Diest,3290,Peter Dorlandcentrum,,,,sans-site,,,,,"API TabT (FRBTT), club Vl-B293",2026-09-04
+BE,BEVl-B318,VMS,BE32,CP 32,BE-VLAAMS-BRABANT,Brabant flamand,Pellenberg-Lubbeek,3212,Gemeentelijke Turnzaal Pellenberg,,,,sans-site,,,,,"API TabT (FRBTT), club Vl-B318",2026-09-04
+BE,BEVl-B336,Pingkolo,BE33,CP 33,BE-VLAAMS-BRABANT,Brabant flamand,Bierbeek,3360,Sportcentrum De Borre,,,,sans-site,,,,,"API TabT (FRBTT), club Vl-B336",2026-09-04
+BE,BEVl-B330,TTC Sukarti,BE33,CP 33,BE-VLAAMS-BRABANT,Brabant flamand,Tienen,3300,Sportcentrum Houtemveld,,,,sans-site,,,,,"API TabT (FRBTT), club Vl-B330",2026-09-04
+BE,BELK100,T.T.C. Alken,BE35,CP 35,BE-LIMBURG,Limbourg,Alken,3570,'t ABC sporthal,,,,sans-site,,,,,"API TabT (FRBTT), club LK100",2026-09-04
+BE,BELK061,KTTC Paal,BE35,CP 35,BE-LIMBURG,Limbourg,Beringen-Paal,3583,Sporthal 't Park,,,,sans-site,,,,,"API TabT (FRBTT), club LK061",2026-09-04
+BE,BELK051,TTC Hasselt,BE35,CP 35,BE-LIMBURG,Limbourg,Hasselt,3500,Beukenhof,,,,sans-site,,,,,"API TabT (FRBTT), club LK051",2026-09-04
+BE,BELK084,TTV Hasselt United,BE35,CP 35,BE-LIMBURG,Limbourg,Hasselt,3500,Recreatiesportzaal Malpertuus,,,,sans-site,,,,,"API TabT (FRBTT), club LK084",2026-09-04
+BE,BELK049,T.T.K. Herckenrode,BE35,CP 35,BE-LIMBURG,Limbourg,Hasselt-Kuringen,3511,Tafeltenniscentrum Herckenrode,,,,sans-site,,,,,"API TabT (FRBTT), club LK049",2026-09-04
+BE,BELK052,TTC Schulen,BE35,CP 35,BE-LIMBURG,Limbourg,Herk-de-Stad,3540,Sportcentrum,,,,sans-site,,,,,"API TabT (FRBTT), club LK052",2026-09-04
+BE,BELK016,T.T.C. Smash Heusden,BE35,CP 35,BE-LIMBURG,Limbourg,Heusden-Zolder,3550,Sporthal Olympia,,,,sans-site,,,,,"API TabT (FRBTT), club LK016",2026-09-04
+BE,BELK010,TTC Palet Houthalen-Helchteren,BE35,CP 35,BE-LIMBURG,Limbourg,Houthalen,3530,TTC Palet Houthalen,,,,sans-site,,,,,"API TabT (FRBTT), club LK010",2026-09-04
+BE,BELK105,TTC Stokrooie,BE35,CP 35,BE-LIMBURG,Limbourg,Stokrooie,3511,TTC Stokrooie,,,,sans-site,,,,,"API TabT (FRBTT), club LK105",2026-09-04
+BE,BELK086,TTC Dilsen,BE36,CP 36,BE-LIMBURG,Limbourg,Dilsen-Stokkem,3650,"Sporthal ""De Vrietsel""",,,,sans-site,,,,,"API TabT (FRBTT), club LK086",2026-09-04
+BE,BELK110,TTC Molenbeersel,BE36,CP 36,BE-LIMBURG,Limbourg,Kinrooi-Molenbeersel,3640,In de Vlas,,,,sans-site,,,,,"API TabT (FRBTT), club LK110",2026-09-04
+BE,BELK085,KTTC Mattec,BE36,CP 36,BE-LIMBURG,Limbourg,Maasmechelen (Boorsem),3631,Vrije Basisschool,,,,sans-site,,,,,"API TabT (FRBTT), club LK085",2026-09-04
+BE,BELK076,TTV Meeuwen,BE36,CP 36,BE-LIMBURG,Limbourg,Meeuwen-Ellikom,3670,Buurthuis Ellikom,,,,sans-site,,,,,"API TabT (FRBTT), club LK076",2026-09-04
+BE,BELK031,TTC Jevota Lanaken,BE36,CP 36,BE-LIMBURG,Limbourg,Neerharen - lanaken,3620,Sporthal Neerharen,,,,sans-site,,,,,"API TabT (FRBTT), club LK031",2026-09-04
+BE,BELK037,TTC Bambi,BE36,CP 36,BE-LIMBURG,Limbourg,Neeroeteren,3680,"Stedelijke Sporthal ""De Borg"" Neeroeteren",,,,sans-site,,,,,"API TabT (FRBTT), club LK037",2026-09-04
+BE,BELK017,TTC Voorshoven vzw,BE36,CP 36,BE-LIMBURG,Limbourg,Neeroeteren,3680,"Zaal ""Ten Hove""",,,,sans-site,,,,,"API TabT (FRBTT), club LK017",2026-09-04
+BE,BELK058,TTC Opglabbeek,BE36,CP 36,BE-LIMBURG,Limbourg,Opglabbeek,3660,Sportschuur Louwel,,,,sans-site,,,,,"API TabT (FRBTT), club LK058",2026-09-04
+BE,BELK068,TTC T.R.S.-Bilzen,BE37,CP 37,BE-LIMBURG,Limbourg,Bilzen-Hoeselt,3740,De Wijngaard,,,,sans-site,,,,,"API TabT (FRBTT), club LK068",2026-09-04
+BE,BELK103,TTC Tamara Hoeselt,BE37,CP 37,BE-LIMBURG,Limbourg,Bilzen-Hoeselt,3730,Tamara,,,,sans-site,,,,,"API TabT (FRBTT), club LK103",2026-09-04
+BE,BELK026,TTC Rijkel-Borgloon,BE38,CP 38,BE-LIMBURG,Limbourg,Borgloon,3840,Sporthal Borgloon,,,,sans-site,,,,,"API TabT (FRBTT), club LK026",2026-09-04
+BE,BELK092,TTC Sint-Truiden,BE38,CP 38,BE-LIMBURG,Limbourg,St.-Truiden,3800,Sporthal KTA,,,,sans-site,,,,,"API TabT (FRBTT), club LK092",2026-09-04
+BE,BELK087,TTC Bocholt vzw,BE39,CP 39,BE-LIMBURG,Limbourg,Bocholt,3950,Turnzaal basisschool,,,,sans-site,,,,,"API TabT (FRBTT), club LK087",2026-09-04
+BE,BELK007,K.T.T.C. Meteor Bree,BE39,CP 39,BE-LIMBURG,Limbourg,Bree,3960,TTC Meteor Bree,,,,sans-site,,,,,"API TabT (FRBTT), club LK007",2026-09-04
+BE,BELK006,TTC Opitter,BE39,CP 39,BE-LIMBURG,Limbourg,Bree,3960,Itterdal,,,,sans-site,,,,,"API TabT (FRBTT), club LK006",2026-09-04
+BE,BELK089,KTTC Hechtel-Eksel,BE39,CP 39,BE-LIMBURG,Limbourg,Eksel,3941,Gemeentelijke Sporthal Eksel,,,,sans-site,,,,,"API TabT (FRBTT), club LK089",2026-09-04
+BE,BELK009,KTTC Leopoldsburg vzw,BE39,CP 39,BE-LIMBURG,Limbourg,Leopoldsburg,3970,Sporthal Geleeg,,,,sans-site,,,,,"API TabT (FRBTT), club LK009",2026-09-04
+BE,BELK036,TTC Lommel,BE39,CP 39,BE-LIMBURG,Limbourg,Lommel,3920,De Soeverein,,,,sans-site,,,,,"API TabT (FRBTT), club LK036",2026-09-04
+BE,BELK109,T.T.V. Neerpelt,BE39,CP 39,BE-LIMBURG,Limbourg,Neerpelt,3910,Buurthuis Damsheide,,,,sans-site,,,,,"API TabT (FRBTT), club LK109",2026-09-04
+BE,BELK115,TTC Peer,BE39,CP 39,BE-LIMBURG,Limbourg,Peer,3990,Basisschool De mAgneet,,,,sans-site,,,,,"API TabT (FRBTT), club LK115",2026-09-04
+BE,BELK000,Individueel Limburg,BE39,CP 39,BE-LIMBURG,Limbourg,Pelt,3910,Hoofdlokaal,,,,sans-site,,,,,"API TabT (FRBTT), club LK000",2026-09-04
+BE,BELK012,KTTV Lipalet,BE39,CP 39,BE-LIMBURG,Limbourg,St.-Huibrechts-Lille,3910,TT-hal TTV Lipalet,,,,sans-site,,,,,"API TabT (FRBTT), club LK012",2026-09-04
+BE,BEL152,TTC Beaufays,BE40,CP 40,BE-LIEGE,Liège,BEAUFAYS,4052,GYMNASE COMMUNAL,,,,sans-site,,,,,"API TabT (FRBTT), club L152",2026-09-04
+BE,BEL119,Royal CTT Astrid Herstal,BE40,CP 40,BE-LIEGE,Liège,HERSTAL,4040,RCTT ASTRID (Salle André Malpas),,,,sans-site,,,,,"API TabT (FRBTT), club L119",2026-09-04
+BE,BEL199,TT Saint-Hubert Liege,BE40,CP 40,BE-LIEGE,Liège,LIEGE,4020,Ecole de Fétinne,,,,sans-site,,,,,"API TabT (FRBTT), club L199",2026-09-04
+BE,BEL351,TT Ninane,BE40,CP 40,BE-LIEGE,Liège,Ninane,4050,HALL OMNISPORTS DE NINANE,,,,sans-site,,,,,"API TabT (FRBTT), club L351",2026-09-04
+BE,BEL401,TT Angleur,BE40,CP 40,BE-LIEGE,Liège,SCLESSIN,4000,Salle du TT Angleur,,,,sans-site,,,,,"API TabT (FRBTT), club L401",2026-09-04
+BE,BEL217,TT Dolembreux,BE41,CP 41,BE-LIEGE,Liège,DOLEMBREUX,4140,Salle DEVAHIVE,http://users.skynet.be/TTDolembreux,,,aucun,,,,,"API TabT (FRBTT), club L217",2026-09-04
+BE,BEL404,Rtt Ferrieres,BE41,CP 41,BE-LIEGE,Liège,FERRIERES,4190,RTT FERRIERES,,,,sans-site,,,,,"API TabT (FRBTT), club L404",2026-09-04
+BE,BEL402,Ping 100nr Ougrée,BE41,CP 41,BE-LIEGE,Liège,OUGREE,4102,Ecole Communale Alfred Heyne,,,,sans-site,,,,,"API TabT (FRBTT), club L402",2026-09-04
+BE,BEL365,TT Burdinne,BE42,CP 42,BE-LIEGE,Liège,BURDINNE,4210,SALLE COMMUNALE,,,,sans-site,,,,,"API TabT (FRBTT), club L365",2026-09-04
+BE,BEL234,TTC Hollogne,BE42,CP 42,BE-LIEGE,Liège,Geer,4250,Complexe sportif de Geer,,,,sans-site,,,,,"API TabT (FRBTT), club L234",2026-09-04
+BE,BEL246,Fallais TT,BE42,CP 42,BE-LIEGE,Liège,Hannut,4280,Lycée Notre Dame (salle de gym),,,,sans-site,,,,,"API TabT (FRBTT), club L246",2026-09-04
+BE,BEL126,Royal Tts Chiroux Hannut,BE42,CP 42,BE-LIEGE,Liège,THISNES,4280,SALLE DE GYM ECOLE COMMUNALE,,,,sans-site,,,,,"API TabT (FRBTT), club L126",2026-09-04
+BE,BEL333,TTC Wasseiges,BE42,CP 42,BE-LIEGE,Liège,WASSEIGES,4219,MAISON COMMUNALE,,,,sans-site,,,,,"API TabT (FRBTT), club L333",2026-09-04
+BE,BEL335,TTC Waremme,BE43,CP 43,BE-LIEGE,Liège,BOVENISTIER,4300,SALLE BOVINIA,,,,sans-site,,,,,"API TabT (FRBTT), club L335",2026-09-04
+BE,BEL358,ES Crisnee TT,BE43,CP 43,BE-LIEGE,Liège,Crisnée,4367,Hall omnisport de Hesbaye,http://www.escrisnee.be,,,aucun,,,,,"API TabT (FRBTT), club L358",2026-09-04
+BE,BEL275,TT Etoile Donceel,BE43,CP 43,BE-LIEGE,Liège,DONCEEL,4357,Centre Sportif local,,,,sans-site,,,,,"API TabT (FRBTT), club L275",2026-09-04
+BE,BEL205,TT Borlez,BE43,CP 43,BE-LIEGE,Liège,FAIMES,4317,ECOLE COMMUNALE,,,,sans-site,,,,,"API TabT (FRBTT), club L205",2026-09-04
+BE,BEL267,TTC Renaissance,BE43,CP 43,BE-LIEGE,Liège,FAIMES (VIEMME),4317,SALLE PAROISSIALE,http://www.ttcrenaissance.be,,,aucun,,,,,"API TabT (FRBTT), club L267",2026-09-04
+BE,BEL295,TT Bettincourt,BE43,CP 43,BE-LIEGE,Liège,WAREMME (BETTINCOURT),4300,MAISON DE QUARTIER,,,,sans-site,,,,,"API TabT (FRBTT), club L295",2026-09-04
+BE,BEL098,Rtt Ans,BE44,CP 44,BE-LIEGE,Liège,ALLEUR,4432,Complexe,,,,sans-site,,,,,"API TabT (FRBTT), club L098",2026-09-04
+BE,BEL390,TTC Bardafons,BE44,CP 44,BE-LIEGE,Liège,Bierset,4460,Ecole communale de Bierset,,,,sans-site,,,,,"API TabT (FRBTT), club L390",2026-09-04
+BE,BEL263,TT Awirs,BE44,CP 44,BE-LIEGE,Liège,FLEMALLE,4400,CERCLE SAINT-JOSEPH ET VICTOR,,,,sans-site,,,,,"API TabT (FRBTT), club L263",2026-09-04
+BE,BEL387,TTC Jehay,BE44,CP 44,BE-LIEGE,Liège,Flemalle ( Awirs),4400,TTC JEHAY ( Cercle Saint Joseph et Victor),,,,sans-site,,,,,"API TabT (FRBTT), club L387",2026-09-04
+BE,BEL143,CTT Ivoz,BE44,CP 44,BE-LIEGE,Liège,IVOZ - RAMET,4400,GYMNASE COMMUNAL DE L'ECOLE D'IVOZ,,,,sans-site,,,,,"API TabT (FRBTT), club L143",2026-09-04
+BE,BEL355,TT Ermitage,BE44,CP 44,BE-LIEGE,Liège,JUPRELLE,4450,SALLE ECOLE COMMUNALE,,,,sans-site,,,,,"API TabT (FRBTT), club L355",2026-09-04
+BE,BEL370,CTT Renaissance Montegnee,BE44,CP 44,BE-LIEGE,Liège,MONTEGNEE,4420,GYMNASE DE L'ECOLE COMMUNALE,,,,sans-site,,,,,"API TabT (FRBTT), club L370",2026-09-04
+BE,BEL398,TT Cercle,BE44,CP 44,BE-LIEGE,Liège,Stockay,4470,TT CERCLE,,,,sans-site,,,,,"API TabT (FRBTT), club L398",2026-09-04
+BE,BEL266,CTT A.h.v,BE45,CP 45,BE-LIEGE,Liège,Amay,4540,Hall Omnisports Robert Collignon,,,,sans-site,,,,,"API TabT (FRBTT), club L266",2026-09-04
+BE,BEL374,TT Viamont,BE45,CP 45,BE-LIEGE,Liège,AMAY,4540,Hall Omnisports Robert Collignon,,,,sans-site,,,,,"API TabT (FRBTT), club L374",2026-09-04
+BE,BEL393,Les Patapongistes Heron - Vinalmont,BE45,CP 45,BE-LIEGE,Liège,ANTHEIT,4520,PATAPING ARENA,,,,sans-site,,,,,"API TabT (FRBTT), club L393",2026-09-04
+BE,BEL029,T.t.c. Bas-Oha - Huy,BE45,CP 45,BE-LIEGE,Liège,HUY,4500,Hall des sports de l'école de Huy Sud,,,,sans-site,,,,,"API TabT (FRBTT), club L029",2026-09-04
+BE,BEL257,TT Tihange,BE45,CP 45,BE-LIEGE,Liège,HUY,4500,GYMNASE COMMUNAL,,,,sans-site,,,,,"API TabT (FRBTT), club L257",2026-09-04
+BE,BEL230,TTC Marchin,BE45,CP 45,BE-LIEGE,Liège,MARCHIN,4570,SALLE FERNAND BORGHOMS,,,,sans-site,,,,,"API TabT (FRBTT), club L230",2026-09-04
+BE,BEL282,Clavier,BE45,CP 45,BE-LIEGE,Liège,MODAVE (VIERSET),4577,Complex sportif,,,,sans-site,,,,,"API TabT (FRBTT), club L282",2026-09-04
+BE,BEL400,TT Tinlot,BE45,CP 45,BE-LIEGE,Liège,Tinlot,4557,Salle la Tinlotoise,https://www.tt-tinlot.be,,,aucun,,,,,"API TabT (FRBTT), club L400",2026-09-04
+BE,BEL193,TT St-Georges,BE45,CP 45,BE-LIEGE,Liège,Verlaine,4537,Centre Sportif de Verlaine,,,,sans-site,,,,,"API TabT (FRBTT), club L193",2026-09-04
+BE,BEL310,TTC Templiers,BE45,CP 45,BE-LIEGE,Liège,VILLERS-LE-TEMPLE (NANDRIN),4550,ESPACE DES TEMPLIERS,,,,sans-site,,,,,"API TabT (FRBTT), club L310",2026-09-04
+BE,BEL276,Rttc Wanze,BE45,CP 45,BE-LIEGE,Liège,WANZE,4520,HALL OMNISPORTS,,,,sans-site,,,,,"API TabT (FRBTT), club L276",2026-09-04
+BE,BEL030,Rs Chenee,BE46,CP 46,BE-LIEGE,Liège,BELLAIRE,4610,Salle Communale Sport et Culture,,,,sans-site,,,,,"API TabT (FRBTT), club L030",2026-09-04
+BE,BEL384,Attc Beyne,BE46,CP 46,BE-LIEGE,Liège,BEYNE-HEUSAY,4610,ECOLE COMMUNALE DE BEYNE CENTRE (préau couvert),,,,sans-site,,,,,"API TabT (FRBTT), club L384",2026-09-04
+BE,BEL999,"Asbl Moi Aussi, Je Joue Au Ping",BE46,CP 46,BE-LIEGE,Liège,BLEGNY,4670,CFTT,,,,sans-site,,,,,"API TabT (FRBTT), club L999",2026-09-04
+BE,BEL391,Atout Ping,BE46,CP 46,BE-LIEGE,Liège,BLEGNY,4670,CFTT - BLEGNY,,,,sans-site,,,,,"API TabT (FRBTT), club L391",2026-09-04
+BE,BEL111,CTT St Remacle,BE46,CP 46,BE-LIEGE,Liège,Blegny,4670,CFTT,,,,sans-site,,,,,"API TabT (FRBTT), club L111",2026-09-04
+BE,BEL218,Sainte-Gertrude Gervina,BE46,CP 46,BE-LIEGE,Liège,BLEGNY,4670,CENTRE DE FORMATION TENNIS DE TABLE,,,,sans-site,,,,,"API TabT (FRBTT), club L218",2026-09-04
+BE,BEL185,TT Blegny,BE46,CP 46,BE-LIEGE,Liège,BLEGNY,4670,INSTITUT SAINT-JOSEPH,http://www.ttblegny.be,,,aucun,,,,,"API TabT (FRBTT), club L185",2026-09-04
+BE,BEL357,TT Bolland,BE46,CP 46,BE-LIEGE,Liège,BOLLAND,4653,SALLE VIE VILLAGEOISE,,,,sans-site,,,,,"API TabT (FRBTT), club L357",2026-09-04
+BE,BEL377,TTC Emael,BE46,CP 46,BE-LIEGE,Liège,EBEN-EMAEL,4690,TTC EMAEL,,,,sans-site,,,,,"API TabT (FRBTT), club L377",2026-09-04
+BE,BEL316,Royal TT Titi Oupeye,BE46,CP 46,BE-LIEGE,Liège,HERMALLE-SOUS-ARGENTEAU,4681,FOYER CULTUREL ET SPORTIF,,,,sans-site,,,,,"API TabT (FRBTT), club L316",2026-09-04
+BE,BEL066,CTT Herve,BE46,CP 46,BE-LIEGE,Liège,HERVE,4650,Hall Omnisports de Herve,,,,sans-site,,,,,"API TabT (FRBTT), club L066",2026-09-04
+BE,BEL405,TTC Wolves Xhendelesse,BE46,CP 46,BE-LIEGE,Liège,HERVE,4652,ECOLE COMMUNALE DE XHENDELESSE,https://ttcwolves.francky-family.com/,,,aucun,,,,,"API TabT (FRBTT), club L405",2026-09-04
+BE,BEL170,Royal Donald Heuseux,BE46,CP 46,BE-LIEGE,Liège,HEUSEUX,4632,LE DONALD,,,,sans-site,,,,,"API TabT (FRBTT), club L170",2026-09-04
+BE,BEL312,Palette Retinne,BE46,CP 46,BE-LIEGE,Liège,RETINNE,4621,ASBL LES AMIS DU VIEUX RETINNE,,,,sans-site,,,,,"API TabT (FRBTT), club L312",2026-09-04
+BE,BEL396,TT Top Spin Retinne,BE46,CP 46,BE-LIEGE,Liège,RETINNE,4621,Salle les amis du Vieux Retinne,,,,sans-site,,,,,"API TabT (FRBTT), club L396",2026-09-04
+BE,BEL338,TT Sarolay,BE46,CP 46,BE-LIEGE,Liège,SAROLAY,4601,ECOLE COMMUNALE,,,,sans-site,,,,,"API TabT (FRBTT), club L338",2026-09-04
+BE,BEL043,RCS Vise TT,BE46,CP 46,BE-LIEGE,Liège,VISE,4600,HALL OMNISPORTS,,,,sans-site,,,,,"API TabT (FRBTT), club L043",2026-09-04
+BE,BEL348,TTC Elsenborn,BE47,CP 47,BE-LIEGE,Liège,ELSENBORN,4750,HEZERBÖSCH,,,,sans-site,,,,,"API TabT (FRBTT), club L348",2026-09-04
+BE,BEL272,TT Eupen,BE47,CP 47,BE-LIEGE,Liège,EUPEN,4700,ECOLE PATER DAMIAN,http://www.ttceupen.be,,,aucun,,,,,"API TabT (FRBTT), club L272",2026-09-04
+BE,BEL296,TTC Astoria - La Calamine,BE47,CP 47,BE-LIEGE,Liège,HERGENRATH,4728,ECOLE COMMUNALE,https://www.ttc-astoria-kelmis.be,,,aucun,,,,,"API TabT (FRBTT), club L296",2026-09-04
+BE,BEL320,TTC Raeren,BE47,CP 47,BE-LIEGE,Liège,Raeren,4730,HALL OMNISPORT DE RAEREN,,,,sans-site,,,,,"API TabT (FRBTT), club L320",2026-09-04
+BE,BEL318,Kttc Recht-St.vith,BE47,CP 47,BE-LIEGE,Liège,RECHT,4780,SPORTHALLE RECHT,,,,sans-site,,,,,"API TabT (FRBTT), club L318",2026-09-04
+BE,BEL407,Eifeler Tischtennisfreunde,BE47,CP 47,BE-LIEGE,Liège,ST. VITH,4780,SPORT - UND FREIZEITZENTRUM ST. VITH (salle des mi,,,,sans-site,,,,,"API TabT (FRBTT), club L407",2026-09-04
+BE,BEL344,TTC Aubel,BE48,CP 48,BE-LIEGE,Liège,AUBEL,4880,HALL OMNISPORTS,http://www.ttcaubel.be,,,aucun,,,,,"API TabT (FRBTT), club L344",2026-09-04
+BE,BEL399,Raquette Disonaise,BE48,CP 48,BE-LIEGE,Liège,DISON,4820,LA BULLE DE DISON,,,,sans-site,,,,,"API TabT (FRBTT), club L399",2026-09-04
+BE,BEL389,TT Pingouin Stembert,BE48,CP 48,BE-LIEGE,Liège,DISON,4820,Bulle de Dison,,,,sans-site,,,,,"API TabT (FRBTT), club L389",2026-09-04
+BE,BEL002,Amicale Dolhain TTC,BE48,CP 48,BE-LIEGE,Liège,DOLHAIN-LIMBOURG,4830,Hall sportif de Dolhain,,,,sans-site,,,,,"API TabT (FRBTT), club L002",2026-09-04
+BE,BEL323,CTT Minerois,BE48,CP 48,BE-LIEGE,Liège,FROIDTHIER,4890,CTT MINEROIS,https://www.cttminerois.be,,,aucun,,,,,"API TabT (FRBTT), club L323",2026-09-04
+BE,BEL326,TT Jalhay,BE48,CP 48,BE-LIEGE,Liège,JALHAY,4845,ECOLE COMMUNALE,,,,sans-site,,,,,"API TabT (FRBTT), club L326",2026-09-04
+BE,BEL179,Royal TT Plein Vent,BE48,CP 48,BE-LIEGE,Liège,LAMBERMONT,4800,CERCLE SAINT-BERNARD,,,,sans-site,,,,,"API TabT (FRBTT), club L179",2026-09-04
+BE,BEL368,TT Daltons Membach,BE48,CP 48,BE-LIEGE,Liège,MEMBACH,4837,SALLE SAINT-JEAN,,,,sans-site,,,,,"API TabT (FRBTT), club L368",2026-09-04
+BE,BEL284,TT Montzen Jeunes,BE48,CP 48,BE-LIEGE,Liège,MONTZEN,4850,LA MONTZENOISE,,,,sans-site,,,,,"API TabT (FRBTT), club L284",2026-09-04
+BE,BEL264,CTT Tiege,BE48,CP 48,BE-LIEGE,Liège,SART-JALHAY,4845,CTT TIEGE,http://www.ctttiege.be,,,aucun,,,,,"API TabT (FRBTT), club L264",2026-09-04
+BE,BEL383,Prayon,BE48,CP 48,BE-LIEGE,Liège,TROOZ,4870,ECOLE DU CENTRE,,,,sans-site,,,,,"API TabT (FRBTT), club L383",2026-09-04
+BE,BEL378,Palette Vervietoise,BE48,CP 48,BE-LIEGE,Liège,VERVIERS,4800,CERCLE VERVIA,,,,sans-site,,,,,"API TabT (FRBTT), club L378",2026-09-04
+BE,BEL406,TT Ensival,BE48,CP 48,BE-LIEGE,Liège,Verviers,4800,Hall Omnisports Moray,,,,sans-site,,,,,"API TabT (FRBTT), club L406",2026-09-04
+BE,BEL360,TT Sfx,BE48,CP 48,BE-LIEGE,Liège,VERVIERS,4800,COLLEGE SAINT-FRANCOIS XAVIER,,,,sans-site,,,,,"API TabT (FRBTT), club L360",2026-09-04
+BE,BEL095,TT Vervia,BE48,CP 48,BE-LIEGE,Liège,VERVIERS,4800,CERCLE VERVIA,,,,sans-site,,,,,"API TabT (FRBTT), club L095",2026-09-04
+BE,BEL003,Royal Raquette Pepinster,BE48,CP 48,BE-LIEGE,Liège,Wegnez,4860,Pôle sportif,,,,sans-site,,,,,"API TabT (FRBTT), club L003",2026-09-04
+BE,BEL125,TT Ozanam-Wegnez,BE48,CP 48,BE-LIEGE,Liège,WEGNEZ,4860,Pôle multisports de Wegnez,https://ttozanam.wixsite.com/ttozanam,,,aucun,,,,,"API TabT (FRBTT), club L125",2026-09-04
+BE,BEL274,CTT Welkenraedt,BE48,CP 48,BE-LIEGE,Liège,WELKENRAEDT,4840,SALLE DE GYM ECOLE COMMUNALE,http://www.ctt-welkenraedt.be,,,aucun,,,,,"API TabT (FRBTT), club L274",2026-09-04
+BE,BEL165,Amicale 54-Aywaille,BE49,CP 49,BE-LIEGE,Liège,Aywaille,4920,Athénée Royale Aywaille (salle de Gym),,,,sans-site,,,,,"API TabT (FRBTT), club L165",2026-09-04
+BE,BEL403,TT Trois-Ponts,BE49,CP 49,BE-LIEGE,Liège,Basse-Bodeux,4983,TT TROIS-PONTS,,,,sans-site,,,,,"API TabT (FRBTT), club L403",2026-09-04
+BE,BEL329,TTC Wanne,BE49,CP 49,BE-LIEGE,Liège,BASSE-BODEUX,4983,SALLE DU VILLAGE,,,,sans-site,,,,,"API TabT (FRBTT), club L329",2026-09-04
+BE,BEL252,CTT Francorchamps,BE49,CP 49,BE-LIEGE,Liège,Francorchamps,4970,Ecole Communale de Francorchamps (salle:derrière),http://www.cttfrancorchamps.be,,,aucun,,,,,"API TabT (FRBTT), club L252",2026-09-04
+BE,BEL349,Entente Loisirs Geromont,BE49,CP 49,BE-LIEGE,Liège,MALMEDY,4960,ENTENTE ET LOISIRS,,,,sans-site,,,,,"API TabT (FRBTT), club L349",2026-09-04
+BE,BEL337,TT Malmedy,BE49,CP 49,BE-LIEGE,Liège,MALMEDY,4960,ECOLE COMMUNALE,,,,sans-site,,,,,"API TabT (FRBTT), club L337",2026-09-04
+BE,BEL313,CTT Smash Robertville,BE49,CP 49,BE-LIEGE,Liège,ROBERTVILLE,4950,CTT SMASH ROBERTVILLE,http://www.ctt-smash-robertville.be,,,aucun,,,,,"API TabT (FRBTT), club L313",2026-09-04
+BE,BEL382,CTT Spa,BE49,CP 49,BE-LIEGE,Liège,Spa,4900,Centre de Warfaaz,,,,sans-site,,,,,"API TabT (FRBTT), club L382",2026-09-04
+BE,BEL328,TT Stavelot,BE49,CP 49,BE-LIEGE,Liège,STAVELOT,4970,HALL DES SPORTS DES BRESSAIX,,,,sans-site,,,,,"API TabT (FRBTT), club L328",2026-09-04
+BE,BEL184,TT Theux,BE49,CP 49,BE-LIEGE,Liège,THEUX,4910,CENTRE SPORTIF DE THEUX,,,,sans-site,,,,,"API TabT (FRBTT), club L184",2026-09-04
+BE,BEN224,Gaulois Basse-Sambre,BE50,CP 50,BE-NAMUR,Namur,AUVELAIS,5060,GABS,,,,sans-site,,,,,"API TabT (FRBTT), club N224",2026-09-04
+BE,BEN078,Palette Beezoise,BE50,CP 50,BE-NAMUR,Namur,BEEZ,5000,SALLE PATRIA,,,,sans-site,,,,,"API TabT (FRBTT), club N078",2026-09-04
+BE,BEN119,Imperial Bossiere,BE50,CP 50,BE-NAMUR,Namur,BOSSIERE,5032,COMPLEXE SPORTIF BOSSIEROIS,,,,sans-site,,,,,"API TabT (FRBTT), club N119",2026-09-04
+BE,BEN041,Royal Bouge,BE50,CP 50,BE-NAMUR,Namur,BOUGE,5004,SALLE OMNISPORTS DE BOUGE,,,,sans-site,,,,,"API TabT (FRBTT), club N041",2026-09-04
+BE,BEN025,Royal Mickey Falisolle,BE50,CP 50,BE-NAMUR,Namur,FALISOLLE,5060,ROYAL MICKEY CLUB,http://royal-mickey-falisolle-club.over-blog.com/,,,aucun,,,,,"API TabT (FRBTT), club N025",2026-09-04
+BE,BEN210,TT Flawinne,BE50,CP 50,BE-NAMUR,Namur,Flawinne,5020,CENTRE SPORTIF,http://www.ttflawinne.be,,,aucun,,,,,"API TabT (FRBTT), club N210",2026-09-04
+BE,BEN045,Royale Palette Gembloux Asbl,BE50,CP 50,BE-NAMUR,Namur,Gembloux (Sauvenière),5030,Palette Gembloux,,,,sans-site,,,,,"API TabT (FRBTT), club N045",2026-09-04
+BE,BEN028,Royale Palette Isnoise,BE50,CP 50,BE-NAMUR,Namur,ISNES,5032,MAISON DES OEUVRES,,,,sans-site,,,,,"API TabT (FRBTT), club N028",2026-09-04
+BE,BEN104,Malonne,BE50,CP 50,BE-NAMUR,Namur,MALONNE,5020,COMPLEXE SPORTIF DU CHAMP HA - HALL DES SPORTS,http://www.ttmalonne.be,,,aucun,,,,,"API TabT (FRBTT), club N104",2026-09-04
+BE,BEN102,TT Namur,BE50,CP 50,BE-NAMUR,Namur,NAMUR,5000,TT NAMUR,,,,sans-site,,,,,"API TabT (FRBTT), club N102",2026-09-04
+BE,BEN170,TT Rail Club Namur,BE50,CP 50,BE-NAMUR,Namur,NAMUR,5000,COMPLEXE SPORTIF SNCB SALZINNES,,,,sans-site,,,,,"API TabT (FRBTT), club N170",2026-09-04
+BE,BEN103,Royal TT Rhisnes,BE50,CP 50,BE-NAMUR,Namur,RHISNES,5080,TT RHISNES,http://www.ttrhisnes.be,,,aucun,,,,,"API TabT (FRBTT), club N103",2026-09-04
+BE,BEN112,Royal TT Asterix Saint Marc,BE50,CP 50,BE-NAMUR,Namur,SAINT-MARC,5003,CENTRE CULTUREL ET SPORTIF,,,,sans-site,,,,,"API TabT (FRBTT), club N112",2026-09-04
+BE,BEN027,Wallfin Etoile Basse Sambre,BE50,CP 50,BE-NAMUR,Namur,SAMBREVILLE,5060,HAYON EBS,http://www.ETOILEBASSESAMBRE.BE,,,aucun,,,,,"API TabT (FRBTT), club N027",2026-09-04
+BE,BEN186,TT Sauveniere,BE50,CP 50,BE-NAMUR,Namur,SAUVENIERE,5030,COMPLEXE SCOLAIRE,,,,sans-site,,,,,"API TabT (FRBTT), club N186",2026-09-04
+BE,BEN021,Royal Namur Saint Georges,BE50,CP 50,BE-NAMUR,Namur,St Servais,5002,Maison des Oeuvres,,,,sans-site,,,,,"API TabT (FRBTT), club N021",2026-09-04
+BE,BEN136,Palette TGV,BE50,CP 50,BE-NAMUR,Namur,TAMINES,5060,SALLE PALETTE TGV,,,,sans-site,,,,,"API TabT (FRBTT), club N136",2026-09-04
+BE,BEN221,Palette Cpjn,BE50,CP 50,BE-NAMUR,Namur,TEMPLOUX,5020,Hall Onmisport de Temploux,,,,sans-site,,,,,"API TabT (FRBTT), club N221",2026-09-04
+BE,BEN163,Palette Suarlee,BE50,CP 50,BE-NAMUR,Namur,TEMPLOUX,5020,HALL OMNISPORTS DE TEMPLOUX,,,,sans-site,,,,,"API TabT (FRBTT), club N163",2026-09-04
+BE,BEN217,Ur Namur,BE50,CP 50,BE-NAMUR,Namur,TEMPLOUX,5020,HALL OMNISPORTS DE TEMPLOUX,http://www.unionrealnamur.be,,,aucun,,,,,"API TabT (FRBTT), club N217",2026-09-04
+BE,BEN051,TT Vedrinamur,BE50,CP 50,BE-NAMUR,Namur,VEDRIN,5020,TT VEDRINAMUR,http://www.vedrinamur.be,,,aucun,,,,,"API TabT (FRBTT), club N051",2026-09-04
+BE,BEN158,Villers-Promotion,BE50,CP 50,BE-NAMUR,Namur,VILLERS-LEZ-HEEST,5080,SALLE DE VILLERS-PROMOTION,,,,sans-site,,,,,"API TabT (FRBTT), club N158",2026-09-04
+BE,BEN047,Pal Fossoise,BE50,CP 50,BE-NAMUR,Namur,VITRIVAL,5070,PALETTE FOSSOISE,http://www.palette-fossoise.be/,,,aucun,,,,,"API TabT (FRBTT), club N047",2026-09-04
+BE,BEN100,CTT Andoy,BE51,CP 51,BE-NAMUR,Namur,ANDOY,5100,CTT ANDOY,,,,sans-site,,,,,"API TabT (FRBTT), club N100",2026-09-04
+BE,BEN218,Le Ping Burnot,BE51,CP 51,BE-NAMUR,Namur,BURNOT.,5170,ECOLE DE BURNOT,https://lepingburnot.be,,,aucun,,,,,"API TabT (FRBTT), club N218",2026-09-04
+BE,BEN130,Champ d'En Haut,BE51,CP 51,BE-NAMUR,Namur,ERPENT,5101,COLLEGE NOTRE-DAME DE LA PAIX,http://www.ttchampdenhaut.club,,,aucun,,,,,"API TabT (FRBTT), club N130",2026-09-04
+BE,BEN083,Floreffe,BE51,CP 51,BE-NAMUR,Namur,FLOREFFE,5150,Salle TT Floreffe,https://ttfloreffe.clubeo.com,,,aucun,,,,,"API TabT (FRBTT), club N083",2026-09-04
+BE,BEN048,TTSM Jambes,BE51,CP 51,BE-NAMUR,Namur,JAMBES,5100,CENTRE CULTUREL DE GERONSART,http://clubping.wix.com/ttsmj/,,,aucun,,,,,"API TabT (FRBTT), club N048",2026-09-04
+BE,BEN036,Royal CTT Jemclub,BE51,CP 51,BE-NAMUR,Namur,JEMEPPE-SUR-SAMBRE,5190,Centre Sportif,,,,sans-site,,,,,"API TabT (FRBTT), club N036",2026-09-04
+BE,BEN034,Royal Palette Mazy-Spy,BE51,CP 51,BE-NAMUR,Namur,JEMEPPE-SUR-SAMBRE,5190,Salle Omnisports,,,,sans-site,,,,,"API TabT (FRBTT), club N034",2026-09-04
+BE,BEN140,TT Sart-Lesve,BE51,CP 51,BE-NAMUR,Namur,LESVE,5170,SALLE COMMUNALE,,,,sans-site,,,,,"API TabT (FRBTT), club N140",2026-09-04
+BE,BEN093,Royal TTC Arbre,BE51,CP 51,BE-NAMUR,Namur,Lesve (PROFONDEVILLE),5170,SALLE COMMUNALE,,,,sans-site,,,,,"API TabT (FRBTT), club N093",2026-09-04
+BE,BEN153,Ligny,BE51,CP 51,BE-NAMUR,Namur,LIGNY,5140,Centre Culturel de Ligny - Salle Verte,,,,sans-site,,,,,"API TabT (FRBTT), club N153",2026-09-04
+BE,BEN120,Loyers,BE51,CP 51,BE-NAMUR,Namur,LOYERS,5101,TT LOYERS,http://www.loyers.be,,,aucun,,,,,"API TabT (FRBTT), club N120",2026-09-04
+BE,BEN052,Ttsc Moustier,BE51,CP 51,BE-NAMUR,Namur,Moustier-sur-Sambre,5190,Centre Gabrielle Bernard,,,,sans-site,,,,,"API TabT (FRBTT), club N052",2026-09-04
+BE,BEN118,Royal TT Profondeville,BE51,CP 51,BE-NAMUR,Namur,PROFONDEVILLE,5170,SALLE DE GYM DE L'ECOLE COMMUNALE,,,,sans-site,,,,,"API TabT (FRBTT), club N118",2026-09-04
+BE,BEN146,CSTT Seilles,BE53,CP 53,BE-NAMUR,Namur,ANDENNE,5300,ECOLE SAINTE-BEGGE,http://www.csttseilles.canalblog.com,,,aucun,,,,,"API TabT (FRBTT), club N146",2026-09-04
+BE,BEN147,Harlue,BE53,CP 53,BE-NAMUR,Namur,BOLINNE - HARLUE,5310,TT HARLUE,,,,sans-site,,,,,"API TabT (FRBTT), club N147",2026-09-04
+BE,BEN176,TT Gesves,BE53,CP 53,BE-NAMUR,Namur,GESVES,5340,Salle Communale de Gesves,,,,sans-site,,,,,"API TabT (FRBTT), club N176",2026-09-04
+BE,BEN149,TT Evelette,BE53,CP 53,BE-NAMUR,Namur,Haillot,5351,Ecole Communale de Haillot,,,,sans-site,,,,,"API TabT (FRBTT), club N149",2026-09-04
+BE,BEN094,TTC Havelange,BE53,CP 53,BE-NAMUR,Namur,HAVELANGE,5370,Hall Omnisports,,,,sans-site,,,,,"API TabT (FRBTT), club N094",2026-09-04
+BE,BEN079,TT Leuze 65,BE53,CP 53,BE-NAMUR,Namur,LEUZE (EGHEZEE),5310,ASBL SPORTS ET CULTURE,http://www.ttleuze.be,,,aucun,,,,,"API TabT (FRBTT), club N079",2026-09-04
+BE,BEN222,TTC Noiseux,BE53,CP 53,BE-NAMUR,Namur,Noiseux,5377,Salle de Noiseux,https://ttcnoiseux.wixsite.com/ttcnoiseux,,,aucun,,,,,"API TabT (FRBTT), club N222",2026-09-04
+BE,BEN188,Palette Sartoise,BE53,CP 53,BE-NAMUR,Namur,SART-BERNARD,5330,COMPLEXE SPORTIF,http://www.sartoise.net,,,aucun,,,,,"API TabT (FRBTT), club N188",2026-09-04
+BE,BEN159,TT Tillier,BE53,CP 53,BE-NAMUR,Namur,SERON - FORVILLE,5380,ANCIENNES ECOLES COMMUNALES,,,,sans-site,,,,,"API TabT (FRBTT), club N159",2026-09-04
+BE,BEN223,TT Waillet,BE53,CP 53,BE-NAMUR,Namur,Waillet,5377,Salle,,,,sans-site,,,,,"API TabT (FRBTT), club N223",2026-09-04
+BE,BELx099,Palette Basse Semois,BE55,CP 55,BE-LUXEMBOURG,Luxembourg,ALLE-SUR-SEMOIS,5550,RECREALLE,,,,sans-site,,,,,"API TabT (FRBTT), club Lx099",2026-09-04
+BE,BEN068,TT Rouillon,BE55,CP 55,BE-NAMUR,Namur,Annevoie-Rouillon,5537,Salle A l'Royinète,,,,sans-site,,,,,"API TabT (FRBTT), club N068",2026-09-04
+BE,BEN023,CTT Le Forbot Dinant,BE55,CP 55,BE-NAMUR,Namur,Anseremme,5500,CTT LE FORBOT DINANT (ancienne caserne militaire),,,,sans-site,,,,,"API TabT (FRBTT), club N023",2026-09-04
+BE,BEN074,PPC Patria Beauraing,BE55,CP 55,BE-NAMUR,Namur,BEAURAING,5570,PPCPB,,,,sans-site,,,,,"API TabT (FRBTT), club N074",2026-09-04
+BE,BEN073,La Cipale,BE55,CP 55,BE-NAMUR,Namur,CINEY,5590,LA CIPALE,https://www.cipale.be,,,aucun,,,,,"API TabT (FRBTT), club N073",2026-09-04
+BE,BEN131,CTT Evrehailles,BE55,CP 55,BE-NAMUR,Namur,EVREHAILLES,5530,Bail Sports,,,,sans-site,,,,,"API TabT (FRBTT), club N131",2026-09-04
+BE,BEN182,Gedinne,BE55,CP 55,BE-NAMUR,Namur,Gedinne,5575,Hall de La Morie,,,,sans-site,,,,,"API TabT (FRBTT), club N182",2026-09-04
+BE,BELx115,TT Castors,BE55,CP 55,BE-LUXEMBOURG,Luxembourg,GRAIDE-STATION,5555,SALLE COMMUNALE LA BOUNANTE,,,,sans-site,,,,,"API TabT (FRBTT), club Lx115",2026-09-04
+BE,BEN211,Ping Mosan Hastiere,BE55,CP 55,BE-NAMUR,Namur,HASTIERE-LAVAUX,5540,SALLE COMMUNAUTAIRE,,,,sans-site,,,,,"API TabT (FRBTT), club N211",2026-09-04
+BE,BEN207,TT Bunny,BE55,CP 55,BE-NAMUR,Namur,LEIGNON,5590,SALLE MURISALTIENNE,,,,sans-site,,,,,"API TabT (FRBTT), club N207",2026-09-04
+BE,BEN178,Mont Pcbv,BE55,CP 55,BE-NAMUR,Namur,MONT-GODINNE,5530,ECOLE COMMUNALE DE MONT,,,,sans-site,,,,,"API TabT (FRBTT), club N178",2026-09-04
+BE,BEN156,Purnode,BE55,CP 55,BE-NAMUR,Namur,Purnode.,5530,Complexe Sportif (Terrain de balle pelote),http://pcpurnode.com/,,,aucun,,,,,"API TabT (FRBTT), club N156",2026-09-04
+BE,BEN160,Spontin,BE55,CP 55,BE-NAMUR,Namur,SPONTIN,5530,SALLE LES CARRIOTEUX,,,,sans-site,,,,,"API TabT (FRBTT), club N160",2026-09-04
+BE,BEN080,CTT Chastres,BE56,CP 56,BE-NAMUR,Namur,CHASTRES,5650,ECOLE COMMUNALE,,,,sans-site,,,,,"API TabT (FRBTT), club N080",2026-09-04
+BE,BEN216,CTT Doische,BE56,CP 56,BE-NAMUR,Namur,DOISCHE,5680,CTT DOISCHE,,,,sans-site,,,,,"API TabT (FRBTT), club N216",2026-09-04
+BE,BEN126,Ermeton TT,BE56,CP 56,BE-NAMUR,Namur,ERMETON-SUR-BIERT,5644,SALLE,,,,sans-site,,,,,"API TabT (FRBTT), club N126",2026-09-04
+BE,BEN180,CTT Fraire,BE56,CP 56,BE-NAMUR,Namur,FRAIRE,5650,SALLE COMMUNALE,,,,sans-site,,,,,"API TabT (FRBTT), club N180",2026-09-04
+BE,BEN088,Palette Frasnienne,BE56,CP 56,BE-NAMUR,Namur,FRASNES,5660,SALLE,,,,sans-site,,,,,"API TabT (FRBTT), club N088",2026-09-04
+BE,BEN114,JS Gonrieux,BE56,CP 56,BE-NAMUR,Namur,GONRIEUX,5660,ECOLE COMMUNALE,,,,sans-site,,,,,"API TabT (FRBTT), club N114",2026-09-04
+BE,BEN175,Palette Brognoise,BE56,CP 56,BE-NAMUR,Namur,METTET,5640,Ecole Fondamental de la WBE,,,,sans-site,,,,,"API TabT (FRBTT), club N175",2026-09-04
+BE,BEN092,Palette Des 3 Vallees,BE56,CP 56,BE-NAMUR,Namur,NISMES,5670,Salle Maurice Renaux,https://palette3vallees.my.canva.site/,,,aucun,,,,,"API TabT (FRBTT), club N092",2026-09-04
+BE,BEN152,CTT Oignies,BE56,CP 56,BE-NAMUR,Namur,OIGNIES,5670,ECOLES COMMUNALES,,,,sans-site,,,,,"API TabT (FRBTT), club N152",2026-09-04
+BE,BEN195,Palette Ollegienne,BE56,CP 56,BE-NAMUR,Namur,OLLOY-SUR-VIROIN,5670,SALLE COMMUNALE,,,,sans-site,,,,,"API TabT (FRBTT), club N195",2026-09-04
+BE,BEN205,Albatros Petite-Chapelle,BE56,CP 56,BE-NAMUR,Namur,PETITE-CHAPELLE,5660,HALL DES SPORTS INSTITUT ALBATROS,,,,sans-site,,,,,"API TabT (FRBTT), club N205",2026-09-04
+BE,BEN069,RCTT Philippeville,BE56,CP 56,BE-NAMUR,Namur,PHILIPPEVILLE,5600,CTT PHILIPPEVILLE,http://www.cttphilippeville.be,,,aucun,,,,,"API TabT (FRBTT), club N069",2026-09-04
+BE,BEN115,Presgaux,BE56,CP 56,BE-NAMUR,Namur,PRESGAUX,5660,CENTRE CULTUREL ET SPORTIF,,,,sans-site,,,,,"API TabT (FRBTT), club N115",2026-09-04
+BE,BEN151,CTT Romedenne,BE56,CP 56,BE-NAMUR,Namur,ROMEDENNE,5600,LA MALTERIE,,,,sans-site,,,,,"API TabT (FRBTT), club N151",2026-09-04
+BE,BEN101,Palette Saint Louis Rosee,BE56,CP 56,BE-NAMUR,Namur,Rosée,5620,Hall omnisports,,,,sans-site,,,,,"API TabT (FRBTT), club N101",2026-09-04
+BE,BEN055,Palette Saint-Louis Rosee,BE56,CP 56,BE-NAMUR,Namur,Rosée,5620,Salle Saint Louis,,,,sans-site,,,,,"API TabT (FRBTT), club N055",2026-09-04
+BE,BEN197,The Youth Paddles Saint-Aubin,BE56,CP 56,BE-NAMUR,Namur,SAINT-AUBIN,5620,"SALLE ""NOSSE CLITCHETTE""",http://NEANT,,,aucun,,,,,"API TabT (FRBTT), club N197",2026-09-04
+BE,BEN081,CTT Barrage,BE56,CP 56,BE-NAMUR,Namur,SILENRIEUX,5630,CERCLE SAINTE-ANNE,,,,sans-site,,,,,"API TabT (FRBTT), club N081",2026-09-04
+BE,BEN076,Somzee,BE56,CP 56,BE-NAMUR,Namur,SOMZEE,5651,COMPLEXE A. MICHAUX,,,,sans-site,,,,,"API TabT (FRBTT), club N076",2026-09-04
+BE,BEN201,CTT Thy-Le-Bauduin,BE56,CP 56,BE-NAMUR,Namur,THY-LE-BAUDUIN,5621,SALLE COMMUNALE,,,,sans-site,,,,,"API TabT (FRBTT), club N201",2026-09-04
+BE,BEN215,CTT Treignes,BE56,CP 56,BE-NAMUR,Namur,TREIGNES,5670,SALLE,,,,sans-site,,,,,"API TabT (FRBTT), club N215",2026-09-04
+BE,BEN220,Vierves,BE56,CP 56,BE-NAMUR,Namur,VIERVES-SUR-VIROIN,5670,CTT Vierves,,,,sans-site,,,,,"API TabT (FRBTT), club N220",2026-09-04
+BE,BEN193,La Palette Djobine,BE56,CP 56,BE-NAMUR,Namur,VILLERS-DEUX-Eglises,5630,SALLE COMMUNALE (Face à l'Eglise),,,,sans-site,,,,,"API TabT (FRBTT), club N193",2026-09-04
+BE,BEN219,CTT Vodecee,BE56,CP 56,BE-NAMUR,Namur,VODECEE,5600,SALLE SAINTE GENEVIEVE,,,,sans-site,,,,,"API TabT (FRBTT), club N219",2026-09-04
+BE,BEH,Province De Hainaut,BE60,CP 60,BE-HAINAUT,Hainaut,Charleroi,6000,CP Hainaut TT,http://www.cttfrancorchamps.be,,,aucun,,,,,"API TabT (FRBTT), club H",2026-09-04
+BE,BEH000,Province De Hainaut,BE60,CP 60,BE-HAINAUT,Hainaut,Charleroi,6001,CP Hainaut TT,,,,sans-site,,,,,"API TabT (FRBTT), club H000",2026-09-04
+BE,BEH149,CTT Buffalo Couillet Asbl,BE60,CP 60,BE-HAINAUT,Hainaut,COUILLET,6010,PLAINE DE JEUX - SALLE DE GYM,http://www.h149.be,,,aucun,,,,,"API TabT (FRBTT), club H149",2026-09-04
+BE,BEH378,CTT Spa Charleroi,BE60,CP 60,BE-HAINAUT,Hainaut,COUILLET,6010,CECS COUILLET SALLE DE GYM,,,,sans-site,,,,,"API TabT (FRBTT), club H378",2026-09-04
+BE,BEH107,RCS Club Palette Buffalo,BE60,CP 60,BE-HAINAUT,Hainaut,COUILLET,6010,R.C.S.C. Palette Buffalo,,,,sans-site,,,,,"API TabT (FRBTT), club H107",2026-09-04
+BE,BEH456,JS Jumet / Dampremy,BE60,CP 60,BE-HAINAUT,Hainaut,JUMET,6040,J.S. JUMET-DAMPREMY TENNIS DE TABLE,,,,sans-site,,,,,"API TabT (FRBTT), club H456",2026-09-04
+BE,BEH001,AF Royal Charleroi Villette,BE60,CP 60,BE-HAINAUT,Hainaut,LODELINSART,6042,CENTRE DE LOISIRS,http://www.la-villette-charleroi.be,,,aucun,,,,,"API TabT (FRBTT), club H001",2026-09-04
+BE,BEH147,CTT Ransart Vigneron,BE60,CP 60,BE-HAINAUT,Hainaut,LODELINSART,6042,CENTRE DE LOISIRS,,,,sans-site,,,,,"API TabT (FRBTT), club H147",2026-09-04
+BE,BEH999,Table Tennis Center Shop-Ping,BE60,CP 60,BE-HAINAUT,Hainaut,MARCINELLE,6001,SHOP-PING TABLE TENNIS CENTER,,,,sans-site,,,,,"API TabT (FRBTT), club H999",2026-09-04
+BE,BEH218,Bosquet CTT NC,BE60,CP 60,BE-HAINAUT,Hainaut,MONT-SUR-MARCHIENNE,6032,CENTRE DE LOISIRS (ANCIEN BASSIN DE NATATION),http://www.ctt-bosquet.be,,,aucun,,,,,"API TabT (FRBTT), club H218",2026-09-04
+BE,BEH379,La Docherie PPC,BE60,CP 60,BE-HAINAUT,Hainaut,MONT-SUR-MARCHIENNE,6032,Centre de loisirs (ancien bassin de natation) - cl,,,,sans-site,,,,,"API TabT (FRBTT), club H379",2026-09-04
+BE,BEH070,RCTT Anderlues,BE61,CP 61,BE-HAINAUT,Hainaut,ANDERLUES,6150,SALLE JEAN XXIII,http://www.rcttanderlues.com,,,aucun,,,,,"API TabT (FRBTT), club H070",2026-09-04
+BE,BEH454,TTC Forchies,BE61,CP 61,BE-HAINAUT,Hainaut,Forchies La Marche,6141,Salle Mouligneau - Croix Rouge,,,,sans-site,,,,,"API TabT (FRBTT), club H454",2026-09-04
+BE,BEH242,CP Luttre,BE61,CP 61,BE-HAINAUT,Hainaut,GOUY-LEZ-PIETON,6181,CP LUTTRE,,,,sans-site,,,,,"API TabT (FRBTT), club H242",2026-09-04
+BE,BEH436,C.t.t. Fontaine,BE61,CP 61,BE-HAINAUT,Hainaut,Leernes,6142,CTT Fontaine,http://www.ctt-fontaine.be,,,aucun,,,,,"API TabT (FRBTT), club H436",2026-09-04
+BE,BEH450,Les Bons Amis,BE61,CP 61,BE-HAINAUT,Hainaut,--Nalinnes,6120,--Les Bons Amis H-S-H-H,,,,sans-site,,,,,"API TabT (FRBTT), club H450",2026-09-04
+BE,BEH458,Janson Ping Souvret,BE61,CP 61,BE-HAINAUT,Hainaut,SOUVRET,6182,SALLE DE LA BRASSERIE RENAUX,,,,sans-site,,,,,"API TabT (FRBTT), club H458",2026-09-04
+BE,BEH314,CTT Chatelet Asbl,BE62,CP 62,BE-HAINAUT,Hainaut,CHATELET,6200,CTT CHATELET (COUR DU BOUBIER),http://www.cttchatelet.be,,,aucun,,,,,"API TabT (FRBTT), club H314",2026-09-04
+BE,BEH202,Palette Chatelettaine,BE62,CP 62,BE-HAINAUT,Hainaut,CHATELET,6200,PALETTE CHATELETTAINE,,,,sans-site,,,,,"API TabT (FRBTT), club H202",2026-09-04
+BE,BEH009,Palette Patria Castellinoise,BE62,CP 62,BE-HAINAUT,Hainaut,CHÂTELINEAU,6200,Salle,http://ppcastellinoise.kalisport.com/,,,aucun,,,,,"API TabT (FRBTT), club H009",2026-09-04
+BE,BEH182,Essor Pays Noir,BE62,CP 62,BE-HAINAUT,Hainaut,Farciennes,6240,Essor Pays Noir,,,,sans-site,,,,,"API TabT (FRBTT), club H182",2026-09-04
+BE,BEH461,Palette Farciennoise,BE62,CP 62,BE-HAINAUT,Hainaut,FARCIENNES,6240,PEOPLE HOUSE,,,,sans-site,,,,,"API TabT (FRBTT), club H461",2026-09-04
+BE,BEH292,Gerpinnes,BE62,CP 62,BE-HAINAUT,Hainaut,GERPINNES,6280,ARC GERPINNES - SALLE MARTIN BRATANOV,,,,sans-site,,,,,"API TabT (FRBTT), club H292",2026-09-04
+BE,BEH136,RCTT Heppignies,BE62,CP 62,BE-HAINAUT,Hainaut,Lambusart,6220,Salle Omnisports Georges Hordies,http://www.rcttheppignies.com,,,aucun,,,,,"API TabT (FRBTT), club H136",2026-09-04
+BE,BEH312,CTT Loverval,BE62,CP 62,BE-HAINAUT,Hainaut,LOVERVAL,6280,SALLE COMMUNALE,https://www.ctt-loverval.be,,,aucun,,,,,"API TabT (FRBTT), club H312",2026-09-04
+BE,BEH455,Pongistes Villersois,BE62,CP 62,BE-HAINAUT,Hainaut,VILLERS-POTERIE,6280,SALLE COMMUNALE VITAL MILLIS,,,,sans-site,,,,,"API TabT (FRBTT), club H455",2026-09-04
+BE,BEH438,Mjt Baulet-Fleurus,BE62,CP 62,BE-HAINAUT,Hainaut,WANFERCEE-BAULET,6224,ANCIENNE MAISON COMMUNALE (salle de Gym.),,,,sans-site,,,,,"API TabT (FRBTT), club H438",2026-09-04
+BE,BEH207,Palette Baileusienne,BE64,CP 64,BE-HAINAUT,Hainaut,BAILEUX,6464,Ecole Communale,,,,sans-site,,,,,"API TabT (FRBTT), club H207",2026-09-04
+BE,BEH275,Palette Esc Bourlesienne,BE64,CP 64,BE-HAINAUT,Hainaut,BOURLERS,6464,SALLE COMMUNALE,,,,sans-site,,,,,"API TabT (FRBTT), club H275",2026-09-04
+BE,BEH247,Palette Du Pays De Chimay,BE64,CP 64,BE-HAINAUT,Hainaut,CHIMAY,6460,Palette du Pays de Chimay,,,,sans-site,,,,,"API TabT (FRBTT), club H247",2026-09-04
+BE,BEH249,Palette Rancoise,BE64,CP 64,BE-HAINAUT,Hainaut,Sautin,6470,Salle des fêtes de Sautin,,,,sans-site,,,,,"API TabT (FRBTT), club H249",2026-09-04
+BE,BEH146,Etoile Chevrotine,BE64,CP 64,BE-HAINAUT,Hainaut,SIVRY,6470,ETOILE CHEVROTINE,,,,sans-site,,,,,"API TabT (FRBTT), club H146",2026-09-04
+BE,BEH360,PS Villers-La-Tour Fph,BE64,CP 64,BE-HAINAUT,Hainaut,VILLERS-LA-TOUR,6460,SALLE COMMUNALE,http://www.ps-villerslatour.be,,,aucun,,,,,"API TabT (FRBTT), club H360",2026-09-04
+BE,BEH259,P2000 - Thirimont - Beaumont,BE65,CP 65,BE-HAINAUT,Hainaut,BEAUMONT,6500,ANCIENNE ECOLE MOYENNE,,,,sans-site,,,,,"API TabT (FRBTT), club H259",2026-09-04
+BE,BEH099,Asbl RCTT Excelsior,BE65,CP 65,BE-HAINAUT,Hainaut,ERQUELINNES,6560,SALLE NOTRE-DAME,,,,sans-site,,,,,"API TabT (FRBTT), club H099",2026-09-04
+BE,BEH448,PPC Cleo Erquelinnes,BE65,CP 65,BE-HAINAUT,Hainaut,Erquelinnes,6560,Grand Salon communale,,,,sans-site,,,,,"API TabT (FRBTT), club H448",2026-09-04
+BE,BEH413,PPC Lobbes,BE65,CP 65,BE-HAINAUT,Hainaut,LOBBES,6540,Complexe sportif du Scavin,,,,sans-site,,,,,"API TabT (FRBTT), club H413",2026-09-04
+BE,BEH414,TTC Merbes,BE65,CP 65,BE-HAINAUT,Hainaut,Merbes-le-Château,6567,Ecole Communale,,,,sans-site,,,,,"API TabT (FRBTT), club H414",2026-09-04
+BE,BEH220,Palette Espoir Momignies,BE65,CP 65,BE-HAINAUT,Hainaut,MOMIGNIES,6590,SALON COMMUNAL,,,,sans-site,,,,,"API TabT (FRBTT), club H220",2026-09-04
+BE,BEH145,Palette Solrezienne,BE65,CP 65,BE-HAINAUT,Hainaut,SOLRE-SUR-SAMBRE,6560,PALETTE SOLREZIENNE,,,,sans-site,,,,,"API TabT (FRBTT), club H145",2026-09-04
+BE,BEH453,CTT Stree,BE65,CP 65,BE-HAINAUT,Hainaut,Strée,6511,CTT STREE,,,,sans-site,,,,,"API TabT (FRBTT), club H453",2026-09-04
+BE,BEH415,PPC Stree,BE65,CP 65,BE-HAINAUT,Hainaut,STREE,6511,PPC STREE,,,,sans-site,,,,,"API TabT (FRBTT), club H415",2026-09-04
+BE,BEH128,Royal CTT Thuin,BE65,CP 65,BE-HAINAUT,Hainaut,THUIN,6530,ANCIEN CAMP MILITAIRE,http://www.rctt-thuin.be,,,aucun,,,,,"API TabT (FRBTT), club H128",2026-09-04
+BE,BELx014,Bastogne,BE66,CP 66,BE-LUXEMBOURG,Luxembourg,BASTOGNE,6600,CENTRE SPORTIF,,,,sans-site,,,,,"API TabT (FRBTT), club Lx014",2026-09-04
+BE,BELx022,Bourcy,BE66,CP 66,BE-LUXEMBOURG,Luxembourg,BASTOGNE,6600,SALLE,,,,sans-site,,,,,"API TabT (FRBTT), club Lx022",2026-09-04
+BE,BELx045,Longchamps,BE66,CP 66,BE-LUXEMBOURG,Luxembourg,BERTOGNE,6687,ECOLE COMMUNALE DE LONGCHAMPS,http://www.ttlongchamps.be/blog,,,aucun,,,,,"API TabT (FRBTT), club Lx045",2026-09-04
+BE,BELx075,Gouvy,BE66,CP 66,BE-LUXEMBOURG,Luxembourg,Gouvy,6670,TTC GOUVY,,,,sans-site,,,,,"API TabT (FRBTT), club Lx075",2026-09-04
+BE,BELx071,Langlire T.t.c.,BE66,CP 66,BE-LUXEMBOURG,Luxembourg,Gouvy,6674,TTC LANGLIRE,,,,sans-site,,,,,"API TabT (FRBTT), club Lx071",2026-09-04
+BE,BELx092,Petit-Thier,BE66,CP 66,BE-LUXEMBOURG,Luxembourg,Grand-Halleux,6698,Salle 'Le cercle paroissial',http://ttcpetit-thier.wifeo.com,,,aucun,,,,,"API TabT (FRBTT), club Lx092",2026-09-04
+BE,BELx085,Entente Houffaloize,BE66,CP 66,BE-LUXEMBOURG,Luxembourg,HOUFFALIZE,6660,Athénée Royale Bastogne - Houffalize ( ARB-H),,,,sans-site,,,,,"API TabT (FRBTT), club Lx085",2026-09-04
+BE,BELx076,TT Dinez,BE66,CP 66,BE-LUXEMBOURG,Luxembourg,HOUFFALIZE,6661,SALLE DE L'ACCUEIL ARDENNAIS,,,,sans-site,,,,,"API TabT (FRBTT), club Lx076",2026-09-04
+BE,BELx055,Sainlez,BE66,CP 66,BE-LUXEMBOURG,Luxembourg,MARTELANGE,6630,Hall sportif de Martelange,,,,sans-site,,,,,"API TabT (FRBTT), club Lx055",2026-09-04
+BE,BELx094,Montleban,BE66,CP 66,BE-LUXEMBOURG,Luxembourg,MONTLEBAN,6674,Local du Football (F.C MONTLEBAN),,,,sans-site,,,,,"API TabT (FRBTT), club Lx094",2026-09-04
+BE,BELx117,TTC Sibret,BE66,CP 66,BE-LUXEMBOURG,Luxembourg,Morhet (Vaux-sur-sure),6640,Centre Sportif de Vaux-sur-Sûre,,,,sans-site,,,,,"API TabT (FRBTT), club Lx117",2026-09-04
+BE,BELx003,Tillet,BE66,CP 66,BE-LUXEMBOURG,Luxembourg,Sainte-Ode,6680,Salle Communale d'Amberloup,,,,sans-site,,,,,"API TabT (FRBTT), club Lx003",2026-09-04
+BE,BELx068,Joubieval,BE66,CP 66,BE-LUXEMBOURG,Luxembourg,VIELSALM,6690,SALLE DU TT JOUBIEVAL,http://home.scarlet.be/joubi,,,aucun,,,,,"API TabT (FRBTT), club Lx068",2026-09-04
+BE,BELx042,Vilval,BE66,CP 66,BE-LUXEMBOURG,Luxembourg,VIELSALM,6690,ANCIENNE CASERNE MILITAIRE RATZ,,,,sans-site,,,,,"API TabT (FRBTT), club Lx042",2026-09-04
+BE,BELx118,TT Freylange,BE67,CP 67,BE-LUXEMBOURG,Luxembourg,ARLON,6700,CENTRE LORAIN D HEBERGEMENT,,,,sans-site,,,,,"API TabT (FRBTT), club Lx118",2026-09-04
+BE,BELx011,TT Schoppach - Arlon,BE67,CP 67,BE-LUXEMBOURG,Luxembourg,ARLON,6700,Salle Omnisports de l'Institut Cardijn Lorraine,https://www.ttschoppach-arlon.be,,,aucun,,,,,"API TabT (FRBTT), club Lx011",2026-09-04
+BE,BELx059,TT Athenee Athus,BE67,CP 67,BE-LUXEMBOURG,Luxembourg,Athus,6791,Athénée Royal Athus,,,,sans-site,,,,,"API TabT (FRBTT), club Lx059",2026-09-04
+BE,BELx025,TT Hondelange,BE67,CP 67,BE-LUXEMBOURG,Luxembourg,DIFFERT,6780,HALL SPORTIF INSTITUT CARDIJN LORRAINE,https://tthondelange.jimdo.com/,,,aucun,,,,,"API TabT (FRBTT), club Lx025",2026-09-04
+BE,BELx026,Hachy,BE67,CP 67,BE-LUXEMBOURG,Luxembourg,HACHY,6720,ANCIEN PENSIONNAT,,,,sans-site,,,,,"API TabT (FRBTT), club Lx026",2026-09-04
+BE,BELx123,TT Rouvroy,BE67,CP 67,BE-LUXEMBOURG,Luxembourg,HARNONCOURT,6767,ROX,,,,sans-site,,,,,"API TabT (FRBTT), club Lx123",2026-09-04
+BE,BELx069,Asbl TT Meix,BE67,CP 67,BE-LUXEMBOURG,Luxembourg,Meix-Devant-Virton,6769,Complexe Sportif Meix-Dvt-Virton,,,,sans-site,,,,,"API TabT (FRBTT), club Lx069",2026-09-04
+BE,BELx006,TT Halanzy-Musson,BE67,CP 67,BE-LUXEMBOURG,Luxembourg,MUSSON,6750,Complexe Sportif,,,,sans-site,,,,,"API TabT (FRBTT), club Lx006",2026-09-04
+BE,BELx074,TT Rulles,BE67,CP 67,BE-LUXEMBOURG,Luxembourg,RULLES,6724,SALLE PAROISSIALE,http://WWW.ttrulles.be,,,aucun,,,,,"API TabT (FRBTT), club Lx074",2026-09-04
+BE,BELx065,Chatillon,BE67,CP 67,BE-LUXEMBOURG,Luxembourg,SAINT LEGER,6747,Centre sportif et culturel de Saint Léger,,,,sans-site,,,,,"API TabT (FRBTT), club Lx065",2026-09-04
+BE,BELx028,Selange,BE67,CP 67,BE-LUXEMBOURG,Luxembourg,SELANGE,6781,SALLE DU TT SELANGE,http://www.donkeyrockfestival.com,,,aucun,,,,,"API TabT (FRBTT), club Lx028",2026-09-04
+BE,BELx120,CTT Val d'Attert,BE67,CP 67,BE-LUXEMBOURG,Luxembourg,TONTELANGE,6717,HALL SPORTIF UM BRUCH,http://www.cttattert.be,,,aucun,,,,,"API TabT (FRBTT), club Lx120",2026-09-04
+BE,BELx110,Ethe,BE67,CP 67,BE-LUXEMBOURG,Luxembourg,VIRTON,6760,Ecole des Sources,,,,sans-site,,,,,"API TabT (FRBTT), club Lx110",2026-09-04
+BE,BELx001,Mondial Express Virton,BE67,CP 67,BE-LUXEMBOURG,Luxembourg,VIRTON,6760,TT Mondial Express Virton,,,,sans-site,,,,,"API TabT (FRBTT), club Lx001",2026-09-04
+BE,BELx053,Bouillon,BE68,CP 68,BE-LUXEMBOURG,Luxembourg,BOUILLON,6830,Nouvelle salle,http://ttbouillon.be,,,aucun,,,,,"API TabT (FRBTT), club Lx053",2026-09-04
+BE,BELx058,Bras,BE68,CP 68,BE-LUXEMBOURG,Luxembourg,BRAS-HAUT,6800,TENNIS DE TABLE BRAS,,,,sans-site,,,,,"API TabT (FRBTT), club Lx058",2026-09-04
+BE,BELx088,Fays-Les-Veneurs,BE68,CP 68,BE-LUXEMBOURG,Luxembourg,FAYS-LES-VENEURS,6856,SALLE PAROISSIALE,,,,sans-site,,,,,"API TabT (FRBTT), club Lx088",2026-09-04
+BE,BELx044,Palette Centre,BE68,CP 68,BE-LUXEMBOURG,Luxembourg,GRIBOMONT (St-Médard),6887,Le RIVOLI,,,,sans-site,,,,,"API TabT (FRBTT), club Lx044",2026-09-04
+BE,BELx039,TT Jamoigne Asbl,BE68,CP 68,BE-LUXEMBOURG,Luxembourg,Jamoigne,6810,Centre Sportif Jamoigne,,,,sans-site,,,,,"API TabT (FRBTT), club Lx039",2026-09-04
+BE,BELx034,TT Centre Ardenne,BE68,CP 68,BE-LUXEMBOURG,Luxembourg,LEGLISE,6860,Centre Sportif,http://www.ttcentreardenne.be,,,aucun,,,,,"API TabT (FRBTT), club Lx034",2026-09-04
+BE,BELx035,Libramont,BE68,CP 68,BE-LUXEMBOURG,Luxembourg,LIBRAMONT,6800,COMPLEXE SPORTIF,,,,sans-site,,,,,"API TabT (FRBTT), club Lx035",2026-09-04
+BE,BELx089,Ochamps,BE68,CP 68,BE-LUXEMBOURG,Luxembourg,OCHAMPS,6890,Complexe sportif,http://tt-ochamps.wifeo.com/,,,aucun,,,,,"API TabT (FRBTT), club Lx089",2026-09-04
+BE,BELx052,Saint-Hubert,BE68,CP 68,BE-LUXEMBOURG,Luxembourg,SAINT HUBERT,6870,LOCAL ETAGE PISCINE,,,,sans-site,,,,,"API TabT (FRBTT), club Lx052",2026-09-04
+BE,BELx108,TT Saint-Pierre,BE68,CP 68,BE-LUXEMBOURG,Luxembourg,SAINT-PIERRE,6800,SALLE PRES D'AUBY,,,,sans-site,,,,,"API TabT (FRBTT), club Lx108",2026-09-04
+BE,BELx013,Ambly,BE69,CP 69,BE-LUXEMBOURG,Luxembourg,AMBLY,6953,SALLE DES FÊTES,,,,sans-site,,,,,"API TabT (FRBTT), club Lx013",2026-09-04
+BE,BELx097,GTT Aye,BE69,CP 69,BE-LUXEMBOURG,Luxembourg,AYE,6900,COMPLEXE SPORTIF DE AYE,,,,sans-site,,,,,"API TabT (FRBTT), club Lx097",2026-09-04
+BE,BELx103,TT Beausaint,BE69,CP 69,BE-LUXEMBOURG,Luxembourg,BEAUSAINT,6980,"Salle ""Li Mahonette""",,,,sans-site,,,,,"API TabT (FRBTT), club Lx103",2026-09-04
+BE,BELx054,Tenneville,BE69,CP 69,BE-LUXEMBOURG,Luxembourg,CHAMPLON Ardenne,6971,CENTRE SPORTTF PLURICOMMUNAL DE TENNEVILLE,,,,sans-site,,,,,"API TabT (FRBTT), club Lx054",2026-09-04
+BE,BELx100,Devantave,BE69,CP 69,BE-LUXEMBOURG,Luxembourg,DEVANTAVE,6987,SALLE VILLAGEOISE,,,,sans-site,,,,,"API TabT (FRBTT), club Lx100",2026-09-04
+BE,BELx112,Lomme,BE69,CP 69,BE-LUXEMBOURG,Luxembourg,FORRIERES,6953,SALLE DU VILLAGE,http://www.ttlomme.be,,,aucun,,,,,"API TabT (FRBTT), club Lx112",2026-09-04
+BE,BELx007,Chene-Al'Pierre,BE69,CP 69,BE-LUXEMBOURG,Luxembourg,MANHAY,6960,Hall Galère,,,,sans-site,,,,,"API TabT (FRBTT), club Lx007",2026-09-04
+BE,BELx111,TTC Lafosse,BE69,CP 69,BE-LUXEMBOURG,Luxembourg,MANHAY,6960,SALLE au Hall sportif à Manhay,,,,sans-site,,,,,"API TabT (FRBTT), club Lx111",2026-09-04
+BE,BELx037,Marloie,BE69,CP 69,BE-LUXEMBOURG,Luxembourg,Marloie,6900,La vieille Cense,,,,sans-site,,,,,"API TabT (FRBTT), club Lx037",2026-09-04
+BE,BELx005,TTC Famenne,BE69,CP 69,BE-LUXEMBOURG,Luxembourg,MARLOIE,6900,OASIS,,,,sans-site,,,,,"API TabT (FRBTT), club Lx005",2026-09-04
+BE,BELx081,TTC Melreux,BE69,CP 69,BE-LUXEMBOURG,Luxembourg,MELREUX,6990,SALLE ARTHUR DELACOLLETTE,http://www.ttcmelreux.be,,,aucun,,,,,"API TabT (FRBTT), club Lx081",2026-09-04
+BE,BELx008,Biermonfoy,BE69,CP 69,BE-LUXEMBOURG,Luxembourg,Nassogne,6950,Hall omnisports Jean Jacquet,http://www.biermonfoy.be,,,aucun,,,,,"API TabT (FRBTT), club Lx008",2026-09-04
+BE,BELx093,TTC Entente Ourthoise,BE69,CP 69,BE-LUXEMBOURG,Luxembourg,RENDEUX,6987,COMPLEXE SPORTIF SCOLAIRE,,,,sans-site,,,,,"API TabT (FRBTT), club Lx093",2026-09-04
+BE,BELx107,Villers-Sainte-Gertrude,BE69,CP 69,BE-LUXEMBOURG,Luxembourg,VILLERS-STE -GERTRUDE,6941,Espace Saint-Michel,,,,sans-site,,,,,"API TabT (FRBTT), club Lx107",2026-09-04
+BE,BELx116,Tennis De Table Wellin,BE69,CP 69,BE-LUXEMBOURG,Luxembourg,WELLIN,6920,COMPLEXE SPORTIF DE WELLIN,,,,sans-site,,,,,"API TabT (FRBTT), club Lx116",2026-09-04
+BE,BEH424,CTT Braine,BE70,CP 70,BE-HAINAUT,Hainaut,BRAINE-LE-COMTE,7090,ECOLE NORMALE (Hall Omnisports INDBE),http://www.cttbraine.net,,,aucun,,,,,"API TabT (FRBTT), club H424",2026-09-04
+BE,BEH429,Dynamic Flenu,BE70,CP 70,BE-HAINAUT,Hainaut,FLENU,7012,Salle de Gym de l'Ecole Fondamentale Communale ( a,,,,sans-site,,,,,"API TabT (FRBTT), club H429",2026-09-04
+BE,BEH203,Palette Neufvilles Senne,BE70,CP 70,BE-HAINAUT,Hainaut,HORRUES,7060,Salle omnisports de l'EEPSIS,http://www.neufvilles-senne.be,,,aucun,,,,,"API TabT (FRBTT), club H203",2026-09-04
+BE,BEH254,Rtt Aedec Hyon - Cuesmes,BE70,CP 70,BE-HAINAUT,Hainaut,HYON,7022,SITE DE L’AEDEC,http://www.ttaedechyoncuesmes.be,,,aucun,,,,,"API TabT (FRBTT), club H254",2026-09-04
+BE,BEH442,CTT Frameries,BE70,CP 70,BE-HAINAUT,Hainaut,La Bouverie (Frameries),7080,École de la Libération,https://cttframeries.com,,,aucun,,,,,"API TabT (FRBTT), club H442",2026-09-04
+BE,BEH165,Palette Le Roeulx-Ghislage,BE70,CP 70,BE-HAINAUT,Hainaut,LE ROEULX,7070,INSTITUT SAINT-JOSEPH,http://www.palette-leroeulx.be,,,aucun,,,,,"API TabT (FRBTT), club H165",2026-09-04
+BE,BEH200,CP Montois,BE70,CP 70,BE-HAINAUT,Hainaut,MONS,7000,Salles des sports de l'IESPP NURSING,http://www.cpmontois.com,,,aucun,,,,,"API TabT (FRBTT), club H200",2026-09-04
+BE,BEH306,CTT Mons Ecurie,BE70,CP 70,BE-HAINAUT,Hainaut,Mons,7000,Ecole I.E.S.P.,,,,sans-site,,,,,"API TabT (FRBTT), club H306",2026-09-04
+BE,BEH423,Palette Naastoise,BE70,CP 70,BE-HAINAUT,Hainaut,Naast,7062,Salle de sport de Naast,http://palettenaastoise.e-monsite.com/,,,aucun,,,,,"API TabT (FRBTT), club H423",2026-09-04
+BE,BEH333,Palette Obourgeoise,BE70,CP 70,BE-HAINAUT,Hainaut,OBOURG,7034,GYMNASE COMMUNAL,http://www.paletteobourgeoise.net/,,,aucun,,,,,"API TabT (FRBTT), club H333",2026-09-04
+BE,BEH446,Raquette Entente Pongistes Seneffoise,BE71,CP 71,BE-HAINAUT,Hainaut,ARQUENNES,7181,CENTRE SPORTIF D ARQUENNES,http://www.repseneffe.be,,,aucun,,,,,"API TabT (FRBTT), club H446",2026-09-04
+BE,BEH430,CTT Ping 2000 Ecaussinnes,BE71,CP 71,BE-HAINAUT,Hainaut,BESONRIEUX,7100,Ecole Libre du Soleil Levant,,,,sans-site,,,,,"API TabT (FRBTT), club H430",2026-09-04
+BE,BEH177,Rttc Manage,BE71,CP 71,BE-HAINAUT,Hainaut,BOIS D'HAINE,7170,ECOLE COMMUNALE DE BOIS D'HAINE,,,,sans-site,,,,,"API TabT (FRBTT), club H177",2026-09-04
+BE,BEH092,RPV Ecaussinnes,BE71,CP 71,BE-HAINAUT,Hainaut,ECAUSSINNES,7190,R.P.V. ECAUSSINNES,http://www.paletteverte.be,,,aucun,,,,,"API TabT (FRBTT), club H092",2026-09-04
+BE,BEH122,CTT Houdeng,BE71,CP 71,BE-HAINAUT,Hainaut,HOUDENG-AIMERIES,7110,PREAU DES ECOLES COMMUNALES,http:// www.ctt-houdeng.be,,,aucun,,,,,"API TabT (FRBTT), club H122",2026-09-04
+BE,BEH041,Ping La Louviere,BE71,CP 71,BE-HAINAUT,Hainaut,LA LOUVIERE,7100,PING LA LOUVIERE,https://sharemytalent.app/talent/pinglalouviere,,,aucun,,,,,"API TabT (FRBTT), club H041",2026-09-04
+BE,BEH287,Entente Leval-Binche,BE71,CP 71,BE-HAINAUT,Hainaut,Leval-Trahegnies,7134,Ecole Communale (primaires),,,,sans-site,,,,,"API TabT (FRBTT), club H287",2026-09-04
+BE,BEH004,ETT Centre Manage,BE71,CP 71,BE-HAINAUT,Hainaut,Manage,7170,CENTRE CULTUREL ET SPORTIF DU SCAILMONT,,,,sans-site,,,,,"API TabT (FRBTT), club H004",2026-09-04
+BE,BEH426,New Ping Manage,BE71,CP 71,BE-HAINAUT,Hainaut,MANAGE,7170,ECOLE COMMUNALE,,,,sans-site,,,,,"API TabT (FRBTT), club H426",2026-09-04
+BE,BEH120,Royal Palette Maurage,BE71,CP 71,BE-HAINAUT,Hainaut,MAURAGE,7110,ECOLE DE L'ETINCELLE,,,,sans-site,,,,,"API TabT (FRBTT), club H120",2026-09-04
+BE,BEH451,Five Morlanwelz,BE71,CP 71,BE-HAINAUT,Hainaut,Morlanwelz,7141,École Communal des Trieux,,,,sans-site,,,,,"API TabT (FRBTT), club H451",2026-09-04
+BE,BEH116,Royal CTT Peissant-Vellereille,BE71,CP 71,BE-HAINAUT,Hainaut,PEISSANT,7120,RCTT PEISSANT-VELLEREILLE,,,,sans-site,,,,,"API TabT (FRBTT), club H116",2026-09-04
+BE,BEH457,Les Vieux Copains,BE71,CP 71,BE-HAINAUT,Hainaut,Piéton,7160,Hall omnisports de Piéton,,,,sans-site,,,,,"API TabT (FRBTT), club H457",2026-09-04
+BE,BEH382,Palette Villoise Quievrain,BE73,CP 73,BE-HAINAUT,Hainaut,BERNISSART,7321,CENTRE OMNISPORTS DU PREAU,,,,sans-site,,,,,"API TabT (FRBTT), club H382",2026-09-04
+BE,BEH215,Espoir Borain,BE73,CP 73,BE-HAINAUT,Hainaut,BOUSSU,7300,ECOLE DE L'ALLIANCE,,,,sans-site,,,,,"API TabT (FRBTT), club H215",2026-09-04
+BE,BEH334,Palette Colfontaine-Flenu,BE73,CP 73,BE-HAINAUT,Hainaut,COLFONTAINE,7340,ECOLE DU QUESNOY,,,,sans-site,,,,,"API TabT (FRBTT), club H334",2026-09-04
+BE,BEH356,TT Hensies,BE73,CP 73,BE-HAINAUT,Hainaut,HENSIES,7350,ECOLE DU CENTRE,,,,sans-site,,,,,"API TabT (FRBTT), club H356",2026-09-04
+BE,BEH447,Phoenix Palette Quaregnon,BE73,CP 73,BE-HAINAUT,Hainaut,Quaregnon,7390,Maison des jeunes Quaregnon,,,,sans-site,,,,,"API TabT (FRBTT), club H447",2026-09-04
+BE,BEH351,Smash-Club Quievrain,BE73,CP 73,BE-HAINAUT,Hainaut,QUIEVRAIN,7380,CENTRE D'ANIMATION (1er étage),,,,sans-site,,,,,"API TabT (FRBTT), club H351",2026-09-04
+BE,BEH384,Bhw CAJ-MIR St-Ghislain,BE73,CP 73,BE-HAINAUT,Hainaut,St-Ghislain,7330,Ecole Communale Jean Rolland,,,,sans-site,,,,,"API TabT (FRBTT), club H384",2026-09-04
+BE,BEH091,Dour Palette,BE73,CP 73,BE-HAINAUT,Hainaut,WIHERIES (DOUR),7370,WIHERIES - ECOLE COMMUNALE,http://www.dour-palette.com,,,aucun,,,,,"API TabT (FRBTT), club H091",2026-09-04
+BE,BEH445,Jeunesse Palette Verte Froidmont,BE75,CP 75,BE-HAINAUT,Hainaut,Froidmont,7504,Domaines des Eaux Sauvages,,,,sans-site,,,,,"API TabT (FRBTT), club H445",2026-09-04
+BE,BEH459,"Sports, Loisirs Et Culture Froyennois",BE75,CP 75,BE-HAINAUT,Hainaut,FROYENNES,7503,ECOLE SAINT-ELOI,,,,sans-site,,,,,"API TabT (FRBTT), club H459",2026-09-04
+BE,BEH410,La Palette Gaurinoise,BE75,CP 75,BE-HAINAUT,Hainaut,GAURAIN-RAMECROIX,7530,Salle FRANCIS LETELLIER,,,,sans-site,,,,,"API TabT (FRBTT), club H410",2026-09-04
+BE,BEH405,Epc Palette Kain,BE75,CP 75,BE-HAINAUT,Hainaut,KAIN,7540,ECOLE COMMUNALE LES APICOLIERS,,,,sans-site,,,,,"API TabT (FRBTT), club H405",2026-09-04
+BE,BEH326,Essor Luna Marquain,BE75,CP 75,BE-HAINAUT,Hainaut,MARQUAIN,7522,LUNA SPORTS ET LOISIRS,,,,sans-site,,,,,"API TabT (FRBTT), club H326",2026-09-04
+BE,BEH393,Top Spin Maulde,BE75,CP 75,BE-HAINAUT,Hainaut,MAULDE,7534,CENTRE CULTUREL ET SPORTIF,,,,sans-site,,,,,"API TabT (FRBTT), club H393",2026-09-04
+BE,BEH399,Palette Saint-Piat,BE75,CP 75,BE-HAINAUT,Hainaut,TOURNAI,7500,A L'OLYM-PIAT,http://www.palettestpiat.be,,,aucun,,,,,"API TabT (FRBTT), club H399",2026-09-04
+BE,BEH280,Royal TTC Allain,BE75,CP 75,BE-HAINAUT,Hainaut,TOURNAI,7500,SALLE LEONCE PICARD,,,,sans-site,,,,,"API TabT (FRBTT), club H280",2026-09-04
+BE,BEH307,TT Don Bosco Tournai,BE75,CP 75,BE-HAINAUT,Hainaut,TOURNAI,7500,HALL SPORTIF INSTITUT DON BOSCO (SITE N°1),,,,sans-site,,,,,"API TabT (FRBTT), club H307",2026-09-04
+BE,BEH359,ETT Vaulx,BE75,CP 75,BE-HAINAUT,Hainaut,VAULX,7536,ECOLE COMMUNALE DE VAULX,http://ett-vaulx.wix.com/ett-vaulx,,,aucun,,,,,"API TabT (FRBTT), club H359",2026-09-04
+BE,BEH422,Rppc Antoing,BE76,CP 76,BE-HAINAUT,Hainaut,ANTOING,7640,COMPLEXE WILLY MAHIEU,,,,sans-site,,,,,"API TabT (FRBTT), club H422",2026-09-04
+BE,BEH290,Palette Bon-Secours,BE76,CP 76,BE-HAINAUT,Hainaut,PERUWELZ,7600,SALLE COMMUNALE DE LA VERTE CHASSE,,,,sans-site,,,,,"API TabT (FRBTT), club H290",2026-09-04
+BE,BEH352,Lanh-Manh Wiers,BE76,CP 76,BE-HAINAUT,Hainaut,WIERS,7608,CERCLE SAINT JOSEPH,,,,sans-site,,,,,"API TabT (FRBTT), club H352",2026-09-04
+BE,BEH452,TT Dottignies,BE77,CP 77,BE-HAINAUT,Hainaut,Dottignies,7711,TT DOTTIGNIES,,,,sans-site,,,,,"API TabT (FRBTT), club H452",2026-09-04
+BE,BEH428,TT Les Templiers Estaimbourg,BE77,CP 77,BE-HAINAUT,Hainaut,Estaimbourg,7730,T.T.TEMPLIERS ESTAIMBOURG,,,,sans-site,,,,,"API TabT (FRBTT), club H428",2026-09-04
+BE,BEH054,CTT Centre - Herseaux,BE77,CP 77,BE-HAINAUT,Hainaut,HERSEAUX,7712,CTT CENTRE - HERSEAUX,http://www.cttcentreherseaux.be,,,aucun,,,,,"API TabT (FRBTT), club H054",2026-09-04
+BE,BEH124,La Ruche Mouscron,BE77,CP 77,BE-HAINAUT,Hainaut,MOUSCRON,7700,"MAISON DES JEUNES ""LA RUCHE""",http://www.mjlaruche.be,,,aucun,,,,,"API TabT (FRBTT), club H124",2026-09-04
+BE,BEH095,Royal CTT Kitch Mouscron,BE77,CP 77,BE-HAINAUT,Hainaut,MOUSCRON,7700,ECOLE DES FRERES MARISTES,http://www.rcttkitch.be,,,aucun,,,,,"API TabT (FRBTT), club H095",2026-09-04
+BE,BEH443,Snooping Mouscron,BE77,CP 77,BE-HAINAUT,Hainaut,MOUSCRON,7700,HALL MAX LESSINES,https://www.snoopingmouscron.be,,,aucun,,,,,"API TabT (FRBTT), club H443",2026-09-04
+BE,BEH387,Ping Pong Club Pecq,BE77,CP 77,BE-HAINAUT,Hainaut,PECQ,7740,SALLE ALPHONSE RIVIERE,http://ppcpecq.be,,,aucun,,,,,"API TabT (FRBTT), club H387",2026-09-04
+BE,BEH231,Royale Palette Hellebecquoise,BE78,CP 78,BE-HAINAUT,Hainaut,BASSILLY,7830,SALLE SILLYSPORTS,https://www.royalepalettehellebecquoise.be/,,,aucun,,,,,"API TabT (FRBTT), club H231",2026-09-04
+BE,BEH301,El Paraplu Wodecq,BE78,CP 78,BE-HAINAUT,Hainaut,Ellezelles,7890,COMPLEXE SPORTIF,,,,sans-site,,,,,"API TabT (FRBTT), club H301",2026-09-04
+BE,BEH441,CTT Enghien,BE78,CP 78,BE-HAINAUT,Hainaut,ENGHIEN,7850,ECOLE ST-NICOLAS,http://www.cttenghien.be,,,aucun,,,,,"API TabT (FRBTT), club H441",2026-09-04
+BE,BEH400,Palette Friends Papignies,BE78,CP 78,BE-HAINAUT,Hainaut,FLOBECQ,7880,CENTRE SPORTIF JACKY LEROY,,,,sans-site,,,,,"API TabT (FRBTT), club H400",2026-09-04
+BE,BEH253,Royal Trefle Lens - Herchies,BE78,CP 78,BE-HAINAUT,Hainaut,LENS,7870,ECOLE COMMUNALE DE LENS,,,,sans-site,,,,,"API TabT (FRBTT), club H253",2026-09-04
+BE,BEH296,Royal CTT Acren,BE78,CP 78,BE-HAINAUT,Hainaut,Lessines,7860,Complexe sportif Claudy Criquielion,,,,sans-site,,,,,"API TabT (FRBTT), club H296",2026-09-04
+BE,BEH206,Goliath Pays Vert Athois,BE78,CP 78,BE-HAINAUT,Hainaut,MESLIN L'EVEQUE,7822,SALLE La Couturelle,http://gpv-ath.be,,,aucun,,,,,"API TabT (FRBTT), club H206",2026-09-04
+BE,BEH460,Palette Anvinoise,BE79,CP 79,BE-HAINAUT,Hainaut,ANVAING,7910,HALL SPORTIF DE L'ATHENEE ROYAL,,,,sans-site,,,,,"API TabT (FRBTT), club H460",2026-09-04
+BE,BEH297,Raquette Rouge Basecles,BE79,CP 79,BE-HAINAUT,Hainaut,BASECLES,7971,COMPLEXE SPORTIF,,,,sans-site,,,,,"API TabT (FRBTT), club H297",2026-09-04
+BE,BEH449,Palette De Blicquy,BE79,CP 79,BE-HAINAUT,Hainaut,BLICQUY,7903,Palette de Blicquy - Salle Blicosport,,,,sans-site,,,,,"API TabT (FRBTT), club H449",2026-09-04
+BE,BEH342,Palette Huissignies,BE79,CP 79,BE-HAINAUT,Hainaut,HUISSIGNIES,7950,"LA MARCOTTE, CENTRE CULTUREL ET SPORTIF",https://palettehuissignies.be/,,,aucun,,,,,"API TabT (FRBTT), club H342",2026-09-04
+BE,BEH227,Palette Leuzoise,BE79,CP 79,BE-HAINAUT,Hainaut,LEUZE-EN -HAINAUT,7900,LeuzArena,http://www.palette-leuzoise.be,,,aucun,,,,,"API TabT (FRBTT), club H227",2026-09-04
+BE,BEWVL139,T.T.C. Oostkamp,BE80,CP 80,BE-WEST-VLAANDEREN,Flandre-Occidentale,OOSTKAMP,8020,De Valkaart,,,,sans-site,,,,,"API TabT (FRBTT), club WVL139",2026-09-04
+BE,BEWVL087,K.T.T.C. Dino Brugge,BE82,CP 82,BE-WEST-VLAANDEREN,Flandre-Occidentale,SINT-ANDRIES,8200,Sint-Lodewijkscollege,,,,sans-site,,,,,"API TabT (FRBTT), club WVL087",2026-09-04
+BE,BEWVL137,T.T.C. Knokke-Heist,BE83,CP 83,BE-WEST-VLAANDEREN,Flandre-Occidentale,KNOKKE-HEIST,8300,Sporthal de Stormmeeuw,,,,sans-site,,,,,"API TabT (FRBTT), club WVL137",2026-09-04
+BE,BEWVL158,T.T.C. Damme,BE83,CP 83,BE-WEST-VLAANDEREN,Flandre-Occidentale,SIJSELE,8340,'t Veld,,,,sans-site,,,,,"API TabT (FRBTT), club WVL158",2026-09-04
+BE,BEWVL104,T.T.C. Bredene,BE84,CP 84,BE-WEST-VLAANDEREN,Flandre-Occidentale,BREDENE,8450,"Sportcentrum ""Ter Polder""",,,,sans-site,,,,,"API TabT (FRBTT), club WVL104",2026-09-04
+BE,BEWVL105,T.T.C. Jabbeke,BE84,CP 84,BE-WEST-VLAANDEREN,Flandre-Occidentale,JABBEKE,8490,Vrijetijdscentrum Jabbeke,,,,sans-site,,,,,"API TabT (FRBTT), club WVL105",2026-09-04
+BE,BEWVL045,T.T.C. Drive Oostende,BE84,CP 84,BE-WEST-VLAANDEREN,Flandre-Occidentale,OOSTENDE,8400,Tafeltenniszaal,,,,sans-site,,,,,"API TabT (FRBTT), club WVL045",2026-09-04
+BE,BEWVL109,T.T.C. Zandvoorde,BE84,CP 84,BE-WEST-VLAANDEREN,Flandre-Occidentale,Oostende,8400,TTC Zandvoorde,,,,sans-site,,,,,"API TabT (FRBTT), club WVL109",2026-09-04
+BE,BEWVL114,T.T.C. Oudenburg,BE84,CP 84,BE-WEST-VLAANDEREN,Flandre-Occidentale,OUDENBURG,8460,Sporthal TER BEKE,,,,sans-site,,,,,"API TabT (FRBTT), club WVL114",2026-09-04
+BE,BEWVL060,T.T.C. The Charlies,BE84,CP 84,BE-WEST-VLAANDEREN,Flandre-Occidentale,WENDUINE,8420,TORREKIN,,,,sans-site,,,,,"API TabT (FRBTT), club WVL060",2026-09-04
+BE,BEWVL110,T.T.C. Jong Gullegem,BE85,CP 85,BE-WEST-VLAANDEREN,Flandre-Occidentale,Gullegem,8560,Sporthal Gullegem,,,,sans-site,,,,,"API TabT (FRBTT), club WVL110",2026-09-04
+BE,BEWVL159,T.T.C. Locomotief Gullegem,BE85,CP 85,BE-WEST-VLAANDEREN,Flandre-Occidentale,Gullegem,8560,Sporthal Gullegem,,,,sans-site,,,,,"API TabT (FRBTT), club WVL159",2026-09-04
+BE,BEWVL116,T.T.C. Atanis Kortrijk,BE85,CP 85,BE-WEST-VLAANDEREN,Flandre-Occidentale,KORTRIJK,8500,Sporthal KTA 3 hofsteden,,,,sans-site,,,,,"API TabT (FRBTT), club WVL116",2026-09-04
+BE,BEWVL072,T.T.C. Eendracht Kuurne,BE85,CP 85,BE-WEST-VLAANDEREN,Flandre-Occidentale,Kuurne,8520,SPORTPARK- Turnzaal,,,,sans-site,,,,,"API TabT (FRBTT), club WVL072",2026-09-04
+BE,BEWVL143,T.T.C. St-Denijs,BE85,CP 85,BE-WEST-VLAANDEREN,Flandre-Occidentale,SINT-DENIJS,8554,Gemeenteschool,,,,sans-site,,,,,"API TabT (FRBTT), club WVL143",2026-09-04
+BE,BEWVL040,T.T.C. Sobeka Zwevegem,BE85,CP 85,BE-WEST-VLAANDEREN,Flandre-Occidentale,Zwevegem,8550,"Ontmoetingscentrum ""De Brug""",,,,sans-site,,,,,"API TabT (FRBTT), club WVL040",2026-09-04
+BE,BEWVL100,T.T.C. De woudpalet Houthulst vzw,BE86,CP 86,BE-WEST-VLAANDEREN,Flandre-Occidentale,Houthulst,8650,Gemeentelijke Sporthal,,,,sans-site,,,,,"API TabT (FRBTT), club WVL100",2026-09-04
+BE,BEWVL125,T.T.C. Koekelare,BE86,CP 86,BE-WEST-VLAANDEREN,Flandre-Occidentale,Koekelare,8680,Gemeentelijke Sporthal,,,,sans-site,,,,,"API TabT (FRBTT), club WVL125",2026-09-04
+BE,BEWVL071,T.T.C. Nieuwpoort,BE86,CP 86,BE-WEST-VLAANDEREN,Flandre-Occidentale,NIEUWPOORT,8620,Sportpark,,,,sans-site,,,,,"API TabT (FRBTT), club WVL071",2026-09-04
+BE,BEWVL085,K.T.T.C. Oostduinkerke,BE86,CP 86,BE-WEST-VLAANDEREN,Flandre-Occidentale,Oostduinkerke,8670,TTC OOSTDUINKERKE,,,,sans-site,,,,,"API TabT (FRBTT), club WVL085",2026-09-04
+BE,BEWVL067,TTC Mandelhoek,BE87,CP 87,BE-WEST-VLAANDEREN,Flandre-Occidentale,INGELMUNSTER,8770,Sporthal Ingelmunster,,,,sans-site,,,,,"API TabT (FRBTT), club WVL067",2026-09-04
+BE,BEWVL134,T.T.C. Meulebeke,BE87,CP 87,BE-WEST-VLAANDEREN,Flandre-Occidentale,MEULEBEKE,8760,TTC MEULEBEKE,,,,sans-site,,,,,"API TabT (FRBTT), club WVL134",2026-09-04
+BE,BEWVL126,T.T.C. Tielt,BE87,CP 87,BE-WEST-VLAANDEREN,Flandre-Occidentale,TIELT,8700,Stedelijke sporthal,,,,sans-site,,,,,"API TabT (FRBTT), club WVL126",2026-09-04
+BE,BEWVL094,T.T.C. Wielsbeke-spotit,BE87,CP 87,BE-WEST-VLAANDEREN,Flandre-Occidentale,WIELSBEKE,8710,Sporthal Hernieuwenburg,,,,sans-site,,,,,"API TabT (FRBTT), club WVL094",2026-09-04
+BE,BEWVL163,TTC Wingene,BE87,CP 87,BE-WEST-VLAANDEREN,Flandre-Occidentale,WINGENE,8750,DE TUIMELAAR,,,,sans-site,,,,,"API TabT (FRBTT), club WVL163",2026-09-04
+BE,BEWVL164,T.T.C. GIDOS,BE88,CP 88,BE-WEST-VLAANDEREN,Flandre-Occidentale,HOOGLEDE- GITS,8830,Hoofdlokaal,,,,sans-site,,,,,"API TabT (FRBTT), club WVL164",2026-09-04
+BE,BEWVL000,Individueel West-Vlaanderen,BE88,CP 88,BE-WEST-VLAANDEREN,Flandre-Occidentale,Roeselare,8800,Sporthal Schiervelde,,,,sans-site,,,,,"API TabT (FRBTT), club WVL000",2026-09-04
+BE,BEWVL152,T.T.C. Paletje Roeselare,BE88,CP 88,BE-WEST-VLAANDEREN,Flandre-Occidentale,ROESELARE,8800,Vikingschool,,,,sans-site,,,,,"API TabT (FRBTT), club WVL152",2026-09-04
+BE,BEWVL138,T.T.C. Torhout,BE88,CP 88,BE-WEST-VLAANDEREN,Flandre-Occidentale,Torhout,8820,Stedelijke Sporthal,,,,sans-site,,,,,"API TabT (FRBTT), club WVL138",2026-09-04
+BE,BEWVL129,T.T.C. Westhoek,BE89,CP 89,BE-WEST-VLAANDEREN,Flandre-Occidentale,Ieper,8900,Stedelijke Sporthal 2,,,,sans-site,,,,,"API TabT (FRBTT), club WVL129",2026-09-04
+BE,BEWVL034,T.T.C. And Leie,BE89,CP 89,BE-WEST-VLAANDEREN,Flandre-Occidentale,Lauwe,8930,Sportcomplex Vandemoortele,,,,sans-site,,,,,"API TabT (FRBTT), club WVL034",2026-09-04
+BE,BEWVL154,T.T.C. Zonnebeke,BE89,CP 89,BE-WEST-VLAANDEREN,Flandre-Occidentale,ZONNEBEKE (Beselare),8980,SPORTHAL,,,,sans-site,,,,,"API TabT (FRBTT), club WVL154",2026-09-04
+BE,BEOVL088,TTC Rooigem Gent VZW,BE90,CP 90,BE-OOST-VLAANDEREN,Flandre-Orientale,Gent,9000,TTC Rooigem Gent vzw,,,,sans-site,,,,,"API TabT (FRBTT), club OVL088",2026-09-04
+BE,BEOVL107,TTC Lobos-Lochristi,BE90,CP 90,BE-OOST-VLAANDEREN,Flandre-Orientale,Lochristi,9080,GBS Lochristi,,,,sans-site,,,,,"API TabT (FRBTT), club OVL107",2026-09-04
+BE,BEOVL001,TTC QLT Gent,BE90,CP 90,BE-OOST-VLAANDEREN,Flandre-Orientale,SInt Amandsberg,9040,QLT BV,,,,sans-site,,,,,"API TabT (FRBTT), club OVL001",2026-09-04
+BE,BEOVL000,Individueel Oost-Vlaanderen,BE91,CP 91,BE-OOST-VLAANDEREN,Flandre-Orientale,Beveren,9120,Individueel OVL,,,,sans-site,,,,,"API TabT (FRBTT), club OVL000",2026-09-04
+BE,BEOVL101,TTC Kruibeke vzw,BE91,CP 91,BE-OOST-VLAANDEREN,Flandre-Orientale,Kruibeke,9150,O.L.V-School,,,,sans-site,,,,,"API TabT (FRBTT), club OVL101",2026-09-04
+BE,BEOVL039,Sint-Niklase Tafeltennisclub,BE91,CP 91,BE-OOST-VLAANDEREN,Flandre-Orientale,Sint-Niklaas,9100,Sint Niklase TTC,,,,sans-site,,,,,"API TabT (FRBTT), club OVL039",2026-09-04
+BE,BEOVL125,TTC Sint-Pauwels vzw,BE91,CP 91,BE-OOST-VLAANDEREN,Flandre-Orientale,Sint-Pauwels,9170,Turnzaal De Zandloper,,,,sans-site,,,,,"API TabT (FRBTT), club OVL125",2026-09-04
+BE,BEOVL093,TTC Stekene VZW,BE91,CP 91,BE-OOST-VLAANDEREN,Flandre-Orientale,Stekene,9190,Tafeltenniscentrum Stekene,,,,sans-site,,,,,"API TabT (FRBTT), club OVL093",2026-09-04
+BE,BEOVL056,KTTC Temse,BE91,CP 91,BE-OOST-VLAANDEREN,Flandre-Orientale,Temse,9140,Hoevecomplex F. Schuerman,,,,sans-site,,,,,"API TabT (FRBTT), club OVL056",2026-09-04
+BE,BEOVL106,TTC Nova Opdorp vzw,BE92,CP 92,BE-OOST-VLAANDEREN,Flandre-Orientale,Buggenhout-Opdorp,9255,"Sporthal "" De Capelderij """,,,,sans-site,,,,,"API TabT (FRBTT), club OVL106",2026-09-04
+BE,BEOVL096,TTC Hamme,BE92,CP 92,BE-OOST-VLAANDEREN,Flandre-Orientale,Hamme,9220,TTC Hamme,,,,sans-site,,,,,"API TabT (FRBTT), club OVL096",2026-09-04
+BE,BEOVL020,TTC Lebbeke,BE92,CP 92,BE-OOST-VLAANDEREN,Flandre-Orientale,Lebbeke,9280,Kerk Heilig Kruis,,,,sans-site,,,,,"API TabT (FRBTT), club OVL020",2026-09-04
+BE,BEOVL103,Tafeltennisclub Wetteren,BE92,CP 92,BE-OOST-VLAANDEREN,Flandre-Orientale,Wetteren,9230,Sportzaal St-Gertrudiscollege,,,,sans-site,,,,,"API TabT (FRBTT), club OVL103",2026-09-04
+BE,BEOVL142,TTC Zele,BE92,CP 92,BE-OOST-VLAANDEREN,Flandre-Orientale,Zele,9240,Sporthal De Zeven,,,,sans-site,,,,,"API TabT (FRBTT), club OVL142",2026-09-04
+BE,BEOVL134,TTC Aalst,BE93,CP 93,BE-OOST-VLAANDEREN,Flandre-Orientale,Aalst,9300,Sporthal De Voorstad,,,,sans-site,,,,,"API TabT (FRBTT), club OVL134",2026-09-04
+BE,BEOVL146,TTC Aaigem,BE94,CP 94,BE-OOST-VLAANDEREN,Flandre-Orientale,AAIGEM,9420,Turnzaal VBS Sint Martinus,,,,sans-site,,,,,"API TabT (FRBTT), club OVL146",2026-09-04
+BE,BEOVL145,TTC Denderleeuw 2001,BE94,CP 94,BE-OOST-VLAANDEREN,Flandre-Orientale,Denderleeuw,9470,Sportzaal A. Ottoy,,,,sans-site,,,,,"API TabT (FRBTT), club OVL145",2026-09-04
+BE,BEOVL148,TTC Ninove,BE95,CP 95,BE-OOST-VLAANDEREN,Flandre-Orientale,Geraardsbergen,9500,Sporthal De Veldmuis,,,,sans-site,,,,,"API TabT (FRBTT), club OVL148",2026-09-04
+BE,BEOVL054,TTC Triumph Ge Mo,BE95,CP 95,BE-OOST-VLAANDEREN,Flandre-Orientale,Geraardsbergen,9500,"Stedelijke Sporthal ""De Veldmuis""",,,,sans-site,,,,,"API TabT (FRBTT), club OVL054",2026-09-04
+BE,BEOVL149,TTC De Rijdt Brakel,BE96,CP 96,BE-OOST-VLAANDEREN,Flandre-Orientale,BRAKEL,9660,Sporthal De Rijdt,,,,sans-site,,,,,"API TabT (FRBTT), club OVL149",2026-09-04
+BE,BEOVL150,TTC Kelderbrullers,BE96,CP 96,BE-OOST-VLAANDEREN,Flandre-Orientale,Kluisbergen,9690,Hoofdlokaal GOC,,,,sans-site,,,,,"API TabT (FRBTT), club OVL150",2026-09-04
+BE,BEOVL052,TTC Ronse,BE96,CP 96,BE-OOST-VLAANDEREN,Flandre-Orientale,Ronse,9600,Sporthal 't Rosco,,,,sans-site,,,,,"API TabT (FRBTT), club OVL052",2026-09-04
+BE,BEOVL092,TTC Egmont Zottegem,BE96,CP 96,BE-OOST-VLAANDEREN,Flandre-Orientale,Zottegem,9620,Sportcomplex Bevegemse Vijvers,,,,sans-site,,,,,"API TabT (FRBTT), club OVL092",2026-09-04
+BE,BEOVL119,TTC Ouwegem,BE97,CP 97,BE-OOST-VLAANDEREN,Flandre-Orientale,Huise,9750,Sporthal Huise,,,,sans-site,,,,,"API TabT (FRBTT), club OVL119",2026-09-04
+BE,BEOVL012,KTTC Meteor Oudenaarde,BE97,CP 97,BE-OOST-VLAANDEREN,Flandre-Orientale,Oudenaarde,9700,'t Sportkot,,,,sans-site,,,,,"API TabT (FRBTT), club OVL012",2026-09-04
+BE,BEOVL082,TTC Welfare Oudenaarde,BE97,CP 97,BE-OOST-VLAANDEREN,Flandre-Orientale,Oudenaarde,9700,Strafinrichting Oudenaarde,,,,sans-site,,,,,"API TabT (FRBTT), club OVL082",2026-09-04
+BE,BEOVL095,KTTC De Pinte,BE98,CP 98,BE-OOST-VLAANDEREN,Flandre-Orientale,De Pinte,9840,Ontmoetingcentrum Polderbos,,,,sans-site,,,,,"API TabT (FRBTT), club OVL095",2026-09-04
+BE,BEOVL047,TTC Deinze vzw,BE98,CP 98,BE-OOST-VLAANDEREN,Flandre-Orientale,Deinze,9800,Zaal Ten Hove,,,,sans-site,,,,,"API TabT (FRBTT), club OVL047",2026-09-04
+BE,BEOVL032,TTC Merelbeke,BE98,CP 98,BE-OOST-VLAANDEREN,Flandre-Orientale,Merelbeke,9820,TTC Merelbeke,,,,sans-site,,,,,"API TabT (FRBTT), club OVL032",2026-09-04
+BE,BEOVL061,TTC Sterke Stut Oosterzele VZW,BE98,CP 98,BE-OOST-VLAANDEREN,Flandre-Orientale,Scheldewindeke,9860,Sporthal De Kluize,,,,sans-site,,,,,"API TabT (FRBTT), club OVL061",2026-09-04
+BE,BEOVL138,TTC Olsene vzw,BE98,CP 98,BE-OOST-VLAANDEREN,Flandre-Orientale,Zulte,9870,Ontmoetingscentrum,,,,sans-site,,,,,"API TabT (FRBTT), club OVL138",2026-09-04
+BE,BEOVL102,TTC HNO Assenede,BE99,CP 99,BE-OOST-VLAANDEREN,Flandre-Orientale,Assenede,9960,"Sportzaal VBS ""Het Ooievaartnest""",,,,sans-site,,,,,"API TabT (FRBTT), club OVL102",2026-09-04
+BE,BEOVL018,KTTC Eikenlo-Eeklo vzw,BE99,CP 99,BE-OOST-VLAANDEREN,Flandre-Orientale,Eeklo,9900,Feestzaal Sparrenhof/ Zaal KTTC Eikenlo,,,,sans-site,,,,,"API TabT (FRBTT), club OVL018",2026-09-04
+BE,BEOVL053,TTC Sleidinge,BE99,CP 99,BE-OOST-VLAANDEREN,Flandre-Orientale,Evergem (Wippelgem),9940,GBS Wippelgem,,,,sans-site,,,,,"API TabT (FRBTT), club OVL053",2026-09-04
+BE,BEOVL059,KTTC Maldegem,BE99,CP 99,BE-OOST-VLAANDEREN,Flandre-Orientale,Maldegem,9990,Sporthal MEOS,,,,sans-site,,,,,"API TabT (FRBTT), club OVL059",2026-09-04
+BE,BEOVL115,TTC Zomergem,BE99,CP 99,BE-OOST-VLAANDEREN,Flandre-Orientale,Zomergem,9930,Fintro Arena,,,,sans-site,,,,,"API TabT (FRBTT), club OVL115",2026-09-04
 CH,CH33078,Bougy,CH10,NPA 10,CH-VAUD-VALAIS-FRIBOURG,"Association Vaudoise, Valaisanne et Fribourgeoise",Bussigny,1030,"Salle communale — Grand-Rue 11, 1172 Bougy-Villars, Schweiz",http://www.cttbougy.sitew.ch/,logos/CH10/CH33078-bougy.webp,https://www.click-tt.ch/cgi-bin/WebObjects/nuLigaTTCH.woa/wr?wodata=7880872356062001584,logo,#f0f010 #d0d0d0 #303030 #10d050,clair,,,"click-TT (STT), VNr. 40089",2026-09-04
 CH,CH33085,Crissier,CH10,NPA 10,CH-VAUD-VALAIS-FRIBOURG,"Association Vaudoise, Valaisanne et Fribourgeoise",Crissier,1023,"Salle de gymnastique de la Romanellaz — ch. des Oches du Mur, 1023 Crissier, Schweiz",http://www.cttcrissier.ch,logos/CH10/CH33085-crissier.webp,https://www.click-tt.ch/cgi-bin/WebObjects/nuLigaTTCH.woa/wr?wodata=2687886218750758821,logo,#107030 #109050 #109030 #f01010,clair,,,"click-TT (STT), VNr. 40097",2026-09-04
 CH,CH33011,Mézières,CH10,NPA 10,CH-VAUD-VALAIS-FRIBOURG,"Association Vaudoise, Valaisanne et Fribourgeoise",Ecublens,1024,"Chemin des Grottes 4 — -, 1083 Mézières, Schweiz",https://cttmezieres.ch/,,,aucun,,,,,"click-TT (STT), VNr. 40009",2026-09-04
