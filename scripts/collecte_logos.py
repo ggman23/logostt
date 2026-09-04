@@ -27,10 +27,13 @@ DOSSIER_SITE = referentiel.RACINE / "site"
 
 
 def a_traiter(
-    clubs: list[catalogue.Club], deps: set[str], forcer: bool, tout_le_monde: bool = False
+    clubs: list[catalogue.Club], deps: set[str], forcer: bool,
+    tout_le_monde: bool = False, pays: str = "",
 ) -> list[catalogue.Club]:
     selection = []
     for club in clubs:
+        if pays and club.pays != pays:
+            continue
         # « tous » couvre aussi les clubs étrangers, dont les regroupements ne sont pas
         # des départements français.
         if not tout_le_monde and club.dep not in deps:
@@ -55,6 +58,8 @@ def main() -> int:
     analyseur.add_argument("--delai", type=float, default=1.5, help="délai minimal entre deux requêtes vers un même domaine (s)")
     analyseur.add_argument("--timeout", type=float, default=10.0,
                            help="délai d'attente maximal par requête (s)")
+    analyseur.add_argument("--pays", default="",
+                           help="ne traiter qu'un pays (FR, DE) ; vide = tous")
     analyseur.add_argument("--budget", type=float, default=120.0,
                            help="durée maximale de la collecte des logos, en minutes")
     analyseur.add_argument("--verbeux", action="store_true")
@@ -73,7 +78,8 @@ def main() -> int:
         return 1
 
     complet = len(deps) == len(referentiel.departements())
-    selection = a_traiter(clubs, deps, arguments.forcer, tout_le_monde=complet)
+    selection = a_traiter(clubs, deps, arguments.forcer, tout_le_monde=complet,
+                          pays=arguments.pays.upper())
     if arguments.limite:
         selection = selection[: arguments.limite]
     journal.info("%s club(s) à visiter sur %s au catalogue", len(selection), len(clubs))

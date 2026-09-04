@@ -56,6 +56,11 @@ REJET = re.compile(
     r"ans[_-]logo|logo[_-]ans|agence-?nationale-?du-?sport|cnds|pass-?sport|"
     r"terre-?de-?jeux|paris-?2024|sport-?sante|anct|region-?[a-z]*-?logo|"
     r"credit-?mutuel|caisse-?d?-?epargne|groupama|harmonie-?mutuelle|casal-?sport|"
+    # entreprises partenaires, très présentes en pied de page des sites allemands
+    r"gmbh|kg-?logo|sparkasse|volksbank|raiffeisen|autohaus|bauelemente|"
+    r"elektro[a-z]*bau|maschinenbau|heizung|sanitaer|sanitar|dachdecker|"
+    r"getraenke|apotheke|versicherung|immobilien|steuerberat|gastst|brauerei|"
+    r"arena|stadion|sponsoren|foerderer|partner-?logo|werbung|"
     r"jeunesse-?et-?sports|ministere|ancv|creps|ufolep|credit-?agricole|"
     r"intermarche|leclerc|decathlon|cornilleau|butterfly|tibhar|donic",
     re.I,

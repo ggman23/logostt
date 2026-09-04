@@ -255,6 +255,22 @@ class TestExtractionLogo(unittest.TestCase):
         for indesirable in ("googlelogo", "assoconnect", "planning"):
             self.assertNotIn(indesirable, retenus)
 
+
+    def test_sponsors_allemands_ecartes(self):
+        """Faux positifs relevés sur les sites allemands : entreprises partenaires,
+        banques et enceintes sponsorisées, très présentes en pied de page."""
+        classement = logos.candidats(
+            '<img src="/img/pj-bauelemente.png">'
+            '<img src="/img/elektromaschinenbau-broeking.jpg">'
+            '<img src="/img/reiner-meutsch-arena.jpg">'
+            '<img src="/img/sparkasse.png">'
+            '<img class="logo" src="/img/tsv-vordorf-wappen.png">',
+            "https://tsv-vordorf.de/", "TSV Vordorf")
+        self.assertEqual(classement[0].url, "https://tsv-vordorf.de/img/tsv-vordorf-wappen.png")
+        retenus = " ".join(c.url for c in classement)
+        for indesirable in ("bauelemente", "maschinenbau", "arena", "sparkasse"):
+            self.assertNotIn(indesirable, retenus)
+
     def test_variantes_d_url(self):
         self.assertEqual(
             logos._variantes("http://club.fr/ping"),
