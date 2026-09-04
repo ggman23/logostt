@@ -8,4 +8,4 @@ recommencer
 # 2e ligne : étapes (clubs+logos, clubs, logos) — vide = clubs+logos
 # 3e ligne : « forcer » pour revoir les logos déjà connus — vide = seulement ceux qui manquent
 # Dernière passe 04/09/2026 22:40 — Suisse, annuaire (associations régionales)
-# Dernière passe 04/09/2026 22:55 — Belgique, annuaire
+# Dernière passe 04/09/2026 23:00 — Belgique, annuaire (comités écartés)

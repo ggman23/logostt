@@ -83,6 +83,10 @@ def club_depuis_fiche(fiche: str) -> Club | None:
     categorie = _champ(fiche, "CategoryName")
     if not index or categorie in CATEGORIES_ADMINISTRATIVES:
         return None
+    # Chaque province est aussi inscrite sous son propre nom (index « H », « H000 »,
+    # « Individueel Antwerpen »…) : ce sont des comités, pas des clubs.
+    if not re.search(r"\d", index) or re.search(r"0{3}$", index):
+        return None
     ligue_code, ligue_nom = PROVINCES.get(categorie, ("BE-AUTRE", categorie or "Belgique"))
 
     # « 2800 Mechelen » : la commune de la salle donne code postal et ville.
@@ -146,26 +150,32 @@ def _liens_externes(html: str) -> set[str]:
             if a["href"].startswith("http") and not MEUBLES.search(a["href"])}
 
 
-def site_du_club(index: str, client: Client, meubles: set[str]) -> str:
+def site_du_club(index: str, client: Client, meubles: set[str], nom: str = "") -> str:
     """Interroge le moteur de l'AFTT et rend l'adresse du site du club, si elle existe.
 
-    Le moteur ne connaît que les clubs de l'aile francophone : pour les autres, la
-    réponse est une page vide de tout lien nouveau, et le club reste sans site.
+    La recherche se fait d'abord sur l'index, puis sur le nom du club si l'index ne
+    donne rien : le moteur ne les indexe pas toujours de la même façon.
+
+    Il ne connaît que les clubs de l'aile francophone : pour les autres, la réponse ne
+    contient aucun lien nouveau et le club reste simplement sans site.
     """
-    try:
-        reponse = client.session.post(RECHERCHE_AFTT,
-                                      data={"club": index, "search_club": "1"}, timeout=45)
-    except Exception as erreur:  # noqa: BLE001
-        journal.debug("AFTT %s : %s", index, erreur)
-        return ""
-    if reponse.status_code != 200:
-        return ""
-    # Le nom du club doit apparaître : sinon la recherche n'a rien trouvé et les liens
-    # de la page ne le concernent pas.
-    if index.upper() not in reponse.text.upper():
-        return ""
-    nouveaux = sorted(_liens_externes(reponse.text) - meubles)
-    return nouveaux[0] if nouveaux else ""
+    for recherche in [r for r in (index, nom) if r]:
+        try:
+            reponse = client.session.post(
+                RECHERCHE_AFTT, data={"club": recherche, "search_club": "1"}, timeout=45)
+        except Exception as erreur:  # noqa: BLE001
+            journal.debug("AFTT %s : %s", recherche, erreur)
+            continue
+        if reponse.status_code != 200:
+            continue
+        # L'index doit apparaître entier dans la page : sinon la recherche a trouvé un
+        # autre club (ou rien), et les liens qui s'y trouvent ne concernent pas celui-ci.
+        if not re.search(rf"\b{re.escape(index)}\b", reponse.text, re.I):
+            continue
+        nouveaux = sorted(_liens_externes(reponse.text) - meubles)
+        if nouveaux:
+            return nouveaux[0]
+    return ""
 
 
 def completer_les_sites(clubs: list[Club], client: Client, budget: float = 0) -> int:
@@ -182,7 +192,7 @@ def completer_les_sites(clubs: list[Club], client: Client, budget: float = 0) ->
             journal.warning("budget épuisé après %d clubs", rang - 1)
             break
         index = club.numero[2:]
-        adresse = site_du_club(index, client, meubles)
+        adresse = site_du_club(index, client, meubles, club.nom)
         if adresse:
             club.site_web = adresse
             club.logo_statut = catalogue.LOGO_ABSENT

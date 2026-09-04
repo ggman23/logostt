@@ -688,11 +688,25 @@ class TestBelgique(unittest.TestCase):
         self.assertNotIn("0476", " ".join(str(v) for v in vars(club).values()))
 
     def test_les_entrees_administratives_sont_ecartees(self):
-        """L'API liste aussi les fédérations elles-mêmes sous une catégorie de service."""
+        """L'API liste aussi les fédérations et les comités provinciaux.
+
+        Les fédérations portent une catégorie de service ; les comités provinciaux
+        portent, eux, le nom d'une vraie province et ne se reconnaissent qu'à leur
+        index : « H » sans chiffre, ou « H000 » terminé par trois zéros.
+        """
         for categorie in ("VTTL", "AFTT", ""):
             fiche = (f"<ns1:UniqueIndex>{categorie or 'FR'}</ns1:UniqueIndex>"
                      f"<ns1:CategoryName>{categorie}</ns1:CategoryName>")
             self.assertIsNone(belgique.club_depuis_fiche(fiche))
+        for index in ("H", "N", "BBW", "H000", "A000", "Vl-B000"):
+            fiche = (f"<ns1:UniqueIndex>{index}</ns1:UniqueIndex>"
+                     f"<ns1:Name>Province De Hainaut</ns1:Name>"
+                     f"<ns1:CategoryName>Hainaut</ns1:CategoryName>")
+            self.assertIsNone(belgique.club_depuis_fiche(fiche), index)
+        # Un vrai club de la même province, lui, est bien retenu.
+        vrai = ("<ns1:UniqueIndex>H001</ns1:UniqueIndex><ns1:Name>CTT Ath</ns1:Name>"
+                "<ns1:CategoryName>Hainaut</ns1:CategoryName>")
+        self.assertIsNotNone(belgique.club_depuis_fiche(vrai))
 
     def test_entites_html_decodees(self):
         """L'API renvoie « Li&amp;egrave;ge » : la province doit être reconnue quand même."""
@@ -730,6 +744,10 @@ class TestBelgique(unittest.TestCase):
         # Un club que le moteur ne connaît pas : son index n'apparaît pas dans la page.
         client = ClientFactice(decor)
         self.assertEqual(belgique.site_du_club("A003", client, meubles), "")
+        # Et un index court ne doit pas se reconnaître au milieu d'un autre : « N »
+        # ne vaut pas pour la page du club « BBW205 ».
+        client = ClientFactice(trouve)
+        self.assertEqual(belgique.site_du_club("N", client, meubles), "")
 
     def test_statistiques_par_pays(self):
         clubs = [belgique.club_depuis_fiche(self.FICHE)]
