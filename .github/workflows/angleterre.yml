@@ -1,0 +1,58 @@
+name: Reprise de la collecte anglaise
+
+# Table Tennis England a suspendu son flux ouvert (HTTP 503, « API is temporarily
+# disabled or under maintenance »). Le module de collecte est prêt : ce rendez-vous
+# quotidien le relance jusqu'à ce que la fédération rallume le flux. Tant qu'il est
+# éteint, la collecte s'arrête d'elle-même sans rien changer au catalogue.
+on:
+  schedule:
+    - cron: "20 5 * * *"   # tous les jours à 5 h 20 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: collecte
+  cancel-in-progress: false
+
+jobs:
+  collecte:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -r requirements.txt
+
+      - name: Collecter l'annuaire anglais
+        run: python3 scripts/collecte_clubs.py --source angleterre --dep tous --budget 30
+
+      - name: Récupérer les logos anglais
+        run: python3 scripts/collecte_logos.py --pays EN --dep tous --budget 45
+
+      - name: Générer les données du site
+        run: python3 scripts/construire_site.py
+
+      - name: Publier les résultats
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          for essai in 1 2 3; do
+            git fetch origin main
+            git reset --mixed origin/main
+            git add data site/data site/logos
+            if git diff --cached --quiet; then
+              echo "Rien de neuf : le flux anglais est sans doute toujours suspendu."
+              exit 0
+            fi
+            git commit -m "Collecte anglaise du $(date +%d/%m/%Y)"
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            echo "Poussée refusée (essai $essai), nouvelle tentative."
+            sleep 10
+          done
+          exit 1

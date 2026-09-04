@@ -185,7 +185,12 @@ def main() -> int:
                                      budget=arguments.budget,
                                      federation=arguments.federation)
     elif arguments.source == "angleterre":
-        nouveaux = angleterre.liste_des_clubs(client, arguments.limite)
+        try:
+            nouveaux = angleterre.liste_des_clubs(client, arguments.limite)
+        except angleterre.SourceEnMaintenance as arret:
+            # Rien à corriger de notre côté : on repart sans rien changer au catalogue.
+            journal.warning("collecte anglaise reportée — %s", arret)
+            return 0
     elif arguments.source == "belgique":
         nouveaux = belgique.liste_des_clubs(client)
         if arguments.limite:

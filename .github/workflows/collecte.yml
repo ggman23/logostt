@@ -16,7 +16,7 @@ on:
       source:
         description: "Source de la liste des clubs"
         type: choice
-        options: ["carte", "clicktt", "fftt", "opendata"]
+        options: ["carte", "clicktt", "angleterre", "belgique", "fftt", "opendata"]
         default: "carte"
       etapes:
         description: "Étapes à lancer"

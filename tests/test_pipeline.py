@@ -628,14 +628,20 @@ class TestAngleterre(unittest.TestCase):
         ]
 
         class ClientFactice:
-            def __init__(self):
+            def __init__(self, code=200):
                 self.appels = []
+                self.code = code
+                self.session = self
 
-            def get(self, url, taille_max=0):
+            def get(self, url, timeout=None):
                 self.appels.append(url)
                 page = pages[min(len(self.appels) - 1, len(pages) - 1)]
+                code = self.code
 
                 class Reponse:
+                    status_code = code
+                    text = '{"Code": 503, "Error": "Service Unavailable"}'
+
                     @staticmethod
                     def json():
                         return page
@@ -646,6 +652,11 @@ class TestAngleterre(unittest.TestCase):
         self.assertEqual([c.nom for c in clubs], ["Alpha renommé"])
         self.assertEqual(len(client.appels), 3)
         self.assertTrue(client.appels[1].endswith("?afterId=2"))
+
+        # Une coupure annoncée par la fédération n'est pas une panne de notre côté :
+        # elle doit être signalée telle quelle plutôt que rendre une liste vide.
+        with self.assertRaises(angleterre.SourceEnMaintenance):
+            angleterre.liste_des_clubs(ClientFactice(code=503))
 
     def test_statistiques_par_pays(self):
         clubs = [angleterre.club_depuis_element(self.element())]

@@ -19,6 +19,14 @@ from .reseau import Client, journal
 
 FLUX = "https://www.tabletennis365.com/TableTennisEngland/API/OpenActive/v1/Clubs"
 
+
+class SourceEnMaintenance(RuntimeError):
+    """La fédération a coupé son flux : ce n'est pas une erreur de notre côté.
+
+    Le serveur répond alors 503 avec un corps JSON explicite. Rien ne sert de
+    réessayer dans la minute : la collecte s'arrête et sera relancée plus tard.
+    """
+
 # Les zones postales britanniques (les lettres qui ouvrent un code postal) servent de
 # second niveau de navigation, comme les départements en France ; chacune est rattachée
 # à l'une des neuf régions anglaises, qui tiennent lieu de ligues.
@@ -177,9 +185,18 @@ def liste_des_clubs(client: Client, limite: int = 0, pages_max: int = 200) -> li
     url = FLUX
     clubs: dict[str, Club] = {}
     for page in range(1, pages_max + 1):
-        reponse = client.get(url, taille_max=20_000_000)
-        if reponse is None:
-            journal.warning("flux anglais : page %d inaccessible", page)
+        # Requête directe : on veut distinguer une coupure annoncée d'une panne.
+        try:
+            reponse = client.session.get(url, timeout=(8, 60))
+        except Exception as erreur:  # noqa: BLE001
+            journal.warning("flux anglais : page %d, %s: %s", page, type(erreur).__name__, erreur)
+            break
+        if reponse.status_code == 503:
+            raise SourceEnMaintenance(
+                "Table Tennis England a suspendu son flux ouvert "
+                f"(HTTP 503 : {reponse.text.strip()[:120]})")
+        if reponse.status_code != 200:
+            journal.warning("flux anglais : page %d, HTTP %d", page, reponse.status_code)
             break
         try:
             donnees = reponse.json()
