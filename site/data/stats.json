@@ -1,7 +1,7 @@
 {
  "maj": "2026-09-04",
  "clubs": 11002,
- "logos": 4770,
+ "logos": 4849,
  "sites": 4719,
  "pays": [
   {
@@ -9,7 +9,7 @@
    "nom": "France",
    "clubs": 3064,
    "sites": 1220,
-   "logos": 871,
+   "logos": 870,
    "ligues": [
     {
      "code": "ARA",
@@ -766,7 +766,7 @@
      "nom": "Provence-Alpes-Côte d'Azur",
      "zone": "metropole",
      "clubs": 119,
-     "logos": 35,
+     "logos": 34,
      "sites": 53,
      "departements": [
       {
@@ -801,7 +801,7 @@
        "dep": "83",
        "nom": "Var",
        "clubs": 30,
-       "logos": 11,
+       "logos": 10,
        "sites": 15
       },
       {
@@ -977,7 +977,7 @@
    "nom": "Allemagne",
    "clubs": 7167,
    "sites": 3163,
-   "logos": 3763,
+   "logos": 3762,
    "ligues": [
     {
      "code": "DE-TTV-SCHLESWIG-HOL",
@@ -1147,7 +1147,7 @@
      "nom": "Bayerischer Tischtennis-Verband e.V.",
      "zone": "",
      "clubs": 913,
-     "logos": 562,
+     "logos": 561,
      "sites": 503,
      "departements": [
       {
@@ -1266,7 +1266,7 @@
        "dep": "D91",
        "nom": "PLZ 91",
        "clubs": 144,
-       "logos": 90,
+       "logos": 89,
        "sites": 86
       },
       {
@@ -3091,14 +3091,14 @@
    "nom": "Belgique",
    "clubs": 516,
    "sites": 113,
-   "logos": 0,
+   "logos": 81,
    "ligues": [
     {
      "code": "BE-LUXEMBOURG",
      "nom": "Luxembourg",
      "zone": "",
      "clubs": 56,
-     "logos": 0,
+     "logos": 8,
      "sites": 14,
      "departements": [
       {
@@ -3119,28 +3119,28 @@
        "dep": "BE66",
        "nom": "CP 66",
        "clubs": 14,
-       "logos": 0,
+       "logos": 1,
        "sites": 3
       },
       {
        "dep": "BE67",
        "nom": "CP 67",
        "clubs": 14,
-       "logos": 0,
+       "logos": 4,
        "sites": 5
       },
       {
        "dep": "BE68",
        "nom": "CP 68",
        "clubs": 10,
-       "logos": 0,
+       "logos": 1,
        "sites": 3
       },
       {
        "dep": "BE69",
        "nom": "CP 69",
        "clubs": 15,
-       "logos": 0,
+       "logos": 2,
        "sites": 3
       }
      ]
@@ -3150,42 +3150,42 @@
      "nom": "Namur",
      "zone": "",
      "clubs": 82,
-     "logos": 0,
+     "logos": 12,
      "sites": 23,
      "departements": [
       {
        "dep": "",
        "nom": "",
        "clubs": 1,
-       "logos": 0,
+       "logos": 1,
        "sites": 1
       },
       {
        "dep": "BE50",
        "nom": "CP 50",
        "clubs": 23,
-       "logos": 0,
+       "logos": 4,
        "sites": 8
       },
       {
        "dep": "BE51",
        "nom": "CP 51",
        "clubs": 13,
-       "logos": 0,
+       "logos": 2,
        "sites": 5
       },
       {
        "dep": "BE53",
        "nom": "CP 53",
        "clubs": 10,
-       "logos": 0,
+       "logos": 3,
        "sites": 4
       },
       {
        "dep": "BE55",
        "nom": "CP 55",
        "clubs": 11,
-       "logos": 0,
+       "logos": 2,
        "sites": 2
       },
       {
@@ -3202,35 +3202,35 @@
      "nom": "Bruxelles et Brabant wallon",
      "zone": "",
      "clubs": 32,
-     "logos": 0,
+     "logos": 21,
      "sites": 24,
      "departements": [
       {
        "dep": "BE10",
        "nom": "CP 10",
        "clubs": 7,
-       "logos": 0,
+       "logos": 4,
        "sites": 4
       },
       {
        "dep": "BE11",
        "nom": "CP 11",
        "clubs": 7,
-       "logos": 0,
+       "logos": 6,
        "sites": 6
       },
       {
        "dep": "BE13",
        "nom": "CP 13",
        "clubs": 7,
-       "logos": 0,
+       "logos": 3,
        "sites": 6
       },
       {
        "dep": "BE14",
        "nom": "CP 14",
        "clubs": 11,
-       "logos": 0,
+       "logos": 8,
        "sites": 8
       }
      ]
@@ -3313,14 +3313,14 @@
      "nom": "Liège",
      "zone": "",
      "clubs": 92,
-     "logos": 0,
+     "logos": 11,
      "sites": 16,
      "departements": [
       {
        "dep": "BE13",
        "nom": "CP 13",
        "clubs": 3,
-       "logos": 0,
+       "logos": 1,
        "sites": 1
       },
       {
@@ -3348,7 +3348,7 @@
        "dep": "BE43",
        "nom": "CP 43",
        "clubs": 6,
-       "logos": 0,
+       "logos": 1,
        "sites": 2
       },
       {
@@ -3362,7 +3362,7 @@
        "dep": "BE45",
        "nom": "CP 45",
        "clubs": 11,
-       "logos": 0,
+       "logos": 1,
        "sites": 1
       },
       {
@@ -3376,21 +3376,21 @@
        "dep": "BE47",
        "nom": "CP 47",
        "clubs": 6,
-       "logos": 0,
+       "logos": 2,
        "sites": 2
       },
       {
        "dep": "BE48",
        "nom": "CP 48",
        "clubs": 18,
-       "logos": 0,
+       "logos": 5,
        "sites": 5
       },
       {
        "dep": "BE49",
        "nom": "CP 49",
        "clubs": 10,
-       "logos": 0,
+       "logos": 1,
        "sites": 2
       }
      ]
@@ -3400,7 +3400,7 @@
      "nom": "Hainaut",
      "zone": "",
      "clubs": 105,
-     "logos": 0,
+     "logos": 29,
      "sites": 36,
      "departements": [
       {
@@ -3414,21 +3414,21 @@
        "dep": "BE60",
        "nom": "CP 60",
        "clubs": 9,
-       "logos": 0,
+       "logos": 2,
        "sites": 3
       },
       {
        "dep": "BE61",
        "nom": "CP 61",
        "clubs": 6,
-       "logos": 0,
+       "logos": 2,
        "sites": 2
       },
       {
        "dep": "BE62",
        "nom": "CP 62",
        "clubs": 10,
-       "logos": 0,
+       "logos": 4,
        "sites": 4
       },
       {
@@ -3442,35 +3442,35 @@
        "dep": "BE65",
        "nom": "CP 65",
        "clubs": 10,
-       "logos": 0,
+       "logos": 1,
        "sites": 1
       },
       {
        "dep": "BE70",
        "nom": "CP 70",
        "clubs": 10,
-       "logos": 0,
+       "logos": 7,
        "sites": 8
       },
       {
        "dep": "BE71",
        "nom": "CP 71",
        "clubs": 13,
-       "logos": 0,
+       "logos": 3,
        "sites": 4
       },
       {
        "dep": "BE73",
        "nom": "CP 73",
        "clubs": 8,
-       "logos": 0,
+       "logos": 1,
        "sites": 1
       },
       {
        "dep": "BE75",
        "nom": "CP 75",
        "clubs": 10,
-       "logos": 0,
+       "logos": 1,
        "sites": 2
       },
       {
@@ -3484,21 +3484,21 @@
        "dep": "BE77",
        "nom": "CP 77",
        "clubs": 7,
-       "logos": 0,
+       "logos": 5,
        "sites": 5
       },
       {
        "dep": "BE78",
        "nom": "CP 78",
        "clubs": 7,
-       "logos": 0,
+       "logos": 2,
        "sites": 3
       },
       {
        "dep": "BE79",
        "nom": "CP 79",
        "clubs": 5,
-       "logos": 0,
+       "logos": 1,
        "sites": 2
       }
      ]
@@ -4547,7 +4547,7 @@
    "nom": "Provence-Alpes-Côte d'Azur",
    "zone": "metropole",
    "clubs": 119,
-   "logos": 35,
+   "logos": 34,
    "sites": 53,
    "departements": [
     {
@@ -4582,7 +4582,7 @@
      "dep": "83",
      "nom": "Var",
      "clubs": 30,
-     "logos": 11,
+     "logos": 10,
      "sites": 15
     },
     {
