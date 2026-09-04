@@ -1,7 +1,7 @@
 {
  "maj": "2026-09-04",
- "clubs": 10498,
- "logos": 4771,
+ "clubs": 10486,
+ "logos": 4770,
  "sites": 4606,
  "pays": [
   {
@@ -2503,25 +2503,18 @@
   {
    "code": "CH",
    "nom": "Suisse",
-   "clubs": 267,
+   "clubs": 255,
    "sites": 223,
-   "logos": 137,
+   "logos": 136,
    "ligues": [
     {
-     "code": "DE-SWISS-TABLE-TENNI",
-     "nom": "Swiss Table Tennis",
+     "code": "CH-VAUD-VALAIS-FRIBOURG",
+     "nom": "Association Vaudoise, Valaisanne et Fribourgeoise",
      "zone": "",
-     "clubs": 267,
-     "logos": 137,
-     "sites": 223,
+     "clubs": 48,
+     "logos": 24,
+     "sites": 30,
      "departements": [
-      {
-       "dep": "",
-       "nom": "",
-       "clubs": 6,
-       "logos": 1,
-       "sites": 0
-      },
       {
        "dep": "CH10",
        "nom": "NPA 10",
@@ -2539,9 +2532,9 @@
       {
        "dep": "CH12",
        "nom": "NPA 12",
-       "clubs": 17,
-       "logos": 12,
-       "sites": 16
+       "clubs": 2,
+       "logos": 2,
+       "sites": 2
       },
       {
        "dep": "CH13",
@@ -2581,9 +2574,9 @@
       {
        "dep": "CH18",
        "nom": "NPA 18",
-       "clubs": 7,
-       "logos": 5,
-       "sites": 5
+       "clubs": 6,
+       "logos": 4,
+       "sites": 4
       },
       {
        "dep": "CH19",
@@ -2592,6 +2585,47 @@
        "logos": 2,
        "sites": 2
       },
+      {
+       "dep": "CH39",
+       "nom": "NPA 39",
+       "clubs": 6,
+       "logos": 2,
+       "sites": 4
+      }
+     ]
+    },
+    {
+     "code": "CH-GENEVE",
+     "nom": "Association Genevoise de Tennis de Table",
+     "zone": "",
+     "clubs": 16,
+     "logos": 11,
+     "sites": 15,
+     "departements": [
+      {
+       "dep": "CH12",
+       "nom": "NPA 12",
+       "clubs": 15,
+       "logos": 10,
+       "sites": 14
+      },
+      {
+       "dep": "CH18",
+       "nom": "NPA 18",
+       "clubs": 1,
+       "logos": 1,
+       "sites": 1
+      }
+     ]
+    },
+    {
+     "code": "CH-NEUCHATEL-JURA",
+     "nom": "Association Neuchâteloise et Jurassienne de Tennis de Table",
+     "zone": "",
+     "clubs": 12,
+     "logos": 8,
+     "sites": 10,
+     "departements": [
       {
        "dep": "CH20",
        "nom": "NPA 20",
@@ -2609,9 +2643,9 @@
       {
        "dep": "CH25",
        "nom": "NPA 25",
-       "clubs": 7,
-       "logos": 3,
-       "sites": 5
+       "clubs": 1,
+       "logos": 1,
+       "sites": 1
       },
       {
        "dep": "CH27",
@@ -2633,20 +2667,37 @@
        "clubs": 1,
        "logos": 1,
        "sites": 1
+      }
+     ]
+    },
+    {
+     "code": "CH-MITTELLAND",
+     "nom": "Mittelländischer Tischtennisverband",
+     "zone": "",
+     "clubs": 43,
+     "logos": 21,
+     "sites": 39,
+     "departements": [
+      {
+       "dep": "CH25",
+       "nom": "NPA 25",
+       "clubs": 6,
+       "logos": 2,
+       "sites": 4
       },
       {
        "dep": "CH30",
        "nom": "NPA 30",
-       "clubs": 12,
+       "clubs": 8,
        "logos": 5,
        "sites": 8
       },
       {
        "dep": "CH31",
        "nom": "NPA 31",
-       "clubs": 8,
-       "logos": 6,
-       "sites": 8
+       "clubs": 7,
+       "logos": 5,
+       "sites": 7
       },
       {
        "dep": "CH32",
@@ -2698,11 +2749,35 @@
        "sites": 1
       },
       {
-       "dep": "CH39",
-       "nom": "NPA 39",
-       "clubs": 6,
-       "logos": 2,
-       "sites": 4
+       "dep": "CH45",
+       "nom": "NPA 45",
+       "clubs": 1,
+       "logos": 0,
+       "sites": 1
+      },
+      {
+       "dep": "CH49",
+       "nom": "NPA 49",
+       "clubs": 2,
+       "logos": 0,
+       "sites": 1
+      }
+     ]
+    },
+    {
+     "code": "CH-NORDWEST",
+     "nom": "Nordwestschweizerischer Tischtennisverband",
+     "zone": "",
+     "clubs": 40,
+     "logos": 21,
+     "sites": 39,
+     "departements": [
+      {
+       "dep": "CH31",
+       "nom": "NPA 31",
+       "clubs": 1,
+       "logos": 1,
+       "sites": 1
       },
       {
        "dep": "CH40",
@@ -2733,13 +2808,6 @@
        "sites": 3
       },
       {
-       "dep": "CH45",
-       "nom": "NPA 45",
-       "clubs": 1,
-       "logos": 0,
-       "sites": 1
-      },
-      {
        "dep": "CH46",
        "nom": "NPA 46",
        "clubs": 3,
@@ -2752,13 +2820,6 @@
        "clubs": 2,
        "logos": 0,
        "sites": 2
-      },
-      {
-       "dep": "CH49",
-       "nom": "NPA 49",
-       "clubs": 2,
-       "logos": 0,
-       "sites": 1
       },
       {
        "dep": "CH50",
@@ -2803,9 +2864,26 @@
        "sites": 1
       },
       {
+       "dep": "CH89",
+       "nom": "NPA 89",
+       "clubs": 1,
+       "logos": 1,
+       "sites": 1
+      }
+     ]
+    },
+    {
+     "code": "CH-INNERSCHWEIZ",
+     "nom": "Tischtennisverband Innerschweiz",
+     "zone": "",
+     "clubs": 17,
+     "logos": 9,
+     "sites": 17,
+     "departements": [
+      {
        "dep": "CH60",
        "nom": "NPA 60",
-       "clubs": 11,
+       "clubs": 10,
        "logos": 4,
        "sites": 10
       },
@@ -2836,7 +2914,17 @@
        "clubs": 1,
        "logos": 1,
        "sites": 1
-      },
+      }
+     ]
+    },
+    {
+     "code": "CH-TICINO",
+     "nom": "Associazione Ticinese Tennis Tavolo",
+     "zone": "",
+     "clubs": 7,
+     "logos": 3,
+     "sites": 7,
+     "departements": [
       {
        "dep": "CH65",
        "nom": "NPA 65",
@@ -2847,7 +2935,7 @@
       {
        "dep": "CH66",
        "nom": "NPA 66",
-       "clubs": 2,
+       "clubs": 1,
        "logos": 1,
        "sites": 1
       },
@@ -2864,7 +2952,17 @@
        "clubs": 1,
        "logos": 1,
        "sites": 1
-      },
+      }
+     ]
+    },
+    {
+     "code": "CH-OST",
+     "nom": "Ostschweizer Tischtennisverband",
+     "zone": "",
+     "clubs": 72,
+     "logos": 39,
+     "sites": 66,
+     "departements": [
       {
        "dep": "CH72",
        "nom": "NPA 72",
@@ -2938,9 +3036,9 @@
       {
        "dep": "CH89",
        "nom": "NPA 89",
-       "clubs": 5,
-       "logos": 3,
-       "sites": 5
+       "clubs": 4,
+       "logos": 2,
+       "sites": 4
       },
       {
        "dep": "CH90",
