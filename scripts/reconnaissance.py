@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Reconnaissance click-TT : début de fiche club, logo hébergé et site du club."""
+"""Reconnaissance des annuaires de clubs, pays par pays.
+
+Cherche, pour chaque fédération candidate, s'il existe un annuaire public exploitable
+comme l'ont été carte.fftt.com (France) et click-TT (Allemagne). Ne collecte rien.
+"""
 
 from __future__ import annotations
 
@@ -13,66 +17,72 @@ from bs4 import BeautifulSoup  # noqa: E402
 
 from ttlogos.reseau import Client  # noqa: E402
 
-BASE = "https://dttb.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa"
-CLUBS = ["10702", "11999", "3983", "1411", "24185"]
+NU = "cgi-bin/WebObjects"
+
+CANDIDATS = [
+    # --- nuLiga / click-TT hors Allemagne : le même extracteur pourrait servir ---
+    ("Suisse — click-tt.ch", "https://www.click-tt.ch/"),
+    ("Suisse — recherche clubs", f"https://www.click-tt.ch/{NU}/nuLigaTTCH.woa/wa/clubSearch?federation=STT"),
+    ("Autriche — nuLiga", "https://ttv.nuliga.at/"),
+    ("Autriche — ÖTTV", "https://www.oettv.org/"),
+    ("Luxembourg — FLTT", "https://fltt.lu/"),
+    # --- Belgique ---
+    ("Belgique — VTTL compétition", "https://competitie.vttl.be/"),
+    ("Belgique — VTTL clubs", "https://competitie.vttl.be/clubs"),
+    ("Belgique — AFTT résultats", "https://resultats.aftt.be/"),
+    # --- Pays-Bas ---
+    ("Pays-Bas — NTTB", "https://www.nttb.nl/"),
+    ("Pays-Bas — NAS compétition", "https://nas.nttb.nl/"),
+    ("Pays-Bas — clubs", "https://www.nttb.nl/verenigingen/"),
+    # --- Royaume-Uni ---
+    ("Angleterre — TT England clubs", "https://www.tabletennisengland.co.uk/clubs/"),
+    ("Angleterre — club finder", "https://tabletennisengland.co.uk/clubs/find-a-club/"),
+    # --- Europe centrale et du Nord ---
+    ("Tchéquie — STIS (registre)", "https://stis.ping-pong.cz/"),
+    ("Tchéquie — liste des clubs", "https://stis.ping-pong.cz/htm/?id=oddily"),
+    ("Pologne — PZTS", "https://pzts.pl/"),
+    ("Suède — SBTF", "https://www.svenskbordtennis.com/"),
+    ("Danemark — BTDK", "https://bttdk.dk/"),
+    ("Norvège — NBTF", "https://bordtennis.no/"),
+    # --- Europe du Sud ---
+    ("Italie — FITET", "https://www.fitet.org/"),
+    ("Italie — société affiliées", "https://portale.fitet.org/"),
+    ("Espagne — RFETM", "https://www.rfetm.es/"),
+    ("Portugal — FPTM", "https://www.fptm.pt/"),
+    ("Hongrie — MOATSZ", "https://moatsz.hu/"),
+]
+
+INDICES = re.compile(r"club|verein|vereniging|oddil|oddíl|societ|asociac|forening|klubb", re.I)
 
 
-def fiche(client: Client, club: str) -> None:
-    print("=" * 100)
-    print(f"### FICHE {club}")
-    html = client.texte(f"{BASE}/clubInfoDisplay?club={club}")
-    if not html:
-        print("    -> ÉCHEC")
+def sonder(nom: str, url: str, client: Client) -> None:
+    reponse = client.get(url, taille_max=4_000_000)
+    if reponse is None:
+        print(f"{nom:<34} ÉCHEC (bloqué, injoignable ou erreur)")
         return
+    html = reponse.text
     soupe = BeautifulSoup(html, "html.parser")
-    for inutile in soupe.find_all(("script", "style", "svg")):
-        inutile.decompose()
-
-    # Le contenu utile commence au premier <h1>/<h2> après l'en-tête de navigation.
-    titre = soupe.find("h1")
-    print("    h1 :", titre.get_text(" ", strip=True) if titre else "(aucun)")
-
-    images = [(i.get("alt"), i.get("src"), i.get("height")) for i in soupe.find_all("img")]
-    print("    Images :", images[:8])
-
-    liens = [(a.get_text(" ", strip=True)[:40], a["href"]) for a in soupe.find_all("a", href=True)
-             if a["href"].startswith("http") and "google" not in a["href"]
-             and "tischtennis.de" not in a["href"] and "datenautomaten" not in a["href"]]
-    print("    Liens externes :", liens[:8])
-
-    premier = soupe.find("table")
-    if premier:
-        lignes = [l for l in premier.prettify().splitlines() if l.strip()]
-        print("    --- PREMIER TABLEAU (identité du club) ---")
-        for ligne in lignes[:75]:
-            print("   ", ligne[:170])
-
-
-def logo(client: Client, club: str) -> None:
-    """Vérifie que l'image hébergée par click-TT se télécharge bien."""
-    html = client.texte(f"{BASE}/clubInfoDisplay?club={club}")
-    soupe = BeautifulSoup(html, "html.parser")
-    for image in soupe.find_all("img", src=True):
-        if "wodata" not in image["src"]:
-            continue
-        url = "https://dttb.click-tt.de" + image["src"]
-        reponse = client.get(url, taille_max=4_000_000)
-        etat = (f"HTTP {reponse.status_code} | {reponse.headers.get('Content-Type')} | "
-                f"{len(reponse.content)} octets") if reponse else "ÉCHEC"
-        print(f"    LOGO {club} ({image.get('alt')}) -> {etat}")
-        print(f"         {url}")
-        return
-    print(f"    LOGO {club} : aucune image hébergée sur la fiche")
+    titre = soupe.title.get_text(" ", strip=True)[:44] if soupe.title else "(sans titre)"
+    liens = [a["href"] for a in soupe.find_all("a", href=True)]
+    pistes = [l for l in liens if INDICES.search(l)]
+    formulaires = len(soupe.find_all("form"))
+    nuliga = "nuLiga" in html or "click-tt" in html.lower() or "nuliga" in html.lower()
+    print(f"{nom:<34} HTTP {reponse.status_code} | {len(html):>7} car. | {titre}")
+    print(f"{'':<34} liens « club » : {len(pistes):<4} formulaires : {formulaires}"
+          f"{'  ⟵ nuLiga détecté' if nuliga else ''}")
+    if pistes:
+        print(f"{'':<34} ex. {pistes[:3]}")
 
 
 def main() -> int:
-    client = Client(delai=1.2, timeout=30)
-    for club in CLUBS[:3]:
-        fiche(client, club)
-    print("=" * 100)
-    print("### TÉLÉCHARGEMENT DES LOGOS HÉBERGÉS")
-    for club in CLUBS:
-        logo(client, club)
+    client = Client(delai=1.0, timeout=20)
+    print("=" * 110)
+    for nom, url in CANDIDATS + [(f"URL fournie {i+1}", u) for i, u in enumerate(sys.argv[1:])]:
+        try:
+            sonder(nom, url, client)
+        except Exception as erreur:  # noqa: BLE001
+            print(f"{nom:<34} exception : {type(erreur).__name__}: {erreur}")
+    print("=" * 110)
     return 0
 
 
