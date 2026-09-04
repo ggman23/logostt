@@ -67,15 +67,18 @@ jobs:
             source="${{ github.event.inputs.source }}"
             etapes="${{ github.event.inputs.etapes }}"
             forcer="${{ github.event.inputs.forcer_logos }}"
+            federation="DE"
           else
             # 1re ligne : le périmètre ; 2e : les étapes ; 3e : « forcer » pour revoir
             # les logos déjà connus (par défaut on ne traite que ceux qui manquent).
             perimetre="$(sed -n 1p .github/lancer-collecte.txt | tr -d ' \r\n')"
             etapes="$(sed -n 2p .github/lancer-collecte.txt | tr -d ' \r\n')"
             source="carte"
-            # « DE » ou « allemagne » bascule sur l'annuaire du DTTB
+            federation="DE"
+            # « DE » et « CH » basculent sur les annuaires click-TT correspondants
             case "$perimetre" in
-              DE|de|allemagne|Allemagne) source="clicktt"; perimetre="tous" ;;
+              DE|de|allemagne|Allemagne) source="clicktt"; federation="DE"; perimetre="tous" ;;
+              CH|ch|suisse|Suisse) source="clicktt"; federation="CH"; perimetre="tous" ;;
             esac
             case "$(sed -n 3p .github/lancer-collecte.txt | tr -d ' \r\n')" in
               forcer|force|oui|true) forcer="true" ;;
@@ -86,6 +89,7 @@ jobs:
           echo "source=${source:-carte}" >> "$GITHUB_OUTPUT"
           echo "etapes=${etapes:-clubs+logos}" >> "$GITHUB_OUTPUT"
           echo "forcer=${forcer:-false}" >> "$GITHUB_OUTPUT"
+          echo "federation=${federation:-DE}" >> "$GITHUB_OUTPUT"
           echo "Collecte « ${perimetre:-tous} » (source ${source:-carte}, étapes ${etapes:-clubs+logos})"
 
       - name: Collecter la liste des clubs
@@ -97,6 +101,7 @@ jobs:
           python3 scripts/collecte_clubs.py \
             --dep "${{ steps.parametres.outputs.perimetre }}" \
             --source "${{ steps.parametres.outputs.source }}" \
+            --federation "${{ steps.parametres.outputs.federation }}" \
             --budget 120
 
       - name: Récupérer les logos
@@ -104,7 +109,7 @@ jobs:
         run: |
           python3 scripts/collecte_logos.py \
             --dep "${{ steps.parametres.outputs.perimetre }}" \
-            ${{ steps.parametres.outputs.source == 'clicktt' && '--pays DE' || '' }} \
+            ${{ steps.parametres.outputs.source == 'clicktt' && format('--pays {0}', steps.parametres.outputs.federation) || '' }} \
             --budget 100 \
             ${{ steps.parametres.outputs.forcer == 'true' && '--forcer' || '' }}
 

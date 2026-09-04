@@ -479,6 +479,36 @@ class TestAnnuaireAllemand(unittest.TestCase):
         self.assertTrue(url.startswith("https://dttb.click-tt.de/"))
         self.assertIn("wodata=", url)
 
+
+    def test_fiche_suisse(self):
+        """Le même extracteur sert pour la Suisse : seuls l'hôte, le code fédération
+        et la longueur du code postal (4 chiffres) changent."""
+        html = self.fiche().replace(
+            "Tischtennis Baden-Württemberg e.V.", "Swiss Table Tennis").replace(
+            "TGV Eintracht Abstatt", "CTT Bernex").replace(
+            "Sportplatzstraße 19, 74232 Abstatt, Deutschland", "Route de Soral 1, 1233 Bernex, Suisse").replace(
+            "Goldschmiedstr. 14, 74232 Abstatt", "Route de Soral 1, 1233 Bernex").replace(
+            "http://www.tgv-abstatt-tt.de/", "http://www.cttbernex.ch")
+        club = clicktt.club_depuis_fiche("32984", html, federation=clicktt.SUISSE)
+        self.assertEqual(club.pays, "CH")
+        self.assertEqual(club.numero, "CH32984")
+        self.assertEqual(club.nom, "CTT Bernex")
+        self.assertEqual(club.site_web, "http://www.cttbernex.ch")
+        self.assertEqual((club.code_postal, club.ville), ("1233", "Bernex"))
+        self.assertEqual((club.dep, club.dep_nom), ("CH12", "NPA 12"))
+        self.assertIn("STT", club.source_donnees)
+
+    def test_le_site_de_la_federation_suisse_est_ecarte(self):
+        html = self.fiche().replace("http://www.tgv-abstatt-tt.de/",
+                                    "https://www.swisstabletennis.ch/fr/")
+        club = clicktt.club_depuis_fiche("32984", html, federation=clicktt.SUISSE)
+        self.assertEqual(club.site_web, "")
+
+    def test_logo_heberge_suisse(self):
+        from bs4 import BeautifulSoup
+        url = clicktt.logo_heberge(BeautifulSoup(self.fiche(), "html.parser"), clicktt.SUISSE)
+        self.assertTrue(url.startswith("https://www.click-tt.ch/"))
+
     def test_liens_de_service_ecartes(self):
         """mytischtennis, Google Maps et click-TT ne sont pas le site du club."""
         sans_site = self.fiche().replace(

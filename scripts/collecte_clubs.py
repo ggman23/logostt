@@ -51,24 +51,26 @@ def collecter_carte(client: Client, deps: list[str], tous: bool) -> list[catalog
 
 
 def collecter_clicktt(
-    client: Client, limite: int = 0, reprendre: bool = True, budget: float = 0
+    client: Client, limite: int = 0, reprendre: bool = True, budget: float = 0,
+    federation: str = "DE",
 ) -> list[catalogue.Club]:
     """Allemagne : annuaire public click-TT du DTTB, logo officiel compris.
 
     Neuf mille fiches ne tiennent pas toujours dans une seule exécution : le catalogue est
     enregistré au fil de l'eau et une relance reprend là où la précédente s'est arrêtée.
     """
-    annuaire = clicktt.liste_des_clubs(client)
+    fede = clicktt.FEDERATIONS[federation]
+    annuaire = clicktt.liste_des_clubs(client, federation=fede)
     if not annuaire:
         return []
     if limite:
         annuaire = annuaire[:limite]
 
     existants = catalogue.charger()
-    deja = {c.numero for c in existants if c.pays == "DE"} if reprendre else set()
-    a_lire = [e for e in annuaire if f"DE{e['id']}" not in deja]
-    journal.info("%s clubs allemands recensés, %s déjà au catalogue, %s à lire",
-                 len(annuaire), len(deja), len(a_lire))
+    deja = {c.numero for c in existants if c.pays == fede.pays} if reprendre else set()
+    a_lire = [e for e in annuaire if f"{fede.pays}{e['id']}" not in deja]
+    journal.info("%s clubs recensés (%s), %s déjà au catalogue, %s à lire",
+                 len(annuaire), fede.code, len(deja), len(a_lire))
 
     dossier_logos = referentiel.RACINE / "site" / "logos"
     clubs: list[catalogue.Club] = []
@@ -81,15 +83,15 @@ def collecter_clicktt(
             journal.info("budget de %s min atteint après %s fiches ; le reste sera repris "
                          "à la prochaine collecte", budget, rang - 1)
             break
-        html = client.texte(clicktt.FICHE.format(club=entree["id"]), taille_max=4_000_000)
+        html = client.texte(fede.fiche(entree["id"]), taille_max=4_000_000)
         if not html:
             continue
-        club = clicktt.club_depuis_fiche(entree["id"], html, entree["nom"])
+        club = clicktt.club_depuis_fiche(entree["id"], html, entree["nom"], fede)
         if club is None:
             continue
         # Le logo officiel est servi par click-TT avec un jeton propre à la requête :
         # il faut le suivre tout de suite, avec la même session.
-        recuperer_logo_heberge(club, client, html, dossier_logos)
+        recuperer_logo_heberge(club, client, html, dossier_logos, fede)
         clubs.append(club)
         if rang % 200 == 0:
             avec_logo = sum(1 for c in clubs if c.logo_fichier)
@@ -97,7 +99,7 @@ def collecter_clicktt(
                          rang, len(a_lire), avec_logo)
             # Sauvegarde intermédiaire : une exécution interrompue n'est jamais perdue.
             catalogue.enregistrer(
-                catalogue.fusionner_pays(catalogue.charger(), clubs, "DE", remplacer=False))
+                catalogue.fusionner_pays(catalogue.charger(), clubs, fede.pays, remplacer=False))
     return clubs
 
 
@@ -153,6 +155,8 @@ def main() -> int:
                            help="délai minimal entre deux requêtes vers le même serveur (s)")
     analyseur.add_argument("--limite", type=int, default=0,
                            help="s'arrêter après N clubs (mise au point)")
+    analyseur.add_argument("--federation", default="DE", choices=("DE", "CH"),
+                           help="instance click-TT à interroger : DE (Allemagne) ou CH (Suisse)")
     analyseur.add_argument("--budget", type=float, default=0,
                            help="durée maximale de la collecte, en minutes (0 = sans limite)")
     analyseur.add_argument("--recommencer", action="store_true",
@@ -173,7 +177,8 @@ def main() -> int:
     if arguments.source == "clicktt":
         nouveaux = collecter_clicktt(client, arguments.limite,
                                      reprendre=not arguments.recommencer,
-                                     budget=arguments.budget)
+                                     budget=arguments.budget,
+                                     federation=arguments.federation)
     elif arguments.source == "carte":
         nouveaux = collecter_carte(client, deps, tous=len(deps) == len(referentiel.departements()))
     elif arguments.source == "fftt":
@@ -189,7 +194,7 @@ def main() -> int:
     if arguments.source == "clicktt":
         # Les clubs allemands ne sont pas découpés par département : on remplace
         # l'ensemble du pays et on laisse la France intacte.
-        fusionnes = catalogue.fusionner_pays(existants, nouveaux, "DE",
+        fusionnes = catalogue.fusionner_pays(existants, nouveaux, arguments.federation,
                                              remplacer=arguments.recommencer)
     else:
         fusionnes = catalogue.fusionner(existants, nouveaux, set(deps))

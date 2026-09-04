@@ -85,6 +85,7 @@ def statistiques(clubs: list[Club]) -> dict:
     pays = {
         "FR": {"code": "FR", "nom": "France", "ligues": _ligues_de_france()},
         "DE": {"code": "DE", "nom": "Allemagne", "ligues": {}},
+        "CH": {"code": "CH", "nom": "Suisse", "ligues": {}},
     }
     for club in clubs:
         groupe = pays.setdefault(

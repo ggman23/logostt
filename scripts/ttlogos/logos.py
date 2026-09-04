@@ -525,7 +525,9 @@ def supprimer_les_orphelins(clubs: list[Club], dossier_site: Path) -> int:
     return retires
 
 
-def recuperer_logo_heberge(club: Club, client: Client, html_fiche: str, dossier_logos: Path) -> bool:
+def recuperer_logo_heberge(
+    club: Club, client: Client, html_fiche: str, dossier_logos: Path, federation=None
+) -> bool:
     """Enregistre le logo officiel que la fédération héberge elle-même, s'il existe.
 
     Utilisé pour l'Allemagne, où click-TT sert le logo déposé par le club : la source est
@@ -533,7 +535,8 @@ def recuperer_logo_heberge(club: Club, client: Client, html_fiche: str, dossier_
     """
     from . import clicktt
 
-    url = clicktt.logo_heberge(BeautifulSoup(html_fiche, "html.parser"))
+    url = clicktt.logo_heberge(BeautifulSoup(html_fiche, "html.parser"),
+                               federation or clicktt.ALLEMAGNE)
     if not url:
         return False
     octets, type_mime = _telecharger(client, url)

@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import logging
 import re
+from dataclasses import dataclass
 
 from bs4 import BeautifulSoup
 
@@ -26,9 +27,47 @@ from .reseau import Client
 
 journal = logging.getLogger("logostt")
 
-BASE = "https://dttb.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa"
-RECHERCHE = f"{BASE}/clubSearch"
-FICHE = f"{BASE}/clubInfoDisplay?club={{club}}"
+@dataclass(frozen=True)
+class Federation:
+    """Une instance nationale de click-TT. Le moteur est le même partout."""
+
+    pays: str            # code ISO du pays, tel qu'il figure au catalogue
+    base: str            # racine de l'application nuLiga
+    code: str            # code fédération attendu par la recherche
+    longueur_cp: int     # 5 chiffres en Allemagne, 4 en Suisse
+
+    @property
+    def recherche(self) -> str:
+        return f"{self.base}/clubSearch"
+
+    def fiche(self, club: str) -> str:
+        # La langue est forcée en allemand : les intitulés de la page (« Spiellokal »,
+        # « VNr. ») servent de repères à l'extraction.
+        return f"{self.base}/clubInfoDisplay?club={club}&preferredLanguage=German"
+
+    @property
+    def racine(self) -> str:
+        return self.base.split("/cgi-bin/")[0]
+
+
+ALLEMAGNE = Federation(
+    pays="DE",
+    base="https://dttb.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa",
+    code="DTTB",
+    longueur_cp=5,
+)
+SUISSE = Federation(
+    pays="CH",
+    base="https://www.click-tt.ch/cgi-bin/WebObjects/nuLigaTTCH.woa/wa",
+    code="STT",
+    longueur_cp=4,
+)
+FEDERATIONS = {"DE": ALLEMAGNE, "CH": SUISSE}
+
+# Compatibilité avec l'existant.
+BASE = ALLEMAGNE.base
+RECHERCHE = ALLEMAGNE.recherche
+FICHE = ALLEMAGNE.base + "/clubInfoDisplay?club={club}&preferredLanguage=German"
 
 # Termes de recherche : leur union couvre les noms de clubs allemands. Presque tous
 # contiennent « e » ou « a » ; les autres lettres rattrapent les sigles et les exceptions.
@@ -36,20 +75,23 @@ TERMES = ["e", "a", "i", "o", "u", "s", "n", "r", "t", "c", "v", "g", "b", "z", 
 
 # Liens présents sur toutes les fiches : ce ne sont pas les sites des clubs.
 DOMAINES_IGNORES = re.compile(
-    r"(^|\.)(click-tt\.de|tischtennis\.de|mytischtennis\.de|datenautomaten\.nu|"
-    r"google\.[a-z.]+|liga\.nu|nu-liga\.de)$",
+    r"(^|\.)(click-tt\.de|click-tt\.ch|tischtennis\.de|mytischtennis\.de|"
+    r"swisstabletennis\.ch|datenautomaten\.nu|google\.[a-z.]+|liga\.nu|nu-liga\.de)$",
     re.I,
 )
 
 
-def liste_des_clubs(client: Client, termes: list[str] | None = None) -> list[dict[str, str]]:
+def liste_des_clubs(
+    client: Client, termes: list[str] | None = None, federation: Federation = ALLEMAGNE
+) -> list[dict[str, str]]:
     """Tous les clubs trouvés par la recherche publique, dédoublonnés par identifiant."""
     clubs: dict[str, dict[str, str]] = {}
     for terme in termes or TERMES:
         try:
             reponse = client.session.post(
-                RECHERCHE,
-                data={"federation": "DTTB", "federations": "DTTB", "searchFor": terme},
+                federation.recherche,
+                data={"federation": federation.code, "federations": federation.code,
+                      "searchFor": terme},
                 timeout=60,
             )
         except Exception as erreur:  # noqa: BLE001 - une recherche ratée ne doit pas tout arrêter
@@ -93,15 +135,38 @@ def _site_du_club(soupe: BeautifulSoup) -> str:
     return ""
 
 
-def _adresse(texte: str) -> tuple[str, str]:
-    """Extrait (code postal, ville) d'un bloc d'adresse allemand."""
-    trouve = re.search(r"\b(\d{5})\s+([A-Za-zÄÖÜäöüß][\w.\-' ]{1,40}?)\s*(?:,|$|\n)", texte)
-    if not trouve:
-        return "", ""
-    return trouve.group(1), trouve.group(2).strip(" ,").strip()
+def _adresse(texte: str, longueur_cp: int = 5) -> tuple[str, str]:
+    """Extrait (code postal, ville) d'un bloc d'adresse.
+
+    En Suisse le code postal n'a que quatre chiffres : une année de fondation lui
+    ressemble. On écarte donc les nombres introduits par un intitulé de date.
+    """
+    for trouve in re.finditer(
+        rf"\b(\d{{{longueur_cp}}})\s+([A-Za-zÄÖÜäöüß][\w.\-' ]{{1,40}}?)\s*(?:,|$|\n)", texte
+    ):
+        avant = texte[max(0, trouve.start() - 30):trouve.start()].lower()
+        if re.search(r"gr[üu]ndungsjahr|gegr|seit|jahr|ann[ée]e", avant):
+            continue
+        ville = trouve.group(2).strip(" ,").strip()
+        if ville.lower() in {"kontaktadresse", "spiellokal", "verein", "informationen"}:
+            continue
+        return trouve.group(1), ville
+    return "", ""
 
 
-def club_depuis_fiche(identifiant: str, html: str, nom_connu: str = "") -> Club | None:
+def _bloc(soupe: BeautifulSoup, intitule: str) -> str:
+    """Texte qui suit un intitulé de section (« Kontaktadresse », « Spiellokal »)."""
+    for entete in soupe.find_all(("h2", "h3")):
+        if entete.get_text(strip=True).lower().startswith(intitule.lower()):
+            suite = entete.find_next("p")
+            if suite is not None:
+                return re.sub(r"[ \t]+", " ", suite.get_text("\n", strip=True))
+    return ""
+
+
+def club_depuis_fiche(
+    identifiant: str, html: str, nom_connu: str = "", federation: Federation = ALLEMAGNE
+) -> Club | None:
     """Construit un club à partir du HTML de sa fiche click-TT."""
     soupe = BeautifulSoup(html, "html.parser")
     titre = soupe.find("h1")
@@ -119,7 +184,15 @@ def club_depuis_fiche(identifiant: str, html: str, nom_connu: str = "") -> Club 
 
     texte = re.sub(r"[ \t]+", " ", soupe.get_text("\n", strip=True))
     numero = re.search(r"VNr\.?:\s*(\d+)", texte)
-    code_postal, ville = _adresse(texte)
+    # L'adresse est cherchée dans les blocs qui en contiennent une, jamais dans toute
+    # la page : ailleurs, d'autres nombres pourraient passer pour un code postal.
+    code_postal, ville = "", ""
+    for intitule in ("Kontaktadresse", "Spiellokal"):
+        bloc = _bloc(soupe, intitule)
+        if bloc:
+            code_postal, ville = _adresse(bloc, federation.longueur_cp)
+            if code_postal:
+                break
 
     salle = ""
     for entete in soupe.find_all("h2"):
@@ -130,12 +203,12 @@ def club_depuis_fiche(identifiant: str, html: str, nom_connu: str = "") -> Club 
                           if l.strip() and not l.strip().lower().startswith(("tel", "routenplaner", "http"))]
                 salle = " — ".join(lignes[:2])
                 if not code_postal:
-                    code_postal, ville = _adresse("\n".join(lignes))
+                    code_postal, ville = _adresse("\n".join(lignes), federation.longueur_cp)
             break
 
     club = Club(
-        pays="DE",
-        numero=f"DE{identifiant}",
+        pays=federation.pays,
+        numero=f"{federation.pays}{identifiant}",
         nom=nom,
         ville=ville,
         code_postal=code_postal,
@@ -143,16 +216,16 @@ def club_depuis_fiche(identifiant: str, html: str, nom_connu: str = "") -> Club 
         site_web=_site_du_club(soupe),
         ligue_nom=verband,
         ligue_code=code_ligue(verband),
-        dep=dep_allemand(code_postal),
-        dep_nom=f"PLZ {code_postal[:2]}" if code_postal else "",
-        source_donnees=f"click-TT (DTTB), VNr. {numero.group(1) if numero else '?'}",
+        dep=zone_postale(code_postal, federation),
+        dep_nom=f"{'PLZ' if federation.pays == 'DE' else 'NPA'} {code_postal[:2]}" if code_postal else "",
+        source_donnees=f"click-TT ({federation.code}), VNr. {numero.group(1) if numero else '?'}",
         maj=catalogue.aujourdhui(),
     )
     club.logo_statut = catalogue.LOGO_ABSENT if club.site_web else catalogue.SITE_ABSENT
     return club
 
 
-def logo_heberge(soupe: BeautifulSoup) -> str:
+def logo_heberge(soupe: BeautifulSoup, federation: Federation = ALLEMAGNE) -> str:
     """URL du logo officiel hébergé par click-TT, s'il y en a un sur la fiche.
 
     L'adresse contient un jeton propre à la requête : elle doit être suivie tout de
@@ -160,13 +233,20 @@ def logo_heberge(soupe: BeautifulSoup) -> str:
     """
     for image in soupe.find_all("img", src=True):
         if "wodata=" in image["src"]:
-            return "https://dttb.click-tt.de" + image["src"]
+            return federation.racine + image["src"]
     return ""
 
 
-def dep_allemand(code_postal: str) -> str:
+def zone_postale(code_postal: str, federation: Federation = ALLEMAGNE) -> str:
     """Regroupement géographique : les deux premiers chiffres du code postal."""
-    return f"D{code_postal[:2]}" if len(code_postal) >= 2 and code_postal[:2].isdigit() else ""
+    if len(code_postal) < 2 or not code_postal[:2].isdigit():
+        return ""
+    return f"{'D' if federation.pays == 'DE' else 'CH'}{code_postal[:2]}"
+
+
+def dep_allemand(code_postal: str) -> str:
+    """Ancien nom, conservé pour l'existant."""
+    return zone_postale(code_postal, ALLEMAGNE)
 
 
 def code_ligue(verband: str) -> str:
