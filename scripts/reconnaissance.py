@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Valide le flux ouvert anglais et cherche les sites des clubs belges."""
+"""Comprend le refus du flux anglais et fouille le moteur « trouver un club » de l'AFTT."""
 
 from __future__ import annotations
 
@@ -14,10 +14,8 @@ from bs4 import BeautifulSoup  # noqa: E402
 
 from ttlogos.reseau import Client  # noqa: E402
 
-ENVELOPPE = """<?xml version="1.0" encoding="utf-8"?>
-<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
-  <soap:Body><GetClubs xmlns="{espace}"></GetClubs></soap:Body>
-</soap:Envelope>"""
+NAVIGATEUR = ("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) "
+              "Chrome/124.0 Safari/537.36")
 
 
 def titre(texte: str) -> None:
@@ -25,110 +23,128 @@ def titre(texte: str) -> None:
     print(f"### {texte}")
 
 
+def brut(session, url: str, entetes: dict | None = None) -> None:
+    """Requête sans filet, pour voir le vrai code de retour et le vrai message."""
+    try:
+        reponse = session.get(url, headers=entetes or {}, timeout=60)
+    except Exception as erreur:  # noqa: BLE001
+        print(f"    -> exception {type(erreur).__name__}: {erreur}")
+        return None
+    print(f"    -> HTTP {reponse.status_code} | {len(reponse.content)} octets"
+          f" | {reponse.headers.get('Content-Type')}")
+    if reponse.status_code != 200:
+        print("    Corps :", re.sub(r"\s+", " ", reponse.text)[:300])
+        return None
+    return reponse
+
+
 def angleterre(client: Client) -> None:
-    """Le flux OpenActive de Table Tennis England, page après page."""
-    titre("ANGLETERRE — flux ouvert des clubs (OpenActive RPDE)")
+    titre("ANGLETERRE — pourquoi le flux refuse-t-il de répondre ?")
     url = "https://www.tabletennis365.com/TableTennisEngland/API/OpenActive/v1/Clubs"
-    total = 0
-    avec_site = 0
-    exemples: list[dict] = []
-    for page in range(1, 4):
-        reponse = client.get(url, taille_max=20_000_000)
+    for intitule, entetes in [
+        ("agent par défaut", None),
+        ("agent navigateur", {"User-Agent": NAVIGATEUR, "Accept": "application/json"}),
+    ]:
+        print(f"  — {intitule}")
+        reponse = brut(client.session, url, entetes)
         if reponse is None:
-            print(f"    page {page} -> ÉCHEC")
-            return
+            continue
         try:
             donnees = reponse.json()
         except ValueError:
-            print("    Réponse non-JSON :", reponse.text[:400])
-            return
-        if page == 1:
-            print(f"    Clés du flux : {list(donnees)}")
+            print("    Réponse non-JSON :", reponse.text[:300])
+            continue
         elements = donnees.get("items", [])
-        total += len(elements)
-        for element in elements:
-            fiche = element.get("data") or {}
-            if fiche.get("websiteUrl"):
-                avec_site += 1
-            if len(exemples) < 2:
-                exemples.append(element)
-        suivante = donnees.get("next")
-        print(f"    page {page} : {len(elements)} éléments — suivante {suivante}")
-        if not elements or not suivante or suivante == url:
-            break
-        url = suivante
-    print(f"    => {total} clubs vus, {avec_site} avec une adresse de site")
-    for exemple in exemples:
-        print("    Exemple :", json.dumps(exemple, ensure_ascii=False)[:1100])
+        print(f"    Clés : {list(donnees)} | {len(elements)} éléments"
+              f" | suivante : {donnees.get('next')}")
+        avec_site = sum(1 for e in elements if (e.get("data") or {}).get("websiteUrl"))
+        print(f"    {avec_site} des {len(elements)} fiches portent une adresse de site")
+        if elements:
+            print("    Exemple :", json.dumps(elements[0], ensure_ascii=False)[:900])
+        return
 
 
 def belgique_soap(client: Client) -> None:
-    """Lecture correcte de GetClubs : les balises sont préfixées par leur espace de noms."""
-    titre("BELGIQUE — GetClubs en SOAP")
-    reponse = client.get("https://api.vttl.be/0.7/?wsdl", taille_max=6_000_000)
-    espace = re.search(r'targetNamespace="([^"]+)"', reponse.text).group(1) if reponse else "urn:TabTAPI"
+    titre("BELGIQUE — GetClubs en SOAP (lecture sans lxml)")
+    wsdl = client.get("https://api.vttl.be/0.7/?wsdl", taille_max=6_000_000)
+    espace = re.search(r'targetNamespace="([^"]+)"', wsdl.text).group(1) if wsdl else ""
+    enveloppe = ('<?xml version="1.0" encoding="utf-8"?>'
+                 '<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">'
+                 f'<soap:Body><GetClubs xmlns="{espace}"></GetClubs></soap:Body></soap:Envelope>')
     try:
         soap = client.session.post(
-            "https://api.vttl.be/0.7/", data=ENVELOPPE.format(espace=espace).encode(),
-            headers={"Content-Type": "text/xml; charset=utf-8", "SOAPAction": f'"{espace}#GetClubs"'},
-            timeout=90)
+            "https://api.vttl.be/0.7/", data=enveloppe.encode(),
+            headers={"Content-Type": "text/xml; charset=utf-8",
+                     "SOAPAction": f'"{espace}#GetClubs"'}, timeout=90)
     except Exception as erreur:  # noqa: BLE001
         print(f"    -> échec {type(erreur).__name__}: {erreur}")
         return
-    soupe = BeautifulSoup(soap.text, "xml")
-    clubs = soupe.find_all(re.compile(r"ClubEntries$"))
-    print(f"    {len(clubs)} clubs renvoyés (HTTP {soap.status_code})")
-    for club in clubs[:3]:
-        champs = {e.name: (e.get_text(strip=True)[:60]) for e in club.find_all(recursive=False)}
-        print("    Exemple :", champs)
-    if clubs:
-        noms: set[str] = set()
-        for club in clubs:
-            noms |= {e.name for e in club.find_all()}
-        print("    Champs rencontrés :", sorted(noms))
+    print(f"    -> HTTP {soap.status_code} | {len(soap.text)} caractères")
+    fiches = re.findall(r"<ClubEntries>(.*?)</ClubEntries>", soap.text, re.S)
+    if not fiches:  # les balises peuvent porter un préfixe d'espace de noms
+        fiches = re.findall(r"<\w*:?ClubEntries[^>]*>(.*?)</\w*:?ClubEntries>", soap.text, re.S)
+    print(f"    {len(fiches)} clubs")
+    balises = set()
+    for fiche in fiches:
+        balises |= set(re.findall(r"<(\w+)>", fiche))
+    print("    Champs :", sorted(balises))
+    for fiche in fiches[:2]:
+        print("    Exemple :", re.sub(r"\s+", " ", fiche)[:400])
 
 
-def belgique_sites(client: Client) -> None:
-    """Les deux ailes linguistiques publient-elles un annuaire avec les sites des clubs ?"""
-    for nom, url in [
-        ("VTTL annuaire", "https://www.vttl.be/content/clubs"),
-        ("AFTT accueil clubs", "https://aftt.be/index.php/clubs/"),
-        ("AFTT recherche club", "https://aftt.be/index.php/trouver-un-club/"),
-        ("AFTT plan du site", "https://aftt.be/wp-sitemap.xml"),
-        ("VTTL plan du site", "https://www.vttl.be/sitemap.xml"),
-    ]:
-        titre(f"BELGIQUE — {nom}\n    {url}")
-        reponse = client.get(url, taille_max=8_000_000)
+def belgique_aftt(client: Client) -> None:
+    """La page « trouver un club » pèse 470 Ko : contient-elle déjà tout l'annuaire ?"""
+    titre("BELGIQUE — moteur « trouver un club » de l'AFTT")
+    url = "https://aftt.be/index.php/trouver-un-club-pres-de-chez-toi/"
+    reponse = client.get(url, taille_max=8_000_000)
+    if reponse is None:
+        reponse = client.get("https://aftt.be/index.php/trouver-un-club/", taille_max=8_000_000)
+    if reponse is None:
+        print("    -> ÉCHEC")
+        return
+    texte = reponse.text
+    print(f"    -> HTTP {reponse.status_code} | {len(texte)} caractères")
+    soupe = BeautifulSoup(texte, "html.parser")
+    options = soupe.find_all("option")
+    print(f"    Options de menu déroulant : {len(options)} — ex."
+          f" {[(o.get('value'), o.get_text(strip=True)[:30]) for o in options[:6]]}")
+    # Les moteurs de ce genre embarquent souvent leurs données dans un script.
+    for script in soupe.find_all("script"):
+        contenu = script.string or ""
+        for cle in ("clubs", "markers", "locations", "sites"):
+            trouve = re.search(rf'"{cle}"\s*:\s*[\[{{]', contenu)
+            if trouve:
+                print(f"    Script contenant « {cle} » : {contenu[max(0,trouve.start()-80):trouve.start()+500]}")
+                break
+    liens_clubs = sorted({a["href"] for a in soupe.find_all("a", href=True)
+                          if re.search(r"/club|club=|clubs/", a["href"], re.I)})
+    print(f"    Liens de fiches club : {len(liens_clubs)} — ex. {liens_clubs[:8]}")
+    for mot in ("frbtt", "tabt", "vttl.be/clubs", "webform"):
+        if mot in texte:
+            extrait = re.sub(r"\s+", " ", texte[texte.find(mot) - 100: texte.find(mot) + 200])
+            print(f"    « {mot} » : {extrait[:250]}")
+
+
+def belgique_tabt_navigateur(client: Client) -> None:
+    """Le frontal TabT bloque les robots : un agent de navigateur suffit-il ?"""
+    titre("BELGIQUE — frontal TabT avec un agent de navigateur")
+    for url in ("https://competitie.vttl.be/club/BBW100",
+                "https://resultats.aftt.be/club/H001"):
+        print(f"  — {url}")
+        reponse = brut(client.session, url, {"User-Agent": NAVIGATEUR})
         if reponse is None:
-            print("    -> ÉCHEC")
             continue
-        print(f"    -> HTTP {reponse.status_code} | {len(reponse.text)} caractères")
-        texte = reponse.text
-        if "<urlset" in texte or "<sitemapindex" in texte:
-            adresses = re.findall(r"<loc>([^<]+)</loc>", texte)
-            print(f"    {len(adresses)} adresses — ex. {adresses[:15]}")
-            continue
-        soupe = BeautifulSoup(texte, "html.parser")
+        soupe = BeautifulSoup(reponse.text, "html.parser")
         print("    Titre :", soupe.title.get_text(' ', strip=True)[:80] if soupe.title else "(aucun)")
-        for formulaire in soupe.find_all("form")[:3]:
-            champs = [c.get("name") for c in formulaire.find_all(("input", "select")) if c.get("name")]
-            print(f"    Formulaire action={formulaire.get('action')} champs={champs[:10]}")
-        interne = re.compile(r"vttl\.be|aftt\.be|facebook|twitter|instagram|linkedin|w3\.org|google", re.I)
+        interne = re.compile(r"vttl\.be|aftt\.be|facebook|google|w3\.org", re.I)
         externes = sorted({a["href"] for a in soupe.find_all("a", href=True)
                            if a["href"].startswith("http") and not interne.search(a["href"])})
-        print(f"    Liens externes : {len(externes)} — ex. {externes[:8]}")
-        lignes = soupe.find_all("tr")
-        print(f"    Lignes de tableau : {len(lignes)}")
-        for ligne in lignes[1:3]:
-            cellules = [re.sub(r"\s+", " ", c.get_text(" ", strip=True))[:40]
-                        for c in ligne.find_all(("td", "th"))]
-            if cellules:
-                print("      |", " | ".join(cellules[:7]))
+        print(f"    Liens externes : {len(externes)} — ex. {externes[:6]}")
 
 
 def main() -> int:
     client = Client(delai=1.0, timeout=60)
-    for sonde in (angleterre, belgique_soap, belgique_sites):
+    for sonde in (angleterre, belgique_soap, belgique_aftt, belgique_tabt_navigateur):
         try:
             sonde(client)
         except Exception as erreur:  # noqa: BLE001
