@@ -1,9 +1,20 @@
-# Les logos des clubs de tennis de table — France
+# Les logos des clubs de tennis de table
 
-Galerie des logos des clubs affiliés à la FFTT, **ligue par ligue et département par
-département**, avec le lien vers le site internet de chaque club. Le but : parcourir
-visuellement ce qui se fait ailleurs pour s'en inspirer, et aller voir les bonnes idées
-sur les sites des clubs qui vous plaisent.
+Galerie des logos des clubs de tennis de table européens, **pays par pays, ligue par
+ligue et département par département**, avec le lien vers le site internet de chaque
+club. Le but : parcourir visuellement ce qui se fait ailleurs pour s'en inspirer, et
+aller voir les bonnes idées sur les sites des clubs qui vous plaisent.
+
+| Pays | Clubs | Avec un site | Avec un logo |
+| --- | ---: | ---: | ---: |
+| 🇫🇷 France (FFTT) | 3 064 | 1 220 | 880 |
+| 🇩🇪 Allemagne (DTTB) | 7 167 | 3 163 | 3 771 |
+| 🇧🇪 Belgique (FRBTT) | 516 | 113 | 81 |
+| 🇨🇭 Suisse (STT) | 255 | 223 | 136 |
+| **Total** | **11 002** | **4 719** | **4 868** |
+
+L'Angleterre est prête à être collectée mais sa fédération a suspendu son flux ouvert
+(voir plus bas).
 
 Le dépôt contient deux choses :
 
@@ -29,7 +40,12 @@ Le dépôt contient deux choses :
 
 ### D'où viennent les données
 
-**Aucun identifiant n'est nécessaire**, ni en France ni en Allemagne.
+**Aucun identifiant n'est nécessaire, dans aucun des pays.** Chaque fédération publie
+son annuaire quelque part ; le travail a consisté à trouver où.
+
+Aucune des pages visitées ne laisse de coordonnées personnelles entrer dans le
+catalogue : plusieurs fiches affichent le nom, le téléphone et le courriel d'un
+correspondant, et des tests du dépôt vérifient qu'ils ne sont jamais enregistrés.
 
 ### France — FFTT
 
@@ -55,7 +71,56 @@ faux positif possible. Les clubs sans logo déposé passent par l'extraction dep
 site, comme en France. L'adresse de contact d'une personne n'est jamais reprise.
 
 ```bash
-python3 scripts/collecte_clubs.py --source clicktt    # reprend là où la précédente s'est arrêtée
+python3 scripts/collecte_clubs.py --source clicktt                  # Allemagne
+python3 scripts/collecte_clubs.py --source clicktt --federation CH  # Suisse
+```
+
+### Suisse — Swiss Table Tennis (click-TT)
+
+Swiss Table Tennis tourne sur le même moteur que la fédération allemande : le module
+`clicktt.py` sert donc les deux, une classe `Federation` portant ce qui les distingue
+(hôte, code de fédération, longueur du code postal).
+
+Une particularité : click-TT n'affiche qu'une seule fédération pour tout le pays.
+L'appartenance régionale se lit en fait dans le **numéro d'affiliation**, dont la dizaine
+de milliers désigne l'association (10 000 = Genève, 20 000 = Neuchâtel-Jura, 30 000 =
+Tessin…). Les entrées dont le numéro est un multiple exact de 10 000, ou inférieur, sont
+les associations elles-mêmes : elles sont écartées.
+
+### Belgique — FRBTT (API TabT + moteur de l'AFTT)
+
+| Source | Ce qu'on y prend |
+| --- | --- |
+| `api.vttl.be/0.7/` (SOAP, `GetClubs`) | tous les clubs du pays, des deux ailes linguistiques : index, nom, province et salle — **mais aucune adresse de site** |
+| moteur « trouver un club » de l'`aftt.be` | l'adresse du site, interrogée club par club à partir de l'index |
+
+Les liens qui décorent toutes les pages du moteur sont relevés une fois, sur une
+recherche vide, puis soustraits de chaque réponse : ce qui reste est le site du club.
+
+**Limite connue** : ce moteur appartient à l'aile francophone et ne connaît qu'elle. Les
+150 clubs flamands (VTTL) figurent donc au catalogue avec leur nom, leur province et leur
+salle, mais sans site ni logo. La VTTL ne publie ni plan de site, ni page par club, ni
+tableau exploitable, et son site de consultation des résultats est protégé par un
+anti-robot.
+
+```bash
+python3 scripts/collecte_clubs.py --source belgique
+```
+
+### Angleterre — Table Tennis England (données ouvertes)
+
+La fédération publie tout son annuaire au format [OpenActive
+RPDE](https://github.com/TableTennis365/opendata), sans clé ni inscription : nom du club,
+**adresse de son site**, salle et code postal. Les zones postales britanniques servent de
+second niveau de navigation, rattachées aux neuf régions anglaises.
+
+**Au moment d'écrire ces lignes le flux est éteint** : le serveur répond `503 — Sorry,
+API is temporarily disabled or under maintenance`. Le module le reconnaît, le dit et
+s'arrête sans rien changer au catalogue. Le workflow `angleterre.yml` relance la collecte
+chaque jour : elle aboutira d'elle-même le jour où la fédération rallumera son flux.
+
+```bash
+python3 scripts/collecte_clubs.py --source angleterre
 ```
 
 ### Sources de secours
@@ -152,7 +217,7 @@ colonne `logo_fichier` de `data/clubs.csv`.
 referentiel/ligues.json   les 20 ligues et leurs 103 départements
 data/clubs.csv            le catalogue (une ligne par club)
 data/corrections.csv      vos corrections manuelles
-scripts/collecte_clubs.py liste des clubs (annuaires publics FFTT et DTTB, ou API, ou open data)
+scripts/collecte_clubs.py liste des clubs (annuaires publics de chaque fédération)
 scripts/reconnaissance.py sonde les sources publiques (diagnostic, ne collecte rien)
 scripts/collecte_logos.py visite des sites et extraction des logos
 scripts/construire_site.py génère site/data/clubs.json et stats.json
