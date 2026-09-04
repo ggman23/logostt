@@ -1,7 +1,7 @@
 {
  "maj": "2026-09-04",
  "clubs": 10231,
- "logos": 4619,
+ "logos": 4634,
  "sites": 4383,
  "pays": [
   {
@@ -977,7 +977,7 @@
    "nom": "Allemagne",
    "clubs": 7167,
    "sites": 3163,
-   "logos": 3748,
+   "logos": 3763,
    "ligues": [
     {
      "code": "DE-TTV-SCHLESWIG-HOL",
@@ -1036,7 +1036,7 @@
      "nom": "Sächsischer Tischtennis-Verband e.V.",
      "zone": "",
      "clubs": 456,
-     "logos": 27,
+     "logos": 28,
      "sites": 14,
      "departements": [
       {
@@ -1085,7 +1085,7 @@
        "dep": "D10",
        "nom": "PLZ 10",
        "clubs": 1,
-       "logos": 0,
+       "logos": 1,
        "sites": 1
       }
      ]
@@ -1095,7 +1095,7 @@
      "nom": "Berliner TTV",
      "zone": "",
      "clubs": 101,
-     "logos": 41,
+     "logos": 42,
      "sites": 22,
      "departements": [
       {
@@ -1130,7 +1130,7 @@
        "dep": "D14",
        "nom": "PLZ 14",
        "clubs": 6,
-       "logos": 3,
+       "logos": 4,
        "sites": 2
       },
       {
@@ -1147,7 +1147,7 @@
      "nom": "Bayerischer Tischtennis-Verband e.V.",
      "zone": "",
      "clubs": 913,
-     "logos": 557,
+     "logos": 562,
      "sites": 503,
      "departements": [
       {
@@ -1231,7 +1231,7 @@
        "dep": "D86",
        "nom": "PLZ 86",
        "clubs": 39,
-       "logos": 29,
+       "logos": 30,
        "sites": 25
       },
       {
@@ -1294,21 +1294,21 @@
        "dep": "D95",
        "nom": "PLZ 95",
        "clubs": 77,
-       "logos": 36,
+       "logos": 37,
        "sites": 31
       },
       {
        "dep": "D96",
        "nom": "PLZ 96",
        "clubs": 128,
-       "logos": 61,
+       "logos": 63,
        "sites": 47
       },
       {
        "dep": "D97",
        "nom": "PLZ 97",
        "clubs": 178,
-       "logos": 106,
+       "logos": 107,
        "sites": 88
       }
      ]
@@ -1471,14 +1471,14 @@
        "dep": "D66",
        "nom": "PLZ 66",
        "clubs": 51,
-       "logos": 29,
+       "logos": 28,
        "sites": 20
       },
       {
        "dep": "D67",
        "nom": "PLZ 67",
        "clubs": 99,
-       "logos": 68,
+       "logos": 69,
        "sites": 55
       },
       {
@@ -1502,7 +1502,7 @@
      "nom": "Tischtennisverband Rheinland Rheinhessen e.V.",
      "zone": "",
      "clubs": 439,
-     "logos": 217,
+     "logos": 220,
      "sites": 184,
      "departements": [
       {
@@ -1537,7 +1537,7 @@
        "dep": "D55",
        "nom": "PLZ 55",
        "clubs": 139,
-       "logos": 61,
+       "logos": 64,
        "sites": 54
       },
       {
@@ -1634,7 +1634,7 @@
      "nom": "Hamburger Tischtennis-Verband e.V.",
      "zone": "",
      "clubs": 89,
-     "logos": 59,
+     "logos": 58,
      "sites": 41,
      "departements": [
       {
@@ -1662,7 +1662,7 @@
        "dep": "D22",
        "nom": "PLZ 22",
        "clubs": 53,
-       "logos": 39,
+       "logos": 38,
        "sites": 30
       },
       {
@@ -1696,7 +1696,7 @@
      "nom": "Tischtennis-Verband Niedersachsen e.V.",
      "zone": "",
      "clubs": 866,
-     "logos": 425,
+     "logos": 427,
      "sites": 338,
      "departements": [
       {
@@ -1724,7 +1724,7 @@
        "dep": "D26",
        "nom": "PLZ 26",
        "clubs": 35,
-       "logos": 16,
+       "logos": 17,
        "sites": 13
       },
       {
@@ -1759,7 +1759,7 @@
        "dep": "D31",
        "nom": "PLZ 31",
        "clubs": 187,
-       "logos": 79,
+       "logos": 80,
        "sites": 66
       },
       {
@@ -1787,7 +1787,7 @@
        "dep": "D38",
        "nom": "PLZ 38",
        "clubs": 196,
-       "logos": 106,
+       "logos": 105,
        "sites": 82
       },
       {
@@ -1808,7 +1808,7 @@
        "dep": "D49",
        "nom": "PLZ 49",
        "clubs": 49,
-       "logos": 24,
+       "logos": 25,
        "sites": 21
       },
       {
@@ -1901,7 +1901,7 @@
      "nom": "Westdeutscher Tischtennis-Verband e.V.",
      "zone": "",
      "clubs": 788,
-     "logos": 558,
+     "logos": 560,
      "sites": 535,
      "departements": [
       {
@@ -1971,7 +1971,7 @@
        "dep": "D45",
        "nom": "PLZ 45",
        "clubs": 57,
-       "logos": 38,
+       "logos": 40,
        "sites": 47
       },
       {
@@ -1985,7 +1985,7 @@
        "dep": "D47",
        "nom": "PLZ 47",
        "clubs": 70,
-       "logos": 50,
+       "logos": 51,
        "sites": 55
       },
       {
@@ -2020,7 +2020,7 @@
        "dep": "D52",
        "nom": "PLZ 52",
        "clubs": 73,
-       "logos": 51,
+       "logos": 50,
        "sites": 47
       },
       {
@@ -2065,7 +2065,7 @@
      "nom": "Thüringer TTV",
      "zone": "",
      "clubs": 279,
-     "logos": 143,
+     "logos": 144,
      "sites": 96,
      "departements": [
       {
@@ -2093,7 +2093,7 @@
        "dep": "D07",
        "nom": "PLZ 07",
        "clubs": 61,
-       "logos": 35,
+       "logos": 36,
        "sites": 25
       },
       {
@@ -2180,7 +2180,7 @@
        "dep": "D35",
        "nom": "PLZ 35",
        "clubs": 183,
-       "logos": 109,
+       "logos": 110,
        "sites": 94
       },
       {
@@ -2236,7 +2236,7 @@
        "dep": "D63",
        "nom": "PLZ 63",
        "clubs": 76,
-       "logos": 49,
+       "logos": 48,
        "sites": 48
       },
       {
@@ -2298,7 +2298,7 @@
      "nom": "Tischtennis Baden-Württemberg e.V.",
      "zone": "",
      "clubs": 797,
-     "logos": 482,
+     "logos": 483,
      "sites": 453,
      "departements": [
       {
@@ -2312,7 +2312,7 @@
        "dep": "D50",
        "nom": "PLZ 50",
        "clubs": 1,
-       "logos": 0,
+       "logos": 1,
        "sites": 1
       },
       {
@@ -2458,7 +2458,7 @@
        "dep": "D69",
        "nom": "PLZ 69",
        "clubs": 54,
-       "logos": 36,
+       "logos": 37,
        "sites": 40
       },
       {
@@ -2493,7 +2493,7 @@
        "dep": "D97",
        "nom": "PLZ 97",
        "clubs": 22,
-       "logos": 14,
+       "logos": 13,
        "sites": 13
       }
      ]
