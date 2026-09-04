@@ -1,8 +1,8 @@
 {
  "maj": "2026-09-04",
- "clubs": 11017,
+ "clubs": 11002,
  "logos": 4770,
- "sites": 4723,
+ "sites": 4719,
  "pays": [
   {
    "code": "FR",
@@ -3089,17 +3089,17 @@
   {
    "code": "BE",
    "nom": "Belgique",
-   "clubs": 531,
-   "sites": 117,
+   "clubs": 516,
+   "sites": 113,
    "logos": 0,
    "ligues": [
     {
-     "code": "BE-ANTWERPEN",
-     "nom": "Anvers",
+     "code": "BE-LUXEMBOURG",
+     "nom": "Luxembourg",
      "zone": "",
-     "clubs": 32,
+     "clubs": 56,
      "logos": 0,
-     "sites": 0,
+     "sites": 14,
      "departements": [
       {
        "dep": "",
@@ -3109,67 +3109,39 @@
        "sites": 0
       },
       {
-       "dep": "BE20",
-       "nom": "CP 20",
-       "clubs": 1,
-       "logos": 0,
-       "sites": 0
-      },
-      {
-       "dep": "BE21",
-       "nom": "CP 21",
-       "clubs": 3,
-       "logos": 0,
-       "sites": 0
-      },
-      {
-       "dep": "BE22",
-       "nom": "CP 22",
-       "clubs": 5,
-       "logos": 0,
-       "sites": 0
-      },
-      {
-       "dep": "BE23",
-       "nom": "CP 23",
-       "clubs": 5,
-       "logos": 0,
-       "sites": 0
-      },
-      {
-       "dep": "BE24",
-       "nom": "CP 24",
-       "clubs": 3,
-       "logos": 0,
-       "sites": 0
-      },
-      {
-       "dep": "BE25",
-       "nom": "CP 25",
-       "clubs": 3,
-       "logos": 0,
-       "sites": 0
-      },
-      {
-       "dep": "BE26",
-       "nom": "CP 26",
+       "dep": "BE55",
+       "nom": "CP 55",
        "clubs": 2,
        "logos": 0,
        "sites": 0
       },
       {
-       "dep": "BE28",
-       "nom": "CP 28",
-       "clubs": 5,
+       "dep": "BE66",
+       "nom": "CP 66",
+       "clubs": 14,
        "logos": 0,
-       "sites": 0
+       "sites": 3
       },
       {
-       "dep": "BE29",
-       "nom": "CP 29",
-       "clubs": 4,
+       "dep": "BE67",
+       "nom": "CP 67",
+       "clubs": 14,
        "logos": 0,
-       "sites": 0
+       "sites": 5
+      },
+      {
+       "dep": "BE68",
+       "nom": "CP 68",
+       "clubs": 10,
+       "logos": 0,
+       "sites": 3
+      },
+      {
+       "dep": "BE69",
+       "nom": "CP 69",
+       "clubs": 15,
+       "logos": 0,
+       "sites": 3
       }
      ]
     },
@@ -3177,16 +3149,16 @@
      "code": "BE-NAMUR",
      "nom": "Namur",
      "zone": "",
-     "clubs": 84,
+     "clubs": 82,
      "logos": 0,
-     "sites": 24,
+     "sites": 23,
      "departements": [
       {
        "dep": "",
        "nom": "",
-       "clubs": 3,
+       "clubs": 1,
        "logos": 0,
-       "sites": 2
+       "sites": 1
       },
       {
        "dep": "BE50",
@@ -3229,17 +3201,10 @@
      "code": "BE-BRUXELLES-BRABANT",
      "nom": "Bruxelles et Brabant wallon",
      "zone": "",
-     "clubs": 34,
+     "clubs": 32,
      "logos": 0,
-     "sites": 25,
+     "sites": 24,
      "departements": [
-      {
-       "dep": "",
-       "nom": "",
-       "clubs": 2,
-       "logos": 0,
-       "sites": 1
-      },
       {
        "dep": "BE10",
        "nom": "CP 10",
@@ -3271,20 +3236,86 @@
      ]
     },
     {
-     "code": "BE-LIEGE",
-     "nom": "Liège",
+     "code": "BE-VLAAMS-BRABANT",
+     "nom": "Brabant flamand",
      "zone": "",
-     "clubs": 94,
+     "clubs": 19,
      "logos": 0,
-     "sites": 16,
+     "sites": 0,
      "departements": [
       {
-       "dep": "",
-       "nom": "",
+       "dep": "BE10",
+       "nom": "CP 10",
+       "clubs": 1,
+       "logos": 0,
+       "sites": 0
+      },
+      {
+       "dep": "BE15",
+       "nom": "CP 15",
        "clubs": 2,
        "logos": 0,
        "sites": 0
       },
+      {
+       "dep": "BE16",
+       "nom": "CP 16",
+       "clubs": 1,
+       "logos": 0,
+       "sites": 0
+      },
+      {
+       "dep": "BE17",
+       "nom": "CP 17",
+       "clubs": 2,
+       "logos": 0,
+       "sites": 0
+      },
+      {
+       "dep": "BE18",
+       "nom": "CP 18",
+       "clubs": 2,
+       "logos": 0,
+       "sites": 0
+      },
+      {
+       "dep": "BE30",
+       "nom": "CP 30",
+       "clubs": 5,
+       "logos": 0,
+       "sites": 0
+      },
+      {
+       "dep": "BE31",
+       "nom": "CP 31",
+       "clubs": 1,
+       "logos": 0,
+       "sites": 0
+      },
+      {
+       "dep": "BE32",
+       "nom": "CP 32",
+       "clubs": 3,
+       "logos": 0,
+       "sites": 0
+      },
+      {
+       "dep": "BE33",
+       "nom": "CP 33",
+       "clubs": 2,
+       "logos": 0,
+       "sites": 0
+      }
+     ]
+    },
+    {
+     "code": "BE-LIEGE",
+     "nom": "Liège",
+     "zone": "",
+     "clubs": 92,
+     "logos": 0,
+     "sites": 16,
+     "departements": [
       {
        "dep": "BE13",
        "nom": "CP 13",
@@ -3365,137 +3396,12 @@
      ]
     },
     {
-     "code": "BE-LUXEMBOURG",
-     "nom": "Luxembourg",
-     "zone": "",
-     "clubs": 58,
-     "logos": 0,
-     "sites": 15,
-     "departements": [
-      {
-       "dep": "",
-       "nom": "",
-       "clubs": 3,
-       "logos": 0,
-       "sites": 1
-      },
-      {
-       "dep": "BE55",
-       "nom": "CP 55",
-       "clubs": 2,
-       "logos": 0,
-       "sites": 0
-      },
-      {
-       "dep": "BE66",
-       "nom": "CP 66",
-       "clubs": 14,
-       "logos": 0,
-       "sites": 3
-      },
-      {
-       "dep": "BE67",
-       "nom": "CP 67",
-       "clubs": 14,
-       "logos": 0,
-       "sites": 5
-      },
-      {
-       "dep": "BE68",
-       "nom": "CP 68",
-       "clubs": 10,
-       "logos": 0,
-       "sites": 3
-      },
-      {
-       "dep": "BE69",
-       "nom": "CP 69",
-       "clubs": 15,
-       "logos": 0,
-       "sites": 3
-      }
-     ]
-    },
-    {
-     "code": "BE-VLAAMS-BRABANT",
-     "nom": "Brabant flamand",
-     "zone": "",
-     "clubs": 20,
-     "logos": 0,
-     "sites": 0,
-     "departements": [
-      {
-       "dep": "BE10",
-       "nom": "CP 10",
-       "clubs": 2,
-       "logos": 0,
-       "sites": 0
-      },
-      {
-       "dep": "BE15",
-       "nom": "CP 15",
-       "clubs": 2,
-       "logos": 0,
-       "sites": 0
-      },
-      {
-       "dep": "BE16",
-       "nom": "CP 16",
-       "clubs": 1,
-       "logos": 0,
-       "sites": 0
-      },
-      {
-       "dep": "BE17",
-       "nom": "CP 17",
-       "clubs": 2,
-       "logos": 0,
-       "sites": 0
-      },
-      {
-       "dep": "BE18",
-       "nom": "CP 18",
-       "clubs": 2,
-       "logos": 0,
-       "sites": 0
-      },
-      {
-       "dep": "BE30",
-       "nom": "CP 30",
-       "clubs": 5,
-       "logos": 0,
-       "sites": 0
-      },
-      {
-       "dep": "BE31",
-       "nom": "CP 31",
-       "clubs": 1,
-       "logos": 0,
-       "sites": 0
-      },
-      {
-       "dep": "BE32",
-       "nom": "CP 32",
-       "clubs": 3,
-       "logos": 0,
-       "sites": 0
-      },
-      {
-       "dep": "BE33",
-       "nom": "CP 33",
-       "clubs": 2,
-       "logos": 0,
-       "sites": 0
-      }
-     ]
-    },
-    {
      "code": "BE-HAINAUT",
      "nom": "Hainaut",
      "zone": "",
-     "clubs": 107,
+     "clubs": 105,
      "logos": 0,
-     "sites": 37,
+     "sites": 36,
      "departements": [
       {
        "dep": "BE14",
@@ -3507,9 +3413,9 @@
       {
        "dep": "BE60",
        "nom": "CP 60",
-       "clubs": 11,
+       "clubs": 9,
        "logos": 0,
-       "sites": 4
+       "sites": 3
       },
       {
        "dep": "BE61",
@@ -3598,10 +3504,83 @@
      ]
     },
     {
+     "code": "BE-ANTWERPEN",
+     "nom": "Anvers",
+     "zone": "",
+     "clubs": 31,
+     "logos": 0,
+     "sites": 0,
+     "departements": [
+      {
+       "dep": "BE20",
+       "nom": "CP 20",
+       "clubs": 1,
+       "logos": 0,
+       "sites": 0
+      },
+      {
+       "dep": "BE21",
+       "nom": "CP 21",
+       "clubs": 3,
+       "logos": 0,
+       "sites": 0
+      },
+      {
+       "dep": "BE22",
+       "nom": "CP 22",
+       "clubs": 5,
+       "logos": 0,
+       "sites": 0
+      },
+      {
+       "dep": "BE23",
+       "nom": "CP 23",
+       "clubs": 5,
+       "logos": 0,
+       "sites": 0
+      },
+      {
+       "dep": "BE24",
+       "nom": "CP 24",
+       "clubs": 3,
+       "logos": 0,
+       "sites": 0
+      },
+      {
+       "dep": "BE25",
+       "nom": "CP 25",
+       "clubs": 3,
+       "logos": 0,
+       "sites": 0
+      },
+      {
+       "dep": "BE26",
+       "nom": "CP 26",
+       "clubs": 2,
+       "logos": 0,
+       "sites": 0
+      },
+      {
+       "dep": "BE28",
+       "nom": "CP 28",
+       "clubs": 5,
+       "logos": 0,
+       "sites": 0
+      },
+      {
+       "dep": "BE29",
+       "nom": "CP 29",
+       "clubs": 4,
+       "logos": 0,
+       "sites": 0
+      }
+     ]
+    },
+    {
      "code": "BE-LIMBURG",
      "nom": "Limbourg",
      "zone": "",
-     "clubs": 34,
+     "clubs": 33,
      "logos": 0,
      "sites": 0,
      "departements": [
@@ -3650,7 +3629,7 @@
       {
        "dep": "BE39",
        "nom": "CP 39",
-       "clubs": 10,
+       "clubs": 9,
        "logos": 0,
        "sites": 0
       }
@@ -3660,7 +3639,7 @@
      "code": "BE-WEST-VLAANDEREN",
      "nom": "Flandre-Occidentale",
      "zone": "",
-     "clubs": 32,
+     "clubs": 31,
      "logos": 0,
      "sites": 0,
      "departements": [
@@ -3716,7 +3695,7 @@
       {
        "dep": "BE88",
        "nom": "CP 88",
-       "clubs": 4,
+       "clubs": 3,
        "logos": 0,
        "sites": 0
       },
@@ -3733,7 +3712,7 @@
      "code": "BE-OOST-VLAANDEREN",
      "nom": "Flandre-Orientale",
      "zone": "",
-     "clubs": 36,
+     "clubs": 35,
      "logos": 0,
      "sites": 0,
      "departements": [
@@ -3747,7 +3726,7 @@
       {
        "dep": "BE91",
        "nom": "CP 91",
-       "clubs": 6,
+       "clubs": 5,
        "logos": 0,
        "sites": 0
       },

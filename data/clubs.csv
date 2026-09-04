@@ -1,16 +1,6 @@
 pays,numero,nom,dep,dep_nom,ligue_code,ligue_nom,ville,code_postal,salle,site_web,logo_fichier,logo_source,logo_statut,couleurs,fond,latitude,longitude,source_donnees,maj
-BE,BEA000,Individueel Antwerpen,,,BE-ANTWERPEN,Anvers,,,,,,,sans-site,,,,,"API TabT (FRBTT), club A000",2026-09-04
-BE,BEN,Namur,,,BE-NAMUR,Namur,,,,http://www.cttfrancorchamps.be,,,aucun,,,,,"API TabT (FRBTT), club N",2026-09-04
-BE,BEN000,Namur,,,BE-NAMUR,Namur,,,,,,,sans-site,,,,,"API TabT (FRBTT), club N000",2026-09-04
-BE,BEBBW,Province De Bruxelles Et Du Brabant Wallon,,,BE-BRUXELLES-BRABANT,Bruxelles et Brabant wallon,,,,http://www.cttroyalalpa.be,,,aucun,,,,,"API TabT (FRBTT), club BBW",2026-09-04
-BE,BEBBW000,Province De Bruxelles Et Du Brabant Wallon,,,BE-BRUXELLES-BRABANT,Bruxelles et Brabant wallon,,,,,,,sans-site,,,,,"API TabT (FRBTT), club BBW000",2026-09-04
-BE,BEL,Province De Liege,,,BE-LIEGE,Liège,,,,,,,sans-site,,,,,"API TabT (FRBTT), club L",2026-09-04
-BE,BEL000,Province De Liege,,,BE-LIEGE,Liège,,,,,,,sans-site,,,,,"API TabT (FRBTT), club L000",2026-09-04
-BE,BELX,Province De Luxembourg,,,BE-LUXEMBOURG,Luxembourg,,,,http://www.ttcentreardenne.be,,,aucun,,,,,"API TabT (FRBTT), club LX",2026-09-04
-BE,BELx000,Province De Luxembourg,,,BE-LUXEMBOURG,Luxembourg,,,,,,,sans-site,,,,,"API TabT (FRBTT), club Lx000",2026-09-04
 BE,BELx012,CTT Messancy,,,BE-LUXEMBOURG,Luxembourg,0,,Lx014,,,,sans-site,,,,,"API TabT (FRBTT), club Lx012",2026-09-04
 BE,BEN037,Royal Andenne TT,,,BE-NAMUR,Namur,2 5300,,secretariat.ratt.n037@gmail.com,http://www.ratt.be,,,aucun,,,,,"API TabT (FRBTT), club N037",2026-09-04
-BE,BEVl-B000,Individueel Vlaams-Brabant,BE10,CP 10,BE-VLAAMS-BRABANT,Brabant flamand,Brussel,1070,Hoofdlokaal,,,,sans-site,,,,,"API TabT (FRBTT), club Vl-B000",2026-09-04
 BE,BEBBW134,Arc En Ciel CTT,BE10,CP 10,BE-BRUXELLES-BRABANT,Bruxelles et Brabant wallon,BRUXELLES,1080,A.E.C. CTT,http://www.aec-ctt.be,,,aucun,,,,,"API TabT (FRBTT), club BBW134",2026-09-04
 BE,BEBBW264,Charles Quint TT,BE10,CP 10,BE-BRUXELLES-BRABANT,Bruxelles et Brabant wallon,Bruxelles,1083,Charles Quint (Tennis club),,,,sans-site,,,,,"API TabT (FRBTT), club BBW264",2026-09-04
 BE,BEBBW202,CTT Paluc,BE10,CP 10,BE-BRUXELLES-BRABANT,Bruxelles et Brabant wallon,BRUXELLES,1070,ECOLE COMMUNALE,,,,sans-site,,,,,"API TabT (FRBTT), club BBW202",2026-09-04
@@ -129,7 +119,6 @@ BE,BELK009,KTTC Leopoldsburg vzw,BE39,CP 39,BE-LIMBURG,Limbourg,Leopoldsburg,397
 BE,BELK036,TTC Lommel,BE39,CP 39,BE-LIMBURG,Limbourg,Lommel,3920,De Soeverein,,,,sans-site,,,,,"API TabT (FRBTT), club LK036",2026-09-04
 BE,BELK109,T.T.V. Neerpelt,BE39,CP 39,BE-LIMBURG,Limbourg,Neerpelt,3910,Buurthuis Damsheide,,,,sans-site,,,,,"API TabT (FRBTT), club LK109",2026-09-04
 BE,BELK115,TTC Peer,BE39,CP 39,BE-LIMBURG,Limbourg,Peer,3990,Basisschool De mAgneet,,,,sans-site,,,,,"API TabT (FRBTT), club LK115",2026-09-04
-BE,BELK000,Individueel Limburg,BE39,CP 39,BE-LIMBURG,Limbourg,Pelt,3910,Hoofdlokaal,,,,sans-site,,,,,"API TabT (FRBTT), club LK000",2026-09-04
 BE,BELK012,KTTV Lipalet,BE39,CP 39,BE-LIMBURG,Limbourg,St.-Huibrechts-Lille,3910,TT-hal TTV Lipalet,,,,sans-site,,,,,"API TabT (FRBTT), club LK012",2026-09-04
 BE,BEL152,TTC Beaufays,BE40,CP 40,BE-LIEGE,Liège,BEAUFAYS,4052,GYMNASE COMMUNAL,,,,sans-site,,,,,"API TabT (FRBTT), club L152",2026-09-04
 BE,BEL119,Royal CTT Astrid Herstal,BE40,CP 40,BE-LIEGE,Liège,HERSTAL,4040,RCTT ASTRID (Salle André Malpas),,,,sans-site,,,,,"API TabT (FRBTT), club L119",2026-09-04
@@ -303,8 +292,6 @@ BE,BEN215,CTT Treignes,BE56,CP 56,BE-NAMUR,Namur,TREIGNES,5670,SALLE,,,,sans-sit
 BE,BEN220,Vierves,BE56,CP 56,BE-NAMUR,Namur,VIERVES-SUR-VIROIN,5670,CTT Vierves,,,,sans-site,,,,,"API TabT (FRBTT), club N220",2026-09-04
 BE,BEN193,La Palette Djobine,BE56,CP 56,BE-NAMUR,Namur,VILLERS-DEUX-Eglises,5630,SALLE COMMUNALE (Face à l'Eglise),,,,sans-site,,,,,"API TabT (FRBTT), club N193",2026-09-04
 BE,BEN219,CTT Vodecee,BE56,CP 56,BE-NAMUR,Namur,VODECEE,5600,SALLE SAINTE GENEVIEVE,,,,sans-site,,,,,"API TabT (FRBTT), club N219",2026-09-04
-BE,BEH,Province De Hainaut,BE60,CP 60,BE-HAINAUT,Hainaut,Charleroi,6000,CP Hainaut TT,http://www.cttfrancorchamps.be,,,aucun,,,,,"API TabT (FRBTT), club H",2026-09-04
-BE,BEH000,Province De Hainaut,BE60,CP 60,BE-HAINAUT,Hainaut,Charleroi,6001,CP Hainaut TT,,,,sans-site,,,,,"API TabT (FRBTT), club H000",2026-09-04
 BE,BEH149,CTT Buffalo Couillet Asbl,BE60,CP 60,BE-HAINAUT,Hainaut,COUILLET,6010,PLAINE DE JEUX - SALLE DE GYM,http://www.h149.be,,,aucun,,,,,"API TabT (FRBTT), club H149",2026-09-04
 BE,BEH378,CTT Spa Charleroi,BE60,CP 60,BE-HAINAUT,Hainaut,COUILLET,6010,CECS COUILLET SALLE DE GYM,,,,sans-site,,,,,"API TabT (FRBTT), club H378",2026-09-04
 BE,BEH107,RCS Club Palette Buffalo,BE60,CP 60,BE-HAINAUT,Hainaut,COUILLET,6010,R.C.S.C. Palette Buffalo,,,,sans-site,,,,,"API TabT (FRBTT), club H107",2026-09-04
@@ -488,7 +475,6 @@ BE,BEWVL126,T.T.C. Tielt,BE87,CP 87,BE-WEST-VLAANDEREN,Flandre-Occidentale,TIELT
 BE,BEWVL094,T.T.C. Wielsbeke-spotit,BE87,CP 87,BE-WEST-VLAANDEREN,Flandre-Occidentale,WIELSBEKE,8710,Sporthal Hernieuwenburg,,,,sans-site,,,,,"API TabT (FRBTT), club WVL094",2026-09-04
 BE,BEWVL163,TTC Wingene,BE87,CP 87,BE-WEST-VLAANDEREN,Flandre-Occidentale,WINGENE,8750,DE TUIMELAAR,,,,sans-site,,,,,"API TabT (FRBTT), club WVL163",2026-09-04
 BE,BEWVL164,T.T.C. GIDOS,BE88,CP 88,BE-WEST-VLAANDEREN,Flandre-Occidentale,HOOGLEDE- GITS,8830,Hoofdlokaal,,,,sans-site,,,,,"API TabT (FRBTT), club WVL164",2026-09-04
-BE,BEWVL000,Individueel West-Vlaanderen,BE88,CP 88,BE-WEST-VLAANDEREN,Flandre-Occidentale,Roeselare,8800,Sporthal Schiervelde,,,,sans-site,,,,,"API TabT (FRBTT), club WVL000",2026-09-04
 BE,BEWVL152,T.T.C. Paletje Roeselare,BE88,CP 88,BE-WEST-VLAANDEREN,Flandre-Occidentale,ROESELARE,8800,Vikingschool,,,,sans-site,,,,,"API TabT (FRBTT), club WVL152",2026-09-04
 BE,BEWVL138,T.T.C. Torhout,BE88,CP 88,BE-WEST-VLAANDEREN,Flandre-Occidentale,Torhout,8820,Stedelijke Sporthal,,,,sans-site,,,,,"API TabT (FRBTT), club WVL138",2026-09-04
 BE,BEWVL129,T.T.C. Westhoek,BE89,CP 89,BE-WEST-VLAANDEREN,Flandre-Occidentale,Ieper,8900,Stedelijke Sporthal 2,,,,sans-site,,,,,"API TabT (FRBTT), club WVL129",2026-09-04
@@ -497,7 +483,6 @@ BE,BEWVL154,T.T.C. Zonnebeke,BE89,CP 89,BE-WEST-VLAANDEREN,Flandre-Occidentale,Z
 BE,BEOVL088,TTC Rooigem Gent VZW,BE90,CP 90,BE-OOST-VLAANDEREN,Flandre-Orientale,Gent,9000,TTC Rooigem Gent vzw,,,,sans-site,,,,,"API TabT (FRBTT), club OVL088",2026-09-04
 BE,BEOVL107,TTC Lobos-Lochristi,BE90,CP 90,BE-OOST-VLAANDEREN,Flandre-Orientale,Lochristi,9080,GBS Lochristi,,,,sans-site,,,,,"API TabT (FRBTT), club OVL107",2026-09-04
 BE,BEOVL001,TTC QLT Gent,BE90,CP 90,BE-OOST-VLAANDEREN,Flandre-Orientale,SInt Amandsberg,9040,QLT BV,,,,sans-site,,,,,"API TabT (FRBTT), club OVL001",2026-09-04
-BE,BEOVL000,Individueel Oost-Vlaanderen,BE91,CP 91,BE-OOST-VLAANDEREN,Flandre-Orientale,Beveren,9120,Individueel OVL,,,,sans-site,,,,,"API TabT (FRBTT), club OVL000",2026-09-04
 BE,BEOVL101,TTC Kruibeke vzw,BE91,CP 91,BE-OOST-VLAANDEREN,Flandre-Orientale,Kruibeke,9150,O.L.V-School,,,,sans-site,,,,,"API TabT (FRBTT), club OVL101",2026-09-04
 BE,BEOVL039,Sint-Niklase Tafeltennisclub,BE91,CP 91,BE-OOST-VLAANDEREN,Flandre-Orientale,Sint-Niklaas,9100,Sint Niklase TTC,,,,sans-site,,,,,"API TabT (FRBTT), club OVL039",2026-09-04
 BE,BEOVL125,TTC Sint-Pauwels vzw,BE91,CP 91,BE-OOST-VLAANDEREN,Flandre-Orientale,Sint-Pauwels,9170,Turnzaal De Zandloper,,,,sans-site,,,,,"API TabT (FRBTT), club OVL125",2026-09-04
