@@ -206,7 +206,8 @@ main { padding-bottom: 60px; }
   border-radius: 999px;
   font-weight: 600;
 }
-.etiquette.logo { background: var(--vert-doux); color: var(--vert); }
+.etiquette.logo { background: var(--accent-doux); color: var(--accent); }
+.etiquette.officiel { background: var(--vert-doux); color: var(--vert); }
 .etiquette.favicon { background: var(--ambre-doux); color: var(--ambre); }
 .etiquette.aucun, .etiquette.sans-site { background: #eef0f6; color: #6b7490; }
 .liens-carte { margin-top: auto; padding-top: 8px; font-size: 13px; }

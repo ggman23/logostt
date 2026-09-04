@@ -242,6 +242,7 @@ function selectionner() {
     if (dep && club.dep !== dep) return false;
     if (statut === "logo" && !club.logo) return false;
     if (statut === "sans" && club.logo) return false;
+    if (statut === "officiel" && club.origine !== "officiel") return false;
     if (statut === "favoris" && !ETAT.favoris.has(club.id)) return false;
     if (couleur !== "tous" && !(club.familles || []).includes(couleur)) return false;
     if (recherche && !club._recherche.includes(recherche)) return false;
@@ -308,11 +309,13 @@ function carte(club, index) {
 
   const infos = document.createElement("div");
   infos.className = "infos";
+  const situation = [club.dep, club.depNom].filter(Boolean).join(" · ");
+  const lieu = [club.ville, club.cp].filter(Boolean).join(" ");
   infos.innerHTML = `
-    <p class="lieu-court">${club.dep} · ${echapper(club.depNom)}</p>
+    ${situation ? `<p class="lieu-court">${echapper(situation)}</p>` : ""}
     <p class="nom">${echapper(club.nom)}</p>
-    <p class="ville">${echapper(club.ville)}${club.cp ? " " + echapper(club.cp) : ""}</p>
-    <span class="etiquette ${club.statut}">${libelleStatut(club.statut)}</span>
+    ${lieu ? `<p class="ville">${echapper(lieu)}</p>` : ""}
+    <span class="etiquette ${club.origine === "officiel" ? "officiel" : club.statut}">${libelleStatut(club.statut, club.origine)}</span>
     <p class="liens-carte">${
       club.site
         ? `<a href="${echapper(club.site)}" target="_blank" rel="noopener">site du club ↗</a>`
@@ -354,9 +357,10 @@ function monogramme(club) {
   return bloc;
 }
 
-function libelleStatut(statut) {
+function libelleStatut(statut, origine) {
+  if (origine === "officiel") return "logo officiel";
   return {
-    logo: "logo récupéré",
+    logo: "logo du site",
     favicon: "icône du site",
     aucun: "logo introuvable",
     "sans-site": "pas de site",
@@ -381,8 +385,11 @@ function ouvrirFiche(index) {
   visuelFiche.innerHTML = "";
   visuelFiche.append(visuel(club));
   $("#fiche-nom").textContent = club.nom;
-  $("#fiche-lieu").textContent =
-    `${club.ville}${club.cp ? " (" + club.cp + ")" : ""} · ${club.dep} ${club.depNom} · Ligue ${club.ligueNom}`;
+  $("#fiche-lieu").textContent = [
+    [club.ville, club.cp && `(${club.cp})`].filter(Boolean).join(" "),
+    [club.dep, club.depNom].filter(Boolean).join(" "),
+    club.ligueNom,
+  ].filter(Boolean).join(" · ");
   const palette = $("#fiche-couleurs");
   palette.innerHTML = (club.couleurs || [])
     .map((couleur) => `<span class="echantillon" style="background:${echapper(couleur)}">${echapper(couleur)}</span><code>${echapper(couleur)}</code>`)

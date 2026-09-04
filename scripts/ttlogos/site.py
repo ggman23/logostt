@@ -69,6 +69,10 @@ def club_en_dictionnaire(club: Club) -> dict:
         "site": club.site_web,
         "logo": club.logo_fichier,
         "logoSource": club.logo_source,
+        # « officiel » : logo déposé par le club auprès de sa fédération, donc sûr ;
+        # « site » : logo extrait du site du club, donc trié automatiquement.
+        "origine": "officiel" if "click-tt" in club.logo_source else (
+            "site" if club.logo_fichier else ""),
         "statut": club.logo_statut,
         "couleurs": couleurs,
         "familles": familles,
