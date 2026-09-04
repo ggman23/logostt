@@ -6,4 +6,4 @@ forcer
 #             ou « DE » pour la collecte allemande (click-TT / DTTB).
 # 2e ligne : étapes (clubs+logos, clubs, logos) — vide = clubs+logos
 # 3e ligne : « forcer » pour revoir les logos déjà connus — vide = seulement ceux qui manquent
-# Reprise des logos allemands 04/09/2026 15:54
+# Reprise 04/09/2026 17:43

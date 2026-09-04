@@ -115,11 +115,23 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data site/data site/logos
-          if git diff --cached --quiet; then
-            echo "Aucun changement."
-          else
+          # Se replacer sur la pointe de main SANS toucher aux fichiers collectés :
+          # une collecte dure des heures, main a pu avancer entre-temps, et un rebase
+          # sur le catalogue provoquerait un conflit impossible à résoudre tout seul.
+          # Les fichiers produits par la collecte font foi pour data/ et site/.
+          for essai in 1 2 3; do
+            git fetch origin main
+            git reset --mixed origin/main
+            git add data site/data site/logos
+            if git diff --cached --quiet; then
+              echo "Aucun changement."
+              exit 0
+            fi
             git commit -m "Collecte du $(date +%d/%m/%Y) (${{ steps.parametres.outputs.perimetre }})"
-            git pull --rebase origin main
-            git push
-          fi
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            echo "Poussée refusée (essai $essai), nouvelle tentative."
+            sleep 10
+          done
+          exit 1
