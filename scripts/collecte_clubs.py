@@ -12,6 +12,7 @@ from __future__ import annotations
 import argparse
 import logging
 import sys
+import time
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -49,7 +50,9 @@ def collecter_carte(client: Client, deps: list[str], tous: bool) -> list[catalog
     return clubs
 
 
-def collecter_clicktt(client: Client, limite: int = 0, reprendre: bool = True) -> list[catalogue.Club]:
+def collecter_clicktt(
+    client: Client, limite: int = 0, reprendre: bool = True, budget: float = 0
+) -> list[catalogue.Club]:
     """Allemagne : annuaire public click-TT du DTTB, logo officiel compris.
 
     Neuf mille fiches ne tiennent pas toujours dans une seule exécution : le catalogue est
@@ -69,8 +72,15 @@ def collecter_clicktt(client: Client, limite: int = 0, reprendre: bool = True) -
 
     dossier_logos = referentiel.RACINE / "site" / "logos"
     clubs: list[catalogue.Club] = []
+    debut = time.monotonic()
 
     for rang, entree in enumerate(a_lire, start=1):
+        if budget and time.monotonic() - debut > budget * 60:
+            # On rend la main avant que le workflow ne soit coupé : ce qui est collecté
+            # est publié, et la prochaine collecte reprendra la suite de la liste.
+            journal.info("budget de %s min atteint après %s fiches ; le reste sera repris "
+                         "à la prochaine collecte", budget, rang - 1)
+            break
         html = client.texte(clicktt.FICHE.format(club=entree["id"]), taille_max=4_000_000)
         if not html:
             continue
@@ -143,6 +153,8 @@ def main() -> int:
                            help="délai minimal entre deux requêtes vers le même serveur (s)")
     analyseur.add_argument("--limite", type=int, default=0,
                            help="s'arrêter après N clubs (mise au point)")
+    analyseur.add_argument("--budget", type=float, default=0,
+                           help="durée maximale de la collecte, en minutes (0 = sans limite)")
     analyseur.add_argument("--recommencer", action="store_true",
                            help="relire toutes les fiches au lieu de reprendre là où on s'était arrêté")
     analyseur.add_argument("--verbeux", action="store_true")
@@ -159,7 +171,9 @@ def main() -> int:
     client = Client(delai=arguments.delai, timeout=30.0, duree_max=90.0)
 
     if arguments.source == "clicktt":
-        nouveaux = collecter_clicktt(client, arguments.limite, reprendre=not arguments.recommencer)
+        nouveaux = collecter_clicktt(client, arguments.limite,
+                                     reprendre=not arguments.recommencer,
+                                     budget=arguments.budget)
     elif arguments.source == "carte":
         nouveaux = collecter_carte(client, deps, tous=len(deps) == len(referentiel.departements()))
     elif arguments.source == "fftt":
