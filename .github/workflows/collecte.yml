@@ -81,6 +81,7 @@ jobs:
               DE|de|allemagne|Allemagne) source="clicktt"; federation="DE"; perimetre="tous" ;;
               CH|ch|suisse|Suisse) source="clicktt"; federation="CH"; perimetre="tous" ;;
               EN|en|GB|gb|angleterre|Angleterre) source="angleterre"; federation="EN"; perimetre="tous" ;;
+              BE|be|belgique|Belgique) source="belgique"; federation="BE"; perimetre="tous" ;;
             esac
             case "$(sed -n 3p .github/lancer-collecte.txt | tr -d ' \r\n')" in
               forcer|force|oui|true) forcer="true" ;;

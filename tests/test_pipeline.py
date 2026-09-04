@@ -14,7 +14,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 from PIL import Image, ImageDraw  # noqa: E402
 
 from ttlogos import (  # noqa: E402
-    angleterre, carte, catalogue, clicktt, logos, referentiel, site,
+    angleterre, belgique, carte, catalogue, clicktt, logos, referentiel, site,
 )
 
 
@@ -652,6 +652,79 @@ class TestAngleterre(unittest.TestCase):
         pays = {p["code"]: p for p in site.statistiques(clubs)["pays"]}
         self.assertEqual(pays["EN"]["nom"], "Angleterre")
         self.assertEqual(pays["EN"]["ligues"][0]["departements"][0]["dep"], "SS")
+
+
+class TestBelgique(unittest.TestCase):
+    """API TabT (annuaire) et moteur de recherche de l'AFTT (adresses de sites)."""
+
+    FICHE = (
+        "<ns1:UniqueIndex>A003</ns1:UniqueIndex><ns1:Name>Salamander</ns1:Name>"
+        "<ns1:LongName>KTTC Salamander Mechelen</ns1:LongName>"
+        "<ns1:CategoryName>Antwerpen</ns1:CategoryName>"
+        "<ns1:VenueEntries><ns1:Id>6</ns1:Id><ns1:Name>De Sportschuur</ns1:Name>"
+        "<ns1:Street>Donkerlei, 72</ns1:Street><ns1:Town>2800 Mechelen</ns1:Town>"
+        "<ns1:Phone>0476 32 18 70</ns1:Phone></ns1:VenueEntries>"
+    )
+
+    def test_fiche_de_club(self):
+        club = belgique.club_depuis_fiche(self.FICHE)
+        self.assertEqual((club.pays, club.numero), ("BE", "BEA003"))
+        self.assertEqual(club.nom, "KTTC Salamander Mechelen")
+        self.assertEqual((club.ligue_code, club.ligue_nom), ("BE-ANTWERPEN", "Anvers"))
+        self.assertEqual((club.code_postal, club.ville), ("2800", "Mechelen"))
+        self.assertEqual((club.dep, club.salle), ("BE28", "De Sportschuur"))
+        # Le numéro de téléphone de la salle ne doit jamais entrer dans le catalogue.
+        self.assertNotIn("0476", " ".join(str(v) for v in vars(club).values()))
+
+    def test_les_entrees_administratives_sont_ecartees(self):
+        """L'API liste aussi les fédérations elles-mêmes sous une catégorie de service."""
+        for categorie in ("VTTL", "AFTT", ""):
+            fiche = (f"<ns1:UniqueIndex>{categorie or 'FR'}</ns1:UniqueIndex>"
+                     f"<ns1:CategoryName>{categorie}</ns1:CategoryName>")
+            self.assertIsNone(belgique.club_depuis_fiche(fiche))
+
+    def test_entites_html_decodees(self):
+        """L'API renvoie « Li&amp;egrave;ge » : la province doit être reconnue quand même."""
+        fiche = ("<ns1:UniqueIndex>L001</ns1:UniqueIndex><ns1:Name>X</ns1:Name>"
+                 "<ns1:CategoryName>Li&amp;egrave;ge</ns1:CategoryName>")
+        club = belgique.club_depuis_fiche(fiche)
+        self.assertEqual(club.ligue_code, "BE-LIEGE")
+
+    def test_site_du_club(self):
+        """Le moteur affiche en permanence des liens de décor : seuls comptent ceux
+        qui apparaissent en plus quand la recherche a trouvé le club."""
+        decor = ('<a href="https://vttl.be/">VTTL</a>'
+                 '<a href="https://www.ittf.com/">ITTF</a>')
+        trouve = decor + ('<p>BBW205 - TT ZENITH BRUSSELS</p>'
+                          '<a href="https://www.ttzenithbrussels.be">site</a>')
+
+        class ClientFactice:
+            def __init__(self, reponse):
+                self.reponse = reponse
+                self.session = self
+
+            def post(self, url, data=None, timeout=0):
+                corps = self.reponse
+
+                class Reponse:
+                    status_code = 200
+                    text = corps
+                return Reponse()
+
+        meubles = belgique._liens_externes(decor)
+        self.assertEqual(meubles, set())  # vttl.be et ittf.com sont du décor connu
+        client = ClientFactice(trouve)
+        self.assertEqual(belgique.site_du_club("BBW205", client, meubles),
+                         "https://www.ttzenithbrussels.be")
+        # Un club que le moteur ne connaît pas : son index n'apparaît pas dans la page.
+        client = ClientFactice(decor)
+        self.assertEqual(belgique.site_du_club("A003", client, meubles), "")
+
+    def test_statistiques_par_pays(self):
+        clubs = [belgique.club_depuis_fiche(self.FICHE)]
+        pays = {p["code"]: p for p in site.statistiques(clubs)["pays"]}
+        self.assertEqual(pays["BE"]["nom"], "Belgique")
+        self.assertEqual(pays["BE"]["ligues"][0]["nom"], "Anvers")
 
 
 if __name__ == "__main__":

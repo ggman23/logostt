@@ -18,7 +18,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from ttlogos import (  # noqa: E402
-    angleterre, carte, catalogue, clicktt, datasports, fftt, referentiel,
+    angleterre, belgique, carte, catalogue, clicktt, datasports, fftt, referentiel,
 )
 from ttlogos.logos import recuperer_logo_heberge  # noqa: E402
 from ttlogos.reseau import Client  # noqa: E402
@@ -145,10 +145,11 @@ def main() -> int:
     )
     analyseur.add_argument(
         "--source", default="carte",
-        choices=("carte", "clicktt", "angleterre", "fftt", "opendata"),
+        choices=("carte", "clicktt", "angleterre", "belgique", "fftt", "opendata"),
         help="carte : annuaire public FFTT (France, recommandé) ; "
              "clicktt : annuaire click-TT (Allemagne ou Suisse, logos officiels compris) ; "
              "angleterre : données ouvertes de Table Tennis England ; "
+             "belgique : API TabT, complétée par le moteur de recherche de l'AFTT ; "
              "fftt : API SmartPing (demande une clé) ; opendata : data.sports.gouv.fr",
     )
     analyseur.add_argument(
@@ -185,6 +186,12 @@ def main() -> int:
                                      federation=arguments.federation)
     elif arguments.source == "angleterre":
         nouveaux = angleterre.liste_des_clubs(client, arguments.limite)
+    elif arguments.source == "belgique":
+        nouveaux = belgique.liste_des_clubs(client)
+        if arguments.limite:
+            nouveaux = nouveaux[:arguments.limite]
+        # L'API ne donne pas les sites : ils viennent du moteur de recherche de l'AFTT.
+        belgique.completer_les_sites(nouveaux, client, budget=arguments.budget)
     elif arguments.source == "carte":
         nouveaux = collecter_carte(client, deps, tous=len(deps) == len(referentiel.departements()))
     elif arguments.source == "fftt":
@@ -197,10 +204,11 @@ def main() -> int:
         return 1
 
     existants = catalogue.charger()
-    if arguments.source in ("clicktt", "angleterre"):
+    if arguments.source in ("clicktt", "angleterre", "belgique"):
         # Ces annuaires ne se découpent pas par département : on remplace l'ensemble du
         # pays concerné et on laisse les autres intacts.
-        pays = "EN" if arguments.source == "angleterre" else arguments.federation
+        pays = {"angleterre": "EN", "belgique": "BE"}.get(
+            arguments.source, arguments.federation)
         fusionnes = catalogue.fusionner_pays(existants, nouveaux, pays,
                                              remplacer=arguments.recommencer)
     else:
