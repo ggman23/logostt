@@ -4,4 +4,4 @@ clubs
 # 1re ligne : périmètre — « tous », une ligue (IDF, BRE…), un département (75),
 #             ou « DE » pour lancer la collecte allemande (click-TT / DTTB).
 # 2e ligne : étapes (clubs+logos, clubs, logos) — vide = clubs+logos
-# Collecte allemande 04/09/2026 11:22
+# Collecte allemande, tranche 04/09/2026 11:48
