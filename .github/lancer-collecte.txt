@@ -1,9 +1,9 @@
-DE
-logos
-forcer
+CH
+clubs
 
 # 1re ligne : périmètre — « tous », une ligue (IDF, BRE…), un département (75),
-#             ou « DE » pour la collecte allemande (click-TT / DTTB).
+#             « DE » pour la collecte allemande (click-TT / DTTB)
+#             ou « CH » pour la collecte suisse (click-TT / STT).
 # 2e ligne : étapes (clubs+logos, clubs, logos) — vide = clubs+logos
 # 3e ligne : « forcer » pour revoir les logos déjà connus — vide = seulement ceux qui manquent
-# Dernière passe 04/09/2026 19:42
+# Dernière passe 04/09/2026 21:10 — Suisse, annuaire
