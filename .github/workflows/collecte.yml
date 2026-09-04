@@ -75,13 +75,17 @@ jobs:
             etapes="$(sed -n 2p .github/lancer-collecte.txt | tr -d ' \r\n')"
             source="carte"
             federation="DE"
-            # « DE » et « CH » basculent sur les annuaires click-TT correspondants
+            # « DE » et « CH » basculent sur les annuaires click-TT correspondants,
+            # « EN » sur les données ouvertes de Table Tennis England.
             case "$perimetre" in
               DE|de|allemagne|Allemagne) source="clicktt"; federation="DE"; perimetre="tous" ;;
               CH|ch|suisse|Suisse) source="clicktt"; federation="CH"; perimetre="tous" ;;
+              EN|en|GB|gb|angleterre|Angleterre) source="angleterre"; federation="EN"; perimetre="tous" ;;
             esac
             case "$(sed -n 3p .github/lancer-collecte.txt | tr -d ' \r\n')" in
               forcer|force|oui|true) forcer="true" ;;
+              # « recommencer » relit tout l'annuaire au lieu de compléter l'existant.
+              recommencer|reprise|neuf) forcer="false"; recommencer="true" ;;
               *) forcer="false" ;;
             esac
           fi
@@ -90,6 +94,7 @@ jobs:
           echo "etapes=${etapes:-clubs+logos}" >> "$GITHUB_OUTPUT"
           echo "forcer=${forcer:-false}" >> "$GITHUB_OUTPUT"
           echo "federation=${federation:-DE}" >> "$GITHUB_OUTPUT"
+          echo "recommencer=${recommencer:-false}" >> "$GITHUB_OUTPUT"
           echo "Collecte « ${perimetre:-tous} » (source ${source:-carte}, étapes ${etapes:-clubs+logos})"
 
       - name: Collecter la liste des clubs
@@ -101,7 +106,8 @@ jobs:
           python3 scripts/collecte_clubs.py \
             --dep "${{ steps.parametres.outputs.perimetre }}" \
             --source "${{ steps.parametres.outputs.source }}" \
-            --federation "${{ steps.parametres.outputs.federation }}" \
+            ${{ steps.parametres.outputs.source == 'clicktt' && format('--federation {0}', steps.parametres.outputs.federation) || '' }} \
+            ${{ steps.parametres.outputs.recommencer == 'true' && '--recommencer' || '' }} \
             --budget 120
 
       - name: Récupérer les logos
@@ -109,7 +115,7 @@ jobs:
         run: |
           python3 scripts/collecte_logos.py \
             --dep "${{ steps.parametres.outputs.perimetre }}" \
-            ${{ steps.parametres.outputs.source == 'clicktt' && format('--pays {0}', steps.parametres.outputs.federation) || '' }} \
+            ${{ steps.parametres.outputs.source != 'carte' && format('--pays {0}', steps.parametres.outputs.federation) || '' }} \
             --budget 100 \
             ${{ steps.parametres.outputs.forcer == 'true' && '--forcer' || '' }}
 

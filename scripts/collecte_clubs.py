@@ -17,7 +17,9 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from ttlogos import carte, catalogue, clicktt, datasports, fftt, referentiel  # noqa: E402
+from ttlogos import (  # noqa: E402
+    angleterre, carte, catalogue, clicktt, datasports, fftt, referentiel,
+)
 from ttlogos.logos import recuperer_logo_heberge  # noqa: E402
 from ttlogos.reseau import Client  # noqa: E402
 
@@ -142,9 +144,11 @@ def main() -> int:
         help="département (75), ligue (IDF), « metropole », « outre-mer » ou « tous »",
     )
     analyseur.add_argument(
-        "--source", default="carte", choices=("carte", "clicktt", "fftt", "opendata"),
+        "--source", default="carte",
+        choices=("carte", "clicktt", "angleterre", "fftt", "opendata"),
         help="carte : annuaire public FFTT (France, recommandé) ; "
-             "clicktt : annuaire public du DTTB (Allemagne, logos officiels compris) ; "
+             "clicktt : annuaire click-TT (Allemagne ou Suisse, logos officiels compris) ; "
+             "angleterre : données ouvertes de Table Tennis England ; "
              "fftt : API SmartPing (demande une clé) ; opendata : data.sports.gouv.fr",
     )
     analyseur.add_argument(
@@ -179,6 +183,8 @@ def main() -> int:
                                      reprendre=not arguments.recommencer,
                                      budget=arguments.budget,
                                      federation=arguments.federation)
+    elif arguments.source == "angleterre":
+        nouveaux = angleterre.liste_des_clubs(client, arguments.limite)
     elif arguments.source == "carte":
         nouveaux = collecter_carte(client, deps, tous=len(deps) == len(referentiel.departements()))
     elif arguments.source == "fftt":
@@ -191,10 +197,11 @@ def main() -> int:
         return 1
 
     existants = catalogue.charger()
-    if arguments.source == "clicktt":
-        # Les clubs allemands ne sont pas découpés par département : on remplace
-        # l'ensemble du pays et on laisse la France intacte.
-        fusionnes = catalogue.fusionner_pays(existants, nouveaux, arguments.federation,
+    if arguments.source in ("clicktt", "angleterre"):
+        # Ces annuaires ne se découpent pas par département : on remplace l'ensemble du
+        # pays concerné et on laisse les autres intacts.
+        pays = "EN" if arguments.source == "angleterre" else arguments.federation
+        fusionnes = catalogue.fusionner_pays(existants, nouveaux, pays,
                                              remplacer=arguments.recommencer)
     else:
         fusionnes = catalogue.fusionner(existants, nouveaux, set(deps))

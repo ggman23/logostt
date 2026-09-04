@@ -164,6 +164,30 @@ def _bloc(soupe: BeautifulSoup, intitule: str) -> str:
     return ""
 
 
+# En Suisse, click-TT n'affiche qu'une fédération pour tout le pays : l'appartenance
+# régionale se lit dans le numéro d'affiliation, dont la dizaine de milliers désigne
+# l'association (10 000 = Genève, 20 000 = Neuchâtel-Jura, 30 000 = Tessin…). Les
+# numéros inférieurs, et les multiples exacts de 10 000, sont les associations
+# elles-mêmes et quelques comptes de service : ce ne sont pas des clubs.
+ASSOCIATIONS_SUISSES = {
+    1: ("CH-GENEVE", "Association Genevoise de Tennis de Table"),
+    2: ("CH-NEUCHATEL-JURA", "Association Neuchâteloise et Jurassienne de Tennis de Table"),
+    3: ("CH-TICINO", "Associazione Ticinese Tennis Tavolo"),
+    4: ("CH-VAUD-VALAIS-FRIBOURG", "Association Vaudoise, Valaisanne et Fribourgeoise"),
+    5: ("CH-MITTELLAND", "Mittelländischer Tischtennisverband"),
+    6: ("CH-NORDWEST", "Nordwestschweizerischer Tischtennisverband"),
+    7: ("CH-OST", "Ostschweizer Tischtennisverband"),
+    8: ("CH-INNERSCHWEIZ", "Tischtennisverband Innerschweiz"),
+}
+
+
+def association_suisse(numero: int) -> tuple[str, str] | None:
+    """Association régionale d'un club suisse, ou None si l'entrée n'est pas un club."""
+    if numero < 10_000 or numero % 10_000 == 0:
+        return None
+    return ASSOCIATIONS_SUISSES.get(numero // 10_000, ("CH-STT", "Swiss Table Tennis"))
+
+
 def club_depuis_fiche(
     identifiant: str, html: str, nom_connu: str = "", federation: Federation = ALLEMAGNE
 ) -> Club | None:
@@ -206,6 +230,14 @@ def club_depuis_fiche(
                     code_postal, ville = _adresse("\n".join(lignes), federation.longueur_cp)
             break
 
+    vnr = int(numero.group(1)) if numero else 0
+    ligue_code_club = code_ligue(verband)
+    if federation.pays == "CH":
+        association = association_suisse(vnr)
+        if association is None:
+            return None
+        ligue_code_club, verband = association
+
     club = Club(
         pays=federation.pays,
         numero=f"{federation.pays}{identifiant}",
@@ -215,7 +247,7 @@ def club_depuis_fiche(
         salle=salle,
         site_web=_site_du_club(soupe),
         ligue_nom=verband,
-        ligue_code=code_ligue(verband),
+        ligue_code=ligue_code_club,
         dep=zone_postale(code_postal, federation),
         dep_nom=f"{'PLZ' if federation.pays == 'DE' else 'NPA'} {code_postal[:2]}" if code_postal else "",
         source_donnees=f"click-TT ({federation.code}), VNr. {numero.group(1) if numero else '?'}",

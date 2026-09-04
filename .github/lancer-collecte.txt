@@ -1,9 +1,9 @@
 CH
 clubs
-
+recommencer
 # 1re ligne : périmètre — « tous », une ligue (IDF, BRE…), un département (75),
-#             « DE » pour la collecte allemande (click-TT / DTTB)
-#             ou « CH » pour la collecte suisse (click-TT / STT).
+#             « DE » (Allemagne, click-TT), « CH » (Suisse, click-TT)
+#             ou « EN » (Angleterre, données ouvertes de Table Tennis England).
 # 2e ligne : étapes (clubs+logos, clubs, logos) — vide = clubs+logos
 # 3e ligne : « forcer » pour revoir les logos déjà connus — vide = seulement ceux qui manquent
-# Dernière passe 04/09/2026 21:10 — Suisse, annuaire
+# Dernière passe 04/09/2026 22:40 — Suisse, annuaire (associations régionales)

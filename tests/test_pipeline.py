@@ -13,7 +13,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 
 from PIL import Image, ImageDraw  # noqa: E402
 
-from ttlogos import carte, catalogue, clicktt, logos, referentiel, site  # noqa: E402
+from ttlogos import (  # noqa: E402
+    angleterre, carte, catalogue, clicktt, logos, referentiel, site,
+)
 
 
 def image_png(taille=(400, 200), couleur=(20, 70, 190)) -> bytes:
@@ -488,7 +490,8 @@ class TestAnnuaireAllemand(unittest.TestCase):
             "TGV Eintracht Abstatt", "CTT Bernex").replace(
             "Sportplatzstraße 19, 74232 Abstatt, Deutschland", "Route de Soral 1, 1233 Bernex, Suisse").replace(
             "Goldschmiedstr. 14, 74232 Abstatt", "Route de Soral 1, 1233 Bernex").replace(
-            "http://www.tgv-abstatt-tt.de/", "http://www.cttbernex.ch")
+            "http://www.tgv-abstatt-tt.de/", "http://www.cttbernex.ch").replace(
+            "VNr.: 2053001", "VNr.: 10001")
         club = clicktt.club_depuis_fiche("32984", html, federation=clicktt.SUISSE)
         self.assertEqual(club.pays, "CH")
         self.assertEqual(club.numero, "CH32984")
@@ -497,6 +500,21 @@ class TestAnnuaireAllemand(unittest.TestCase):
         self.assertEqual((club.code_postal, club.ville), ("1233", "Bernex"))
         self.assertEqual((club.dep, club.dep_nom), ("CH12", "NPA 12"))
         self.assertIn("STT", club.source_donnees)
+        # 10 001 : premier club de l'association genevoise.
+        self.assertEqual(club.ligue_code, "CH-GENEVE")
+        self.assertEqual(club.ligue_nom, "Association Genevoise de Tennis de Table")
+
+    def test_les_associations_suisses_ne_sont_pas_des_clubs(self):
+        """click-TT liste aussi les associations et des comptes de service : le numéro
+        d'affiliation (multiple exact de 10 000, ou inférieur) permet de les écarter."""
+        self.assertIsNone(clicktt.association_suisse(999))     # TTC Clubdesk
+        self.assertIsNone(clicktt.association_suisse(1000))    # AGTT elle-même
+        self.assertIsNone(clicktt.association_suisse(10_000))  # Para T-Card
+        self.assertEqual(clicktt.association_suisse(40_001)[0], "CH-VAUD-VALAIS-FRIBOURG")
+        self.assertEqual(clicktt.association_suisse(70_006)[0], "CH-OST")
+        html = self.fiche().replace("Tischtennis Baden-Württemberg e.V.", "Swiss Table Tennis")
+        html = html.replace("VNr.: 2053001", "VNr.: 1000")
+        self.assertIsNone(clicktt.club_depuis_fiche("1", html, federation=clicktt.SUISSE))
 
     def test_le_site_de_la_federation_suisse_est_ecarte(self):
         html = self.fiche().replace("http://www.tgv-abstatt-tt.de/",
@@ -546,6 +564,94 @@ class TestAnnuaireAllemand(unittest.TestCase):
         self.assertEqual(set(pays), {"FR", "DE"})
         self.assertEqual(pays["DE"]["clubs"], 1)
         self.assertEqual(pays["DE"]["ligues"][0]["departements"][0]["dep"], "D74")
+
+
+class TestAngleterre(unittest.TestCase):
+    """Flux ouvert de Table Tennis England (OpenActive RPDE)."""
+
+    @staticmethod
+    def element(identifiant=4811, nom="Shoebury TTC", site="www.shoeburytt.co.uk"):
+        return {
+            "state": "updated", "kind": "club", "id": identifiant,
+            "data": {
+                "id": identifiant, "name": nom, "websiteUrl": site,
+                "venue": [
+                    {"id": 1, "name": "Salle secondaire", "address": "1 Other Road, Leeds",
+                     "postcode": "LS1 1AA", "lat": "53.8", "lng": "-1.5",
+                     "primaryVenue": "false"},
+                    {"id": 2, "name": "Shoebury Leisure Centre",
+                     "address": "33 Leitrim Avenue, Shoebury, Southend-on-Sea, Shoeburyness",
+                     "postcode": "SS3 9HD", "lat": "0.0", "lng": "0.0",
+                     "primaryVenue": "true"},
+                ],
+            },
+        }
+
+    def test_zone_postale(self):
+        self.assertEqual(angleterre.zone_postale("SS3 9HD"),
+                         ("SS", "Southend-on-Sea", "Est de l'Angleterre"))
+        self.assertEqual(angleterre.zone_postale("m1 4bt")[0], "M")
+        self.assertEqual(angleterre.zone_postale("XX9 1AA"), ("XX", "Autre", "Hors régions"))
+        self.assertEqual(angleterre.zone_postale(""), ("", "", ""))
+
+    def test_fiche_de_club(self):
+        club = angleterre.club_depuis_element(self.element())
+        self.assertEqual((club.pays, club.numero), ("EN", "EN4811"))
+        self.assertEqual(club.nom, "Shoebury TTC")
+        # L'adresse est donnée sans protocole dans le flux : elle doit rester cliquable.
+        self.assertEqual(club.site_web, "http://www.shoeburytt.co.uk")
+        self.assertEqual((club.dep, club.ligue_nom), ("SS", "Est de l'Angleterre"))
+        # C'est la salle principale qui compte, pas la première venue.
+        self.assertEqual(club.salle, "Shoebury Leisure Centre")
+        self.assertEqual(club.ville, "Shoeburyness")
+        # Des coordonnées nulles ne valent pas mieux qu'une absence de coordonnées.
+        self.assertEqual((club.latitude, club.longitude), ("", ""))
+        self.assertEqual(club.logo_statut, catalogue.LOGO_ABSENT)
+
+    def test_club_sans_site(self):
+        club = angleterre.club_depuis_element(self.element(site=None))
+        self.assertEqual(club.site_web, "")
+        self.assertEqual(club.logo_statut, catalogue.SITE_ABSENT)
+        vide = angleterre.club_depuis_element({"id": 5, "data": {"id": 5, "name": ""}})
+        self.assertIsNone(vide)
+
+    def test_parcours_des_pages(self):
+        """Le flux est paginé et rejoue les fiches modifiées : la dernière vue fait foi,
+        et une fiche supprimée disparaît du résultat."""
+        pages = [
+            {"items": [self.element(1, "Alpha", None), self.element(2, "Beta", None)],
+             "next": "?afterId=2"},
+            {"items": [self.element(1, "Alpha renommé", None),
+                       {"state": "deleted", "id": 2}],
+             "next": "?afterId=3"},
+            {"items": [], "next": "?afterId=3"},
+        ]
+
+        class ClientFactice:
+            def __init__(self):
+                self.appels = []
+
+            def get(self, url, taille_max=0):
+                self.appels.append(url)
+                page = pages[min(len(self.appels) - 1, len(pages) - 1)]
+
+                class Reponse:
+                    @staticmethod
+                    def json():
+                        return page
+                return Reponse()
+
+        client = ClientFactice()
+        clubs = angleterre.liste_des_clubs(client)
+        self.assertEqual([c.nom for c in clubs], ["Alpha renommé"])
+        self.assertEqual(len(client.appels), 3)
+        self.assertTrue(client.appels[1].endswith("?afterId=2"))
+
+    def test_statistiques_par_pays(self):
+        clubs = [angleterre.club_depuis_element(self.element())]
+        pays = {p["code"]: p for p in site.statistiques(clubs)["pays"]}
+        self.assertEqual(pays["EN"]["nom"], "Angleterre")
+        self.assertEqual(pays["EN"]["ligues"][0]["departements"][0]["dep"], "SS")
 
 
 if __name__ == "__main__":
