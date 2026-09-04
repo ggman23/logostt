@@ -115,7 +115,10 @@ def charger(chemin: Path = FICHIER_CLUBS) -> list[Club]:
     clubs: list[Club] = []
     with chemin.open(encoding="utf-8", newline="") as flux:
         for ligne in csv.DictReader(flux):
-            clubs.append(Club(**{c: (ligne.get(c) or "").strip() for c in COLONNES}))
+            club = Club(**{c: (ligne.get(c) or "").strip() for c in COLONNES})
+            # Les catalogues écrits avant l'ajout des pays ne contiennent que la France.
+            club.pays = club.pays or "FR"
+            clubs.append(club)
     return clubs
 
 
