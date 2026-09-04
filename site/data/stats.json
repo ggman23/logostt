@@ -1,8 +1,8 @@
 {
  "maj": "2026-09-04",
- "clubs": 10231,
- "logos": 4634,
- "sites": 4383,
+ "clubs": 10498,
+ "logos": 4771,
+ "sites": 4606,
  "pays": [
   {
    "code": "FR",
@@ -2495,6 +2495,494 @@
        "clubs": 22,
        "logos": 13,
        "sites": 13
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "code": "CH",
+   "nom": "Suisse",
+   "clubs": 267,
+   "sites": 223,
+   "logos": 137,
+   "ligues": [
+    {
+     "code": "DE-SWISS-TABLE-TENNI",
+     "nom": "Swiss Table Tennis",
+     "zone": "",
+     "clubs": 267,
+     "logos": 137,
+     "sites": 223,
+     "departements": [
+      {
+       "dep": "",
+       "nom": "",
+       "clubs": 6,
+       "logos": 1,
+       "sites": 0
+      },
+      {
+       "dep": "CH10",
+       "nom": "NPA 10",
+       "clubs": 8,
+       "logos": 4,
+       "sites": 7
+      },
+      {
+       "dep": "CH11",
+       "nom": "NPA 11",
+       "clubs": 4,
+       "logos": 1,
+       "sites": 4
+      },
+      {
+       "dep": "CH12",
+       "nom": "NPA 12",
+       "clubs": 17,
+       "logos": 12,
+       "sites": 16
+      },
+      {
+       "dep": "CH13",
+       "nom": "NPA 13",
+       "clubs": 3,
+       "logos": 1,
+       "sites": 1
+      },
+      {
+       "dep": "CH14",
+       "nom": "NPA 14",
+       "clubs": 5,
+       "logos": 3,
+       "sites": 2
+      },
+      {
+       "dep": "CH15",
+       "nom": "NPA 15",
+       "clubs": 1,
+       "logos": 1,
+       "sites": 1
+      },
+      {
+       "dep": "CH16",
+       "nom": "NPA 16",
+       "clubs": 2,
+       "logos": 1,
+       "sites": 1
+      },
+      {
+       "dep": "CH17",
+       "nom": "NPA 17",
+       "clubs": 7,
+       "logos": 3,
+       "sites": 2
+      },
+      {
+       "dep": "CH18",
+       "nom": "NPA 18",
+       "clubs": 7,
+       "logos": 5,
+       "sites": 5
+      },
+      {
+       "dep": "CH19",
+       "nom": "NPA 19",
+       "clubs": 4,
+       "logos": 2,
+       "sites": 2
+      },
+      {
+       "dep": "CH20",
+       "nom": "NPA 20",
+       "clubs": 3,
+       "logos": 1,
+       "sites": 2
+      },
+      {
+       "dep": "CH23",
+       "nom": "NPA 23",
+       "clubs": 3,
+       "logos": 2,
+       "sites": 3
+      },
+      {
+       "dep": "CH25",
+       "nom": "NPA 25",
+       "clubs": 7,
+       "logos": 3,
+       "sites": 5
+      },
+      {
+       "dep": "CH27",
+       "nom": "NPA 27",
+       "clubs": 3,
+       "logos": 2,
+       "sites": 2
+      },
+      {
+       "dep": "CH28",
+       "nom": "NPA 28",
+       "clubs": 1,
+       "logos": 1,
+       "sites": 1
+      },
+      {
+       "dep": "CH29",
+       "nom": "NPA 29",
+       "clubs": 1,
+       "logos": 1,
+       "sites": 1
+      },
+      {
+       "dep": "CH30",
+       "nom": "NPA 30",
+       "clubs": 12,
+       "logos": 5,
+       "sites": 8
+      },
+      {
+       "dep": "CH31",
+       "nom": "NPA 31",
+       "clubs": 8,
+       "logos": 6,
+       "sites": 8
+      },
+      {
+       "dep": "CH32",
+       "nom": "NPA 32",
+       "clubs": 4,
+       "logos": 2,
+       "sites": 4
+      },
+      {
+       "dep": "CH33",
+       "nom": "NPA 33",
+       "clubs": 3,
+       "logos": 2,
+       "sites": 3
+      },
+      {
+       "dep": "CH34",
+       "nom": "NPA 34",
+       "clubs": 4,
+       "logos": 3,
+       "sites": 4
+      },
+      {
+       "dep": "CH35",
+       "nom": "NPA 35",
+       "clubs": 1,
+       "logos": 0,
+       "sites": 1
+      },
+      {
+       "dep": "CH36",
+       "nom": "NPA 36",
+       "clubs": 4,
+       "logos": 2,
+       "sites": 3
+      },
+      {
+       "dep": "CH37",
+       "nom": "NPA 37",
+       "clubs": 2,
+       "logos": 0,
+       "sites": 2
+      },
+      {
+       "dep": "CH38",
+       "nom": "NPA 38",
+       "clubs": 1,
+       "logos": 0,
+       "sites": 1
+      },
+      {
+       "dep": "CH39",
+       "nom": "NPA 39",
+       "clubs": 6,
+       "logos": 2,
+       "sites": 4
+      },
+      {
+       "dep": "CH40",
+       "nom": "NPA 40",
+       "clubs": 2,
+       "logos": 2,
+       "sites": 2
+      },
+      {
+       "dep": "CH41",
+       "nom": "NPA 41",
+       "clubs": 11,
+       "logos": 5,
+       "sites": 11
+      },
+      {
+       "dep": "CH43",
+       "nom": "NPA 43",
+       "clubs": 3,
+       "logos": 2,
+       "sites": 3
+      },
+      {
+       "dep": "CH44",
+       "nom": "NPA 44",
+       "clubs": 3,
+       "logos": 1,
+       "sites": 3
+      },
+      {
+       "dep": "CH45",
+       "nom": "NPA 45",
+       "clubs": 1,
+       "logos": 0,
+       "sites": 1
+      },
+      {
+       "dep": "CH46",
+       "nom": "NPA 46",
+       "clubs": 3,
+       "logos": 2,
+       "sites": 3
+      },
+      {
+       "dep": "CH48",
+       "nom": "NPA 48",
+       "clubs": 2,
+       "logos": 0,
+       "sites": 2
+      },
+      {
+       "dep": "CH49",
+       "nom": "NPA 49",
+       "clubs": 2,
+       "logos": 0,
+       "sites": 1
+      },
+      {
+       "dep": "CH50",
+       "nom": "NPA 50",
+       "clubs": 2,
+       "logos": 1,
+       "sites": 2
+      },
+      {
+       "dep": "CH51",
+       "nom": "NPA 51",
+       "clubs": 3,
+       "logos": 1,
+       "sites": 3
+      },
+      {
+       "dep": "CH54",
+       "nom": "NPA 54",
+       "clubs": 2,
+       "logos": 1,
+       "sites": 2
+      },
+      {
+       "dep": "CH55",
+       "nom": "NPA 55",
+       "clubs": 2,
+       "logos": 2,
+       "sites": 1
+      },
+      {
+       "dep": "CH56",
+       "nom": "NPA 56",
+       "clubs": 4,
+       "logos": 2,
+       "sites": 4
+      },
+      {
+       "dep": "CH57",
+       "nom": "NPA 57",
+       "clubs": 1,
+       "logos": 0,
+       "sites": 1
+      },
+      {
+       "dep": "CH60",
+       "nom": "NPA 60",
+       "clubs": 11,
+       "logos": 4,
+       "sites": 10
+      },
+      {
+       "dep": "CH61",
+       "nom": "NPA 61",
+       "clubs": 1,
+       "logos": 1,
+       "sites": 1
+      },
+      {
+       "dep": "CH62",
+       "nom": "NPA 62",
+       "clubs": 1,
+       "logos": 0,
+       "sites": 1
+      },
+      {
+       "dep": "CH63",
+       "nom": "NPA 63",
+       "clubs": 4,
+       "logos": 3,
+       "sites": 4
+      },
+      {
+       "dep": "CH64",
+       "nom": "NPA 64",
+       "clubs": 1,
+       "logos": 1,
+       "sites": 1
+      },
+      {
+       "dep": "CH65",
+       "nom": "NPA 65",
+       "clubs": 3,
+       "logos": 1,
+       "sites": 3
+      },
+      {
+       "dep": "CH66",
+       "nom": "NPA 66",
+       "clubs": 2,
+       "logos": 1,
+       "sites": 1
+      },
+      {
+       "dep": "CH68",
+       "nom": "NPA 68",
+       "clubs": 2,
+       "logos": 0,
+       "sites": 2
+      },
+      {
+       "dep": "CH69",
+       "nom": "NPA 69",
+       "clubs": 1,
+       "logos": 1,
+       "sites": 1
+      },
+      {
+       "dep": "CH72",
+       "nom": "NPA 72",
+       "clubs": 1,
+       "logos": 1,
+       "sites": 1
+      },
+      {
+       "dep": "CH80",
+       "nom": "NPA 80",
+       "clubs": 9,
+       "logos": 5,
+       "sites": 7
+      },
+      {
+       "dep": "CH81",
+       "nom": "NPA 81",
+       "clubs": 7,
+       "logos": 2,
+       "sites": 7
+      },
+      {
+       "dep": "CH82",
+       "nom": "NPA 82",
+       "clubs": 4,
+       "logos": 3,
+       "sites": 3
+      },
+      {
+       "dep": "CH83",
+       "nom": "NPA 83",
+       "clubs": 4,
+       "logos": 1,
+       "sites": 4
+      },
+      {
+       "dep": "CH84",
+       "nom": "NPA 84",
+       "clubs": 4,
+       "logos": 3,
+       "sites": 4
+      },
+      {
+       "dep": "CH85",
+       "nom": "NPA 85",
+       "clubs": 3,
+       "logos": 0,
+       "sites": 3
+      },
+      {
+       "dep": "CH86",
+       "nom": "NPA 86",
+       "clubs": 9,
+       "logos": 4,
+       "sites": 8
+      },
+      {
+       "dep": "CH87",
+       "nom": "NPA 87",
+       "clubs": 3,
+       "logos": 2,
+       "sites": 3
+      },
+      {
+       "dep": "CH88",
+       "nom": "NPA 88",
+       "clubs": 5,
+       "logos": 3,
+       "sites": 5
+      },
+      {
+       "dep": "CH89",
+       "nom": "NPA 89",
+       "clubs": 5,
+       "logos": 3,
+       "sites": 5
+      },
+      {
+       "dep": "CH90",
+       "nom": "NPA 90",
+       "clubs": 3,
+       "logos": 3,
+       "sites": 3
+      },
+      {
+       "dep": "CH92",
+       "nom": "NPA 92",
+       "clubs": 1,
+       "logos": 0,
+       "sites": 1
+      },
+      {
+       "dep": "CH93",
+       "nom": "NPA 93",
+       "clubs": 2,
+       "logos": 2,
+       "sites": 2
+      },
+      {
+       "dep": "CH94",
+       "nom": "NPA 94",
+       "clubs": 8,
+       "logos": 4,
+       "sites": 6
+      },
+      {
+       "dep": "CH95",
+       "nom": "NPA 95",
+       "clubs": 4,
+       "logos": 3,
+       "sites": 4
+      },
+      {
+       "dep": "CH96",
+       "nom": "NPA 96",
+       "clubs": 1,
+       "logos": 1,
+       "sites": 1
       }
      ]
     }
