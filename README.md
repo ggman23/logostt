@@ -29,7 +29,11 @@ Le dépôt contient deux choses :
 
 ### D'où viennent les données
 
-**Aucun identifiant n'est nécessaire.** La FFTT publie deux pages qui suffisent :
+**Aucun identifiant n'est nécessaire**, ni en France ni en Allemagne.
+
+### France — FFTT
+
+La FFTT publie deux pages qui suffisent :
 
 | Page | Ce qu'on y prend |
 | --- | --- |
@@ -39,7 +43,24 @@ Le dépôt contient deux choses :
 Ces fiches affichent aussi les coordonnées d'un correspondant : ces données personnelles
 ne sont ni extraites ni enregistrées (un test du dépôt le vérifie).
 
-Deux sources de secours restent disponibles : `--source fftt` (API SmartPing officielle,
+### Allemagne — DTTB (click-TT)
+
+| Page | Ce qu'on y prend |
+| --- | --- |
+| `clubSearch` (POST, champ `searchFor`) | tous les clubs dont le nom contient le terme cherché, sans pagination ; l'union de quelques lettres couvre les ~9 000 clubs |
+| `clubInfoDisplay?club=<id>` | Landesverband, numéro d'affiliation, salle, ville, site internet **et le logo officiel hébergé par click-TT** |
+
+En Allemagne le logo vient donc directement de la fédération : pas de tri à faire, pas de
+faux positif possible. Les clubs sans logo déposé passent par l'extraction depuis leur
+site, comme en France. L'adresse de contact d'une personne n'est jamais reprise.
+
+```bash
+python3 scripts/collecte_clubs.py --source clicktt    # reprend là où la précédente s'est arrêtée
+```
+
+### Sources de secours
+
+`--source fftt` (API SmartPing officielle,
 qui demande un identifiant et une clé délivrés par la fédération, à renseigner dans
 `FFTT_API_ID` / `FFTT_API_KEY`) et `--source opendata` (data.sports.gouv.fr, sans sites web).
 
@@ -50,7 +71,8 @@ périmètre (`tous`, une ligue comme `IDF`, ou un département comme `75`). Le r
 commité automatiquement dans `data/clubs.csv`, `site/data/` et `site/logos/`.
 
 Variante sans passer par l'interface : écrivez le périmètre voulu dans
-`.github/lancer-collecte.txt` et poussez le fichier — la collecte démarre.
+`.github/lancer-collecte.txt` et poussez le fichier — la collecte démarre. Écrire `DE`
+en première ligne lance la collecte allemande.
 
 ### 2. En local
 
@@ -130,11 +152,11 @@ colonne `logo_fichier` de `data/clubs.csv`.
 referentiel/ligues.json   les 20 ligues et leurs 103 départements
 data/clubs.csv            le catalogue (une ligne par club)
 data/corrections.csv      vos corrections manuelles
-scripts/collecte_clubs.py liste des clubs (annuaire public FFTT, ou API, ou open data)
+scripts/collecte_clubs.py liste des clubs (annuaires publics FFTT et DTTB, ou API, ou open data)
 scripts/reconnaissance.py sonde les sources publiques (diagnostic, ne collecte rien)
 scripts/collecte_logos.py visite des sites et extraction des logos
 scripts/construire_site.py génère site/data/clubs.json et stats.json
-scripts/ttlogos/          les modules (référentiel, catalogue, réseau, carte, logos, site)
+scripts/ttlogos/          les modules (référentiel, catalogue, réseau, carte, clicktt, logos, site)
 site/                     la galerie (HTML/CSS/JS, aucune dépendance externe)
 tests/test_pipeline.py    tests hors ligne (python3 tests/test_pipeline.py)
 tests/echantillons/       pages réelles de la FFTT servant de référence aux tests

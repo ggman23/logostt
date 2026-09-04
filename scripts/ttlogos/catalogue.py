@@ -24,7 +24,8 @@ SITE_ABSENT = "sans-site"       # le club n'a pas de site web connu
 
 @dataclass
 class Club:
-    numero: str = ""             # numéro d'affiliation FFTT (identifiant stable)
+    pays: str = "FR"             # FR (FFTT) ou DE (DTTB / click-TT)
+    numero: str = ""             # numéro d'affiliation, identifiant stable
     nom: str = ""
     dep: str = ""
     dep_nom: str = ""
@@ -45,7 +46,13 @@ class Club:
     maj: str = ""                # date de dernière mise à jour (AAAA-MM-JJ)
 
     def completer_geographie(self) -> None:
-        """Complète département / ligue à partir du code postal ou du numéro FFTT."""
+        """Complète département et ligue à partir du code postal ou du numéro.
+
+        Le référentiel des ligues et des départements est celui de la France ; pour les
+        autres pays, ces champs sont renseignés directement par la source.
+        """
+        if self.pays != "FR":
+            return
         if not self.dep:
             self.dep = referentiel.dep_depuis_code_postal(self.code_postal)
         if not self.dep and len(self.numero) >= 2 and self.numero[:2].isdigit():
@@ -123,7 +130,7 @@ def enregistrer(clubs: list[Club], chemin: Path = FICHIER_CLUBS) -> None:
 
 
 def trier(clubs: list[Club]) -> list[Club]:
-    return sorted(clubs, key=lambda c: (c.dep, slug(c.ville), slug(c.nom)))
+    return sorted(clubs, key=lambda c: (c.pays, c.dep, slug(c.ville), slug(c.nom)))
 
 
 def fusionner(existants: list[Club], nouveaux: list[Club], deps_collectes: set[str]) -> list[Club]:
@@ -149,6 +156,34 @@ def fusionner(existants: list[Club], nouveaux: list[Club], deps_collectes: set[s
                 # Le site a changé : le logo connu n'est plus fiable, on le redemandera.
                 club.logo_fichier = club.logo_source = club.couleurs = club.fond = ""
                 club.logo_statut = SITE_ABSENT
+        resultat.append(club)
+    return trier(resultat)
+
+
+def fusionner_pays(
+    existants: list[Club], nouveaux: list[Club], pays: str, remplacer: bool = True
+) -> list[Club]:
+    """Intègre les clubs d'un pays, en gardant le travail déjà fait sur les logos.
+
+    `remplacer` vide le pays avant d'ajouter la nouvelle liste (collecte complète) ;
+    sinon les clubs déjà présents et non recollectés sont conservés (collecte reprise).
+    """
+    index = {c.numero: c for c in existants if c.pays == pays and c.numero}
+    resultat = [c for c in existants if c.pays != pays]
+    if not remplacer:
+        recollectes = {c.numero for c in nouveaux}
+        resultat += [c for c in existants if c.pays == pays and c.numero not in recollectes]
+    for club in nouveaux:
+        ancien = index.get(club.numero)
+        if ancien and not club.logo_fichier:
+            club.logo_fichier = ancien.logo_fichier
+            club.logo_source = ancien.logo_source
+            club.logo_statut = ancien.logo_statut
+            club.couleurs = ancien.couleurs
+            club.fond = ancien.fond
+            if domaine_de(ancien.site_web) != domaine_de(club.site_web):
+                club.logo_fichier = club.logo_source = club.couleurs = club.fond = ""
+                club.logo_statut = SITE_ABSENT if not club.site_web else LOGO_ABSENT
         resultat.append(club)
     return trier(resultat)
 

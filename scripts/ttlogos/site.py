@@ -58,6 +58,7 @@ def club_en_dictionnaire(club: Club) -> dict:
             familles.append(famille)
     return {
         "id": club.numero or catalogue.slug(f"{club.dep}-{club.nom}"),
+        "pays": club.pays or "FR",
         "nom": club.nom,
         "ville": club.ville,
         "cp": club.code_postal,
@@ -76,41 +77,82 @@ def club_en_dictionnaire(club: Club) -> dict:
 
 
 def statistiques(clubs: list[Club]) -> dict:
-    par_ligue: dict[str, dict] = {}
-    for ligue in referentiel.ligues():
-        par_ligue[ligue["code"]] = {
+    """Comptes par pays, ligue et département, pour alimenter les filtres du site."""
+    pays = {
+        "FR": {"code": "FR", "nom": "France", "ligues": _ligues_de_france()},
+        "DE": {"code": "DE", "nom": "Allemagne", "ligues": {}},
+    }
+    for club in clubs:
+        groupe = pays.setdefault(
+            club.pays or "FR", {"code": club.pays, "nom": club.pays, "ligues": {}}
+        )
+        ligue = groupe["ligues"].get(club.ligue_code)
+        if ligue is None:
+            # Hors France, les ligues et les regroupements sont ceux que la source annonce.
+            ligue = groupe["ligues"][club.ligue_code] = {
+                "code": club.ligue_code,
+                "nom": club.ligue_nom or club.ligue_code,
+                "zone": "",
+                "clubs": 0, "logos": 0, "sites": 0,
+                "departements": {},
+            }
+        departement = ligue["departements"].get(club.dep)
+        if departement is None:
+            departement = ligue["departements"][club.dep] = {
+                "dep": club.dep, "nom": club.dep_nom or club.dep,
+                "clubs": 0, "logos": 0, "sites": 0,
+            }
+        avec_logo = club.logo_statut in {catalogue.LOGO_RECUPERE, catalogue.LOGO_FAVICON}
+        for compteur in (ligue, departement):
+            compteur["clubs"] += 1
+            compteur["logos"] += int(avec_logo)
+            compteur["sites"] += int(bool(club.site_web))
+
+    resultat = []
+    for groupe in pays.values():
+        ligues = []
+        for ligue in groupe["ligues"].values():
+            ligue = dict(ligue)
+            ligue["departements"] = sorted(
+                ligue["departements"].values(), key=lambda d: d["dep"]
+            )
+            ligues.append(ligue)
+        if not any(l["clubs"] for l in ligues):
+            continue
+        resultat.append({
+            "code": groupe["code"],
+            "nom": groupe["nom"],
+            "clubs": sum(l["clubs"] for l in ligues),
+            "sites": sum(l["sites"] for l in ligues),
+            "logos": sum(l["logos"] for l in ligues),
+            "ligues": ligues,
+        })
+
+    return {
+        "clubs": len(clubs),
+        "logos": sum(1 for c in clubs
+                     if c.logo_statut in {catalogue.LOGO_RECUPERE, catalogue.LOGO_FAVICON}),
+        "sites": sum(1 for c in clubs if c.site_web),
+        "pays": resultat,
+        # Compatibilité : la liste des ligues françaises reste accessible à plat.
+        "ligues": next((p["ligues"] for p in resultat if p["code"] == "FR"), []),
+    }
+
+
+def _ligues_de_france() -> dict:
+    """Les ligues françaises viennent du référentiel, pour rester dans l'ordre officiel."""
+    return {
+        ligue["code"]: {
             "code": ligue["code"],
             "nom": ligue["nom"],
             "zone": ligue["zone"],
-            "clubs": 0,
-            "logos": 0,
-            "sites": 0,
-            "departements": [
-                {"dep": d["dep"], "nom": d["nom"], "clubs": 0, "logos": 0, "sites": 0}
+            "clubs": 0, "logos": 0, "sites": 0,
+            "departements": {
+                d["dep"]: {"dep": d["dep"], "nom": d["nom"], "clubs": 0, "logos": 0, "sites": 0}
                 for d in ligue["departements"]
-            ],
+            },
         }
-    for club in clubs:
-        ligue = par_ligue.get(club.ligue_code)
-        if not ligue:
-            continue
-        avec_logo = club.logo_statut in {catalogue.LOGO_RECUPERE, catalogue.LOGO_FAVICON}
-        ligue["clubs"] += 1
-        ligue["logos"] += int(avec_logo)
-        ligue["sites"] += int(bool(club.site_web))
-        for departement in ligue["departements"]:
-            if departement["dep"] == club.dep:
-                departement["clubs"] += 1
-                departement["logos"] += int(avec_logo)
-                departement["sites"] += int(bool(club.site_web))
-    return {
-        "clubs": len(clubs),
-        "logos": sum(
-            1 for c in clubs
-            if c.logo_statut in {catalogue.LOGO_RECUPERE, catalogue.LOGO_FAVICON}
-        ),
-        "sites": sum(1 for c in clubs if c.site_web),
-        "ligues": list(par_ligue.values()),
+        for ligue in referentiel.ligues()
     }
 
 

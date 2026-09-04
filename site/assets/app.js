@@ -4,6 +4,7 @@
 const ETAT = {
   clubs: [],
   stats: null,
+  pays: "",
   ligue: "",
   dep: "",
   statut: "tous",
@@ -46,6 +47,7 @@ async function demarrer() {
     ETAT.clubs = clubs.clubs || [];
     ETAT.stats = stats;
     ETAT.clubs.forEach((club) => {
+      club.pays = club.pays || "FR";
       club._recherche = sansAccent(`${club.nom} ${club.ville} ${club.dep} ${club.depNom} ${club.ligueNom}`);
     });
     $("#maj").textContent = `Catalogue mis à jour le ${formaterDate(clubs.maj)}.`;
@@ -86,36 +88,65 @@ function formaterDate(iso) {
 function resume() {
   const s = ETAT.stats;
   if (!s) return;
-  const ligues = s.ligues.filter((l) => l.clubs > 0).length;
+  const detail = (s.pays || [])
+    .map((p) => `${p.logos.toLocaleString("fr-FR")} en ${p.nom}`)
+    .join(", ");
   $("#resume").innerHTML =
     `<strong>${s.logos.toLocaleString("fr-FR")} logos</strong> récupérés sur ` +
-    `<strong>${s.clubs.toLocaleString("fr-FR")} clubs</strong> affiliés, ` +
-    `répartis dans ${ligues} ligue${ligues > 1 ? "s" : ""} — ` +
+    `<strong>${s.clubs.toLocaleString("fr-FR")} clubs</strong> affiliés` +
+    (detail ? ` (${detail})` : "") + " — " +
     `${s.sites.toLocaleString("fr-FR")} clubs ont un site internet référencé.`;
+}
+
+function paysDisponibles() {
+  return (ETAT.stats.pays || []).filter((p) => p.clubs > 0);
+}
+
+function liguesAffichees() {
+  const pays = paysDisponibles();
+  const retenus = ETAT.pays ? pays.filter((p) => p.code === ETAT.pays) : pays;
+  return retenus.flatMap((p) => p.ligues);
 }
 
 /* ------------------------------------------------------------------ filtres */
 
 function construireFiltres() {
-  const ligues = $("#ligues");
-  ligues.innerHTML = "";
-  ligues.append(puce("Toutes les ligues", ETAT.stats.clubs, ETAT.ligue === "", () => {
-    ETAT.ligue = ""; ETAT.dep = ""; construireFiltres(); rafraichir();
-  }));
-  ETAT.stats.ligues
-    .filter((ligue) => ligue.clubs > 0)
-    .forEach((ligue) => {
-      ligues.append(puce(ligue.nom, ligue.clubs, ETAT.ligue === ligue.code, () => {
-        ETAT.ligue = ETAT.ligue === ligue.code ? "" : ligue.code;
-        ETAT.dep = "";
+  const pays = paysDisponibles();
+  const barrePays = $("#pays");
+  barrePays.innerHTML = "";
+  if (pays.length > 1) {
+    barrePays.append(puce("Tous les pays", ETAT.stats.clubs, ETAT.pays === "", () => {
+      ETAT.pays = ""; ETAT.ligue = ""; ETAT.dep = ""; construireFiltres(); rafraichir();
+    }));
+    pays.forEach((p) => {
+      barrePays.append(puce(p.nom, p.clubs, ETAT.pays === p.code, () => {
+        ETAT.pays = ETAT.pays === p.code ? "" : p.code;
+        ETAT.ligue = ""; ETAT.dep = "";
         construireFiltres();
         rafraichir();
       }));
     });
+  }
+
+  const disponibles = liguesAffichees().filter((ligue) => ligue.clubs > 0);
+  const ligues = $("#ligues");
+  ligues.innerHTML = "";
+  const total = disponibles.reduce((somme, l) => somme + l.clubs, 0);
+  ligues.append(puce("Toutes les ligues", total, ETAT.ligue === "", () => {
+    ETAT.ligue = ""; ETAT.dep = ""; construireFiltres(); rafraichir();
+  }));
+  disponibles.forEach((ligue) => {
+    ligues.append(puce(ligue.nom, ligue.clubs, ETAT.ligue === ligue.code, () => {
+      ETAT.ligue = ETAT.ligue === ligue.code ? "" : ligue.code;
+      ETAT.dep = "";
+      construireFiltres();
+      rafraichir();
+    }));
+  });
 
   const deps = $("#departements");
   deps.innerHTML = "";
-  const ligue = ETAT.stats.ligues.find((l) => l.code === ETAT.ligue);
+  const ligue = disponibles.find((l) => l.code === ETAT.ligue);
   if (ligue) {
     ligue.departements
       .filter((d) => d.clubs > 0)
@@ -206,6 +237,7 @@ function brancherEvenements() {
 function selectionner() {
   const { ligue, dep, statut, couleur, recherche } = ETAT;
   let liste = ETAT.clubs.filter((club) => {
+    if (ETAT.pays && club.pays !== ETAT.pays) return false;
     if (ligue && club.ligue !== ligue) return false;
     if (dep && club.dep !== dep) return false;
     if (statut === "logo" && !club.logo) return false;
@@ -412,6 +444,7 @@ function rafraichirEtoiles(id) {
 
 function lireAdresse() {
   const parametres = new URLSearchParams(location.hash.slice(1));
+  ETAT.pays = parametres.get("pays") || "";
   ETAT.ligue = parametres.get("ligue") || "";
   ETAT.dep = parametres.get("dep") || "";
   ETAT.statut = parametres.get("statut") || "tous";
@@ -424,6 +457,7 @@ function lireAdresse() {
 
 function ecrireAdresse() {
   const parametres = new URLSearchParams();
+  if (ETAT.pays) parametres.set("pays", ETAT.pays);
   if (ETAT.ligue) parametres.set("ligue", ETAT.ligue);
   if (ETAT.dep) parametres.set("dep", ETAT.dep);
   if (ETAT.statut !== "tous") parametres.set("statut", ETAT.statut);

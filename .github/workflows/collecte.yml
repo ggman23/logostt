@@ -16,7 +16,7 @@ on:
       source:
         description: "Source de la liste des clubs"
         type: choice
-        options: ["carte", "fftt", "opendata"]
+        options: ["carte", "clicktt", "fftt", "opendata"]
         default: "carte"
       etapes:
         description: "Étapes à lancer"
@@ -72,6 +72,10 @@ jobs:
             perimetre="$(sed -n 1p .github/lancer-collecte.txt | tr -d ' \r\n')"
             etapes="$(sed -n 2p .github/lancer-collecte.txt | tr -d ' \r\n')"
             source="carte"
+            # « DE » ou « allemagne » bascule sur l'annuaire du DTTB
+            case "$perimetre" in
+              DE|de|allemagne|Allemagne) source="clicktt"; perimetre="tous" ;;
+            esac
             # une relance manuelle revoit aussi les logos déjà connus
             forcer="true"
           fi

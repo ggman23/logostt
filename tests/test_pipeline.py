@@ -13,7 +13,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 
 from PIL import Image, ImageDraw  # noqa: E402
 
-from ttlogos import carte, catalogue, logos, referentiel, site  # noqa: E402
+from ttlogos import carte, catalogue, clicktt, logos, referentiel, site  # noqa: E402
 
 
 def image_png(taille=(400, 200), couleur=(20, 70, 190)) -> bytes:
@@ -424,6 +424,82 @@ class TestAnnuairePublic(unittest.TestCase):
         self.assertEqual(carte.dep_probable("04180613"), "18")
         self.assertEqual(carte.dep_probable("07750045"), "75")
         self.assertEqual(carte.dep_probable(""), "")
+
+
+class TestAnnuaireAllemand(unittest.TestCase):
+    """Extraction depuis click-TT, l'annuaire public du DTTB (balisage réel)."""
+
+    ECHANTILLONS = Path(__file__).resolve().parent / "echantillons"
+
+    def fiche(self):
+        return (self.ECHANTILLONS / "fiche_clicktt.html").read_text(encoding="utf-8")
+
+    def test_liste_des_clubs(self):
+        html = (self.ECHANTILLONS / "recherche_clicktt.html").read_text(encoding="utf-8")
+        resultats = clicktt._lire_resultats(html)
+        self.assertEqual(len(resultats), 3)
+        self.assertEqual(resultats[0], {"id": "3983", "nom": "TGV Eintracht Abstatt",
+                                        "numero": "2053001"})
+
+    def test_fiche_club(self):
+        club = clicktt.club_depuis_fiche("3983", self.fiche())
+        self.assertEqual(club.pays, "DE")
+        self.assertEqual(club.nom, "TGV Eintracht Abstatt")
+        self.assertEqual(club.ligue_nom, "Tischtennis Baden-Württemberg e.V.")
+        self.assertEqual(club.site_web, "http://www.tgv-abstatt-tt.de/")
+        self.assertEqual((club.code_postal, club.ville), ("74232", "Abstatt"))
+        self.assertEqual((club.dep, club.dep_nom), ("D74", "PLZ 74"))
+        self.assertIn("2053001", club.source_donnees)
+
+    def test_les_donnees_personnelles_ne_sont_pas_reprises(self):
+        club = clicktt.club_depuis_fiche("3983", self.fiche())
+        enregistre = " ".join(str(valeur) for valeur in vars(club).values())
+        for donnee in ("Kucher", "Alexander", "07062/9039405"):
+            self.assertNotIn(donnee, enregistre)
+
+    def test_logo_officiel_repere(self):
+        from bs4 import BeautifulSoup
+        url = clicktt.logo_heberge(BeautifulSoup(self.fiche(), "html.parser"))
+        self.assertTrue(url.startswith("https://dttb.click-tt.de/"))
+        self.assertIn("wodata=", url)
+
+    def test_liens_de_service_ecartes(self):
+        """mytischtennis, Google Maps et click-TT ne sont pas le site du club."""
+        sans_site = self.fiche().replace(
+            '<a href="http://www.tgv-abstatt-tt.de/" target="_blank">http://www.tgv-abstatt-tt.de/</a>', "")
+        club = clicktt.club_depuis_fiche("3983", sans_site)
+        self.assertEqual(club.site_web, "")
+        self.assertEqual(club.logo_statut, catalogue.SITE_ABSENT)
+
+    def test_codes_de_ligue_distincts(self):
+        noms = ["Tischtennis Baden-Württemberg e.V.", "Badischer Tischtennis-Verband e.V.",
+                "Bayerischer Tischtennis-Verband e.V.", "Tischtennisverband Sachsen-Anhalt e.V.",
+                "Tischtennis-Verband Sachsen e.V.", "Pfälzischer TTV"]
+        codes = [clicktt.code_ligue(n) for n in noms]
+        self.assertEqual(len(set(codes)), len(codes))
+        self.assertTrue(all(c.startswith("DE-") for c in codes))
+
+    def test_fusion_par_pays(self):
+        """Collecter l'Allemagne ne doit jamais toucher aux clubs français."""
+        france = catalogue.Club(pays="FR", numero="07750001", nom="Paris TT", dep="75")
+        ancien = catalogue.Club(pays="DE", numero="DE1", nom="TTC Alt", dep="D10",
+                                site_web="https://ttc.de", logo_fichier="logos/D10/x.webp",
+                                logo_statut=catalogue.LOGO_RECUPERE)
+        nouveau = catalogue.Club(pays="DE", numero="DE2", nom="TTC Neu", dep="D20")
+        fusion = catalogue.fusionner_pays([france, ancien], [nouveau], "DE", remplacer=False)
+        self.assertEqual({c.numero for c in fusion}, {"07750001", "DE1", "DE2"})
+        complet = catalogue.fusionner_pays([france, ancien], [nouveau], "DE", remplacer=True)
+        self.assertEqual({c.numero for c in complet}, {"07750001", "DE2"})
+
+    def test_statistiques_par_pays(self):
+        clubs = [catalogue.Club(pays="FR", numero="1", nom="A", dep="75", ville="Paris")]
+        clubs[0].completer_geographie()
+        clubs.append(clicktt.club_depuis_fiche("3983", self.fiche()))
+        stats = site.statistiques(clubs)
+        pays = {p["code"]: p for p in stats["pays"]}
+        self.assertEqual(set(pays), {"FR", "DE"})
+        self.assertEqual(pays["DE"]["clubs"], 1)
+        self.assertEqual(pays["DE"]["ligues"][0]["departements"][0]["dep"], "D74")
 
 
 if __name__ == "__main__":

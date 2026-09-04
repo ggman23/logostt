@@ -26,11 +26,19 @@ journal = logging.getLogger("logostt")
 DOSSIER_SITE = referentiel.RACINE / "site"
 
 
-def a_traiter(clubs: list[catalogue.Club], deps: set[str], forcer: bool) -> list[catalogue.Club]:
+def a_traiter(
+    clubs: list[catalogue.Club], deps: set[str], forcer: bool, tout_le_monde: bool = False
+) -> list[catalogue.Club]:
     selection = []
     for club in clubs:
-        if club.dep not in deps or not club.site_web:
+        # « tous » couvre aussi les clubs étrangers, dont les regroupements ne sont pas
+        # des départements français.
+        if not tout_le_monde and club.dep not in deps:
             continue
+        if not club.site_web:
+            continue
+        if "click-tt" in club.logo_source:
+            continue  # logo officiel fourni par la fédération : rien à chercher ailleurs
         deja = club.logo_statut in {catalogue.LOGO_RECUPERE, catalogue.LOGO_FAVICON}
         fichier_present = deja and (DOSSIER_SITE / club.logo_fichier).exists()
         if forcer or not fichier_present:
@@ -64,7 +72,8 @@ def main() -> int:
         journal.error("catalogue vide : lancez d'abord scripts/collecte_clubs.py")
         return 1
 
-    selection = a_traiter(clubs, deps, arguments.forcer)
+    complet = len(deps) == len(referentiel.departements())
+    selection = a_traiter(clubs, deps, arguments.forcer, tout_le_monde=complet)
     if arguments.limite:
         selection = selection[: arguments.limite]
     journal.info("%s club(s) à visiter sur %s au catalogue", len(selection), len(clubs))

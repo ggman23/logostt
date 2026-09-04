@@ -490,6 +490,8 @@ def dedoublonner(clubs: list[Club], dossier_site: Path) -> int:
     for empreinte, partages in par_empreinte.items():
         if len(partages) < 2:
             continue
+        if all("click-tt" in club.logo_source for club in partages):
+            continue  # logos officiels déposés par les clubs : un doublon reste légitime
         journal.info(
             "image commune à %s clubs, écartée : %s", len(partages), partages[0].logo_source
         )
@@ -511,3 +513,31 @@ def supprimer_les_orphelins(clubs: list[Club], dossier_site: Path) -> int:
             fichier.unlink()
             retires += 1
     return retires
+
+
+def recuperer_logo_heberge(club: Club, client: Client, html_fiche: str, dossier_logos: Path) -> bool:
+    """Enregistre le logo officiel que la fédération héberge elle-même, s'il existe.
+
+    Utilisé pour l'Allemagne, où click-TT sert le logo déposé par le club : la source est
+    sûre, il n'y a donc aucun tri à faire. Renvoie True si un logo a été enregistré.
+    """
+    from . import clicktt
+
+    url = clicktt.logo_heberge(BeautifulSoup(html_fiche, "html.parser"))
+    if not url:
+        return False
+    octets, type_mime = _telecharger(client, url)
+    visuel = normaliser(octets, type_mime)
+    if visuel is None:
+        return False
+    chemin_relatif = Path("logos") / (club.dep or club.pays) / f"{club.cle_fichier()}{visuel.extension}"
+    destination = dossier_logos.parent / chemin_relatif
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    destination.write_bytes(visuel.octets)
+    club.logo_fichier = chemin_relatif.as_posix()
+    club.logo_source = url
+    club.logo_statut = catalogue.LOGO_RECUPERE
+    club.couleurs = " ".join(visuel.couleurs)
+    club.fond = visuel.fond
+    club.maj = catalogue.aujourdhui()
+    return True
