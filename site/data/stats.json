@@ -1,7 +1,7 @@
 {
  "maj": "2026-09-04",
  "clubs": 10231,
- "logos": 3467,
+ "logos": 4616,
  "sites": 4383,
  "pays": [
   {
@@ -9,14 +9,14 @@
    "nom": "France",
    "clubs": 3064,
    "sites": 1220,
-   "logos": 848,
+   "logos": 871,
    "ligues": [
     {
      "code": "ARA",
      "nom": "Auvergne-Rhône-Alpes",
      "zone": "metropole",
      "clubs": 301,
-     "logos": 122,
+     "logos": 125,
      "sites": 159,
      "departements": [
       {
@@ -65,7 +65,7 @@
        "dep": "42",
        "nom": "Loire",
        "clubs": 37,
-       "logos": 20,
+       "logos": 21,
        "sites": 22
       },
       {
@@ -79,14 +79,14 @@
        "dep": "63",
        "nom": "Puy-de-Dôme",
        "clubs": 39,
-       "logos": 7,
+       "logos": 9,
        "sites": 16
       },
       {
        "dep": "69",
        "nom": "Rhône",
        "clubs": 59,
-       "logos": 26,
+       "logos": 24,
        "sites": 35
       },
       {
@@ -100,7 +100,7 @@
        "dep": "74",
        "nom": "Haute-Savoie",
        "clubs": 24,
-       "logos": 8,
+       "logos": 10,
        "sites": 13
       }
      ]
@@ -183,7 +183,7 @@
        "dep": "22",
        "nom": "Côtes-d'Armor",
        "clubs": 31,
-       "logos": 7,
+       "logos": 8,
        "sites": 14
       },
       {
@@ -204,7 +204,7 @@
        "dep": "56",
        "nom": "Morbihan",
        "clubs": 50,
-       "logos": 15,
+       "logos": 14,
        "sites": 19
       }
      ]
@@ -214,7 +214,7 @@
      "nom": "Centre-Val de Loire",
      "zone": "metropole",
      "clubs": 201,
-     "logos": 54,
+     "logos": 56,
      "sites": 74,
      "departements": [
       {
@@ -242,14 +242,14 @@
        "dep": "37",
        "nom": "Indre-et-Loire",
        "clubs": 51,
-       "logos": 15,
+       "logos": 16,
        "sites": 20
       },
       {
        "dep": "41",
        "nom": "Loir-et-Cher",
        "clubs": 26,
-       "logos": 6,
+       "logos": 7,
        "sites": 9
       },
       {
@@ -290,14 +290,14 @@
      "nom": "Grand Est",
      "zone": "metropole",
      "clubs": 290,
-     "logos": 63,
+     "logos": 62,
      "sites": 82,
      "departements": [
       {
        "dep": "08",
        "nom": "Ardennes",
        "clubs": 28,
-       "logos": 5,
+       "logos": 4,
        "sites": 6
       },
       {
@@ -415,7 +415,7 @@
      "nom": "Île-de-France",
      "zone": "metropole",
      "clubs": 337,
-     "logos": 156,
+     "logos": 160,
      "sites": 202,
      "departements": [
       {
@@ -436,21 +436,21 @@
        "dep": "78",
        "nom": "Yvelines",
        "clubs": 59,
-       "logos": 32,
+       "logos": 34,
        "sites": 40
       },
       {
        "dep": "91",
        "nom": "Essonne",
        "clubs": 56,
-       "logos": 17,
+       "logos": 18,
        "sites": 25
       },
       {
        "dep": "92",
        "nom": "Hauts-de-Seine",
        "clubs": 34,
-       "logos": 20,
+       "logos": 21,
        "sites": 26
       },
       {
@@ -481,7 +481,7 @@
      "nom": "Normandie",
      "zone": "metropole",
      "clubs": 261,
-     "logos": 45,
+     "logos": 49,
      "sites": 72,
      "departements": [
       {
@@ -502,7 +502,7 @@
        "dep": "50",
        "nom": "Manche",
        "clubs": 45,
-       "logos": 9,
+       "logos": 11,
        "sites": 15
       },
       {
@@ -516,7 +516,7 @@
        "dep": "76",
        "nom": "Seine-Maritime",
        "clubs": 85,
-       "logos": 14,
+       "logos": 16,
        "sites": 24
       }
      ]
@@ -526,7 +526,7 @@
      "nom": "Nouvelle-Aquitaine",
      "zone": "metropole",
      "clubs": 251,
-     "logos": 48,
+     "logos": 51,
      "sites": 88,
      "departements": [
       {
@@ -554,7 +554,7 @@
        "dep": "23",
        "nom": "Creuse",
        "clubs": 3,
-       "logos": 1,
+       "logos": 2,
        "sites": 3
       },
       {
@@ -568,7 +568,7 @@
        "dep": "33",
        "nom": "Gironde",
        "clubs": 50,
-       "logos": 11,
+       "logos": 12,
        "sites": 16
       },
       {
@@ -610,7 +610,7 @@
        "dep": "87",
        "nom": "Haute-Vienne",
        "clubs": 16,
-       "logos": 5,
+       "logos": 6,
        "sites": 7
       }
      ]
@@ -620,7 +620,7 @@
      "nom": "Occitanie",
      "zone": "metropole",
      "clubs": 181,
-     "logos": 61,
+     "logos": 67,
      "sites": 81,
      "departements": [
       {
@@ -655,7 +655,7 @@
        "dep": "31",
        "nom": "Haute-Garonne",
        "clubs": 28,
-       "logos": 14,
+       "logos": 17,
        "sites": 22
       },
       {
@@ -669,7 +669,7 @@
        "dep": "34",
        "nom": "Hérault",
        "clubs": 33,
-       "logos": 10,
+       "logos": 12,
        "sites": 13
       },
       {
@@ -704,7 +704,7 @@
        "dep": "81",
        "nom": "Tarn",
        "clubs": 9,
-       "logos": 5,
+       "logos": 6,
        "sites": 7
       },
       {
@@ -721,14 +721,14 @@
      "nom": "Pays de la Loire",
      "zone": "metropole",
      "clubs": 346,
-     "logos": 99,
+     "logos": 100,
      "sites": 144,
      "departements": [
       {
        "dep": "44",
        "nom": "Loire-Atlantique",
        "clubs": 100,
-       "logos": 47,
+       "logos": 48,
        "sites": 58
       },
       {
@@ -766,7 +766,7 @@
      "nom": "Provence-Alpes-Côte d'Azur",
      "zone": "metropole",
      "clubs": 119,
-     "logos": 34,
+     "logos": 35,
      "sites": 53,
      "departements": [
       {
@@ -794,7 +794,7 @@
        "dep": "13",
        "nom": "Bouches-du-Rhône",
        "clubs": 37,
-       "logos": 9,
+       "logos": 8,
        "sites": 16
       },
       {
@@ -808,7 +808,7 @@
        "dep": "84",
        "nom": "Vaucluse",
        "clubs": 15,
-       "logos": 4,
+       "logos": 6,
        "sites": 7
       }
      ]
@@ -977,14 +977,14 @@
    "nom": "Allemagne",
    "clubs": 7167,
    "sites": 3163,
-   "logos": 2619,
+   "logos": 3745,
    "ligues": [
     {
      "code": "DE-TTV-SCHLESWIG-HOL",
      "nom": "TTV Schleswig-Holstein",
      "zone": "",
      "clubs": 397,
-     "logos": 8,
+     "logos": 12,
      "sites": 13,
      "departements": [
       {
@@ -1005,28 +1005,28 @@
        "dep": "D22",
        "nom": "PLZ 22",
        "clubs": 5,
-       "logos": 1,
+       "logos": 2,
        "sites": 2
       },
       {
        "dep": "D23",
        "nom": "PLZ 23",
        "clubs": 13,
-       "logos": 2,
+       "logos": 3,
        "sites": 2
       },
       {
        "dep": "D24",
        "nom": "PLZ 24",
        "clubs": 13,
-       "logos": 3,
+       "logos": 4,
        "sites": 5
       },
       {
        "dep": "D25",
        "nom": "PLZ 25",
        "clubs": 17,
-       "logos": 0,
+       "logos": 1,
        "sites": 2
       }
      ]
@@ -1036,7 +1036,7 @@
      "nom": "Sächsischer Tischtennis-Verband e.V.",
      "zone": "",
      "clubs": 456,
-     "logos": 23,
+     "logos": 28,
      "sites": 14,
      "departements": [
       {
@@ -1050,14 +1050,14 @@
        "dep": "D01",
        "nom": "PLZ 01",
        "clubs": 9,
-       "logos": 4,
+       "logos": 5,
        "sites": 4
       },
       {
        "dep": "D02",
        "nom": "PLZ 02",
        "clubs": 5,
-       "logos": 0,
+       "logos": 1,
        "sites": 1
       },
       {
@@ -1071,7 +1071,7 @@
        "dep": "D08",
        "nom": "PLZ 08",
        "clubs": 8,
-       "logos": 2,
+       "logos": 4,
        "sites": 3
       },
       {
@@ -1085,7 +1085,7 @@
        "dep": "D10",
        "nom": "PLZ 10",
        "clubs": 1,
-       "logos": 0,
+       "logos": 1,
        "sites": 1
       }
      ]
@@ -1095,7 +1095,7 @@
      "nom": "Berliner TTV",
      "zone": "",
      "clubs": 101,
-     "logos": 31,
+     "logos": 42,
      "sites": 22,
      "departements": [
       {
@@ -1109,28 +1109,28 @@
        "dep": "D10",
        "nom": "PLZ 10",
        "clubs": 17,
-       "logos": 6,
+       "logos": 7,
        "sites": 4
       },
       {
        "dep": "D12",
        "nom": "PLZ 12",
        "clubs": 18,
-       "logos": 8,
+       "logos": 13,
        "sites": 8
       },
       {
        "dep": "D13",
        "nom": "PLZ 13",
        "clubs": 15,
-       "logos": 5,
+       "logos": 9,
        "sites": 7
       },
       {
        "dep": "D14",
        "nom": "PLZ 14",
        "clubs": 6,
-       "logos": 3,
+       "logos": 4,
        "sites": 2
       },
       {
@@ -1147,7 +1147,7 @@
      "nom": "Bayerischer Tischtennis-Verband e.V.",
      "zone": "",
      "clubs": 913,
-     "logos": 352,
+     "logos": 555,
      "sites": 503,
      "departements": [
       {
@@ -1175,7 +1175,7 @@
        "dep": "D63",
        "nom": "PLZ 63",
        "clubs": 63,
-       "logos": 25,
+       "logos": 39,
        "sites": 38
       },
       {
@@ -1189,56 +1189,56 @@
        "dep": "D80",
        "nom": "PLZ 80",
        "clubs": 18,
-       "logos": 7,
+       "logos": 14,
        "sites": 13
       },
       {
        "dep": "D81",
        "nom": "PLZ 81",
        "clubs": 20,
-       "logos": 10,
+       "logos": 18,
        "sites": 19
       },
       {
        "dep": "D82",
        "nom": "PLZ 82",
        "clubs": 17,
-       "logos": 6,
+       "logos": 12,
        "sites": 13
       },
       {
        "dep": "D83",
        "nom": "PLZ 83",
        "clubs": 20,
-       "logos": 7,
+       "logos": 10,
        "sites": 9
       },
       {
        "dep": "D84",
        "nom": "PLZ 84",
        "clubs": 14,
-       "logos": 8,
+       "logos": 13,
        "sites": 12
       },
       {
        "dep": "D85",
        "nom": "PLZ 85",
        "clubs": 22,
-       "logos": 11,
+       "logos": 15,
        "sites": 13
       },
       {
        "dep": "D86",
        "nom": "PLZ 86",
        "clubs": 39,
-       "logos": 16,
+       "logos": 30,
        "sites": 25
       },
       {
        "dep": "D87",
        "nom": "PLZ 87",
        "clubs": 14,
-       "logos": 4,
+       "logos": 9,
        "sites": 8
       },
       {
@@ -1252,63 +1252,63 @@
        "dep": "D89",
        "nom": "PLZ 89",
        "clubs": 6,
-       "logos": 2,
+       "logos": 3,
        "sites": 4
       },
       {
        "dep": "D90",
        "nom": "PLZ 90",
        "clubs": 65,
-       "logos": 29,
+       "logos": 51,
        "sites": 48
       },
       {
        "dep": "D91",
        "nom": "PLZ 91",
        "clubs": 144,
-       "logos": 59,
+       "logos": 89,
        "sites": 86
       },
       {
        "dep": "D92",
        "nom": "PLZ 92",
        "clubs": 41,
-       "logos": 12,
+       "logos": 22,
        "sites": 24
       },
       {
        "dep": "D93",
        "nom": "PLZ 93",
        "clubs": 21,
-       "logos": 10,
+       "logos": 14,
        "sites": 15
       },
       {
        "dep": "D94",
        "nom": "PLZ 94",
        "clubs": 19,
-       "logos": 6,
+       "logos": 10,
        "sites": 9
       },
       {
        "dep": "D95",
        "nom": "PLZ 95",
        "clubs": 77,
-       "logos": 20,
+       "logos": 36,
        "sites": 31
       },
       {
        "dep": "D96",
        "nom": "PLZ 96",
        "clubs": 128,
-       "logos": 46,
+       "logos": 61,
        "sites": 47
       },
       {
        "dep": "D97",
        "nom": "PLZ 97",
        "clubs": 178,
-       "logos": 71,
+       "logos": 106,
        "sites": 88
       }
      ]
@@ -1335,7 +1335,7 @@
      "nom": "Tischtennis-Verband Brandenburg e.V.",
      "zone": "",
      "clubs": 258,
-     "logos": 194,
+     "logos": 197,
      "sites": 110,
      "departements": [
       {
@@ -1349,7 +1349,7 @@
        "dep": "D01",
        "nom": "PLZ 01",
        "clubs": 6,
-       "logos": 5,
+       "logos": 6,
        "sites": 3
       },
       {
@@ -1391,14 +1391,14 @@
        "dep": "D14",
        "nom": "PLZ 14",
        "clubs": 62,
-       "logos": 49,
+       "logos": 50,
        "sites": 27
       },
       {
        "dep": "D15",
        "nom": "PLZ 15",
        "clubs": 53,
-       "logos": 41,
+       "logos": 42,
        "sites": 25
       },
       {
@@ -1450,7 +1450,7 @@
      "nom": "Pfälzischer TTV",
      "zone": "",
      "clubs": 186,
-     "logos": 93,
+     "logos": 121,
      "sites": 94,
      "departements": [
       {
@@ -1471,14 +1471,14 @@
        "dep": "D66",
        "nom": "PLZ 66",
        "clubs": 51,
-       "logos": 24,
+       "logos": 29,
        "sites": 20
       },
       {
        "dep": "D67",
        "nom": "PLZ 67",
        "clubs": 99,
-       "logos": 51,
+       "logos": 68,
        "sites": 55
       },
       {
@@ -1492,7 +1492,7 @@
        "dep": "D76",
        "nom": "PLZ 76",
        "clubs": 29,
-       "logos": 16,
+       "logos": 22,
        "sites": 18
       }
      ]
@@ -1502,7 +1502,7 @@
      "nom": "Tischtennisverband Rheinland Rheinhessen e.V.",
      "zone": "",
      "clubs": 439,
-     "logos": 154,
+     "logos": 217,
      "sites": 184,
      "departements": [
       {
@@ -1523,49 +1523,49 @@
        "dep": "D53",
        "nom": "PLZ 53",
        "clubs": 27,
-       "logos": 9,
+       "logos": 16,
        "sites": 13
       },
       {
        "dep": "D54",
        "nom": "PLZ 54",
        "clubs": 71,
-       "logos": 25,
+       "logos": 35,
        "sites": 22
       },
       {
        "dep": "D55",
        "nom": "PLZ 55",
        "clubs": 139,
-       "logos": 46,
+       "logos": 61,
        "sites": 54
       },
       {
        "dep": "D56",
        "nom": "PLZ 56",
        "clubs": 146,
-       "logos": 53,
+       "logos": 75,
        "sites": 66
       },
       {
        "dep": "D57",
        "nom": "PLZ 57",
        "clubs": 24,
-       "logos": 7,
+       "logos": 13,
        "sites": 16
       },
       {
        "dep": "D65",
        "nom": "PLZ 65",
        "clubs": 3,
-       "logos": 2,
+       "logos": 3,
        "sites": 2
       },
       {
        "dep": "D67",
        "nom": "PLZ 67",
        "clubs": 25,
-       "logos": 12,
+       "logos": 14,
        "sites": 10
       }
      ]
@@ -1575,21 +1575,21 @@
      "nom": "Tischtennis-Verband Sachsen-Anhalt e. V.",
      "zone": "",
      "clubs": 327,
-     "logos": 89,
+     "logos": 124,
      "sites": 100,
      "departements": [
       {
        "dep": "",
        "nom": "",
        "clubs": 10,
-       "logos": 3,
+       "logos": 5,
        "sites": 4
       },
       {
        "dep": "D06",
        "nom": "PLZ 06",
        "clubs": 130,
-       "logos": 29,
+       "logos": 43,
        "sites": 42
       },
       {
@@ -1610,14 +1610,14 @@
        "dep": "D38",
        "nom": "PLZ 38",
        "clubs": 34,
-       "logos": 7,
+       "logos": 13,
        "sites": 10
       },
       {
        "dep": "D39",
        "nom": "PLZ 39",
        "clubs": 145,
-       "logos": 50,
+       "logos": 63,
        "sites": 44
       },
       {
@@ -1634,7 +1634,7 @@
      "nom": "Hamburger Tischtennis-Verband e.V.",
      "zone": "",
      "clubs": 89,
-     "logos": 49,
+     "logos": 59,
      "sites": 41,
      "departements": [
       {
@@ -1648,21 +1648,21 @@
        "dep": "D20",
        "nom": "PLZ 20",
        "clubs": 6,
-       "logos": 4,
+       "logos": 5,
        "sites": 3
       },
       {
        "dep": "D21",
        "nom": "PLZ 21",
        "clubs": 24,
-       "logos": 9,
+       "logos": 13,
        "sites": 8
       },
       {
        "dep": "D22",
        "nom": "PLZ 22",
        "clubs": 53,
-       "logos": 34,
+       "logos": 39,
        "sites": 30
       },
       {
@@ -1696,14 +1696,14 @@
      "nom": "Tischtennis-Verband Niedersachsen e.V.",
      "zone": "",
      "clubs": 866,
-     "logos": 280,
+     "logos": 425,
      "sites": 338,
      "departements": [
       {
        "dep": "",
        "nom": "",
        "clubs": 6,
-       "logos": 2,
+       "logos": 4,
        "sites": 3
       },
       {
@@ -1717,49 +1717,49 @@
        "dep": "D21",
        "nom": "PLZ 21",
        "clubs": 29,
-       "logos": 5,
+       "logos": 10,
        "sites": 9
       },
       {
        "dep": "D26",
        "nom": "PLZ 26",
        "clubs": 35,
-       "logos": 10,
+       "logos": 16,
        "sites": 13
       },
       {
        "dep": "D27",
        "nom": "PLZ 27",
        "clubs": 69,
-       "logos": 19,
+       "logos": 25,
        "sites": 21
       },
       {
        "dep": "D28",
        "nom": "PLZ 28",
        "clubs": 19,
-       "logos": 6,
+       "logos": 12,
        "sites": 9
       },
       {
        "dep": "D29",
        "nom": "PLZ 29",
        "clubs": 36,
-       "logos": 12,
+       "logos": 18,
        "sites": 12
       },
       {
        "dep": "D30",
        "nom": "PLZ 30",
        "clubs": 81,
-       "logos": 36,
+       "logos": 53,
        "sites": 50
       },
       {
        "dep": "D31",
        "nom": "PLZ 31",
        "clubs": 187,
-       "logos": 56,
+       "logos": 79,
        "sites": 66
       },
       {
@@ -1773,21 +1773,21 @@
        "dep": "D34",
        "nom": "PLZ 34",
        "clubs": 7,
-       "logos": 2,
+       "logos": 3,
        "sites": 3
       },
       {
        "dep": "D37",
        "nom": "PLZ 37",
        "clubs": 145,
-       "logos": 48,
+       "logos": 70,
        "sites": 46
       },
       {
        "dep": "D38",
        "nom": "PLZ 38",
        "clubs": 196,
-       "logos": 70,
+       "logos": 106,
        "sites": 82
       },
       {
@@ -1801,21 +1801,21 @@
        "dep": "D48",
        "nom": "PLZ 48",
        "clubs": 3,
-       "logos": 2,
+       "logos": 3,
        "sites": 1
       },
       {
        "dep": "D49",
        "nom": "PLZ 49",
        "clubs": 49,
-       "logos": 11,
+       "logos": 24,
        "sites": 21
       },
       {
        "dep": "D99",
        "nom": "PLZ 99",
        "clubs": 1,
-       "logos": 0,
+       "logos": 1,
        "sites": 1
       }
      ]
@@ -1825,7 +1825,7 @@
      "nom": "TTV Mecklenburg-Vorpommern",
      "zone": "",
      "clubs": 137,
-     "logos": 103,
+     "logos": 104,
      "sites": 26,
      "departements": [
       {
@@ -1839,7 +1839,7 @@
        "dep": "D17",
        "nom": "PLZ 17",
        "clubs": 36,
-       "logos": 24,
+       "logos": 25,
        "sites": 8
       },
       {
@@ -1870,7 +1870,7 @@
      "nom": "Saarländischer TTB",
      "zone": "",
      "clubs": 106,
-     "logos": 54,
+     "logos": 62,
      "sites": 44,
      "departements": [
       {
@@ -1891,7 +1891,7 @@
        "dep": "D66",
        "nom": "PLZ 66",
        "clubs": 103,
-       "logos": 53,
+       "logos": 61,
        "sites": 43
       }
      ]
@@ -1901,7 +1901,7 @@
      "nom": "Westdeutscher Tischtennis-Verband e.V.",
      "zone": "",
      "clubs": 788,
-     "logos": 369,
+     "logos": 558,
      "sites": 535,
      "departements": [
       {
@@ -1915,14 +1915,14 @@
        "dep": "D32",
        "nom": "PLZ 32",
        "clubs": 28,
-       "logos": 9,
+       "logos": 15,
        "sites": 15
       },
       {
        "dep": "D33",
        "nom": "PLZ 33",
        "clubs": 29,
-       "logos": 15,
+       "logos": 23,
        "sites": 19
       },
       {
@@ -1936,126 +1936,126 @@
        "dep": "D37",
        "nom": "PLZ 37",
        "clubs": 3,
-       "logos": 2,
+       "logos": 3,
        "sites": 3
       },
       {
        "dep": "D40",
        "nom": "PLZ 40",
        "clubs": 43,
-       "logos": 25,
+       "logos": 37,
        "sites": 34
       },
       {
        "dep": "D41",
        "nom": "PLZ 41",
        "clubs": 61,
-       "logos": 24,
+       "logos": 37,
        "sites": 39
       },
       {
        "dep": "D42",
        "nom": "PLZ 42",
        "clubs": 41,
-       "logos": 18,
+       "logos": 28,
        "sites": 20
       },
       {
        "dep": "D44",
        "nom": "PLZ 44",
        "clubs": 12,
-       "logos": 6,
+       "logos": 10,
        "sites": 8
       },
       {
        "dep": "D45",
        "nom": "PLZ 45",
        "clubs": 57,
-       "logos": 30,
+       "logos": 38,
        "sites": 47
       },
       {
        "dep": "D46",
        "nom": "PLZ 46",
        "clubs": 41,
-       "logos": 22,
+       "logos": 31,
        "sites": 31
       },
       {
        "dep": "D47",
        "nom": "PLZ 47",
        "clubs": 70,
-       "logos": 36,
+       "logos": 50,
        "sites": 55
       },
       {
        "dep": "D48",
        "nom": "PLZ 48",
        "clubs": 58,
-       "logos": 22,
+       "logos": 42,
        "sites": 40
       },
       {
        "dep": "D49",
        "nom": "PLZ 49",
        "clubs": 9,
-       "logos": 3,
+       "logos": 5,
        "sites": 5
       },
       {
        "dep": "D50",
        "nom": "PLZ 50",
        "clubs": 52,
-       "logos": 28,
+       "logos": 39,
        "sites": 37
       },
       {
        "dep": "D51",
        "nom": "PLZ 51",
        "clubs": 53,
-       "logos": 27,
+       "logos": 40,
        "sites": 39
       },
       {
        "dep": "D52",
        "nom": "PLZ 52",
        "clubs": 73,
-       "logos": 29,
+       "logos": 51,
        "sites": 47
       },
       {
        "dep": "D53",
        "nom": "PLZ 53",
        "clubs": 86,
-       "logos": 40,
+       "logos": 65,
        "sites": 63
       },
       {
        "dep": "D57",
        "nom": "PLZ 57",
        "clubs": 13,
-       "logos": 6,
+       "logos": 9,
        "sites": 7
       },
       {
        "dep": "D58",
        "nom": "PLZ 58",
        "clubs": 16,
-       "logos": 6,
+       "logos": 8,
        "sites": 5
       },
       {
        "dep": "D59",
        "nom": "PLZ 59",
        "clubs": 33,
-       "logos": 19,
+       "logos": 24,
        "sites": 19
       },
       {
        "dep": "D83",
        "nom": "PLZ 83",
        "clubs": 1,
-       "logos": 0,
+       "logos": 1,
        "sites": 1
       }
      ]
@@ -2065,14 +2065,14 @@
      "nom": "Thüringer TTV",
      "zone": "",
      "clubs": 279,
-     "logos": 120,
+     "logos": 144,
      "sites": 96,
      "departements": [
       {
        "dep": "",
        "nom": "",
        "clubs": 12,
-       "logos": 4,
+       "logos": 5,
        "sites": 3
       },
       {
@@ -2093,7 +2093,7 @@
        "dep": "D07",
        "nom": "PLZ 07",
        "clubs": 61,
-       "logos": 29,
+       "logos": 36,
        "sites": 25
       },
       {
@@ -2114,14 +2114,14 @@
        "dep": "D36",
        "nom": "PLZ 36",
        "clubs": 12,
-       "logos": 7,
+       "logos": 9,
        "sites": 4
       },
       {
        "dep": "D37",
        "nom": "PLZ 37",
        "clubs": 25,
-       "logos": 9,
+       "logos": 10,
        "sites": 6
       },
       {
@@ -2142,14 +2142,14 @@
        "dep": "D98",
        "nom": "PLZ 98",
        "clubs": 40,
-       "logos": 16,
+       "logos": 20,
        "sites": 13
       },
       {
        "dep": "D99",
        "nom": "PLZ 99",
        "clubs": 102,
-       "logos": 45,
+       "logos": 54,
        "sites": 34
       }
      ]
@@ -2159,7 +2159,7 @@
      "nom": "Hessischer Tischtennis-Verband e.V.",
      "zone": "",
      "clubs": 700,
-     "logos": 277,
+     "logos": 413,
      "sites": 384,
      "departements": [
       {
@@ -2173,42 +2173,42 @@
        "dep": "D34",
        "nom": "PLZ 34",
        "clubs": 123,
-       "logos": 42,
+       "logos": 61,
        "sites": 56
       },
       {
        "dep": "D35",
        "nom": "PLZ 35",
        "clubs": 183,
-       "logos": 76,
+       "logos": 109,
        "sites": 94
       },
       {
        "dep": "D36",
        "nom": "PLZ 36",
        "clubs": 99,
-       "logos": 41,
+       "logos": 54,
        "sites": 48
       },
       {
        "dep": "D37",
        "nom": "PLZ 37",
        "clubs": 33,
-       "logos": 15,
+       "logos": 20,
        "sites": 17
       },
       {
        "dep": "D44",
        "nom": "PLZ 44",
        "clubs": 1,
-       "logos": 0,
+       "logos": 1,
        "sites": 1
       },
       {
        "dep": "D55",
        "nom": "PLZ 55",
        "clubs": 2,
-       "logos": 0,
+       "logos": 1,
        "sites": 1
       },
       {
@@ -2222,49 +2222,49 @@
        "dep": "D60",
        "nom": "PLZ 60",
        "clubs": 8,
-       "logos": 2,
+       "logos": 5,
        "sites": 6
       },
       {
        "dep": "D61",
        "nom": "PLZ 61",
        "clubs": 45,
-       "logos": 22,
+       "logos": 32,
        "sites": 34
       },
       {
        "dep": "D63",
        "nom": "PLZ 63",
        "clubs": 76,
-       "logos": 28,
+       "logos": 48,
        "sites": 48
       },
       {
        "dep": "D64",
        "nom": "PLZ 64",
        "clubs": 38,
-       "logos": 13,
+       "logos": 18,
        "sites": 17
       },
       {
        "dep": "D65",
        "nom": "PLZ 65",
        "clubs": 76,
-       "logos": 29,
+       "logos": 51,
        "sites": 50
       },
       {
        "dep": "D68",
        "nom": "PLZ 68",
        "clubs": 3,
-       "logos": 1,
+       "logos": 2,
        "sites": 3
       },
       {
        "dep": "D69",
        "nom": "PLZ 69",
        "clubs": 6,
-       "logos": 3,
+       "logos": 6,
        "sites": 5
       },
       {
@@ -2298,14 +2298,14 @@
      "nom": "Tischtennis Baden-Württemberg e.V.",
      "zone": "",
      "clubs": 797,
-     "logos": 301,
+     "logos": 480,
      "sites": 453,
      "departements": [
       {
        "dep": "",
        "nom": "",
        "clubs": 4,
-       "logos": 1,
+       "logos": 2,
        "sites": 3
       },
       {
@@ -2326,84 +2326,84 @@
        "dep": "D70",
        "nom": "PLZ 70",
        "clubs": 28,
-       "logos": 13,
+       "logos": 17,
        "sites": 15
       },
       {
        "dep": "D71",
        "nom": "PLZ 71",
        "clubs": 75,
-       "logos": 34,
+       "logos": 49,
        "sites": 46
       },
       {
        "dep": "D72",
        "nom": "PLZ 72",
        "clubs": 119,
-       "logos": 43,
+       "logos": 73,
        "sites": 66
       },
       {
        "dep": "D73",
        "nom": "PLZ 73",
        "clubs": 95,
-       "logos": 35,
+       "logos": 61,
        "sites": 59
       },
       {
        "dep": "D74",
        "nom": "PLZ 74",
        "clubs": 141,
-       "logos": 57,
+       "logos": 82,
        "sites": 77
       },
       {
        "dep": "D75",
        "nom": "PLZ 75",
        "clubs": 33,
-       "logos": 9,
+       "logos": 17,
        "sites": 16
       },
       {
        "dep": "D76",
        "nom": "PLZ 76",
        "clubs": 25,
-       "logos": 9,
+       "logos": 17,
        "sites": 17
       },
       {
        "dep": "D77",
        "nom": "PLZ 77",
        "clubs": 55,
-       "logos": 24,
+       "logos": 37,
        "sites": 35
       },
       {
        "dep": "D78",
        "nom": "PLZ 78",
        "clubs": 42,
-       "logos": 15,
+       "logos": 25,
        "sites": 27
       },
       {
        "dep": "D79",
        "nom": "PLZ 79",
        "clubs": 35,
-       "logos": 17,
+       "logos": 25,
        "sites": 21
       },
       {
        "dep": "D88",
        "nom": "PLZ 88",
        "clubs": 85,
-       "logos": 25,
+       "logos": 49,
        "sites": 50
       },
       {
        "dep": "D89",
        "nom": "PLZ 89",
        "clubs": 49,
-       "logos": 15,
+       "logos": 21,
        "sites": 17
       },
       {
@@ -2417,7 +2417,7 @@
        "dep": "D97",
        "nom": "PLZ 97",
        "clubs": 8,
-       "logos": 4,
+       "logos": 5,
        "sites": 2
       }
      ]
@@ -2427,14 +2427,14 @@
      "nom": "Fachverband Tischtennis Bremen e.V.",
      "zone": "",
      "clubs": 33,
-     "logos": 16,
+     "logos": 22,
      "sites": 21,
      "departements": [
       {
        "dep": "D28",
        "nom": "PLZ 28",
        "clubs": 33,
-       "logos": 16,
+       "logos": 22,
        "sites": 21
       }
      ]
@@ -2444,21 +2444,21 @@
      "nom": "Badischer Tischtennis-Verband e.V.",
      "zone": "",
      "clubs": 290,
-     "logos": 106,
+     "logos": 182,
      "sites": 185,
      "departements": [
       {
        "dep": "D68",
        "nom": "PLZ 68",
        "clubs": 42,
-       "logos": 19,
+       "logos": 30,
        "sites": 29
       },
       {
        "dep": "D69",
        "nom": "PLZ 69",
        "clubs": 54,
-       "logos": 17,
+       "logos": 37,
        "sites": 40
       },
       {
@@ -2472,28 +2472,28 @@
        "dep": "D74",
        "nom": "PLZ 74",
        "clubs": 65,
-       "logos": 26,
+       "logos": 36,
        "sites": 34
       },
       {
        "dep": "D75",
        "nom": "PLZ 75",
        "clubs": 43,
-       "logos": 13,
+       "logos": 26,
        "sites": 29
       },
       {
        "dep": "D76",
        "nom": "PLZ 76",
        "clubs": 62,
-       "logos": 23,
+       "logos": 40,
        "sites": 39
       },
       {
        "dep": "D97",
        "nom": "PLZ 97",
        "clubs": 22,
-       "logos": 8,
+       "logos": 13,
        "sites": 13
       }
      ]
@@ -2507,7 +2507,7 @@
    "nom": "Auvergne-Rhône-Alpes",
    "zone": "metropole",
    "clubs": 301,
-   "logos": 122,
+   "logos": 125,
    "sites": 159,
    "departements": [
     {
@@ -2556,7 +2556,7 @@
      "dep": "42",
      "nom": "Loire",
      "clubs": 37,
-     "logos": 20,
+     "logos": 21,
      "sites": 22
     },
     {
@@ -2570,14 +2570,14 @@
      "dep": "63",
      "nom": "Puy-de-Dôme",
      "clubs": 39,
-     "logos": 7,
+     "logos": 9,
      "sites": 16
     },
     {
      "dep": "69",
      "nom": "Rhône",
      "clubs": 59,
-     "logos": 26,
+     "logos": 24,
      "sites": 35
     },
     {
@@ -2591,7 +2591,7 @@
      "dep": "74",
      "nom": "Haute-Savoie",
      "clubs": 24,
-     "logos": 8,
+     "logos": 10,
      "sites": 13
     }
    ]
@@ -2674,7 +2674,7 @@
      "dep": "22",
      "nom": "Côtes-d'Armor",
      "clubs": 31,
-     "logos": 7,
+     "logos": 8,
      "sites": 14
     },
     {
@@ -2695,7 +2695,7 @@
      "dep": "56",
      "nom": "Morbihan",
      "clubs": 50,
-     "logos": 15,
+     "logos": 14,
      "sites": 19
     }
    ]
@@ -2705,7 +2705,7 @@
    "nom": "Centre-Val de Loire",
    "zone": "metropole",
    "clubs": 201,
-   "logos": 54,
+   "logos": 56,
    "sites": 74,
    "departements": [
     {
@@ -2733,14 +2733,14 @@
      "dep": "37",
      "nom": "Indre-et-Loire",
      "clubs": 51,
-     "logos": 15,
+     "logos": 16,
      "sites": 20
     },
     {
      "dep": "41",
      "nom": "Loir-et-Cher",
      "clubs": 26,
-     "logos": 6,
+     "logos": 7,
      "sites": 9
     },
     {
@@ -2781,14 +2781,14 @@
    "nom": "Grand Est",
    "zone": "metropole",
    "clubs": 290,
-   "logos": 63,
+   "logos": 62,
    "sites": 82,
    "departements": [
     {
      "dep": "08",
      "nom": "Ardennes",
      "clubs": 28,
-     "logos": 5,
+     "logos": 4,
      "sites": 6
     },
     {
@@ -2906,7 +2906,7 @@
    "nom": "Île-de-France",
    "zone": "metropole",
    "clubs": 337,
-   "logos": 156,
+   "logos": 160,
    "sites": 202,
    "departements": [
     {
@@ -2927,21 +2927,21 @@
      "dep": "78",
      "nom": "Yvelines",
      "clubs": 59,
-     "logos": 32,
+     "logos": 34,
      "sites": 40
     },
     {
      "dep": "91",
      "nom": "Essonne",
      "clubs": 56,
-     "logos": 17,
+     "logos": 18,
      "sites": 25
     },
     {
      "dep": "92",
      "nom": "Hauts-de-Seine",
      "clubs": 34,
-     "logos": 20,
+     "logos": 21,
      "sites": 26
     },
     {
@@ -2972,7 +2972,7 @@
    "nom": "Normandie",
    "zone": "metropole",
    "clubs": 261,
-   "logos": 45,
+   "logos": 49,
    "sites": 72,
    "departements": [
     {
@@ -2993,7 +2993,7 @@
      "dep": "50",
      "nom": "Manche",
      "clubs": 45,
-     "logos": 9,
+     "logos": 11,
      "sites": 15
     },
     {
@@ -3007,7 +3007,7 @@
      "dep": "76",
      "nom": "Seine-Maritime",
      "clubs": 85,
-     "logos": 14,
+     "logos": 16,
      "sites": 24
     }
    ]
@@ -3017,7 +3017,7 @@
    "nom": "Nouvelle-Aquitaine",
    "zone": "metropole",
    "clubs": 251,
-   "logos": 48,
+   "logos": 51,
    "sites": 88,
    "departements": [
     {
@@ -3045,7 +3045,7 @@
      "dep": "23",
      "nom": "Creuse",
      "clubs": 3,
-     "logos": 1,
+     "logos": 2,
      "sites": 3
     },
     {
@@ -3059,7 +3059,7 @@
      "dep": "33",
      "nom": "Gironde",
      "clubs": 50,
-     "logos": 11,
+     "logos": 12,
      "sites": 16
     },
     {
@@ -3101,7 +3101,7 @@
      "dep": "87",
      "nom": "Haute-Vienne",
      "clubs": 16,
-     "logos": 5,
+     "logos": 6,
      "sites": 7
     }
    ]
@@ -3111,7 +3111,7 @@
    "nom": "Occitanie",
    "zone": "metropole",
    "clubs": 181,
-   "logos": 61,
+   "logos": 67,
    "sites": 81,
    "departements": [
     {
@@ -3146,7 +3146,7 @@
      "dep": "31",
      "nom": "Haute-Garonne",
      "clubs": 28,
-     "logos": 14,
+     "logos": 17,
      "sites": 22
     },
     {
@@ -3160,7 +3160,7 @@
      "dep": "34",
      "nom": "Hérault",
      "clubs": 33,
-     "logos": 10,
+     "logos": 12,
      "sites": 13
     },
     {
@@ -3195,7 +3195,7 @@
      "dep": "81",
      "nom": "Tarn",
      "clubs": 9,
-     "logos": 5,
+     "logos": 6,
      "sites": 7
     },
     {
@@ -3212,14 +3212,14 @@
    "nom": "Pays de la Loire",
    "zone": "metropole",
    "clubs": 346,
-   "logos": 99,
+   "logos": 100,
    "sites": 144,
    "departements": [
     {
      "dep": "44",
      "nom": "Loire-Atlantique",
      "clubs": 100,
-     "logos": 47,
+     "logos": 48,
      "sites": 58
     },
     {
@@ -3257,7 +3257,7 @@
    "nom": "Provence-Alpes-Côte d'Azur",
    "zone": "metropole",
    "clubs": 119,
-   "logos": 34,
+   "logos": 35,
    "sites": 53,
    "departements": [
     {
@@ -3285,7 +3285,7 @@
      "dep": "13",
      "nom": "Bouches-du-Rhône",
      "clubs": 37,
-     "logos": 9,
+     "logos": 8,
      "sites": 16
     },
     {
@@ -3299,7 +3299,7 @@
      "dep": "84",
      "nom": "Vaucluse",
      "clubs": 15,
-     "logos": 4,
+     "logos": 6,
      "sites": 7
     }
    ]
