@@ -68,7 +68,8 @@ jobs:
             etapes="${{ github.event.inputs.etapes }}"
             forcer="${{ github.event.inputs.forcer_logos }}"
           else
-            # 1re ligne : le périmètre ; 2e ligne (facultative) : les étapes
+            # 1re ligne : le périmètre ; 2e : les étapes ; 3e : « forcer » pour revoir
+            # les logos déjà connus (par défaut on ne traite que ceux qui manquent).
             perimetre="$(sed -n 1p .github/lancer-collecte.txt | tr -d ' \r\n')"
             etapes="$(sed -n 2p .github/lancer-collecte.txt | tr -d ' \r\n')"
             source="carte"
@@ -76,8 +77,10 @@ jobs:
             case "$perimetre" in
               DE|de|allemagne|Allemagne) source="clicktt"; perimetre="tous" ;;
             esac
-            # une relance manuelle revoit aussi les logos déjà connus
-            forcer="true"
+            case "$(sed -n 3p .github/lancer-collecte.txt | tr -d ' \r\n')" in
+              forcer|force|oui|true) forcer="true" ;;
+              *) forcer="false" ;;
+            esac
           fi
           echo "perimetre=${perimetre:-tous}" >> "$GITHUB_OUTPUT"
           echo "source=${source:-carte}" >> "$GITHUB_OUTPUT"
