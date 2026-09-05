@@ -7,7 +7,7 @@ const ETAT = {
   pays: "",
   ligue: "",
   dep: "",
-  statut: "tous",
+  statut: "logo",
   couleur: "tous",
   recherche: "",
   tri: "departement",
@@ -98,8 +98,17 @@ function resume() {
     `${s.sites.toLocaleString("fr-FR")} clubs ont un site internet référencé.`;
 }
 
+/* Le nombre affiché sur une puce doit répondre à la question qu'on se pose : en vue
+   « avec logo », un pays qui compte 486 clubs mais 5 logos doit annoncer 5, sans quoi
+   la galerie promet des logos qu'elle n'a pas. */
+function compte(groupe) {
+  if (ETAT.statut === "logo" || ETAT.statut === "officiel") return groupe.logos || 0;
+  if (ETAT.statut === "sans") return groupe.clubs - (groupe.logos || 0);
+  return groupe.clubs;
+}
+
 function paysDisponibles() {
-  return (ETAT.stats.pays || []).filter((p) => p.clubs > 0);
+  return (ETAT.stats.pays || []).filter((p) => compte(p) > 0);
 }
 
 function liguesAffichees() {
@@ -115,11 +124,12 @@ function construireFiltres() {
   const barrePays = $("#pays");
   barrePays.innerHTML = "";
   if (pays.length > 1) {
-    barrePays.append(puce("Tous les pays", ETAT.stats.clubs, ETAT.pays === "", () => {
+    const totalPays = pays.reduce((somme, p) => somme + compte(p), 0);
+    barrePays.append(puce("Tous les pays", totalPays, ETAT.pays === "", () => {
       ETAT.pays = ""; ETAT.ligue = ""; ETAT.dep = ""; construireFiltres(); rafraichir();
     }));
     pays.forEach((p) => {
-      barrePays.append(puce(p.nom, p.clubs, ETAT.pays === p.code, () => {
+      barrePays.append(puce(p.nom, compte(p), ETAT.pays === p.code, () => {
         ETAT.pays = ETAT.pays === p.code ? "" : p.code;
         ETAT.ligue = ""; ETAT.dep = "";
         construireFiltres();
@@ -128,15 +138,15 @@ function construireFiltres() {
     });
   }
 
-  const disponibles = liguesAffichees().filter((ligue) => ligue.clubs > 0);
+  const disponibles = liguesAffichees().filter((ligue) => compte(ligue) > 0);
   const ligues = $("#ligues");
   ligues.innerHTML = "";
-  const total = disponibles.reduce((somme, l) => somme + l.clubs, 0);
+  const total = disponibles.reduce((somme, l) => somme + compte(l), 0);
   ligues.append(puce("Toutes les ligues", total, ETAT.ligue === "", () => {
     ETAT.ligue = ""; ETAT.dep = ""; construireFiltres(); rafraichir();
   }));
   disponibles.forEach((ligue) => {
-    ligues.append(puce(ligue.nom, ligue.clubs, ETAT.ligue === ligue.code, () => {
+    ligues.append(puce(ligue.nom, compte(ligue), ETAT.ligue === ligue.code, () => {
       ETAT.ligue = ETAT.ligue === ligue.code ? "" : ligue.code;
       ETAT.dep = "";
       construireFiltres();
@@ -149,11 +159,11 @@ function construireFiltres() {
   const ligue = disponibles.find((l) => l.code === ETAT.ligue);
   if (ligue) {
     ligue.departements
-      .filter((d) => d.clubs > 0)
+      .filter((d) => compte(d) > 0)
       .forEach((departement) => {
         const bouton = puce(
           `${departement.dep} · ${departement.nom}`,
-          departement.clubs,
+          compte(departement),
           ETAT.dep === departement.dep,
           () => {
             ETAT.dep = ETAT.dep === departement.dep ? "" : departement.dep;
@@ -210,6 +220,11 @@ function brancherEvenements() {
     const bouton = evenement.target.closest("button");
     if (!bouton) return;
     ETAT.statut = bouton.dataset.statut;
+    // Un pays ou une ligue peut n'avoir aucun logo : les puces changent avec le filtre.
+    if (ETAT.pays && !paysDisponibles().some((p) => p.code === ETAT.pays)) {
+      ETAT.pays = ETAT.ligue = ETAT.dep = "";
+    }
+    construireFiltres();
     $("#filtre-statut").querySelectorAll("button").forEach((b) =>
       b.classList.toggle("actif", b === bouton));
     rafraichir();
@@ -341,9 +356,13 @@ function visuel(club) {
   return monogramme(club);
 }
 
+/* Marque de place pour un club sans logo. Elle est volontairement grise et discrète :
+   colorée, elle passerait pour un vrai logo et brouillerait la galerie, qui n'existe
+   que pour comparer des logos réels. */
 function monogramme(club) {
   const bloc = document.createElement("span");
   bloc.className = "monogramme";
+  bloc.title = "Aucun logo trouvé pour ce club";
   const initiales = club.nom
     .split(/[^A-Za-zÀ-ÿ0-9]+/)
     .filter(Boolean)
@@ -351,9 +370,6 @@ function monogramme(club) {
     .map((mot) => mot[0].toUpperCase())
     .join("");
   bloc.textContent = initiales || "?";
-  let empreinte = 0;
-  for (const caractere of club.id + club.nom) empreinte = (empreinte * 31 + caractere.charCodeAt(0)) % 360;
-  bloc.style.background = `linear-gradient(140deg, hsl(${empreinte} 52% 46%), hsl(${(empreinte + 40) % 360} 55% 34%))`;
   return bloc;
 }
 
@@ -454,7 +470,7 @@ function lireAdresse() {
   ETAT.pays = parametres.get("pays") || "";
   ETAT.ligue = parametres.get("ligue") || "";
   ETAT.dep = parametres.get("dep") || "";
-  ETAT.statut = parametres.get("statut") || "tous";
+  ETAT.statut = parametres.get("statut") || "logo";
   ETAT.couleur = parametres.get("couleur") || "tous";
   ETAT.recherche = sansAccent(parametres.get("q") || "");
   if (ETAT.recherche) $("#recherche").value = parametres.get("q");
