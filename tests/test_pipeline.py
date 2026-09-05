@@ -14,8 +14,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 from PIL import Image, ImageDraw  # noqa: E402
 
 from ttlogos import (  # noqa: E402
-    angleterre, autriche, belgique, carte, catalogue, clicktt, croatie, logos,
-    pologne, referentiel, site,
+    angleterre, autriche, belgique, carte, catalogue, clicktt, croatie, finlande,
+    logos, pologne, referentiel, site, slovaquie,
 )
 
 
@@ -962,6 +962,87 @@ class TestCroatie(unittest.TestCase):
         clubs = [croatie.club_depuis_ligne(self.ligne(self.LIGNE))]
         pays = {p["code"]: p for p in site.statistiques(clubs)["pays"]}
         self.assertEqual(pays["HR"]["nom"], "Croatie")
+
+
+class TestSlovaquie(unittest.TestCase):
+    """Annuaire de la SSTZ : un club par carte, le site sous « STRÁNKA KLUBU »."""
+
+    CARTE = ('<div class="card"><h4>STO VALALIKY</h4>'
+             '<div class="plrs-card__sides__right">'
+             '<div><span class="fw-bold">EMAIL KLUBU</span>'
+             '<span><a href="mailto:valalikysto@gmail.com">valalikysto@gmail.com</a></span></div>'
+             '<div><span class="fw-bold">STRÁNKA KLUBU</span>'
+             '<span><a href="http://www.stovalaliky.webnode.sk">www.stovalaliky.webnode.sk</a>'
+             '</span></div></div></div>')
+
+    @staticmethod
+    def carte(html):
+        from bs4 import BeautifulSoup
+        return BeautifulSoup(html, "html.parser").select_one("div.card")
+
+    def test_fiche_de_club(self):
+        club = slovaquie.club_depuis_carte(self.carte(self.CARTE), 7)
+        self.assertEqual((club.pays, club.nom), ("SK", "STO VALALIKY"))
+        self.assertEqual(club.site_web, "http://www.stovalaliky.webnode.sk")
+        self.assertEqual(club.ligue_code, "SK-SSTZ")
+
+    def test_le_courriel_du_club_n_est_pas_enregistre(self):
+        """Chaque carte porte un courriel sous « EMAIL KLUBU » : il ne doit pas servir
+        d'adresse de site, ni entrer au catalogue."""
+        club = slovaquie.club_depuis_carte(self.carte(self.CARTE), 7)
+        enregistre = " ".join(str(valeur) for valeur in vars(club).values())
+        self.assertNotIn("valalikysto", enregistre)
+
+    def test_les_cartes_de_service_sont_ecartees(self):
+        """La page compte aussi son propre menu et un compteur de clubs."""
+        for intitule in ("Menu", "Počet: 832", "Filter"):
+            carte = self.carte(f'<div class="card"><h4>{intitule}</h4></div>')
+            self.assertIsNone(slovaquie.club_depuis_carte(carte, 1), intitule)
+
+    def test_adresse_a_double_protocole(self):
+        double = self.CARTE.replace("http://www.stovalaliky.webnode.sk",
+                                    "http://https://vstk-vt.eu/")
+        club = slovaquie.club_depuis_carte(self.carte(double), 1)
+        self.assertEqual(club.site_web, "https://vstk-vt.eu/")
+
+
+class TestFinlande(unittest.TestCase):
+    """Présentations de la SPTL : la fédération héberge elle-même les logos."""
+
+    PAGE = ('<div class="entry-content"><p><strong>Intro</strong></p><hr/>'
+            '<h2>Espoo</h2><hr/><h2>PT Espoo</h2>'
+            '<p><img src="https://www.sptl.fi/sptl_uudet/wp-content/uploads/PT-Espoo.png"/>'
+            '<img src="https://www.sptl.fi/sptl_uudet/wp-content/uploads/PT-Espoo-300x226.png"/></p>'
+            '<p>Kotisali: Tuulimäen väestönsuoja, Tapiola</p>'
+            '<p><a href="http://www.ptespoo.net/">Kotisivu</a>'
+            '<a href="https://www.facebook.com/PT-Espoo/">FB</a></p>'
+            '<hr/><h2>Helsinki</h2><hr/><h2>Heitto</h2>'
+            '<p><img src="https://www.sptl.fi/sptl_uudet/wp-content/uploads/Heitto-253x300.jpg"/></p>'
+            '<p>Kotisali: Pirkkolan liikuntapuisto</p></div>')
+
+    def test_villes_et_clubs_sont_distingues(self):
+        """La page alterne titres de ville et titres de club : seul le second genre est
+        suivi d'un logo, d'une salle ou d'un lien."""
+        couples = finlande.clubs_depuis_page(self.PAGE)
+        self.assertEqual([c.nom for c, _ in couples], ["PT Espoo", "Heitto"])
+        self.assertEqual([c.ville for c, _ in couples], ["Espoo", "Helsinki"])
+
+    def test_le_logo_pleine_taille_est_prefere_a_sa_vignette(self):
+        """Le thème publie chaque logo en plusieurs tailles ; la plus grande est la bonne."""
+        couples = finlande.clubs_depuis_page(self.PAGE)
+        self.assertTrue(couples[0][1].endswith("/PT-Espoo.png"))
+        # Quand seule une vignette existe, elle vaut mieux que rien.
+        self.assertTrue(couples[1][1].endswith("/Heitto-253x300.jpg"))
+
+    def test_le_lien_reseau_social_n_est_pas_pris_pour_un_site(self):
+        couples = finlande.clubs_depuis_page(self.PAGE)
+        self.assertEqual(couples[0][0].site_web, "http://www.ptespoo.net/")
+        self.assertEqual(couples[0][0].salle, "Tuulimäen väestönsuoja, Tapiola")
+
+    def test_statistiques_par_pays(self):
+        clubs = [club for club, _ in finlande.clubs_depuis_page(self.PAGE)]
+        pays = {p["code"]: p for p in site.statistiques(clubs)["pays"]}
+        self.assertEqual(pays["FI"]["nom"], "Finlande")
 
 
 if __name__ == "__main__":

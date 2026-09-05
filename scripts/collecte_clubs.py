@@ -19,9 +19,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from ttlogos import (  # noqa: E402
     angleterre, autriche, belgique, carte, catalogue, clicktt, croatie, datasports,
-    fftt, pologne, referentiel,
+    fftt, finlande, pologne, referentiel, slovaquie,
 )
-from ttlogos.logos import recuperer_logo_heberge  # noqa: E402
+from ttlogos.logos import enregistrer_logo_officiel, recuperer_logo_heberge  # noqa: E402
 from ttlogos.reseau import Client  # noqa: E402
 
 journal = logging.getLogger("logostt")
@@ -147,7 +147,7 @@ def main() -> int:
     analyseur.add_argument(
         "--source", default="carte",
         choices=("carte", "clicktt", "angleterre", "belgique", "autriche", "pologne",
-                 "croatie", "fftt", "opendata"),
+                 "croatie", "slovaquie", "finlande", "fftt", "opendata"),
         help="carte : annuaire public FFTT (France, recommandé) ; "
              "clicktt : annuaire click-TT (Allemagne ou Suisse, logos officiels compris) ; "
              "angleterre : données ouvertes de Table Tennis England ; "
@@ -155,6 +155,8 @@ def main() -> int:
              "autriche : annuaire de l'ÖTTV, qui tient en une page ; "
              "pologne : registre des licences de la PZTS ; "
              "croatie : annuaire des clubs enregistrés de la HSTS ; "
+             "slovaquie : annuaire de la SSTZ ; "
+             "finlande : présentations de la SPTL, logos hébergés compris ; "
              "fftt : API SmartPing (demande une clé) ; opendata : data.sports.gouv.fr",
     )
     analyseur.add_argument(
@@ -196,6 +198,16 @@ def main() -> int:
             # Rien à corriger de notre côté : on repart sans rien changer au catalogue.
             journal.warning("collecte anglaise reportée — %s", arret)
             return 0
+    elif arguments.source == "slovaquie":
+        nouveaux = slovaquie.liste_des_clubs(client, arguments.limite)
+    elif arguments.source == "finlande":
+        # La fédération héberge les logos : on les enregistre au passage, sans tri.
+        couples = finlande.liste_des_clubs(client, arguments.limite)
+        dossier = referentiel.RACINE / "site" / "logos"
+        nouveaux = []
+        for club, adresse_logo in couples:
+            enregistrer_logo_officiel(club, client, adresse_logo, dossier)
+            nouveaux.append(club)
     elif arguments.source == "croatie":
         nouveaux = croatie.liste_des_clubs(client, arguments.limite)
     elif arguments.source == "pologne":
@@ -221,12 +233,12 @@ def main() -> int:
 
     existants = catalogue.charger()
     if arguments.source in ("clicktt", "angleterre", "belgique", "autriche", "pologne",
-                            "croatie"):
+                            "croatie", "slovaquie", "finlande"):
         # Ces annuaires ne se découpent pas par département : on remplace l'ensemble du
         # pays concerné et on laisse les autres intacts.
         pays = {"angleterre": "EN", "belgique": "BE", "autriche": "AT",
-                "pologne": "PL", "croatie": "HR"}.get(
-            arguments.source, arguments.federation)
+                "pologne": "PL", "croatie": "HR", "slovaquie": "SK",
+                "finlande": "FI"}.get(arguments.source, arguments.federation)
         fusionnes = catalogue.fusionner_pays(existants, nouveaux, pays,
                                              remplacer=arguments.recommencer)
     else:

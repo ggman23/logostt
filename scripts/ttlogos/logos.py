@@ -536,18 +536,13 @@ def supprimer_les_orphelins(clubs: list[Club], dossier_site: Path) -> int:
     return retires
 
 
-def recuperer_logo_heberge(
-    club: Club, client: Client, html_fiche: str, dossier_logos: Path, federation=None
-) -> bool:
-    """Enregistre le logo officiel que la fédération héberge elle-même, s'il existe.
+def enregistrer_logo_officiel(club: Club, client: Client, url: str, dossier_logos: Path) -> bool:
+    """Enregistre un logo dont l'adresse est donnée par la fédération elle-même.
 
-    Utilisé pour l'Allemagne, où click-TT sert le logo déposé par le club : la source est
-    sûre, il n'y a donc aucun tri à faire. Renvoie True si un logo a été enregistré.
+    Quand c'est la fédération qui héberge le logo déposé par le club, la source est sûre :
+    aucun tri n'est nécessaire, contrairement aux images glanées sur le site d'un club.
+    Renvoie True si un logo a été enregistré.
     """
-    from . import clicktt
-
-    url = clicktt.logo_heberge(BeautifulSoup(html_fiche, "html.parser"),
-                               federation or clicktt.ALLEMAGNE)
     if not url:
         return False
     octets, type_mime = _telecharger(client, url)
@@ -565,3 +560,18 @@ def recuperer_logo_heberge(
     club.fond = visuel.fond
     club.maj = catalogue.aujourdhui()
     return True
+
+
+def recuperer_logo_heberge(
+    club: Club, client: Client, html_fiche: str, dossier_logos: Path, federation=None
+) -> bool:
+    """Logo officiel d'un club allemand ou suisse, servi par click-TT.
+
+    Son adresse porte un jeton propre à la requête : elle doit être suivie tout de suite,
+    avec la session qui a chargé la fiche.
+    """
+    from . import clicktt
+
+    url = clicktt.logo_heberge(BeautifulSoup(html_fiche, "html.parser"),
+                               federation or clicktt.ALLEMAGNE)
+    return enregistrer_logo_officiel(club, client, url, dossier_logos)
