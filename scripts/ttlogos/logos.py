@@ -434,6 +434,21 @@ def _variantes(site: str) -> list[str]:
     return variantes
 
 
+def _echec(club: Club, dossier_logos: Path) -> Club:
+    """Constate qu'aucun logo n'a été trouvé, sans perdre celui d'une passe précédente.
+
+    Un site en panne le jour de la collecte ne doit pas faire disparaître un logo déjà
+    obtenu : tant que son fichier est là, le club le garde. S'il a disparu, en revanche,
+    le catalogue ne doit plus le désigner — il afficherait une image manquante.
+    """
+    if club.logo_fichier and (dossier_logos.parent / club.logo_fichier).exists():
+        return club
+    club.logo_fichier = club.logo_source = club.couleurs = club.fond = ""
+    club.logo_statut = catalogue.LOGO_ABSENT
+    club.maj = catalogue.aujourdhui()
+    return club
+
+
 def recuperer_logo(
     club: Club, client: Client, dossier_logos: Path, essais_max: int = 4
 ) -> Club:
@@ -444,9 +459,7 @@ def recuperer_logo(
 
     html, url_finale = page_accueil(client, club.site_web)
     if not html:
-        club.logo_statut = catalogue.LOGO_ABSENT
-        club.maj = catalogue.aujourdhui()
-        return club
+        return _echec(club, dossier_logos)
     club.site_web = url_finale or club.site_web
 
     liste = candidats(html, club.site_web, club.nom, club.ville)
@@ -473,9 +486,7 @@ def recuperer_logo(
         club.maj = catalogue.aujourdhui()
         return club
 
-    club.logo_statut = catalogue.LOGO_ABSENT
-    club.maj = catalogue.aujourdhui()
-    return club
+    return _echec(club, dossier_logos)
 
 
 def dedoublonner(clubs: list[Club], dossier_site: Path) -> int:

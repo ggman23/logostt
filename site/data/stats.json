@@ -1,7 +1,7 @@
 {
  "maj": "2026-09-05",
  "clubs": 12013,
- "logos": 5000,
+ "logos": 5019,
  "sites": 5000,
  "pays": [
   {
@@ -9,7 +9,7 @@
    "nom": "France",
    "clubs": 3064,
    "sites": 1220,
-   "logos": 870,
+   "logos": 880,
    "ligues": [
     {
      "code": "ARA",
@@ -214,14 +214,14 @@
      "nom": "Centre-Val de Loire",
      "zone": "metropole",
      "clubs": 201,
-     "logos": 56,
+     "logos": 58,
      "sites": 74,
      "departements": [
       {
        "dep": "18",
        "nom": "Cher",
        "clubs": 22,
-       "logos": 6,
+       "logos": 7,
        "sites": 8
       },
       {
@@ -256,7 +256,7 @@
        "dep": "45",
        "nom": "Loiret",
        "clubs": 48,
-       "logos": 17,
+       "logos": 18,
        "sites": 23
       }
      ]
@@ -415,7 +415,7 @@
      "nom": "Île-de-France",
      "zone": "metropole",
      "clubs": 337,
-     "logos": 160,
+     "logos": 165,
      "sites": 202,
      "departements": [
       {
@@ -429,14 +429,14 @@
        "dep": "77",
        "nom": "Seine-et-Marne",
        "clubs": 56,
-       "logos": 26,
+       "logos": 27,
        "sites": 35
       },
       {
        "dep": "78",
        "nom": "Yvelines",
        "clubs": 59,
-       "logos": 34,
+       "logos": 35,
        "sites": 40
       },
       {
@@ -450,14 +450,14 @@
        "dep": "92",
        "nom": "Hauts-de-Seine",
        "clubs": 34,
-       "logos": 21,
+       "logos": 22,
        "sites": 26
       },
       {
        "dep": "93",
        "nom": "Seine-Saint-Denis",
        "clubs": 24,
-       "logos": 8,
+       "logos": 9,
        "sites": 16
       },
       {
@@ -471,7 +471,7 @@
        "dep": "95",
        "nom": "Val-d'Oise",
        "clubs": 38,
-       "logos": 21,
+       "logos": 22,
        "sites": 22
       }
      ]
@@ -481,14 +481,14 @@
      "nom": "Normandie",
      "zone": "metropole",
      "clubs": 261,
-     "logos": 49,
+     "logos": 50,
      "sites": 72,
      "departements": [
       {
        "dep": "14",
        "nom": "Calvados",
        "clubs": 47,
-       "logos": 7,
+       "logos": 8,
        "sites": 14
       },
       {
@@ -526,7 +526,7 @@
      "nom": "Nouvelle-Aquitaine",
      "zone": "metropole",
      "clubs": 251,
-     "logos": 51,
+     "logos": 52,
      "sites": 88,
      "departements": [
       {
@@ -568,7 +568,7 @@
        "dep": "33",
        "nom": "Gironde",
        "clubs": 50,
-       "logos": 12,
+       "logos": 13,
        "sites": 16
       },
       {
@@ -620,7 +620,7 @@
      "nom": "Occitanie",
      "zone": "metropole",
      "clubs": 181,
-     "logos": 67,
+     "logos": 68,
      "sites": 81,
      "departements": [
       {
@@ -655,7 +655,7 @@
        "dep": "31",
        "nom": "Haute-Garonne",
        "clubs": 28,
-       "logos": 17,
+       "logos": 18,
        "sites": 22
       },
       {
@@ -977,7 +977,7 @@
    "nom": "Allemagne",
    "clubs": 7167,
    "sites": 3163,
-   "logos": 3762,
+   "logos": 3771,
    "ligues": [
     {
      "code": "DE-TTV-SCHLESWIG-HOL",
@@ -1147,7 +1147,7 @@
      "nom": "Bayerischer Tischtennis-Verband e.V.",
      "zone": "",
      "clubs": 913,
-     "logos": 561,
+     "logos": 563,
      "sites": 503,
      "departements": [
       {
@@ -1259,14 +1259,14 @@
        "dep": "D90",
        "nom": "PLZ 90",
        "clubs": 65,
-       "logos": 52,
+       "logos": 53,
        "sites": 48
       },
       {
        "dep": "D91",
        "nom": "PLZ 91",
        "clubs": 144,
-       "logos": 89,
+       "logos": 90,
        "sites": 86
       },
       {
@@ -1450,7 +1450,7 @@
      "nom": "Pfälzischer TTV",
      "zone": "",
      "clubs": 186,
-     "logos": 121,
+     "logos": 122,
      "sites": 94,
      "departements": [
       {
@@ -1471,7 +1471,7 @@
        "dep": "D66",
        "nom": "PLZ 66",
        "clubs": 51,
-       "logos": 28,
+       "logos": 29,
        "sites": 20
       },
       {
@@ -1634,7 +1634,7 @@
      "nom": "Hamburger Tischtennis-Verband e.V.",
      "zone": "",
      "clubs": 89,
-     "logos": 58,
+     "logos": 59,
      "sites": 41,
      "departements": [
       {
@@ -1662,7 +1662,7 @@
        "dep": "D22",
        "nom": "PLZ 22",
        "clubs": 53,
-       "logos": 38,
+       "logos": 39,
        "sites": 30
       },
       {
@@ -1696,7 +1696,7 @@
      "nom": "Tischtennis-Verband Niedersachsen e.V.",
      "zone": "",
      "clubs": 866,
-     "logos": 427,
+     "logos": 428,
      "sites": 338,
      "departements": [
       {
@@ -1787,7 +1787,7 @@
        "dep": "D38",
        "nom": "PLZ 38",
        "clubs": 196,
-       "logos": 105,
+       "logos": 106,
        "sites": 82
       },
       {
@@ -1901,7 +1901,7 @@
      "nom": "Westdeutscher Tischtennis-Verband e.V.",
      "zone": "",
      "clubs": 788,
-     "logos": 560,
+     "logos": 561,
      "sites": 535,
      "departements": [
       {
@@ -2020,7 +2020,7 @@
        "dep": "D52",
        "nom": "PLZ 52",
        "clubs": 73,
-       "logos": 50,
+       "logos": 51,
        "sites": 47
       },
       {
@@ -2159,7 +2159,7 @@
      "nom": "Hessischer Tischtennis-Verband e.V.",
      "zone": "",
      "clubs": 700,
-     "logos": 415,
+     "logos": 416,
      "sites": 384,
      "departements": [
       {
@@ -2236,7 +2236,7 @@
        "dep": "D63",
        "nom": "PLZ 63",
        "clubs": 76,
-       "logos": 48,
+       "logos": 49,
        "sites": 48
       },
       {
@@ -2444,7 +2444,7 @@
      "nom": "Badischer Tischtennis-Verband e.V.",
      "zone": "",
      "clubs": 290,
-     "logos": 181,
+     "logos": 183,
      "sites": 185,
      "departements": [
       {
@@ -2472,7 +2472,7 @@
        "dep": "D74",
        "nom": "PLZ 74",
        "clubs": 65,
-       "logos": 35,
+       "logos": 36,
        "sites": 34
       },
       {
@@ -2493,7 +2493,7 @@
        "dep": "D97",
        "nom": "PLZ 97",
        "clubs": 22,
-       "logos": 13,
+       "logos": 14,
        "sites": 13
       }
      ]
@@ -4991,14 +4991,14 @@
    "nom": "Centre-Val de Loire",
    "zone": "metropole",
    "clubs": 201,
-   "logos": 56,
+   "logos": 58,
    "sites": 74,
    "departements": [
     {
      "dep": "18",
      "nom": "Cher",
      "clubs": 22,
-     "logos": 6,
+     "logos": 7,
      "sites": 8
     },
     {
@@ -5033,7 +5033,7 @@
      "dep": "45",
      "nom": "Loiret",
      "clubs": 48,
-     "logos": 17,
+     "logos": 18,
      "sites": 23
     }
    ]
@@ -5192,7 +5192,7 @@
    "nom": "Île-de-France",
    "zone": "metropole",
    "clubs": 337,
-   "logos": 160,
+   "logos": 165,
    "sites": 202,
    "departements": [
     {
@@ -5206,14 +5206,14 @@
      "dep": "77",
      "nom": "Seine-et-Marne",
      "clubs": 56,
-     "logos": 26,
+     "logos": 27,
      "sites": 35
     },
     {
      "dep": "78",
      "nom": "Yvelines",
      "clubs": 59,
-     "logos": 34,
+     "logos": 35,
      "sites": 40
     },
     {
@@ -5227,14 +5227,14 @@
      "dep": "92",
      "nom": "Hauts-de-Seine",
      "clubs": 34,
-     "logos": 21,
+     "logos": 22,
      "sites": 26
     },
     {
      "dep": "93",
      "nom": "Seine-Saint-Denis",
      "clubs": 24,
-     "logos": 8,
+     "logos": 9,
      "sites": 16
     },
     {
@@ -5248,7 +5248,7 @@
      "dep": "95",
      "nom": "Val-d'Oise",
      "clubs": 38,
-     "logos": 21,
+     "logos": 22,
      "sites": 22
     }
    ]
@@ -5258,14 +5258,14 @@
    "nom": "Normandie",
    "zone": "metropole",
    "clubs": 261,
-   "logos": 49,
+   "logos": 50,
    "sites": 72,
    "departements": [
     {
      "dep": "14",
      "nom": "Calvados",
      "clubs": 47,
-     "logos": 7,
+     "logos": 8,
      "sites": 14
     },
     {
@@ -5303,7 +5303,7 @@
    "nom": "Nouvelle-Aquitaine",
    "zone": "metropole",
    "clubs": 251,
-   "logos": 51,
+   "logos": 52,
    "sites": 88,
    "departements": [
     {
@@ -5345,7 +5345,7 @@
      "dep": "33",
      "nom": "Gironde",
      "clubs": 50,
-     "logos": 12,
+     "logos": 13,
      "sites": 16
     },
     {
@@ -5397,7 +5397,7 @@
    "nom": "Occitanie",
    "zone": "metropole",
    "clubs": 181,
-   "logos": 67,
+   "logos": 68,
    "sites": 81,
    "departements": [
     {
@@ -5432,7 +5432,7 @@
      "dep": "31",
      "nom": "Haute-Garonne",
      "clubs": 28,
-     "logos": 17,
+     "logos": 18,
      "sites": 22
     },
     {

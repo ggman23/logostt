@@ -11,7 +11,7 @@ aller voir les bonnes idées sur les sites des clubs qui vous plaisent.
 | 🇫🇷 France (FFTT) | 3 064 | 1 220 | 880 |
 | 🇦🇹 Autriche (ÖTTV) | 525 | 274 | 146 |
 | 🇧🇪 Belgique (FRBTT) | 516 | 113 | 81 |
-| 🇵🇱 Pologne (PZTS) | 486 | — | — |
+| 🇵🇱 Pologne (PZTS) | 486 | 7 | 5 |
 | 🇨🇭 Suisse (STT) | 255 | 223 | 136 |
 
 L'Angleterre est prête à être collectée mais sa fédération a suspendu son flux ouvert

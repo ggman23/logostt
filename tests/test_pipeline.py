@@ -888,5 +888,33 @@ class TestPologne(unittest.TestCase):
         self.assertEqual(pays["PL"]["ligues"][0]["nom"], "Silésie")
 
 
+class TestLogoConserve(unittest.TestCase):
+    """Une passe infructueuse ne doit pas faire perdre un logo déjà obtenu."""
+
+    def test_le_logo_survit_a_un_site_en_panne(self):
+        with tempfile.TemporaryDirectory() as dossier:
+            site = Path(dossier)
+            (site / "logos" / "75").mkdir(parents=True)
+            (site / "logos" / "75" / "abc.webp").write_bytes(image_png())
+            club = catalogue.Club(numero="1", nom="A", logo_fichier="logos/75/abc.webp",
+                                  logo_source="http://exemple.fr/logo.png",
+                                  logo_statut=catalogue.LOGO_RECUPERE, couleurs="#ffffff")
+            logos._echec(club, site / "logos")
+            self.assertEqual(club.logo_fichier, "logos/75/abc.webp")
+            self.assertEqual(club.logo_statut, catalogue.LOGO_RECUPERE)
+
+    def test_un_fichier_disparu_ne_reste_pas_au_catalogue(self):
+        """Sinon le site afficherait une image manquante."""
+        with tempfile.TemporaryDirectory() as dossier:
+            site = Path(dossier)
+            (site / "logos").mkdir()
+            club = catalogue.Club(numero="2", nom="B", logo_fichier="logos/75/parti.webp",
+                                  logo_statut=catalogue.LOGO_RECUPERE, couleurs="#ffffff")
+            logos._echec(club, site / "logos")
+            self.assertEqual(club.logo_fichier, "")
+            self.assertEqual(club.couleurs, "")
+            self.assertEqual(club.logo_statut, catalogue.LOGO_ABSENT)
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
