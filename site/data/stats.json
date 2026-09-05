@@ -1,8 +1,8 @@
 {
  "maj": "2026-09-05",
- "clubs": 11527,
- "logos": 4995,
- "sites": 4993,
+ "clubs": 12013,
+ "logos": 4998,
+ "sites": 4999,
  "pays": [
   {
    "code": "FR",
@@ -4500,6 +4500,287 @@
        "clubs": 6,
        "logos": 0,
        "sites": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "code": "PL",
+   "nom": "Pologne",
+   "clubs": 486,
+   "sites": 6,
+   "logos": 3,
+   "ligues": [
+    {
+     "code": "PL-POMORSKIE",
+     "nom": "Poméranie",
+     "zone": "",
+     "clubs": 33,
+     "logos": 0,
+     "sites": 0,
+     "departements": [
+      {
+       "dep": "",
+       "nom": "",
+       "clubs": 33,
+       "logos": 0,
+       "sites": 0
+      }
+     ]
+    },
+    {
+     "code": "PL-SLASKIE",
+     "nom": "Silésie",
+     "zone": "",
+     "clubs": 45,
+     "logos": 0,
+     "sites": 0,
+     "departements": [
+      {
+       "dep": "",
+       "nom": "",
+       "clubs": 45,
+       "logos": 0,
+       "sites": 0
+      }
+     ]
+    },
+    {
+     "code": "PL-DOLNOSLASKIE",
+     "nom": "Basse-Silésie",
+     "zone": "",
+     "clubs": 39,
+     "logos": 0,
+     "sites": 0,
+     "departements": [
+      {
+       "dep": "",
+       "nom": "",
+       "clubs": 39,
+       "logos": 0,
+       "sites": 0
+      }
+     ]
+    },
+    {
+     "code": "PL-PODKARPACKIE",
+     "nom": "Basses-Carpates",
+     "zone": "",
+     "clubs": 34,
+     "logos": 0,
+     "sites": 0,
+     "departements": [
+      {
+       "dep": "",
+       "nom": "",
+       "clubs": 34,
+       "logos": 0,
+       "sites": 0
+      }
+     ]
+    },
+    {
+     "code": "PL-LUBELSKIE",
+     "nom": "Lublin",
+     "zone": "",
+     "clubs": 15,
+     "logos": 0,
+     "sites": 0,
+     "departements": [
+      {
+       "dep": "",
+       "nom": "",
+       "clubs": 15,
+       "logos": 0,
+       "sites": 0
+      }
+     ]
+    },
+    {
+     "code": "PL-ZACHODNIOPOMORSKIE",
+     "nom": "Poméranie occidentale",
+     "zone": "",
+     "clubs": 26,
+     "logos": 0,
+     "sites": 0,
+     "departements": [
+      {
+       "dep": "",
+       "nom": "",
+       "clubs": 26,
+       "logos": 0,
+       "sites": 0
+      }
+     ]
+    },
+    {
+     "code": "PL-LUBUSKIE",
+     "nom": "Lubusz",
+     "zone": "",
+     "clubs": 27,
+     "logos": 0,
+     "sites": 0,
+     "departements": [
+      {
+       "dep": "",
+       "nom": "",
+       "clubs": 27,
+       "logos": 0,
+       "sites": 0
+      }
+     ]
+    },
+    {
+     "code": "PL-KUJAWSKO-POMORSKIE",
+     "nom": "Cujavie-Poméranie",
+     "zone": "",
+     "clubs": 34,
+     "logos": 0,
+     "sites": 0,
+     "departements": [
+      {
+       "dep": "",
+       "nom": "",
+       "clubs": 34,
+       "logos": 0,
+       "sites": 0
+      }
+     ]
+    },
+    {
+     "code": "PL-MALOPOLSKIE",
+     "nom": "Petite-Pologne",
+     "zone": "",
+     "clubs": 48,
+     "logos": 0,
+     "sites": 0,
+     "departements": [
+      {
+       "dep": "",
+       "nom": "",
+       "clubs": 48,
+       "logos": 0,
+       "sites": 0
+      }
+     ]
+    },
+    {
+     "code": "PL-OPOLSKIE",
+     "nom": "Opole",
+     "zone": "",
+     "clubs": 22,
+     "logos": 0,
+     "sites": 0,
+     "departements": [
+      {
+       "dep": "",
+       "nom": "",
+       "clubs": 22,
+       "logos": 0,
+       "sites": 0
+      }
+     ]
+    },
+    {
+     "code": "PL-MAZOWIECKIE",
+     "nom": "Mazovie",
+     "zone": "",
+     "clubs": 59,
+     "logos": 3,
+     "sites": 6,
+     "departements": [
+      {
+       "dep": "",
+       "nom": "",
+       "clubs": 59,
+       "logos": 3,
+       "sites": 6
+      }
+     ]
+    },
+    {
+     "code": "PL-WIELKOPOLSKIE",
+     "nom": "Grande-Pologne",
+     "zone": "",
+     "clubs": 58,
+     "logos": 0,
+     "sites": 0,
+     "departements": [
+      {
+       "dep": "",
+       "nom": "",
+       "clubs": 58,
+       "logos": 0,
+       "sites": 0
+      }
+     ]
+    },
+    {
+     "code": "PL-WARMINSKO-MAZURSKIE",
+     "nom": "Varmie-Mazurie",
+     "zone": "",
+     "clubs": 8,
+     "logos": 0,
+     "sites": 0,
+     "departements": [
+      {
+       "dep": "",
+       "nom": "",
+       "clubs": 8,
+       "logos": 0,
+       "sites": 0
+      }
+     ]
+    },
+    {
+     "code": "PL-SWIETOKRZYSKIE",
+     "nom": "Sainte-Croix",
+     "zone": "",
+     "clubs": 8,
+     "logos": 0,
+     "sites": 0,
+     "departements": [
+      {
+       "dep": "",
+       "nom": "",
+       "clubs": 8,
+       "logos": 0,
+       "sites": 0
+      }
+     ]
+    },
+    {
+     "code": "PL-LODZKIE",
+     "nom": "Łódź",
+     "zone": "",
+     "clubs": 23,
+     "logos": 0,
+     "sites": 0,
+     "departements": [
+      {
+       "dep": "",
+       "nom": "",
+       "clubs": 23,
+       "logos": 0,
+       "sites": 0
+      }
+     ]
+    },
+    {
+     "code": "PL-PODLASKIE",
+     "nom": "Podlachie",
+     "zone": "",
+     "clubs": 7,
+     "logos": 0,
+     "sites": 0,
+     "departements": [
+      {
+       "dep": "",
+       "nom": "",
+       "clubs": 7,
+       "logos": 0,
+       "sites": 0
       }
      ]
     }
