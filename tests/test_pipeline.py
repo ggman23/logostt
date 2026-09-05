@@ -848,11 +848,38 @@ class TestPologne(unittest.TestCase):
     def test_appariement_des_noms(self):
         """Les deux sources n'écrivent pas les noms pareil : accents, casse et espaces
         surnuméraires varient d'un annuaire à l'autre."""
-        self.assertEqual(pologne._comparable("UKS LUPUS Kabaty Wars zawa"),
-                         pologne._comparable("UKS Lupus Kabaty Warszawa"))
         self.assertEqual(pologne._comparable("KS BOGORIA Grodzisk Mazowiecki"),
                          pologne._comparable("KS Bogoria Grodzisk-Mazowiecki"))
+        self.assertEqual(pologne._comparable("KTS Będzin"), pologne._comparable("KTS Bedzin"))
         self.assertNotEqual(pologne._comparable("KTS Będzin"), pologne._comparable("KTS Bedzin2"))
+
+    def test_mots_distinctifs(self):
+        """Les sigles de forme juridique ne distinguent rien : presque tous les clubs
+        polonais en portent un."""
+        self.assertEqual(pologne._mots("UKS LUPUS Kabaty Wars zawa"),
+                         {"lupus", "kabaty", "wars", "zawa"})
+        self.assertEqual(pologne._mots("TG SOKÓŁ Brwinów"), {"sokol", "brwinow"})
+        self.assertEqual(pologne._mots("MKS"), set())
+
+    def test_rapprochement_mot_a_mot(self):
+        """Quand la forme compacte ne suffit pas — un nom coupé au mauvais endroit, un
+        suffixe abrégé — deux mots distinctifs en commun rattrapent le club."""
+        connus = {"UKS LUPUS Kabaty Wars zawa": "http://lupus.pl",
+                  "KS BOGORIA Grodzisk Mazowiecki": "http://bogoria.pl"}
+        index = {pologne._comparable(n): a for n, a in connus.items()}
+        par_mot = {}
+        for nom in connus:
+            for mot in pologne._mots(nom):
+                par_mot.setdefault(mot, set()).add(pologne._comparable(nom))
+        self.assertEqual(pologne._rapprocher("UKS Lupus Kabaty Warszawa", index, par_mot),
+                         "http://lupus.pl")
+        self.assertEqual(pologne._rapprocher("KS Bogoria Grodzisk Maz.", index, par_mot),
+                         "http://bogoria.pl")
+        # Un club absent de l'annuaire régional ne doit hériter d'aucune adresse.
+        self.assertEqual(pologne._rapprocher("UKS Inconnu Gdansk", index, par_mot), "")
+        # Un seul mot en commun ne suffit pas : deux clubs d'une même ville seraient
+        # confondus.
+        self.assertEqual(pologne._rapprocher("MKS Kabaty", index, par_mot), "")
 
     def test_statistiques_par_pays(self):
         clubs = [pologne.club_depuis_ligne(self.ligne(self.LIGNE))]
