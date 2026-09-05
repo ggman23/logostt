@@ -14,7 +14,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 from PIL import Image, ImageDraw  # noqa: E402
 
 from ttlogos import (  # noqa: E402
-    angleterre, belgique, carte, catalogue, clicktt, logos, referentiel, site,
+    angleterre, autriche, belgique, carte, catalogue, clicktt, logos, referentiel,
+    site,
 )
 
 
@@ -754,6 +755,49 @@ class TestBelgique(unittest.TestCase):
         pays = {p["code"]: p for p in site.statistiques(clubs)["pays"]}
         self.assertEqual(pays["BE"]["nom"], "Belgique")
         self.assertEqual(pays["BE"]["ligues"][0]["nom"], "Anvers")
+
+
+class TestAutriche(unittest.TestCase):
+    """Annuaire de l'ÖTTV : tous les clubs sur une page, une carte par club."""
+
+    @staticmethod
+    def carte():
+        chemin = Path(__file__).parent / "echantillons" / "carte_autriche.html"
+        from bs4 import BeautifulSoup
+        return BeautifulSoup(chemin.read_text(encoding="utf-8"), "html.parser").select_one("div.card")
+
+    def test_fiche_de_club(self):
+        club = autriche.club_depuis_carte(self.carte())
+        self.assertEqual((club.pays, club.numero), ("AT", "AT247"))
+        self.assertEqual(club.nom, "USC Abersee")
+        self.assertEqual(club.ligue_code, "AT-STTV")
+        self.assertEqual(club.ligue_nom, "Salzburger Tischtennisverband")
+        self.assertEqual(club.site_web, "https://usc-abersee.com")
+        # L'adresse retenue est celle de la salle, pas celle du correspondant : les deux
+        # figurent sur la carte et portent chacune un code postal à quatre chiffres.
+        self.assertEqual((club.code_postal, club.ville), ("5340", "St. Gilgen"))
+        self.assertEqual(club.salle, "SHS Turnhalle St. Gilgen")
+        self.assertEqual((club.dep, club.dep_nom), ("AT53", "PLZ 53"))
+        # Les coordonnées sont dans le lien vers la carte.
+        self.assertEqual((club.latitude, club.longitude), ("47.764969", "13.365843"))
+
+    def test_les_coordonnees_du_correspondant_ne_sont_pas_enregistrees(self):
+        """Chaque carte affiche le nom, le téléphone et le courriel d'un correspondant."""
+        club = autriche.club_depuis_carte(self.carte())
+        enregistre = " ".join(str(valeur) for valeur in vars(club).values())
+        for personnel in ("Markus", "Preiner", "06642110441", "gmx.at", "Stockach"):
+            self.assertNotIn(personnel, enregistre, personnel)
+
+    def test_le_numero_de_registre_ne_passe_pas_pour_un_code_postal(self):
+        """« ZVR-Zahl: 161240142 » contient des suites de quatre chiffres."""
+        club = autriche.club_depuis_carte(self.carte())
+        self.assertNotIn(club.code_postal, ("1612", "4014"))
+
+    def test_statistiques_par_pays(self):
+        clubs = [autriche.club_depuis_carte(self.carte())]
+        pays = {p["code"]: p for p in site.statistiques(clubs)["pays"]}
+        self.assertEqual(pays["AT"]["nom"], "Autriche")
+        self.assertEqual(pays["AT"]["ligues"][0]["departements"][0]["dep"], "AT53")
 
 
 if __name__ == "__main__":
