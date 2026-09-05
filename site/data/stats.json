@@ -1,8 +1,8 @@
 {
- "maj": "2026-09-04",
- "clubs": 11002,
- "logos": 4849,
- "sites": 4719,
+ "maj": "2026-09-05",
+ "clubs": 11572,
+ "logos": 5005,
+ "sites": 5013,
  "pays": [
   {
    "code": "FR",
@@ -3785,6 +3785,738 @@
        "clubs": 5,
        "logos": 0,
        "sites": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "code": "AT",
+   "nom": "Autriche",
+   "clubs": 570,
+   "sites": 294,
+   "logos": 156,
+   "ligues": [
+    {
+     "code": "",
+     "nom": "",
+     "zone": "",
+     "clubs": 45,
+     "logos": 3,
+     "sites": 20,
+     "departements": [
+      {
+       "dep": "",
+       "nom": "",
+       "clubs": 45,
+       "logos": 3,
+       "sites": 20
+      }
+     ]
+    },
+    {
+     "code": "AT-OOTTV",
+     "nom": "Oberösterreichischer Tischtennisverband",
+     "zone": "",
+     "clubs": 176,
+     "logos": 46,
+     "sites": 78,
+     "departements": [
+      {
+       "dep": "",
+       "nom": "",
+       "clubs": 4,
+       "logos": 1,
+       "sites": 1
+      },
+      {
+       "dep": "AT33",
+       "nom": "PLZ 33",
+       "clubs": 1,
+       "logos": 0,
+       "sites": 0
+      },
+      {
+       "dep": "AT40",
+       "nom": "PLZ 40",
+       "clubs": 33,
+       "logos": 8,
+       "sites": 9
+      },
+      {
+       "dep": "AT41",
+       "nom": "PLZ 41",
+       "clubs": 7,
+       "logos": 0,
+       "sites": 2
+      },
+      {
+       "dep": "AT42",
+       "nom": "PLZ 42",
+       "clubs": 24,
+       "logos": 9,
+       "sites": 15
+      },
+      {
+       "dep": "AT43",
+       "nom": "PLZ 43",
+       "clubs": 14,
+       "logos": 6,
+       "sites": 10
+      },
+      {
+       "dep": "AT44",
+       "nom": "PLZ 44",
+       "clubs": 11,
+       "logos": 5,
+       "sites": 8
+      },
+      {
+       "dep": "AT45",
+       "nom": "PLZ 45",
+       "clubs": 16,
+       "logos": 1,
+       "sites": 4
+      },
+      {
+       "dep": "AT46",
+       "nom": "PLZ 46",
+       "clubs": 19,
+       "logos": 5,
+       "sites": 8
+      },
+      {
+       "dep": "AT47",
+       "nom": "PLZ 47",
+       "clubs": 8,
+       "logos": 3,
+       "sites": 5
+      },
+      {
+       "dep": "AT48",
+       "nom": "PLZ 48",
+       "clubs": 22,
+       "logos": 5,
+       "sites": 9
+      },
+      {
+       "dep": "AT49",
+       "nom": "PLZ 49",
+       "clubs": 8,
+       "logos": 1,
+       "sites": 2
+      },
+      {
+       "dep": "AT51",
+       "nom": "PLZ 51",
+       "clubs": 3,
+       "logos": 1,
+       "sites": 2
+      },
+      {
+       "dep": "AT52",
+       "nom": "PLZ 52",
+       "clubs": 5,
+       "logos": 1,
+       "sites": 2
+      },
+      {
+       "dep": "AT53",
+       "nom": "PLZ 53",
+       "clubs": 1,
+       "logos": 0,
+       "sites": 1
+      }
+     ]
+    },
+    {
+     "code": "AT-BTTV",
+     "nom": "Burgenländischer Tischtennis Verband",
+     "zone": "",
+     "clubs": 18,
+     "logos": 5,
+     "sites": 14,
+     "departements": [
+      {
+       "dep": "",
+       "nom": "",
+       "clubs": 2,
+       "logos": 2,
+       "sites": 2
+      },
+      {
+       "dep": "AT28",
+       "nom": "PLZ 28",
+       "clubs": 1,
+       "logos": 0,
+       "sites": 0
+      },
+      {
+       "dep": "AT70",
+       "nom": "PLZ 70",
+       "clubs": 5,
+       "logos": 1,
+       "sites": 4
+      },
+      {
+       "dep": "AT71",
+       "nom": "PLZ 71",
+       "clubs": 3,
+       "logos": 0,
+       "sites": 2
+      },
+      {
+       "dep": "AT72",
+       "nom": "PLZ 72",
+       "clubs": 3,
+       "logos": 0,
+       "sites": 3
+      },
+      {
+       "dep": "AT73",
+       "nom": "PLZ 73",
+       "clubs": 1,
+       "logos": 1,
+       "sites": 1
+      },
+      {
+       "dep": "AT74",
+       "nom": "PLZ 74",
+       "clubs": 3,
+       "logos": 1,
+       "sites": 2
+      }
+     ]
+    },
+    {
+     "code": "AT-TTTV",
+     "nom": "Tiroler Tischtennis-Verband",
+     "zone": "",
+     "clubs": 38,
+     "logos": 8,
+     "sites": 22,
+     "departements": [
+      {
+       "dep": "",
+       "nom": "",
+       "clubs": 2,
+       "logos": 1,
+       "sites": 1
+      },
+      {
+       "dep": "AT18",
+       "nom": "PLZ 18",
+       "clubs": 1,
+       "logos": 1,
+       "sites": 1
+      },
+      {
+       "dep": "AT60",
+       "nom": "PLZ 60",
+       "clubs": 8,
+       "logos": 3,
+       "sites": 5
+      },
+      {
+       "dep": "AT61",
+       "nom": "PLZ 61",
+       "clubs": 7,
+       "logos": 2,
+       "sites": 5
+      },
+      {
+       "dep": "AT62",
+       "nom": "PLZ 62",
+       "clubs": 2,
+       "logos": 0,
+       "sites": 1
+      },
+      {
+       "dep": "AT63",
+       "nom": "PLZ 63",
+       "clubs": 8,
+       "logos": 0,
+       "sites": 3
+      },
+      {
+       "dep": "AT64",
+       "nom": "PLZ 64",
+       "clubs": 6,
+       "logos": 1,
+       "sites": 4
+      },
+      {
+       "dep": "AT65",
+       "nom": "PLZ 65",
+       "clubs": 2,
+       "logos": 0,
+       "sites": 1
+      },
+      {
+       "dep": "AT66",
+       "nom": "PLZ 66",
+       "clubs": 2,
+       "logos": 0,
+       "sites": 1
+      }
+     ]
+    },
+    {
+     "code": "AT-WTTV",
+     "nom": "Wiener Tischtennis-Verband",
+     "zone": "",
+     "clubs": 43,
+     "logos": 13,
+     "sites": 25,
+     "departements": [
+      {
+       "dep": "",
+       "nom": "",
+       "clubs": 2,
+       "logos": 0,
+       "sites": 0
+      },
+      {
+       "dep": "AT10",
+       "nom": "PLZ 10",
+       "clubs": 8,
+       "logos": 2,
+       "sites": 4
+      },
+      {
+       "dep": "AT11",
+       "nom": "PLZ 11",
+       "clubs": 13,
+       "logos": 4,
+       "sites": 8
+      },
+      {
+       "dep": "AT12",
+       "nom": "PLZ 12",
+       "clubs": 18,
+       "logos": 6,
+       "sites": 11
+      },
+      {
+       "dep": "AT21",
+       "nom": "PLZ 21",
+       "clubs": 2,
+       "logos": 1,
+       "sites": 2
+      }
+     ]
+    },
+    {
+     "code": "AT-NOTTV",
+     "nom": "Niederösterreichischer Tischtennisverband",
+     "zone": "",
+     "clubs": 107,
+     "logos": 34,
+     "sites": 55,
+     "departements": [
+      {
+       "dep": "",
+       "nom": "",
+       "clubs": 1,
+       "logos": 1,
+       "sites": 1
+      },
+      {
+       "dep": "AT20",
+       "nom": "PLZ 20",
+       "clubs": 3,
+       "logos": 2,
+       "sites": 3
+      },
+      {
+       "dep": "AT21",
+       "nom": "PLZ 21",
+       "clubs": 7,
+       "logos": 0,
+       "sites": 2
+      },
+      {
+       "dep": "AT22",
+       "nom": "PLZ 22",
+       "clubs": 12,
+       "logos": 3,
+       "sites": 6
+      },
+      {
+       "dep": "AT23",
+       "nom": "PLZ 23",
+       "clubs": 9,
+       "logos": 3,
+       "sites": 6
+      },
+      {
+       "dep": "AT24",
+       "nom": "PLZ 24",
+       "clubs": 4,
+       "logos": 1,
+       "sites": 1
+      },
+      {
+       "dep": "AT25",
+       "nom": "PLZ 25",
+       "clubs": 8,
+       "logos": 5,
+       "sites": 6
+      },
+      {
+       "dep": "AT26",
+       "nom": "PLZ 26",
+       "clubs": 2,
+       "logos": 0,
+       "sites": 0
+      },
+      {
+       "dep": "AT27",
+       "nom": "PLZ 27",
+       "clubs": 2,
+       "logos": 2,
+       "sites": 2
+      },
+      {
+       "dep": "AT28",
+       "nom": "PLZ 28",
+       "clubs": 2,
+       "logos": 0,
+       "sites": 0
+      },
+      {
+       "dep": "AT30",
+       "nom": "PLZ 30",
+       "clubs": 3,
+       "logos": 1,
+       "sites": 1
+      },
+      {
+       "dep": "AT31",
+       "nom": "PLZ 31",
+       "clubs": 9,
+       "logos": 1,
+       "sites": 4
+      },
+      {
+       "dep": "AT32",
+       "nom": "PLZ 32",
+       "clubs": 7,
+       "logos": 2,
+       "sites": 3
+      },
+      {
+       "dep": "AT33",
+       "nom": "PLZ 33",
+       "clubs": 16,
+       "logos": 4,
+       "sites": 6
+      },
+      {
+       "dep": "AT34",
+       "nom": "PLZ 34",
+       "clubs": 8,
+       "logos": 3,
+       "sites": 7
+      },
+      {
+       "dep": "AT35",
+       "nom": "PLZ 35",
+       "clubs": 2,
+       "logos": 0,
+       "sites": 1
+      },
+      {
+       "dep": "AT36",
+       "nom": "PLZ 36",
+       "clubs": 3,
+       "logos": 1,
+       "sites": 1
+      },
+      {
+       "dep": "AT37",
+       "nom": "PLZ 37",
+       "clubs": 3,
+       "logos": 2,
+       "sites": 2
+      },
+      {
+       "dep": "AT38",
+       "nom": "PLZ 38",
+       "clubs": 1,
+       "logos": 1,
+       "sites": 1
+      },
+      {
+       "dep": "AT39",
+       "nom": "PLZ 39",
+       "clubs": 5,
+       "logos": 2,
+       "sites": 2
+      }
+     ]
+    },
+    {
+     "code": "AT-KTTV",
+     "nom": "Kärntner Tischtennisverband",
+     "zone": "",
+     "clubs": 39,
+     "logos": 8,
+     "sites": 12,
+     "departements": [
+      {
+       "dep": "AT18",
+       "nom": "PLZ 18",
+       "clubs": 1,
+       "logos": 1,
+       "sites": 1
+      },
+      {
+       "dep": "AT90",
+       "nom": "PLZ 90",
+       "clubs": 12,
+       "logos": 3,
+       "sites": 4
+      },
+      {
+       "dep": "AT91",
+       "nom": "PLZ 91",
+       "clubs": 8,
+       "logos": 2,
+       "sites": 2
+      },
+      {
+       "dep": "AT92",
+       "nom": "PLZ 92",
+       "clubs": 1,
+       "logos": 0,
+       "sites": 1
+      },
+      {
+       "dep": "AT93",
+       "nom": "PLZ 93",
+       "clubs": 2,
+       "logos": 0,
+       "sites": 0
+      },
+      {
+       "dep": "AT94",
+       "nom": "PLZ 94",
+       "clubs": 3,
+       "logos": 0,
+       "sites": 0
+      },
+      {
+       "dep": "AT95",
+       "nom": "PLZ 95",
+       "clubs": 8,
+       "logos": 2,
+       "sites": 3
+      },
+      {
+       "dep": "AT96",
+       "nom": "PLZ 96",
+       "clubs": 1,
+       "logos": 0,
+       "sites": 0
+      },
+      {
+       "dep": "AT97",
+       "nom": "PLZ 97",
+       "clubs": 1,
+       "logos": 0,
+       "sites": 0
+      },
+      {
+       "dep": "AT98",
+       "nom": "PLZ 98",
+       "clubs": 2,
+       "logos": 0,
+       "sites": 1
+      }
+     ]
+    },
+    {
+     "code": "AT-STTV",
+     "nom": "Salzburger Tischtennisverband",
+     "zone": "",
+     "clubs": 27,
+     "logos": 6,
+     "sites": 12,
+     "departements": [
+      {
+       "dep": "AT50",
+       "nom": "PLZ 50",
+       "clubs": 7,
+       "logos": 1,
+       "sites": 3
+      },
+      {
+       "dep": "AT51",
+       "nom": "PLZ 51",
+       "clubs": 4,
+       "logos": 1,
+       "sites": 1
+      },
+      {
+       "dep": "AT52",
+       "nom": "PLZ 52",
+       "clubs": 2,
+       "logos": 1,
+       "sites": 2
+      },
+      {
+       "dep": "AT53",
+       "nom": "PLZ 53",
+       "clubs": 3,
+       "logos": 1,
+       "sites": 1
+      },
+      {
+       "dep": "AT54",
+       "nom": "PLZ 54",
+       "clubs": 3,
+       "logos": 0,
+       "sites": 0
+      },
+      {
+       "dep": "AT55",
+       "nom": "PLZ 55",
+       "clubs": 3,
+       "logos": 0,
+       "sites": 2
+      },
+      {
+       "dep": "AT56",
+       "nom": "PLZ 56",
+       "clubs": 3,
+       "logos": 2,
+       "sites": 2
+      },
+      {
+       "dep": "AT57",
+       "nom": "PLZ 57",
+       "clubs": 1,
+       "logos": 0,
+       "sites": 0
+      },
+      {
+       "dep": "AT89",
+       "nom": "PLZ 89",
+       "clubs": 1,
+       "logos": 0,
+       "sites": 1
+      }
+     ]
+    },
+    {
+     "code": "AT-VTTV",
+     "nom": "Vorarlberger Tischtennisverband",
+     "zone": "",
+     "clubs": 17,
+     "logos": 12,
+     "sites": 17,
+     "departements": [
+      {
+       "dep": "AT67",
+       "nom": "PLZ 67",
+       "clubs": 1,
+       "logos": 1,
+       "sites": 1
+      },
+      {
+       "dep": "AT68",
+       "nom": "PLZ 68",
+       "clubs": 9,
+       "logos": 5,
+       "sites": 9
+      },
+      {
+       "dep": "AT69",
+       "nom": "PLZ 69",
+       "clubs": 7,
+       "logos": 6,
+       "sites": 7
+      }
+     ]
+    },
+    {
+     "code": "AT-STTTV",
+     "nom": "Steirischer Tischtennisverband",
+     "zone": "",
+     "clubs": 60,
+     "logos": 21,
+     "sites": 39,
+     "departements": [
+      {
+       "dep": "AT80",
+       "nom": "PLZ 80",
+       "clubs": 13,
+       "logos": 7,
+       "sites": 11
+      },
+      {
+       "dep": "AT81",
+       "nom": "PLZ 81",
+       "clubs": 6,
+       "logos": 2,
+       "sites": 4
+      },
+      {
+       "dep": "AT82",
+       "nom": "PLZ 82",
+       "clubs": 3,
+       "logos": 1,
+       "sites": 1
+      },
+      {
+       "dep": "AT83",
+       "nom": "PLZ 83",
+       "clubs": 2,
+       "logos": 2,
+       "sites": 2
+      },
+      {
+       "dep": "AT84",
+       "nom": "PLZ 84",
+       "clubs": 1,
+       "logos": 0,
+       "sites": 0
+      },
+      {
+       "dep": "AT85",
+       "nom": "PLZ 85",
+       "clubs": 7,
+       "logos": 2,
+       "sites": 5
+      },
+      {
+       "dep": "AT86",
+       "nom": "PLZ 86",
+       "clubs": 8,
+       "logos": 3,
+       "sites": 6
+      },
+      {
+       "dep": "AT87",
+       "nom": "PLZ 87",
+       "clubs": 11,
+       "logos": 4,
+       "sites": 6
+      },
+      {
+       "dep": "AT88",
+       "nom": "PLZ 88",
+       "clubs": 3,
+       "logos": 0,
+       "sites": 1
+      },
+      {
+       "dep": "AT89",
+       "nom": "PLZ 89",
+       "clubs": 6,
+       "logos": 0,
+       "sites": 3
       }
      ]
     }
