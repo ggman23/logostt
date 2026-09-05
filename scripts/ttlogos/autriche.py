@@ -67,8 +67,12 @@ def _site(carte: Tag) -> str:
     for lien in carte.find_all("a", href=True):
         adresse = lien["href"].strip()
         if adresse.startswith(("http://", "https://")) and not NON_CLUB.search(adresse):
-            # Certaines fiches écrivent « http://Www.exemple.at » : l'hôte est insensible
-            # à la casse, mais une adresse propre évite des doublons dans le catalogue.
+            # Quelques fiches empilent deux protocoles (« https://http://exemple.at ») :
+            # seul le dernier compte.
+            dernier = max(adresse.rfind("http://"), adresse.rfind("https://"))
+            adresse = adresse[dernier:]
+            # Et certaines écrivent « http://Www.exemple.at » : l'hôte est insensible à la
+            # casse, mais une adresse propre évite les doublons dans le catalogue.
             protocole, reste = adresse.split("://", 1)
             hote, _, chemin = reste.partition("/")
             return f"{protocole}://{hote.lower()}" + (f"/{chemin}" if chemin else "")
@@ -85,7 +89,16 @@ def _coordonnees(carte: Tag) -> tuple[str, str]:
 
 
 def club_depuis_carte(carte: Tag) -> Club | None:
-    """Construit un club à partir d'une carte de l'annuaire."""
+    """Construit un club à partir d'une carte de l'annuaire.
+
+    L'annuaire mêle les clubs et les « Spielgemeinschaften », ententes entre deux clubs
+    pour aligner une équipe commune. Celles-ci n'ont ni fédération régionale, ni salle,
+    ni logo propre — leur nom est celui de leurs deux clubs séparés par une barre : on
+    ne les retient pas.
+    """
+    genre = carte.select_one("div.card-topic")
+    if genre is not None and genre.get_text(strip=True) != "Verein":
+        return None
     titre = carte.select_one("h3.card-title")
     if titre is None:
         return None

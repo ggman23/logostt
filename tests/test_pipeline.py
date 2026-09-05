@@ -793,6 +793,25 @@ class TestAutriche(unittest.TestCase):
         club = autriche.club_depuis_carte(self.carte())
         self.assertNotIn(club.code_postal, ("1612", "4014"))
 
+    def test_les_ententes_ne_sont_pas_des_clubs(self):
+        """L'annuaire mêle les clubs et les « Spielgemeinschaften », ententes entre deux
+        clubs : celles-ci n'ont ni fédération régionale, ni salle, ni logo propre."""
+        from bs4 import BeautifulSoup
+        entente = ('<div class="card"><div class="card-topic"><span>Spielgemeinschaft</span></div>'
+                   '<div class="header"><h3 class="card-title"><b>A. Bad Goisern/A. Bad Ischl</b>'
+                   '</h3></div></div>')
+        carte = BeautifulSoup(entente, "html.parser").select_one("div.card")
+        self.assertIsNone(autriche.club_depuis_carte(carte))
+
+    def test_adresse_a_double_protocole(self):
+        """Quelques fiches empilent deux protocoles : « https://http://exemple.at »."""
+        from bs4 import BeautifulSoup
+        brut = ('<div class="card"><div class="card-topic"><span>Verein</span></div>'
+                '<div class="header"><h3 class="card-title"><b>SCO Bodensdorf</b></h3></div>'
+                '<a href="https://http://SCO-bodensdorf.at/">site</a></div>')
+        carte = BeautifulSoup(brut, "html.parser").select_one("div.card")
+        self.assertEqual(autriche.club_depuis_carte(carte).site_web, "http://sco-bodensdorf.at")
+
     def test_statistiques_par_pays(self):
         clubs = [autriche.club_depuis_carte(self.carte())]
         pays = {p["code"]: p for p in site.statistiques(clubs)["pays"]}
