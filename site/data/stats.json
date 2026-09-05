@@ -1,8 +1,8 @@
 {
  "maj": "2026-09-05",
- "clubs": 12013,
- "logos": 5019,
- "sites": 5000,
+ "clubs": 12116,
+ "logos": 5033,
+ "sites": 5021,
  "pays": [
   {
    "code": "FR",
@@ -4781,6 +4781,158 @@
        "clubs": 7,
        "logos": 0,
        "sites": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "code": "HR",
+   "nom": "Croatie",
+   "clubs": 103,
+   "sites": 21,
+   "logos": 14,
+   "ligues": [
+    {
+     "code": "HR-HSTS",
+     "nom": "Hrvatski stolnoteniski savez",
+     "zone": "",
+     "clubs": 103,
+     "logos": 14,
+     "sites": 21,
+     "departements": [
+      {
+       "dep": "HR10",
+       "nom": "HR 10",
+       "clubs": 16,
+       "logos": 6,
+       "sites": 8
+      },
+      {
+       "dep": "HR20",
+       "nom": "HR 20",
+       "clubs": 4,
+       "logos": 1,
+       "sites": 1
+      },
+      {
+       "dep": "HR21",
+       "nom": "HR 21",
+       "clubs": 9,
+       "logos": 1,
+       "sites": 2
+      },
+      {
+       "dep": "HR22",
+       "nom": "HR 22",
+       "clubs": 2,
+       "logos": 0,
+       "sites": 0
+      },
+      {
+       "dep": "HR23",
+       "nom": "HR 23",
+       "clubs": 6,
+       "logos": 1,
+       "sites": 1
+      },
+      {
+       "dep": "HR31",
+       "nom": "HR 31",
+       "clubs": 6,
+       "logos": 1,
+       "sites": 1
+      },
+      {
+       "dep": "HR32",
+       "nom": "HR 32",
+       "clubs": 4,
+       "logos": 1,
+       "sites": 1
+      },
+      {
+       "dep": "HR33",
+       "nom": "HR 33",
+       "clubs": 3,
+       "logos": 0,
+       "sites": 0
+      },
+      {
+       "dep": "HR34",
+       "nom": "HR 34",
+       "clubs": 2,
+       "logos": 0,
+       "sites": 0
+      },
+      {
+       "dep": "HR35",
+       "nom": "HR 35",
+       "clubs": 6,
+       "logos": 0,
+       "sites": 0
+      },
+      {
+       "dep": "HR40",
+       "nom": "HR 40",
+       "clubs": 6,
+       "logos": 0,
+       "sites": 0
+      },
+      {
+       "dep": "HR42",
+       "nom": "HR 42",
+       "clubs": 6,
+       "logos": 0,
+       "sites": 0
+      },
+      {
+       "dep": "HR43",
+       "nom": "HR 43",
+       "clubs": 4,
+       "logos": 0,
+       "sites": 0
+      },
+      {
+       "dep": "HR44",
+       "nom": "HR 44",
+       "clubs": 5,
+       "logos": 0,
+       "sites": 0
+      },
+      {
+       "dep": "HR47",
+       "nom": "HR 47",
+       "clubs": 3,
+       "logos": 1,
+       "sites": 2
+      },
+      {
+       "dep": "HR48",
+       "nom": "HR 48",
+       "clubs": 3,
+       "logos": 1,
+       "sites": 1
+      },
+      {
+       "dep": "HR49",
+       "nom": "HR 49",
+       "clubs": 4,
+       "logos": 1,
+       "sites": 1
+      },
+      {
+       "dep": "HR51",
+       "nom": "HR 51",
+       "clubs": 7,
+       "logos": 0,
+       "sites": 1
+      },
+      {
+       "dep": "HR52",
+       "nom": "HR 52",
+       "clubs": 7,
+       "logos": 0,
+       "sites": 2
       }
      ]
     }
