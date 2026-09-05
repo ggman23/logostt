@@ -7,14 +7,16 @@ aller voir les bonnes idées sur les sites des clubs qui vous plaisent.
 
 | Pays | Clubs | Avec un site | Avec un logo |
 | --- | ---: | ---: | ---: |
-| 🇫🇷 France (FFTT) | 3 064 | 1 220 | 880 |
 | 🇩🇪 Allemagne (DTTB) | 7 167 | 3 163 | 3 771 |
+| 🇫🇷 France (FFTT) | 3 064 | 1 220 | 880 |
+| 🇦🇹 Autriche (ÖTTV) | 525 | 274 | 146 |
 | 🇧🇪 Belgique (FRBTT) | 516 | 113 | 81 |
+| 🇵🇱 Pologne (PZTS) | 486 | — | — |
 | 🇨🇭 Suisse (STT) | 255 | 223 | 136 |
-| **Total** | **11 002** | **4 719** | **4 868** |
 
 L'Angleterre est prête à être collectée mais sa fédération a suspendu son flux ouvert
-(voir plus bas).
+(voir plus bas). Trois autres pays ont été cherchés sans succès : la section
+« Fédérations sans annuaire public » explique pourquoi.
 
 Le dépôt contient deux choses :
 
@@ -24,7 +26,7 @@ Le dépôt contient deux choses :
 
 ## Ce que fait le site
 
-- filtres **ligue → département**, recherche par club ou par ville ;
+- filtres **pays → ligue → département**, recherche par club ou par ville ;
 - filtre **par couleur dominante** du logo (extraite automatiquement) et par état
   (« avec logo », « sans logo ») ;
 - **favoris** enregistrés dans le navigateur : mettez une étoile sur les logos qui vous
@@ -122,6 +124,53 @@ chaque jour : elle aboutira d'elle-même le jour où la fédération rallumera s
 ```bash
 python3 scripts/collecte_clubs.py --source angleterre
 ```
+
+### Autriche — ÖTTV
+
+| Page | Ce qu'on y prend |
+| --- | --- |
+| `oettv.org/organisation/vereine` | tous les clubs d'un coup : nom, sigle, Landesverband, salle, coordonnées géographiques et, pour la moitié, **l'adresse du site** |
+
+C'est l'annuaire le plus économe du lot : une seule requête pour tout le pays.
+
+Deux pièges y sont désamorcés. La page mêle les clubs et les « Spielgemeinschaften »,
+ententes entre deux clubs pour aligner une équipe commune, qui n'ont ni salle ni logo
+propre : chaque carte annonce son genre, seuls les clubs sont retenus. Et chaque carte
+affiche, à côté de l'adresse de la salle, celle d'un correspondant et un numéro de
+registre à neuf chiffres : l'adresse n'est donc cherchée que dans le bloc « Halle ».
+
+```bash
+python3 scripts/collecte_clubs.py --source autriche
+```
+
+### Pologne — PZTS
+
+| Page | Ce qu'on y prend |
+| --- | --- |
+| `rozgrywki.pzts.pl/…/club_licenses` | tous les clubs licenciés : numéro, nom et voïvodie — **sans adresse de site** |
+| `mzts.pl/kluby-czlonkowskie` | les sites des clubs de Mazovie, seule association régionale à les publier |
+
+La fédération ne collecte pas les adresses de site de ses clubs. Sur les seize
+associations régionales, une seule les publie ; les deux sources n'écrivant pas les
+noms de la même façon, les clubs sont rapprochés sur leurs mots distinctifs, sigles de
+forme juridique retirés.
+
+**Limite connue** : les clubs des quinze autres voïvodies figurent au catalogue avec
+leur nom et leur région, mais sans site ni logo.
+
+```bash
+python3 scripts/collecte_clubs.py --source pologne
+```
+
+### Fédérations sans annuaire public
+
+Trois pays ont été cherchés sérieusement et abandonnés, faute de source :
+
+| Pays | Ce qui bloque |
+| --- | --- |
+| 🇨🇿 Tchéquie | le système fédéral (STIS) répond `202` à un robot et sa page porte `<meta name="robots" content="none,noindex,nofollow">` : la fédération demande explicitement qu'on ne la parcoure pas. Son registre séparé exige une connexion. |
+| 🇳🇱 Pays-Bas | le moteur « zoek een club » est en JavaScript et n'expose aucune donnée ; les sept divisions régionales n'ont que des rubriques d'actualité, pas d'annuaire. |
+| 🇪🇸 Espagne | la fédération nationale ne gère pas les clubs — ce sont les dix-sept fédérations autonomes. Elle ne publie que la liste de ces fédérations, et son espace clubs est derrière une connexion. |
 
 ### Sources de secours
 
