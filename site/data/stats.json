@@ -1,8 +1,8 @@
 {
  "maj": "2026-09-05",
- "clubs": 12948,
- "logos": 5056,
- "sites": 5064,
+ "clubs": 12991,
+ "logos": 5099,
+ "sites": 5092,
  "pays": [
   {
    "code": "FR",
@@ -4959,6 +4959,32 @@
        "clubs": 832,
        "logos": 24,
        "sites": 43
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "code": "FI",
+   "nom": "Finlande",
+   "clubs": 43,
+   "sites": 28,
+   "logos": 43,
+   "ligues": [
+    {
+     "code": "FI-SPTL",
+     "nom": "Suomen Pöytätennisliitto",
+     "zone": "",
+     "clubs": 43,
+     "logos": 43,
+     "sites": 28,
+     "departements": [
+      {
+       "dep": "",
+       "nom": "",
+       "clubs": 43,
+       "logos": 43,
+       "sites": 28
       }
      ]
     }
