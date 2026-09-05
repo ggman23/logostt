@@ -1,8 +1,8 @@
 {
  "maj": "2026-09-05",
- "clubs": 11572,
- "logos": 5005,
- "sites": 5013,
+ "clubs": 11527,
+ "logos": 4995,
+ "sites": 4993,
  "pays": [
   {
    "code": "FR",
@@ -3793,33 +3793,16 @@
   {
    "code": "AT",
    "nom": "Autriche",
-   "clubs": 570,
-   "sites": 294,
-   "logos": 156,
+   "clubs": 525,
+   "sites": 274,
+   "logos": 146,
    "ligues": [
-    {
-     "code": "",
-     "nom": "",
-     "zone": "",
-     "clubs": 45,
-     "logos": 3,
-     "sites": 20,
-     "departements": [
-      {
-       "dep": "",
-       "nom": "",
-       "clubs": 45,
-       "logos": 3,
-       "sites": 20
-      }
-     ]
-    },
     {
      "code": "AT-OOTTV",
      "nom": "Oberösterreichischer Tischtennisverband",
      "zone": "",
      "clubs": 176,
-     "logos": 46,
+     "logos": 44,
      "sites": 78,
      "departements": [
       {
@@ -3840,7 +3823,7 @@
        "dep": "AT40",
        "nom": "PLZ 40",
        "clubs": 33,
-       "logos": 8,
+       "logos": 7,
        "sites": 9
       },
       {
@@ -3910,7 +3893,7 @@
        "dep": "AT51",
        "nom": "PLZ 51",
        "clubs": 3,
-       "logos": 1,
+       "logos": 0,
        "sites": 2
       },
       {
@@ -4066,7 +4049,7 @@
      "nom": "Wiener Tischtennis-Verband",
      "zone": "",
      "clubs": 43,
-     "logos": 13,
+     "logos": 12,
      "sites": 25,
      "departements": [
       {
@@ -4087,7 +4070,7 @@
        "dep": "AT11",
        "nom": "PLZ 11",
        "clubs": 13,
-       "logos": 4,
+       "logos": 3,
        "sites": 8
       },
       {
@@ -4111,7 +4094,7 @@
      "nom": "Niederösterreichischer Tischtennisverband",
      "zone": "",
      "clubs": 107,
-     "logos": 34,
+     "logos": 33,
      "sites": 55,
      "departements": [
       {
@@ -4160,7 +4143,7 @@
        "dep": "AT25",
        "nom": "PLZ 25",
        "clubs": 8,
-       "logos": 5,
+       "logos": 4,
        "sites": 6
       },
       {
@@ -4341,7 +4324,7 @@
      "nom": "Salzburger Tischtennisverband",
      "zone": "",
      "clubs": 27,
-     "logos": 6,
+     "logos": 5,
      "sites": 12,
      "departements": [
       {
@@ -4355,7 +4338,7 @@
        "dep": "AT51",
        "nom": "PLZ 51",
        "clubs": 4,
-       "logos": 1,
+       "logos": 0,
        "sites": 1
       },
       {
@@ -4445,7 +4428,7 @@
      "nom": "Steirischer Tischtennisverband",
      "zone": "",
      "clubs": 60,
-     "logos": 21,
+     "logos": 19,
      "sites": 39,
      "departements": [
       {
@@ -4473,7 +4456,7 @@
        "dep": "AT83",
        "nom": "PLZ 83",
        "clubs": 2,
-       "logos": 2,
+       "logos": 1,
        "sites": 2
       },
       {
@@ -4501,7 +4484,7 @@
        "dep": "AT87",
        "nom": "PLZ 87",
        "clubs": 11,
-       "logos": 4,
+       "logos": 3,
        "sites": 6
       },
       {
