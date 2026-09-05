@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Dernière piste pour les sites des clubs flamands (VTTL).
+"""Repère les annuaires de clubs de cinq fédérations : Tchéquie, Pays-Bas, Espagne,
+Pologne, Autriche.
 
-Le moteur de l'AFTT ne connaît que l'aile francophone : 150 clubs flamands restent
-sans adresse de site. La VTTL publie-t-elle la sienne quelque part ?
+Pour chaque adresse : le code de retour, la forme de la réponse, et ce qui ressemble à
+une liste de clubs (tableau, liens, formulaire de recherche, données JSON).
 """
 
 from __future__ import annotations
@@ -19,8 +20,10 @@ from bs4 import BeautifulSoup  # noqa: E402
 
 NAVIGATEUR = ("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) "
               "Chrome/124.0.0.0 Safari/537.36")
-# Trois clubs flamands réels, pour tester les adresses qui prennent un index.
-EXEMPLES = ("A003", "OVL013", "WVL021")
+
+# Domaines qui décorent toutes les pages : ils ne sont jamais le site d'un club.
+DECOR = re.compile(r"facebook|instagram|youtube|twitter|x\.com|linkedin|tiktok|google|"
+                   r"w3\.org|wordpress|jquery|bootstrap|gstatic|cloudflare|ittf|ettu", re.I)
 
 
 def titre(texte: str) -> None:
@@ -28,11 +31,10 @@ def titre(texte: str) -> None:
     print(f"### {texte}")
 
 
-def examiner(session, url: str, methode: str = "get", donnees: dict | None = None) -> None:
-    print(f"  — {methode.upper()} {url}" + (f" {donnees}" if donnees else ""))
+def examiner(session, url: str, motif_club: str = r"club|klub|vereniging|verein|oddil|oddíl") -> None:
+    print(f"  — {url}")
     try:
-        reponse = (session.post(url, data=donnees, timeout=45) if methode == "post"
-                   else session.get(url, timeout=45))
+        reponse = session.get(url, timeout=45)
     except Exception as erreur:  # noqa: BLE001
         print(f"    exception {type(erreur).__name__}: {erreur}")
         return
@@ -43,61 +45,92 @@ def examiner(session, url: str, methode: str = "get", donnees: dict | None = Non
     texte = reponse.text
     if texte.lstrip().startswith(("{", "[")):
         try:
-            print("    JSON :", json.dumps(json.loads(texte), ensure_ascii=False)[:600])
+            print("    JSON :", json.dumps(json.loads(texte), ensure_ascii=False)[:700])
         except ValueError:
             print("    Extrait :", texte[:300])
         return
     if "<urlset" in texte or "<sitemapindex" in texte:
         adresses = re.findall(r"<loc>([^<]+)</loc>", texte)
-        interessantes = [a for a in adresses if re.search(r"club", a, re.I)]
-        print(f"    {len(adresses)} adresses, dont {len(interessantes)} « club » —"
-              f" ex. {(interessantes or adresses)[:10]}")
+        vise = [a for a in adresses if re.search(motif_club, a, re.I)]
+        print(f"    {len(adresses)} adresses, dont {len(vise)} « club » — ex. {(vise or adresses)[:10]}")
         return
+
     soupe = BeautifulSoup(texte, "html.parser")
     print("    Titre :", soupe.title.get_text(' ', strip=True)[:80] if soupe.title else "(aucun)")
-    interne = re.compile(r"vttl\.be|frbtt|aftt|facebook|instagram|youtube|twitter|linkedin|"
-                         r"google|w3\.org|flickr|mailchimp|campaign-archive|sport\.vlaanderen|"
-                         r"nationale-loterij|tibhar|1712\.be|shop-ping", re.I)
-    externes = sorted({a["href"] for a in soupe.find_all("a", href=True)
-                       if a["href"].startswith("http") and not interne.search(a["href"])})
-    print(f"    Liens externes : {len(externes)} — ex. {externes[:8]}")
     lignes = soupe.find_all("tr")
     print(f"    Lignes de tableau : {len(lignes)}")
-    for ligne in lignes[1:3]:
-        cellules = [re.sub(r"\s+", " ", c.get_text(" ", strip=True))[:40]
+    for ligne in lignes[:4]:
+        cellules = [re.sub(r"\s+", " ", c.get_text(" ", strip=True))[:38]
                     for c in ligne.find_all(("td", "th"))]
         if cellules:
             print("      |", " | ".join(cellules[:7]))
+    fiches = sorted({a["href"] for a in soupe.find_all("a", href=True)
+                     if re.search(motif_club, a["href"], re.I)})
+    print(f"    Liens « club » : {len(fiches)} — ex. {fiches[:6]}")
+    externes = sorted({a["href"] for a in soupe.find_all("a", href=True)
+                       if a["href"].startswith("http") and not DECOR.search(a["href"])
+                       and not a["href"].startswith(url[:30])})
+    print(f"    Liens externes : {len(externes)} — ex. {externes[:6]}")
     for formulaire in soupe.find_all("form")[:3]:
         champs = [c.get("name") for c in formulaire.find_all(("input", "select")) if c.get("name")]
-        print(f"    Formulaire action={formulaire.get('action')} champs={champs[:8]}")
+        print(f"    Formulaire action={formulaire.get('action')} méthode={formulaire.get('method')}"
+              f" champs={champs[:8]}")
+    options = soupe.find_all("option")
+    if len(options) > 20:
+        exemples = [(o.get("value"), o.get_text(strip=True)[:30]) for o in options[1:4]]
+        print(f"    {len(options)} options de menu — ex. {exemples}")
+    # Une liste pilotée par JavaScript trahit son API dans les scripts de la page.
+    reperes: set[str] = set()
+    for script in soupe.find_all("script"):
+        reperes |= set(re.findall(r'["\'](/?[\w./?=&-]{8,90}?(?:api|ajax|json|klub|club)[\w./?=&-]*)["\']',
+                                  script.string or ""))
+    for repere in sorted(reperes)[:6]:
+        print("    Appel repéré :", repere[:120])
 
 
 def main() -> int:
     session = requests.Session()
-    session.headers.update({"User-Agent": NAVIGATEUR})
+    session.headers.update({"User-Agent": NAVIGATEUR,
+                            "Accept-Language": "cs,nl,es,pl,de,en;q=0.8"})
 
-    titre("VTTL — plans du site et pages d'annuaire")
-    for url in ("https://www.vttl.be/sitemap.xml",
-                "https://www.vttl.be/sitemap_index.xml",
-                "https://www.vttl.be/clubs",
-                "https://www.vttl.be/content/clubs",
-                "https://www.vttl.be/nl/clubs",
-                "https://www.vttl.be/clubzoeker"):
+    titre("TCHÉQUIE — ČAST / STIS")
+    for url in ("https://stis.ping-pong.cz/htm/",
+                "https://stis.ping-pong.cz/htm/?adresar",
+                "https://stis.ping-pong.cz/htm/?id=oddily",
+                "https://www.ping-pong.cz/oddily",
+                "https://www.ping-pong.cz/sitemap.xml"):
         examiner(session, url)
 
-    titre("VTTL — pages de club à partir de l'index")
-    for index in EXEMPLES:
-        for gabarit in ("https://www.vttl.be/club/{i}",
-                        "https://www.vttl.be/content/club/{i}",
-                        "https://www.vttl.be/clubs/{i}"):
-            examiner(session, gabarit.format(i=index))
+    titre("PAYS-BAS — NTTB")
+    for url in ("https://www.nttb.nl/zoek-een-club/",
+                "https://www.nttb.nl/wp-json/wp/v2/types",
+                "https://www.nttb.nl/sitemap_index.xml",
+                "https://www.nttb.nl/wp-sitemap.xml",
+                "https://ttapp.nl/"):
+        examiner(session, url, r"club|vereniging")
 
-    titre("VTTL — recherche interne du site")
-    examiner(session, "https://www.vttl.be/search/node?keys=clubs")
+    titre("ESPAGNE — RFETM")
+    for url in ("https://clubs.rfetm.es/",
+                "https://www.rfetm.es/clubes",
+                "https://www.rfetm.es/sitemap.xml",
+                "https://www.rfetm.es/wp-json/wp/v2/types"):
+        examiner(session, url, r"club")
 
-    titre("Autre piste — annuaire indépendant")
-    examiner(session, "https://www.tafeltennis.be/clubs")
+    titre("POLOGNE — PZTS")
+    for url in ("https://rozgrywki.pzts.pl/",
+                "https://rozgrywki.pzts.pl/kluby",
+                "https://pzts.pl/kluby/",
+                "https://pzts.pl/wp-json/wp/v2/types"):
+        examiner(session, url, r"klub")
+
+    titre("AUTRICHE — ÖTTV")
+    for url in ("https://www.oettv.org/organisation/vereine",
+                "https://www.oettv.org/vereine",
+                "https://www.oettv.org/sitemap.xml",
+                # L'Autriche utilise-t-elle nuLiga, comme l'Allemagne et la Suisse ?
+                "https://www.click-tt.at/cgi-bin/WebObjects/nuLigaTTAT.woa/wa/clubSearch",
+                "https://oettv.nuliga.at/"):
+        examiner(session, url, r"verein|club")
     return 0
 
 
