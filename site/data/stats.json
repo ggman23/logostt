@@ -1,8 +1,8 @@
 {
  "maj": "2026-09-05",
- "clubs": 12116,
- "logos": 5033,
- "sites": 5021,
+ "clubs": 12948,
+ "logos": 5056,
+ "sites": 5064,
  "pays": [
   {
    "code": "FR",
@@ -977,7 +977,7 @@
    "nom": "Allemagne",
    "clubs": 7167,
    "sites": 3163,
-   "logos": 3771,
+   "logos": 3770,
    "ligues": [
     {
      "code": "DE-TTV-SCHLESWIG-HOL",
@@ -2444,14 +2444,14 @@
      "nom": "Badischer Tischtennis-Verband e.V.",
      "zone": "",
      "clubs": 290,
-     "logos": 183,
+     "logos": 182,
      "sites": 185,
      "departements": [
       {
        "dep": "D68",
        "nom": "PLZ 68",
        "clubs": 42,
-       "logos": 30,
+       "logos": 29,
        "sites": 29
       },
       {
@@ -4933,6 +4933,32 @@
        "clubs": 7,
        "logos": 0,
        "sites": 2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "code": "SK",
+   "nom": "Slovaquie",
+   "clubs": 832,
+   "sites": 43,
+   "logos": 24,
+   "ligues": [
+    {
+     "code": "SK-SSTZ",
+     "nom": "Slovenský stolnotenisový zväz",
+     "zone": "",
+     "clubs": 832,
+     "logos": 24,
+     "sites": 43,
+     "departements": [
+      {
+       "dep": "",
+       "nom": "",
+       "clubs": 832,
+       "logos": 24,
+       "sites": 43
       }
      ]
     }
