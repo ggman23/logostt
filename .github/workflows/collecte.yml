@@ -16,7 +16,7 @@ on:
       source:
         description: "Source de la liste des clubs"
         type: choice
-        options: ["carte", "clicktt", "angleterre", "belgique", "autriche", "pologne", "fftt", "opendata"]
+        options: ["carte", "clicktt", "angleterre", "belgique", "autriche", "pologne", "croatie", "fftt", "opendata"]
         default: "carte"
       etapes:
         description: "Étapes à lancer"
@@ -84,6 +84,7 @@ jobs:
               BE|be|belgique|Belgique) source="belgique"; federation="BE"; perimetre="tous" ;;
               AT|at|autriche|Autriche) source="autriche"; federation="AT"; perimetre="tous" ;;
               PL|pl|pologne|Pologne) source="pologne"; federation="PL"; perimetre="tous" ;;
+              HR|hr|croatie|Croatie) source="croatie"; federation="HR"; perimetre="tous" ;;
             esac
             case "$(sed -n 3p .github/lancer-collecte.txt | tr -d ' \r\n')" in
               forcer|force|oui|true) forcer="true" ;;

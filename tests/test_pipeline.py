@@ -14,8 +14,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 from PIL import Image, ImageDraw  # noqa: E402
 
 from ttlogos import (  # noqa: E402
-    angleterre, autriche, belgique, carte, catalogue, clicktt, logos, pologne,
-    referentiel, site,
+    angleterre, autriche, belgique, carte, catalogue, clicktt, croatie, logos,
+    pologne, referentiel, site,
 )
 
 
@@ -914,6 +914,54 @@ class TestLogoConserve(unittest.TestCase):
             self.assertEqual(club.logo_fichier, "")
             self.assertEqual(club.couleurs, "")
             self.assertEqual(club.logo_statut, catalogue.LOGO_ABSENT)
+
+
+class TestCroatie(unittest.TestCase):
+    """Annuaire de la HSTS : un club par ligne de tableau."""
+
+    LIGNE = ('<tr><td scope="row">2</td><td><h4>HASTK Mladost (Zagreb)</h4><address>'
+             '<b>Adresa:</b> Jarunska ulica 3<br/><b>Mjesto: </b>10000 , Zagreb<br/>'
+             '<b>Adresa dvorane: </b> Dvorana Lovro Ratković , Jarunska ulica 3, 10 000 Zagreb'
+             '<br/><b>Kontakt osoba: </b>Davor Habljak <br/>'
+             '<a href="mailto:info@hastk-mladost.hr">e-mail</a><br/>'
+             '<a href="tel:098 453 668">TEL</a><br/>'
+             '<a href="https://hastk-mladost.hr/">web</a></address></td></tr>')
+
+    @staticmethod
+    def ligne(html):
+        from bs4 import BeautifulSoup
+        return BeautifulSoup(html, "html.parser").tr
+
+    def test_fiche_de_club(self):
+        club = croatie.club_depuis_ligne(self.ligne(self.LIGNE))
+        self.assertEqual((club.pays, club.numero), ("HR", "HR2"))
+        self.assertEqual(club.nom, "HASTK Mladost (Zagreb)")
+        self.assertEqual((club.code_postal, club.ville), ("10000", "Zagreb"))
+        self.assertEqual(club.salle, "Dvorana Lovro Ratković")
+        self.assertEqual(club.site_web, "https://hastk-mladost.hr/")
+        self.assertEqual(club.dep, "HR10")
+
+    def test_les_coordonnees_de_contact_ne_sont_pas_enregistrees(self):
+        """Chaque ligne donne le nom, le courriel et le téléphone d'un correspondant."""
+        club = croatie.club_depuis_ligne(self.ligne(self.LIGNE))
+        enregistre = " ".join(str(valeur) for valeur in vars(club).values())
+        for personnel in ("Davor", "Habljak", "098 453", "info@hastk"):
+            self.assertNotIn(personnel, enregistre, personnel)
+
+    def test_ligne_d_entete(self):
+        self.assertIsNone(croatie.club_depuis_ligne(
+            self.ligne('<tr><th>#</th><th>Klub</th></tr>')))
+
+    def test_club_sans_site(self):
+        sans = self.LIGNE.replace('<a href="https://hastk-mladost.hr/">web</a>', "")
+        club = croatie.club_depuis_ligne(self.ligne(sans))
+        self.assertEqual(club.site_web, "")
+        self.assertEqual(club.logo_statut, catalogue.SITE_ABSENT)
+
+    def test_statistiques_par_pays(self):
+        clubs = [croatie.club_depuis_ligne(self.ligne(self.LIGNE))]
+        pays = {p["code"]: p for p in site.statistiques(clubs)["pays"]}
+        self.assertEqual(pays["HR"]["nom"], "Croatie")
 
 
 if __name__ == "__main__":
