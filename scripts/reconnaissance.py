@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
-"""Tchéquie et Pologne : trouver la liste des clubs et, si possible, leurs sites.
+"""Cherche, dans une trentaine de fédérations, celles dont l'annuaire est exploitable.
 
-Tchéquie : le registre fédéral répond normalement — où liste-t-il les oddíly ?
-Pologne  : le tableau des licences donne 486 clubs ; les fiches ou les associations
-           régionales donnent-elles leur site ?
+Plutôt que d'explorer un pays à la fois, ce script part de la page d'accueil de chaque
+fédération, y repère l'entrée de menu qui mène aux clubs — dans la langue du pays — et
+mesure ce que cette page contient : des clubs listés, des liens vers leurs sites, des
+logos hébergés par la fédération.
+
+Il ne collecte rien : il classe les pistes par rendement attendu en logos.
 """
 
 from __future__ import annotations
@@ -11,7 +14,7 @@ from __future__ import annotations
 import re
 import sys
 from pathlib import Path
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlparse
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
@@ -21,85 +24,129 @@ from bs4 import BeautifulSoup  # noqa: E402
 NAVIGATEUR = ("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) "
               "Chrome/124.0.0.0 Safari/537.36")
 
+# Fédérations nationales, avec une estimation du nombre de clubs pour ordonner l'effort.
+FEDERATIONS = [
+    ("Japon", "https://www.jtta.or.jp/", 7000),
+    ("Italie", "https://www.fitet.org/", 1400),
+    ("Angleterre", "https://www.tabletennisengland.co.uk/", 1500),
+    ("Tchéquie", "https://www.ping-pong.cz/", 800),
+    ("Espagne", "https://www.rfetm.es/", 800),
+    ("Suède", "https://www.svenskbordtennis.com/", 600),
+    ("Pays-Bas", "https://www.nttb.nl/", 600),
+    ("Hongrie", "https://moatsz.hu/", 500),
+    ("Roumanie", "https://www.frtm.ro/", 450),
+    ("Portugal", "https://www.fptm.pt/", 400),
+    ("Danemark", "https://bordtennisdanmark.dk/", 350),
+    ("Norvège", "https://bordtennis.no/", 300),
+    ("Slovaquie", "https://www.sstz.sk/", 300),
+    ("Croatie", "https://www.hsts.hr/", 300),
+    ("Serbie", "https://www.sts.org.rs/", 250),
+    ("Finlande", "https://www.sptl.fi/", 200),
+    ("Slovénie", "https://www.nztzs.si/", 150),
+    ("Bulgarie", "https://bftt.eu/", 150),
+    ("Grèce", "https://www.eftt.gr/", 150),
+    ("Turquie", "https://www.tmtf.gov.tr/", 400),
+    ("Ukraine", "https://ttable.org.ua/", 300),
+    ("États-Unis", "https://www.usatt.org/", 300),
+    ("Canada", "https://www.ttcan.ca/", 150),
+    ("Australie", "https://tabletennis.org.au/", 200),
+    ("Brésil", "https://cbtm.org.br/", 300),
+    ("Inde", "https://ttfi.org/", 400),
+    ("Corée du Sud", "https://www.koreatta.or.kr/", 400),
+    ("Luxembourg", "https://www.fltt.lu/", 80),
+    ("Irlande", "https://www.irishtabletennis.com/", 100),
+    ("Écosse", "https://www.tabletennisscotland.co.uk/", 150),
+]
 
-def titre(texte: str) -> None:
-    print("=" * 100)
-    print(f"### {texte}")
+# « clubs » dans les langues des fédérations sondées.
+MOT_CLUB = re.compile(
+    r"club|klub|kluby|kluben|klubb|clubes|clubs|verein|vereine|vereniging|"
+    r"societ|förening|foreninger|seura|egyesület|egyesulet|oddil|oddíl|"
+    r"asociac|asociat|associa|szakoszt|takım|kul[üu]p|команд|клуб|クラブ|加盟",
+    re.I)
+# Images qui ne sont jamais le logo d'un club.
+DECOR = re.compile(r"logo[-_]?(fed|fftt|federation)|sponsor|banner|header|footer|"
+                   r"facebook|instagram|youtube|twitter|flag|drapeau|icon", re.I)
 
 
-def charger(session, url: str) -> str:
+def charger(session, url: str, taille_max: int = 8_000_000) -> str:
     try:
-        reponse = session.get(url, timeout=60)
-    except Exception as erreur:  # noqa: BLE001
-        print(f"    {url}\n    exception {type(erreur).__name__}: {erreur}")
+        reponse = session.get(url, timeout=25, allow_redirects=True)
+    except Exception:  # noqa: BLE001
         return ""
-    print(f"    {url}\n    HTTP {reponse.status_code} | {len(reponse.content)} octets")
-    return reponse.text if reponse.status_code == 200 else ""
+    if reponse.status_code != 200 or len(reponse.content) > taille_max:
+        return ""
+    return reponse.text
 
 
-def resume(html: str, url: str, motif: str) -> BeautifulSoup | None:
-    if not html:
-        return None
+def evaluer(html: str, url: str) -> dict:
+    """Mesure ce qu'une page contient d'exploitable pour la collecte."""
     soupe = BeautifulSoup(html, "html.parser")
-    print("      titre :", soupe.title.get_text(' ', strip=True)[:70] if soupe.title else "(aucun)")
-    lignes = soupe.find_all("tr")
-    print(f"      lignes de tableau : {len(lignes)}")
-    for ligne in lignes[:4]:
-        cellules = [re.sub(r"\s+", " ", c.get_text(" ", strip=True))[:35]
-                    for c in ligne.find_all(("td", "th"))]
-        if cellules:
-            print("        |", " | ".join(cellules[:7]))
-    vises = sorted({a["href"] for a in soupe.find_all("a", href=True)
-                    if re.search(motif, a["href"], re.I)})
-    print(f"      liens visés : {len(vises)} — ex. {vises[:8]}")
-    hote = re.match(r"https?://[^/]+", url)
-    externes = sorted({a["href"] for a in soupe.find_all("a", href=True)
-                       if a["href"].startswith("http")
-                       and not (hote and a["href"].startswith(hote.group(0)))
-                       and not re.search(r"facebook|google|w3\.org|youtube|instagram", a["href"], re.I)})
-    print(f"      liens externes : {len(externes)} — ex. {externes[:8]}")
-    return soupe
+    hote = urlparse(url).netloc.replace("www.", "")
+    lignes = len(soupe.find_all("tr"))
+    articles = len(soupe.select("li")) + len(soupe.select("div.card"))
+    externes = {a["href"] for a in soupe.find_all("a", href=True)
+                if a["href"].startswith("http") and hote not in a["href"]
+                and not re.search(r"facebook|instagram|youtube|twitter|x\.com|linkedin|"
+                                  r"google|w3\.org|tiktok|wordpress|ittf|ettu",
+                                  a["href"], re.I)}
+    images = {i.get("src") for i in soupe.find_all("img", src=True)
+              if not DECOR.search(i.get("src", ""))}
+    return {"lignes": lignes, "articles": articles,
+            "sites": len(externes), "images": len(images),
+            "exemples": sorted(externes)[:4]}
 
 
-def tchequie(session) -> None:
-    titre("TCHÉQUIE — explorer le registre")
-    racine = "https://registr.ping-pong.cz/htm/"
-    soupe = resume(charger(session, racine), racine, r"oddil|oddíl|klub|subjekt|adresar")
-    if soupe is None:
+def sonder(session, nom: str, racine: str, clubs: int) -> None:
+    print("=" * 100)
+    print(f"### {nom} (~{clubs} clubs) — {racine}")
+    accueil = charger(session, racine)
+    if not accueil:
+        print("    accueil inaccessible")
         return
-    # On suit les entrées de menu qui promettent une liste d'oddíly.
-    candidats = []
+    soupe = BeautifulSoup(accueil, "html.parser")
+
+    # On retient les entrées de menu qui parlent de clubs, dans la langue du pays.
+    pistes: list[tuple[str, str]] = []
     for lien in soupe.find_all("a", href=True):
         intitule = lien.get_text(" ", strip=True)
-        if re.search(r"oddíl|oddil|klub|subjekt|adresá|adresa", intitule + lien["href"], re.I):
-            candidats.append((intitule[:40], urljoin(racine, lien["href"])))
-    print("    Candidats :", candidats[:12])
-    for intitule, url in candidats[:5]:
-        print(f"  — « {intitule} »")
-        resume(charger(session, url), url, r"oddil|oddíl|klub|subjekt")
+        if MOT_CLUB.search(intitule) or MOT_CLUB.search(lien["href"]):
+            adresse = urljoin(racine, lien["href"])
+            if adresse.startswith("http") and (adresse, intitule) not in pistes:
+                pistes.append((adresse, intitule[:35]))
+    vues: set[str] = set()
+    retenues = []
+    for adresse, intitule in pistes:
+        if adresse in vues:
+            continue
+        vues.add(adresse)
+        retenues.append((adresse, intitule))
+        if len(retenues) >= 4:
+            break
+    if not retenues:
+        print("    aucune entrée de menu « clubs » repérée")
+        return
 
-
-def pologne(session) -> None:
-    titre("POLOGNE — la fiche d'un club donne-t-elle son site ?")
-    base = "https://rozgrywki.pzts.pl/rozgrywki-indywidualne/"
-    for url in (f"{base}licencje?season=18&region=12&c_id=1280",
-                f"{base}licencje?season=18&region=1&c_id=200"):
-        resume(charger(session, url), url, r"klub|www")
-
-    titre("POLOGNE — les associations régionales listent-elles les sites ?")
-    for url in ("http://www.mzts.pl/kluby-czlonkowskie/",
-                "http://ozts.cba.pl/kluby/",
-                "http://kozts.pl/",
-                "http://pozts.org/"):
-        resume(charger(session, url), url, r"klub")
+    for adresse, intitule in retenues:
+        page = charger(session, adresse)
+        if not page:
+            print(f"    « {intitule} » -> inaccessible  {adresse}")
+            continue
+        mesure = evaluer(page, adresse)
+        print(f"    « {intitule} » : {mesure['lignes']} lignes, {mesure['articles']} éléments,"
+              f" {mesure['sites']} liens externes, {mesure['images']} images")
+        print(f"      {adresse}")
+        if mesure["exemples"]:
+            print(f"      ex. {mesure['exemples']}")
 
 
 def main() -> int:
     session = requests.Session()
-    session.headers.update({"User-Agent": NAVIGATEUR, "Accept-Language": "cs,pl,en;q=0.8"})
-    for sonde in (tchequie, pologne):
+    session.headers.update({"User-Agent": NAVIGATEUR,
+                            "Accept-Language": "en,fr,de,it,es,sv,da,no,fi,hu,pl,cs;q=0.7"})
+    for nom, racine, clubs in FEDERATIONS:
         try:
-            sonde(session)
+            sonder(session, nom, racine, clubs)
         except Exception as erreur:  # noqa: BLE001
             print(f"    -> exception : {type(erreur).__name__}: {erreur}")
     return 0
