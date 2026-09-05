@@ -19,7 +19,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from ttlogos import (  # noqa: E402
     angleterre, autriche, belgique, carte, catalogue, clicktt, datasports, fftt,
-    referentiel,
+    pologne, referentiel,
 )
 from ttlogos.logos import recuperer_logo_heberge  # noqa: E402
 from ttlogos.reseau import Client  # noqa: E402
@@ -146,13 +146,14 @@ def main() -> int:
     )
     analyseur.add_argument(
         "--source", default="carte",
-        choices=("carte", "clicktt", "angleterre", "belgique", "autriche", "fftt",
-                 "opendata"),
+        choices=("carte", "clicktt", "angleterre", "belgique", "autriche", "pologne",
+                 "fftt", "opendata"),
         help="carte : annuaire public FFTT (France, recommandé) ; "
              "clicktt : annuaire click-TT (Allemagne ou Suisse, logos officiels compris) ; "
              "angleterre : données ouvertes de Table Tennis England ; "
              "belgique : API TabT, complétée par le moteur de recherche de l'AFTT ; "
              "autriche : annuaire de l'ÖTTV, qui tient en une page ; "
+             "pologne : registre des licences de la PZTS ; "
              "fftt : API SmartPing (demande une clé) ; opendata : data.sports.gouv.fr",
     )
     analyseur.add_argument(
@@ -194,6 +195,8 @@ def main() -> int:
             # Rien à corriger de notre côté : on repart sans rien changer au catalogue.
             journal.warning("collecte anglaise reportée — %s", arret)
             return 0
+    elif arguments.source == "pologne":
+        nouveaux = pologne.liste_des_clubs(client, arguments.limite)
     elif arguments.source == "autriche":
         nouveaux = autriche.liste_des_clubs(client, arguments.limite)
     elif arguments.source == "belgique":
@@ -214,11 +217,11 @@ def main() -> int:
         return 1
 
     existants = catalogue.charger()
-    if arguments.source in ("clicktt", "angleterre", "belgique", "autriche"):
+    if arguments.source in ("clicktt", "angleterre", "belgique", "autriche", "pologne"):
         # Ces annuaires ne se découpent pas par département : on remplace l'ensemble du
         # pays concerné et on laisse les autres intacts.
-        pays = {"angleterre": "EN", "belgique": "BE", "autriche": "AT"}.get(
-            arguments.source, arguments.federation)
+        pays = {"angleterre": "EN", "belgique": "BE", "autriche": "AT",
+                "pologne": "PL"}.get(arguments.source, arguments.federation)
         fusionnes = catalogue.fusionner_pays(existants, nouveaux, pays,
                                              remplacer=arguments.recommencer)
     else:

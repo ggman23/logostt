@@ -14,8 +14,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 from PIL import Image, ImageDraw  # noqa: E402
 
 from ttlogos import (  # noqa: E402
-    angleterre, autriche, belgique, carte, catalogue, clicktt, logos, referentiel,
-    site,
+    angleterre, autriche, belgique, carte, catalogue, clicktt, logos, pologne,
+    referentiel, site,
 )
 
 
@@ -817,6 +817,48 @@ class TestAutriche(unittest.TestCase):
         pays = {p["code"]: p for p in site.statistiques(clubs)["pays"]}
         self.assertEqual(pays["AT"]["nom"], "Autriche")
         self.assertEqual(pays["AT"]["ligues"][0]["departements"][0]["dep"], "AT53")
+
+
+class TestPologne(unittest.TestCase):
+    """Registre des licences de la PZTS, complété par l'annuaire mazovien."""
+
+    LIGNE = ('<tr><td> 1 </td><td><span>1280</span></td>'
+             '<td><b><a href="licencje?season=18&amp;region=12&amp;c_id=1280">KTS Będzin</a>'
+             '</b></td><td>04.09</td><td>486</td><td>02.09</td><td>ŚLS</td></tr>')
+
+    @staticmethod
+    def ligne(html):
+        from bs4 import BeautifulSoup
+        return BeautifulSoup(html, "html.parser").tr
+
+    def test_fiche_de_club(self):
+        club = pologne.club_depuis_ligne(self.ligne(self.LIGNE))
+        self.assertEqual((club.pays, club.numero), ("PL", "PL1280"))
+        self.assertEqual(club.nom, "KTS Będzin")
+        self.assertEqual((club.ligue_code, club.ligue_nom), ("PL-SLASKIE", "Silésie"))
+        self.assertEqual(club.logo_statut, catalogue.SITE_ABSENT)
+
+    def test_ligne_d_entete(self):
+        entete = ('<tr><td class="header-top">Lp.</td><td class="header-top">Nr kl.</td>'
+                  '<td class="header-top">Klub</td><td class="header-top">Data LO</td>'
+                  '<td class="header-top">Nr LO</td><td class="header-top">Data wnios.</td>'
+                  '<td class="header-top">Woj.</td></tr>')
+        self.assertIsNone(pologne.club_depuis_ligne(self.ligne(entete)))
+
+    def test_appariement_des_noms(self):
+        """Les deux sources n'écrivent pas les noms pareil : accents, casse et espaces
+        surnuméraires varient d'un annuaire à l'autre."""
+        self.assertEqual(pologne._comparable("UKS LUPUS Kabaty Wars zawa"),
+                         pologne._comparable("UKS Lupus Kabaty Warszawa"))
+        self.assertEqual(pologne._comparable("KS BOGORIA Grodzisk Mazowiecki"),
+                         pologne._comparable("KS Bogoria Grodzisk-Mazowiecki"))
+        self.assertNotEqual(pologne._comparable("KTS Będzin"), pologne._comparable("KTS Bedzin2"))
+
+    def test_statistiques_par_pays(self):
+        clubs = [pologne.club_depuis_ligne(self.ligne(self.LIGNE))]
+        pays = {p["code"]: p for p in site.statistiques(clubs)["pays"]}
+        self.assertEqual(pays["PL"]["nom"], "Pologne")
+        self.assertEqual(pays["PL"]["ligues"][0]["nom"], "Silésie")
 
 
 if __name__ == "__main__":

@@ -1,12 +1,13 @@
-AT
-clubs
-recommencer
+PL
+clubs+logos
+
 # 1re ligne : périmètre — « tous », une ligue (IDF, BRE…), un département (75),
 #             « DE » (Allemagne, click-TT), « CH » (Suisse, click-TT),
 #             « EN » (Angleterre, données ouvertes de Table Tennis England)
 #             « BE » (Belgique, API TabT + moteur de l'AFTT)
-#             ou « AT » (Autriche, annuaire de l'ÖTTV).
+#             « AT » (Autriche, annuaire de l'ÖTTV)
+#             ou « PL » (Pologne, registre des licences de la PZTS).
 # 2e ligne : étapes (clubs+logos, clubs, logos) — vide = clubs+logos
 # 3e ligne : « forcer » pour revoir les logos déjà connus — vide = seulement ceux qui manquent
 # Dernière passe 04/09/2026 22:40 — Suisse, annuaire (associations régionales)
-# Dernière passe 05/09/2026 08:35 — Autriche, relecture sans les ententes
+# Dernière passe 05/09/2026 08:45 — Pologne, annuaire et logos
