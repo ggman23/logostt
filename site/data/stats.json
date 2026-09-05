@@ -1,8 +1,8 @@
 {
  "maj": "2026-09-05",
  "clubs": 12013,
- "logos": 4998,
- "sites": 4999,
+ "logos": 5000,
+ "sites": 5000,
  "pays": [
   {
    "code": "FR",
@@ -4509,8 +4509,8 @@
    "code": "PL",
    "nom": "Pologne",
    "clubs": 486,
-   "sites": 6,
-   "logos": 3,
+   "sites": 7,
+   "logos": 5,
    "ligues": [
     {
      "code": "PL-POMORSKIE",
@@ -4687,15 +4687,15 @@
      "nom": "Mazovie",
      "zone": "",
      "clubs": 59,
-     "logos": 3,
-     "sites": 6,
+     "logos": 5,
+     "sites": 7,
      "departements": [
       {
        "dep": "",
        "nom": "",
        "clubs": 59,
-       "logos": 3,
-       "sites": 6
+       "logos": 5,
+       "sites": 7
       }
      ]
     },
